@@ -1,0 +1,145 @@
+#contentWrap {
+    left: 220px;
+    width: calc(100% - 220px);
+    min-width: 708px;
+    position: absolute;
+    top: 0;
+}
+
+
+
+
+.loginBox{
+border:1px solid gray;
+width:700px;
+padding-left:50px;
+
+} 
+
+.login_ti{
+	margin:0;
+	padding:0;
+}
+
+.title_wrap.loginT{
+	background : url("http://localhost:9000/images/visual_joinT_bg.gif")center 0 no-repeat;
+	background-size: cover;
+	color:white;
+	font-size: 34px;
+	font-weight: normal;
+}	
+	
+.title_wrap {
+    position: relative;
+    background: #214c5a;
+    height: 180px;
+    padding-top: 75px;
+    text-align: center;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+	
+.util{
+	position: absolute;
+	top:0px;
+	right: 30px;	
+	}
+.util ul {
+    float: left;
+}
+.util > ul li {
+    float: left;
+    vertical-align: top;
+}
+.util li.account, .util > ul li a {
+    position: relative;
+    padding: 0 12px 0 8px;
+}
+.util li a, .util select {
+    font-size: 11px;
+    color: #fff;
+}
+.util li.login a span, .util li.logout a span {
+    padding: 4px 10px;
+    font-weight: bold;
+    color: #fff;
+    background-color: #cfa346;
+    border: 1px solid #fff;
+}
+.util li a, .util select {
+    font-size: 11px;
+    color: #fff;
+}
+.util > ul li a:after {
+    display: block;
+    content: '';
+    position: absolute;
+    top: 3px;
+    right: 0;
+    width: 1px;
+    height: 10px;
+    border-left: 1px solid #fff;
+    opacity: 0.4;
+}
+
+
+ul{
+list-style:none;
+}
+.amem_table th{
+	color:white;
+	
+}
+
+
+.amem_table thead{
+	font-weight: bold;
+  color: white;
+  background: #73685d;
+	}
+.amem_table{
+	    border: 1px solid black;
+    width: 70%;
+    text-align: center;
+    
+     border: 1px #a39485 solid;
+  font-size: .9em;
+  box-shadow: 0 2px 5px rgba(0,0,0,.25);
+  border-collapse: collapse;
+  border-radius: 5px;
+  overflow: hidden;
+  margin:auto;
+}
+.amem_table tr{
+	border:1px solid black;
+}
+
+.amem_table th {
+	height: 30px;
+}
+
+.amem_table td {
+	height:50px;
+	}
+.mem_search{
+	    text-align: center;
+	    margin-top: 30px;
+}
+.search_put{
+	height: 30px;
+	margin:10px;
+	width:100px;
+}
+.search_put1{
+	height: 30px;
+	margin:10px;
+	width: 250px;
+}
+.paging{
+height:	30px;
+}
+.title_am{
+	    margin-bottom: 30px;
+}
+	
