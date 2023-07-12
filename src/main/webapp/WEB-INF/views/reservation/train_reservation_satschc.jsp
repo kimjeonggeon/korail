@@ -28,11 +28,12 @@ $(document).ready(function(){
 		let sid = "${sessionScope.svo.id}";
 		let seatNum = $("#seatNum1").val();
 		let ticketQty = $("#ticketQty1").val();
+		let email = "${sessionScope.svo.email}";
 
 		if(sid == ""){
 		  $(".modal").css("display", "block");
 		  }else{
-			  $(location).attr("href",'http://localhost:9000/stplcfmpym?seatNum='+seatNum +"&ticketQty="+ticketQty+"&id="+sid );
+			  $(location).attr("href",'http://localhost:9000/stplcfmpym?seatNum='+seatNum +"&ticketQty="+ticketQty+"&id="+sid + "&email=" +email );
 		  }
 
 		}

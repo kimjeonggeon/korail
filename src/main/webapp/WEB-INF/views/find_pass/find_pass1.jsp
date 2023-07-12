@@ -33,7 +33,7 @@
 	<div class ="content">
 	<div class = "verti_form">
 	
-	<form name = "verti" action ="find_pass2.do" method ="POST">
+	<form name = "verti" action ="find_pass2" method ="POST">
 	<div class= "v_noti">
 	<p class="join2_p"> 본인 인증을 위한 이메일을 입력해 주세요.</p>
 	</div>

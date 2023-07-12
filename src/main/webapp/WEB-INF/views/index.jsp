@@ -146,13 +146,13 @@
 					<span class="stit">이용안내</span>
 					<ul class="clifx">
 						<li class="info1" style="width:33.333%">
-						<a href="http://localhost:9000/reservation_info.do">예매안내</a>
+						<a href="http://localhost:9000/reservation_info">예매안내</a>
 						</li>
 						<li class="info2" style="width:33.333%">
-						<a href="http://localhost:9000/refund_info.do">환불안내</a>
+						<a href="http://localhost:9000/refund_info">환불안내</a>
 						</li>
 						<li class="info4" style="width:33.333%">
-						<a href="http://localhost:9000/train_route_info.do">기차역안내</a>
+						<a href="http://localhost:9000/train_route_info">기차역안내</a>
 						</li>
 					</ul>
 				</div>
