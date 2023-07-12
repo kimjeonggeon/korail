@@ -29,4 +29,12 @@ public class OrderService {
 
         return (ArrayList<SeatNumberDto>)list;
     }
+    public String getCancelResult(String reservnum) {
+        int result = orderMapper.cancel(reservnum);
+        return String.valueOf(result);
+    }
+
+    public OrderDto getSelected(String reservnum){
+        return orderMapper.selected(reservnum);
+    }
 }

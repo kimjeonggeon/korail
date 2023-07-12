@@ -68,10 +68,10 @@
 								<a href="#none" onclick="mbrsJoin();"><span class="ico_joinUs">회원가입</span></a>
 							</div>
 						</div>
-						<input type="hidden" id="returnUrl" name="returnUrl" value="/mrs/mrscfm?vltlCnt=Y">
-						<input type="hidden" id="popUpDvs" name="popUpDvs" value="N">
+						<%--<input type="hidden" id="returnUrl" name="returnUrl" value="/mrs/mrscfm.do?vltlCnt=Y">
+						<input type="hidden" id="popUpDvs" name="popUpDvs" value="N">--%>
 					</div>
-					<input type="hidden" id="hidfrmId" name="hidfrmId" value="lgnUsrInfForm">
+					<%--<input type="hidden" id="hidfrmId" name="hidfrmId" value="lgnUsrInfForm">--%>
 					<input type="hidden" id="transkeyUuid_lgnUsrInfForm" name="transkeyUuid_lgnUsrInfForm" value="a8faa6eb38350229c3950316465f5e6755b404b31270294d21fafa58b2086f59">
 					<input type="hidden" id="transkey_usrPwd_lgnUsrInfForm" name="transkey_usrPwd_lgnUsrInfForm" value="">
 					<input type="hidden" id="transkey_HM_usrPwd_lgnUsrInfForm" name="transkey_HM_usrPwd_lgnUsrInfForm" value="">
@@ -87,7 +87,7 @@
 				
 				
 			<!-- 비회원로그인 -->
-			<form id="lgnNonUsrFrm" name="lgnNonUsrFrm" action="cardnum_check_proc" method="post">
+			<form id="lgnNonUsrFrm" name="lgnNonUsrFrm" action="cardnum_check_proc.do" method="post">
 			<div class="box_login non-member">
 				<h3 class="mob_h3">비회원 예매확인</h3>
 				<p class="h3_desc">예매 시 입력하신 정보를 정확히 입력해주세요.</p>
@@ -205,7 +205,7 @@
 				<p class="btn_squareBox pay_wrap_card pay_wrap_card_btn" style="display: none; "><button type="button" id="cardnumSearch" class="btn_confirm ready" style="height: 60px; line-height: 0px;">조회</button></p>
 				
 				<input type="hidden" id="popUpDvs" name="popUpDvs" value="N">
-				<input type="hidden" id="returnUrl" name="returnUrl" value="/mrs/mrscfm">
+				<input type="hidden" id="returnUrl" name="returnUrl" value="/mrs/mrscfm.do">
 				<input type="hidden" id="vltlCnt" name="vltlCnt" value="Y">
 				<input type="hidden" id="cal_flg1" name="cal_flg1" value="0">
 				<input type="hidden" id="cal_flg2" name="cal_flg2" value="1">
@@ -436,7 +436,7 @@
 							$('#lgnNonUsrFrm').attr('action', returnUrl);
 							$('#lgnNonUsrFrm').submit();
 						 }else{
-							location.href = "/main";
+							location.href = "/main.do";
 						 }
 					} */
 				</script>

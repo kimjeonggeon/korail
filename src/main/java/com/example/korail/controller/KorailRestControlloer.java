@@ -1,5 +1,6 @@
 package com.example.korail.controller;
 
+import com.example.korail.dto.OrderDto;
 import com.example.korail.service.MailSendService;
 import com.example.korail.service.MemberService;
 import com.google.gson.Gson;
@@ -9,6 +10,7 @@ import com.example.korail.dto.ReservationDto;
 import com.example.korail.dto.SeatNumberDto;
 import com.example.korail.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
@@ -26,6 +28,7 @@ public class KorailRestControlloer {
 
     @Autowired
     MailSendService mailSendService;
+
 
     @GetMapping("mailCheck/{email}")
     public String mailCheck(@PathVariable String email){
@@ -68,4 +71,14 @@ public class KorailRestControlloer {
         int result = memberService.getEmailCheckResult(email);
         return String.valueOf(result);
     }
+
+
+    @GetMapping("reservCancel_check/{reservnum}")
+    public String reservCancel_check(@PathVariable String reservnum){
+        return orderService.getCancelResult(reservnum);
+    }
+
+
+
+
 }

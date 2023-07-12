@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 <link rel="stylesheet" href="http://localhost:9000/css/train_reservation_stplcfmpym.css">
 <script src="http://localhost:9000/js/jquery-3.6.4.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="http://localhost:9000/js/nomember_stplcfmpym.js"></script>
 <style>
 	.title_wrap { 
@@ -49,7 +50,7 @@
 						
 						<div class="scroll-wrapper agreement_cont scrollbar-inner" style="position: relative;">
 							<div class="agreement_cont scrollbar-inner scroll-content scroll-scrolly_visible" style="height: auto; margin-bottom: 0px; margin-right: 0px; max-height: 120.333px;">
-								<!-- <iframe src="/cmn/SvcUtlzStplAgrm" frameborder="0" scrolling="no" width="100%" title="서비스 이용약관" onload="resize(this);" height="2557"></iframe> -->
+								<!-- <iframe src="/cmn/SvcUtlzStplAgrm.do" frameborder="0" scrolling="no" width="100%" title="서비스 이용약관" onload="resize(this);" height="2557"></iframe> -->
 								<div class="terms_wrap" id="service">
 									<h1>&lt;서비스 이용약관&gt;</h1>
 									<dl>
@@ -260,7 +261,7 @@
 						</div>
 						<div class="scroll-wrapper agreement_cont scrollbar-inner" style="position: relative;">
 						<div class="agreement_cont scrollbar-inner scroll-content scroll-scrolly_visible" style="height: auto; margin-bottom: 0px; margin-right: 0px; max-height: 120px;">
-							<!-- iframe src="/cmn/IndlInfClcnUtlzAgrm" frameborder="0" scrolling="no" width="100%" height="130" title="개인정보 처리방침" onload="resize(this);"></iframe -->
+							<!-- iframe src="/cmn/IndlInfClcnUtlzAgrm.do" frameborder="0" scrolling="no" width="100%" height="130" title="개인정보 처리방침" onload="resize(this);"></iframe -->
 							<div class="terms_wrap">
                                 <h1>개인정보 수집 및 이용 동의</h1>
                                 <dl>
@@ -292,7 +293,7 @@
 							</span>
 						</div>
 						<div class="scroll-wrapper agreement_cont scrollbar-inner" style="position: relative;"><div class="agreement_cont scrollbar-inner scroll-content scroll-scrolly_visible" style="height: auto; margin-bottom: 0px; margin-right: 0px; max-height: 120px;">
-							<!-- iframe src="/cmn/IndlInfClcnUtlzAgrm" frameborder="0" scrolling="no" width="100%" height="130" title="개인정보 처리방침" onload="resize(this);"></iframe -->
+							<!-- iframe src="/cmn/IndlInfClcnUtlzAgrm.do" frameborder="0" scrolling="no" width="100%" height="130" title="개인정보 처리방침" onload="resize(this);"></iframe -->
 							
                             <div class="terms_wrap">
                                 <h1>개인정보 제3자 제공에 대한 동의</h1>
@@ -452,7 +453,7 @@
 				
 				<h4 class="mo_page">결제정보 입력</h4>
 				<div class="custom_input clfix">
-					<form name="purchaseForm" id="purchaseForm" action="reservation_updatepay_proc" method="post">
+					<form name="purchaseForm" id="purchaseForm" action="reservation_updatepay_proc.do" method="post">
 					<div class="tab_wrap inradio tab_type2" data-desc-id="tab-desc1"> <!-- 190109 수정 : data-desc-id 속성 추가 (값은 하단 설명 영역인 .tab_desc_wrap의 id와 매칭) -->					
 						
 						<div class="tab_conts" id="tab1" style="display: block;">
@@ -571,8 +572,8 @@
 							<div class="box_inputForm" id="indlBrdtCard">
 								<strong>생년월일 6자리(YYMMDD)</strong>
 								<span class="box_label">
-									<label for="caBirth">예)1980년11월11일 → 801111</label>
-									<input type="text" name="caBirth" id="caBirth" class="input" maxlength="6">
+									<!-- <label for="caBirth">예)1980년11월11일 → 801111</label> -->
+									<input type="text" name="birthday" id="birthday" class="input" maxlength="6" placeholder="예)1980년11월11일 → 801111">
 								</span>
 							</div>
 						

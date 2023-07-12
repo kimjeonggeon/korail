@@ -2,12 +2,14 @@ package com.example.korail.controller;
 
 import com.example.korail.dto.OrderDto;
 import com.example.korail.dto.SessionDto;
+import com.example.korail.dto.UpdateDto;
 import com.example.korail.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.servlet.http.HttpSession;
@@ -62,4 +64,53 @@ public class ReservationlistController {
         }
         return orderReturn;
     }
-}
+
+
+    @GetMapping("reservation_receipt/{reservnum}")
+    public String reservation_receipt(@PathVariable String reservnum, Model model) {
+
+        OrderDto orderDto = orderService.getSelected(reservnum);
+
+        model.addAttribute("odt", orderDto);
+        return "reservationlist/reservation_receipt";
+    }
+
+    @GetMapping("reservation_hometicket/{reservnum}")
+    public String reservation_hometicket(@PathVariable String reservnum, Model model) {
+
+        OrderDto orderDto = orderService.getSelected(reservnum);
+
+        model.addAttribute("odt", orderDto);
+        return "reservationlist/reservation_hometicket";
+    }
+
+    /* update1 */
+    @GetMapping("reservation_update/{reservnum}")
+    public String reservation_update(HttpSession session, @PathVariable String reservnum, Model model) {
+        OrderDto orderDto = orderService.getSelected(reservnum);
+
+        UpdateDto updateDto = new UpdateDto();
+        updateDto.setReservnum(reservnum);
+
+        model.addAttribute("odt", orderDto);
+        session.setAttribute("uvo", updateDto);
+
+        return "/reservationlist/reservation_update";
+    }
+
+    /* update2 */
+    @GetMapping("reservation_updatetime/{traintime}/{depPlaceId}/{arrPlaceId}")
+    public String reservation_updatetime(HttpSession session, @PathVariable String traintime, @PathVariable String depPlaceId, @PathVariable String arrPlaceId ) {
+
+        UpdateDto updateDto = (UpdateDto)session.getAttribute("uvo");
+
+        updateDto.setRtime(traintime);
+        updateDto.setStartId(depPlaceId);
+        updateDto.setEndId(arrPlaceId);
+
+        return "/reservationlist/reservation_updatetime";
+    }
+
+
+
+}//controller

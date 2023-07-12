@@ -9,6 +9,7 @@
 <link rel="stylesheet" href="http://localhost:9000/css/reservationlist.css">
 <script src="http://localhost:9000/js/jquery-3.6.4.min.js"></script>
 <script src="http://localhost:9000/js/reservation_jquery.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <style>
 	.hidden-span {
             display: none;
@@ -30,17 +31,17 @@
 	<!------------------------ 메뉴바 ---------------------------->
 	<!-- <div class="breadcrumb">
 		<ul class="breadcrumb_list">
-			<li><a href="/main">HOME</a></li>
+			<li><a href="/main.do">HOME</a></li>
 			<li>
 				<div class="select-box">
 					<div class="selectricWrapper selectric-select">
 						<div class="selectricHideSelect">
 							<select name="" id="" class="select" tabindex="0">
-								<option value="/mrs/rotinf">고속버스예매</option>
-								<option value="/mrs/mrscfm" selected="selected">예매확인</option>
-								<option value="/oprninf/alcninqr/oprnAlcnPage">운행정보</option>
-								<option value="/ugd/mrsgd/Mrsgd">이용안내</option>
-								<option value="/cscn/ntcmttr/readNtcList">공지사항</option>
+								<option value="/mrs/rotinf.do">고속버스예매</option>
+								<option value="/mrs/mrscfm.do" selected="selected">예매확인</option>
+								<option value="/oprninf/alcninqr/oprnAlcnPage.do">운행정보</option>
+								<option value="/ugd/mrsgd/Mrsgd.do">이용안내</option>
+								<option value="/cscn/ntcmttr/readNtcList.do">공지사항</option>
 							</select>
 						</div>
 						 <div class="selectric">
@@ -71,11 +72,11 @@
 					<div class="selectricWrapper selectric-select">
 						<div class="selectricHideSelect">
 							<select name="" id="" class="select" tabindex="0">
-								<option value="/mrs/mrscfm" selected="selected">예매 확인/취소/변경</option>
-								<option value="/mrs/mrsrecplist">영수증 발행</option>
+								<option value="/mrs/mrscfm.do" selected="selected">예매 확인/취소/변경</option>
+								<option value="/mrs/mrsrecplist.do">영수증 발행</option>
 							</select>
 						</div>
-						 <div class="selectric">
+						<!-- <div class="selectric">
 							<p class="label">예매 확인/취소/변경</p>
 							<b class="button">▾</b>
 						</div>
@@ -106,8 +107,30 @@
 			<div id="reserv">
 			
 			<section class="detail_info_wrap homeTicket marT30 ">
+				<!-- cancel 수량 계산 -->
+				<c:set var="reservCount" value="0" />
+				
 				<c:forEach var="ovo" items="${orderList}">
-				<c:if test="${ovo.cancel == 0}">     
+				    <c:if test="${ovo.cancel == 0}">
+				        <c:set var="reservCount" value="${reservCount + 1}" />
+				    </c:if>
+				</c:forEach>
+				
+				<%-- <!-- reservCount 변수의 값 출력 test -->
+				${reservCount} --%>
+				
+				<!-- 최근 예매 내역이 없는 경우 -->
+				<c:if test="${empty orderList or reservCount == 0}"> 
+					<span class="spanText">최근 예매 내역이 없습니다.</span>
+				</c:if>
+				
+				
+				
+				<!-- 최근 예매 내역이 있는 경우 -->
+				<c:forEach var="ovo" items="${orderList}">	
+				
+				<c:if test="${not empty ovo and ovo.cancel == 0 }">	
+					     
 				<div class="box_detail_info" id="${ovo.reservnum}">
 					<div class="routeHead">
 						<p class="date" id="depPlandTime">${ovo.depPlandTime}</p>
@@ -138,9 +161,9 @@
 									</caption> -->
 									<colgroup>
 										<col style="width:68px;">
-
+										<col style="width:*;">
 									</colgroup>
-									<tbody>
+									<tbody class="reservMainTable">
 										<tr>
 											<th scope="row">예매번호</th>
 											<td id="reservnum">${ovo.reservnum}</td>
@@ -157,7 +180,7 @@
 										</tr>
 										<tr>
 											<th scope="row">매수</th>
-											<td>일반1명 </td>
+											<td id="ticketqty">${ovo.ticketqty}명 </td>
 										</tr>
 									</tbody>
 								</table>
@@ -179,6 +202,7 @@
 				</div>
 				</c:if>
 				</c:forEach>
+			
 					<div id="inputContainer">
 						<input type="hidden" id="clickVal_depPlandTime" name="clickVal_depPlandTime" />
 						<input type="hidden" id="clickVal_stime" name="clickVal_stime" />
@@ -191,6 +215,7 @@
 						<input type="hidden" id="clickVal_chairnum" name="clickVal_chairnum" />
 						<input type="hidden" id="clickVal_depPlaceId" name="clickVal_depPlaceId" />
 						<input type="hidden" id="clickVal_arrPlaceId" name="clickVal_arrPlaceId" />
+						<input type="hidden" id="clickVal_ticketqty" name="clickVal_ticketqty" />
 					</div>
 				
 					<p class="btns multi mainclfix col4">
@@ -200,11 +225,13 @@
 						<a href="#" onclick="fnRecpCanInfo(0,'');" class="btnL btn_cancel" id="cancelReserv">예매취소</a>
 						<a href="http://localhost:9000/reservation_hometicket" target="_blank"  class="btnL btn_confirm" id="hometicket_btn">홈티켓 발행</a>
 					</p>
+					
+				
 					<ul class="desc_list marT30">
-						<li>과거 예매 내역은 출발일 날짜 기준 당일까지, 예매 취소 내역은 과거 3개월까지 조회 가능합니다.</li>
+						<li>과거 예매 내역은 <strong class="txt_puple">출발일 날짜 기준 당일</strong>까지, 예매 <strong class="txt_puple">취소 내역은 과거 3개월</strong>까지 조회 가능합니다.</li>
 						<li><strong class="txt_puple">홈티켓으로 발권된 내역은 변경이 불가</strong>하니 변경을 원하시면 취소 후 다시 예매를 진행하시기 바랍니다.</li>
 						<li>신용카드 예매 취소 또는 변경 시 일주일 내로 예매했던 카드로 청구 취소 처리가 되면서 반환됩니다.</li>
-						<li><strong class="txt_puple">시간변경은 취소 위약금을 부과하지 않습니다.</strong></li>
+						<li><strong class="txt_puple">시간 변경은 취소 위약금을 부과하지 않습니다.</strong></li>
 					</ul>
 			</section>
 			</div>
@@ -214,9 +241,27 @@
 		<div class="tab_conts" id="cancelList">
 					
 			<section class="detail_info_wrap homeTicket marT30">
-										
+				
+				<c:set var="cancelCount" value="0" />
 				<c:forEach var="ovo" items="${orderList}">
-				<c:if test="${ovo.cancel == 1}">
+					<!-- cancel 수량 -->
+					
+				    <c:if test="${ovo.cancel == 1}">
+				        <c:set var="cancelCount" value="${cancelCount + 1}" />
+				    </c:if>
+				
+				</c:forEach>
+				
+				
+				<!-- 예매 취소내역 없는경우 -->
+				<c:if test="${empty orderList or cancelCount == 0}"> 
+					<span class="spanText">최근 취소 내역이 없습니다.</span>
+				</c:if>
+								
+				<c:forEach var="ovo" items="${orderList}">
+				
+				<!-- 예매 취소내역 있는경우 -->
+				<c:if test="${not empty ovo and ovo.cancel == 1}">
 				<div class="box_detail_info">
 					<div class="routeHead">
 						<p class="date txt_black">${ovo.depPlandTime}&nbsp;${ovo.stime}  출발</p>
@@ -245,7 +290,7 @@
 									</caption> -->
 									<colgroup>
 										<col style="width:100px;">
-
+										<col style="width:*;">
 									</colgroup>
 									<tbody>
 										<tr>
@@ -267,13 +312,13 @@
 					</div>
 				</div>
 				</c:if>
-				</c:forEach>
+			</c:forEach>
 			</section>
 				<ul class="desc_list marT30">
-					<li>조회 시점에서 3개월 전까지의 예매 내역이 표시됩니다.</li>
+					<li>과거 예매 내역은 <strong class="txt_puple">출발일 날짜 기준 당일</strong>까지, 예매 <strong class="txt_puple">취소 내역은 과거 3개월</strong>까지 조회 가능합니다.</li>
 					<li><strong class="txt_puple">홈티켓으로 발권된 내역은 변경이 불가</strong>하니 변경을 원하시면 취소 후 다시 예매를 진행하시기 바랍니다.</li>
 					<li>신용카드 예매 취소 또는 변경 시 일주일 내로 예매했던 카드로 청구 취소 처리가 되면서 반환됩니다.</li>
-					<li><strong class="txt_puple">시간 변경 작업은 취소 위약금을 부과하지 않습니다.</strong></li>
+					<li><strong class="txt_puple">시간 변경은 취소 위약금을 부과하지 않습니다.</strong></li>
 				</ul>
 			</div>							
 		</div>	
@@ -283,7 +328,7 @@
 	<!------------------------ 취소버튼 클릭시 나오는 팝업창 ---------------------------->
 	<div class="modal">
 	<div class="remodal w680 popTicket_cancel remodal-is-initialized remodal-is-opened" id="popTicketCancel" role="dialog" tabindex="-1">
-		<form id="modalForm" name="modalForm" action="reservation_main_proc" method="post">
+		<form id="modalForm" name="modalForm" action="reservation_main_proc.do" method="post">
 													
 			<!-- 팝업header -->
 			<div class="pop">
@@ -312,10 +357,7 @@
 						</div>
 						<div class="routeArea route_wrap mob_route">
 							<div class="tbl_type2">
-								<table><colgroup>
-									<col style="width:68px;">
-
-								</colgroup>
+								<table><colgroup><col style="width:68px;"><col style="width:*;"></colgroup>
 									<tbody>
 										<tr>
 											<th scope="row">예매번호</th>
@@ -327,7 +369,7 @@
 										</tr>
 										<tr>
 											<th scope="row">매수</th>
-											<td>일반1명 </td>
+											<td id="modal_ticketqty"></td>
 										</tr>
 										<tr>
 											<th scope="row">좌석</th>
@@ -342,10 +384,7 @@
 				<div class="box_detail_info bgGray">
 					<div class="routeArea route_wrap mob_route">
 						<div class="tbl_type3">
-							<table>
-								<colgroup>
-									<col style="width:80px;">
-								</colgroup>
+							<table><colgroup><col style="width:80px;"><col style="width:*;"></colgroup>
 								<tbody>
 									<tr>
 										<th scope="row">결제일시</th>
@@ -361,19 +400,18 @@
 					</div>
 					<div class="routeArea route_wrap mob_route">
 						<div class="tbl_type3">
-							<table class="taR">
-								<colgroup>
-									<col style="width:135px;">
-								</colgroup>
+							<table class="taR"><colgroup><col style="width:135px;"><col style="width:*;"></colgroup>
 								<tbody>
 									<tr>
 										<th scope="row">결제금액</th>
-										<td>11,800원</td></tr><tr><th scope="row">취소 수수료(예상)</th>
+										<td id="modal_price"></td>
+									</tr>
+										<tr><th scope="row">취소 수수료(예상)</th>
 										<td>0원</td>
 									</tr>
 									<tr>
 										<th scope="row">반환금액</th>
-										<td>11,800원</td>
+										<td id="modal_price2"></td>
 									</tr>
 								</tbody>
 							</table>
