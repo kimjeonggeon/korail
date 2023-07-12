@@ -15,12 +15,12 @@
 			<ul class="myPage_list ">
 				<li class="history">
 					<div class="row">
-						<a href="http://localhost:9000/reservation_main.do	"
+						<a href="http://localhost:9000/reservation_main"
 							class="txt_myMenu"> <span>나의 예매내역</span> <strong
 							id="mrsCfmPT">${sessionScope.countNum}개</strong></a>
 					</div>
 					<div class="btnBox">
-						<a href="http://localhost:9000/reservation_main.do	"
+						<a href="http://localhost:9000/reservation_main"
 							class="btn btn_sm_link ">예매확인/변경/취소</a>
 					</div>
 				</li>
@@ -38,25 +38,25 @@
 				</li>
 				<li class="mileage">
 					<div class="row">
-						<a href="http://localhost:9000/mypage_receipt.do" class="txt_myMenu">
+						<a href="http://localhost:9000/mypage_receipt" class="txt_myMenu">
 							<span>프리미엄 마일리지<span class="ico_mileage">왕관</span>
 							</span>
 							<strong>&nbsp;</strong>
 						</a>
 					</div>
 					<div class="btnBox">
-						<a href="http://localhost:9000/mypage_receipt.do"
+						<a href="http://localhost:9000/mypage_receipt"
 							class="btn btn_sm_link_white">프리미엄 마일리지 조회</a>
 					</div>
 				</li>
 				<li class="payment">
 					<div class="row">
-						<a href="http://localhost:9000/pmyhis.do" class="txt_myMenu">
+						<a href="http://localhost:9000/pmyhis" class="txt_myMenu">
 							<span>결제내역</span><strong>&nbsp;</strong>
 						</a>
 					</div>
 					<div class="btnBox">
-						<a href="http://localhost:9000/pmyhis.do"
+						<a href="http://localhost:9000/pmyhis"
 							class="btn btn_sm_link_white">결제내역 조회</a>
 					</div>
 				</li>

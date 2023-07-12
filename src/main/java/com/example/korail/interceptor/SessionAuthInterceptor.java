@@ -23,7 +23,7 @@ public class SessionAuthInterceptor extends HandlerInterceptorAdapter {
 				if (requestURI.equals("reservation_main")) {
 					response.sendRedirect("/login2");
 				} else if (requestURI.equals("mypage")) {
-					response.sendRedirect("mylogin");
+					response.sendRedirect("/mylogin");
 				} else if (requestURI.equals("s_reservation")) {
 					response.sendRedirect("s_reservation");
 				} else {

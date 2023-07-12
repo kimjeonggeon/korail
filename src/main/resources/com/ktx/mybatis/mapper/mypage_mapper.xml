@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.korail.repository.MypageMapper">
+
+    <select id="count" parameterType="java.lang.String" resultType="int">
+        SELECT COUNT(*)
+        FROM KTX_ORDER
+        WHERE ID = #{userId}
+          AND TO_DATE(DepPlandTime, 'YYYYMMDD') >= TRUNC(CURRENT_DATE)
+    </select>
+
+    <select id="getInfo" parameterType="java.lang.String" resultType="com.example.korail.dto.MemberDto">
+        SELECT *
+        FROM KTX_MEMBER
+        WHERE ID = #{userId}
+    </select>
+
+    <update id="getPassupdate" parameterType="HashMap">
+        UPDATE KTX_MEMBER
+        SET PASS=#{cPass}
+        WHERE ID = #{memberId}
+          AND PASS = #{nPass}
+    </update>
+
+    <update id="getPnumberUpdate" parameterType="HashMap">
+        UPDATE KTX_MEMBER
+        SET PNUMBER=#{pnumber}
+        WHERE ID = #{memberId}
+    </update>
+
+    <delete id="getWithresult" parameterType="java.lang.String">
+        DELETE
+        FROM KTX_MEMBER
+        WHERE ID = #{id}
+    </delete>
+
+</mapper>

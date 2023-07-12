@@ -29,7 +29,7 @@
 	<div class="page" id="login_page">
 		<div class="login_wrap">
 			<!-- 회원로그인 -->
-			<form name ="loginForm" action="login_proc.do" method="post">
+			<form name ="loginForm" action="login_proc" method="post">
 			<div class="box_login">
 				<h3 class="mob_h3">회원 로그인</h3>
 				<div class="inner">
