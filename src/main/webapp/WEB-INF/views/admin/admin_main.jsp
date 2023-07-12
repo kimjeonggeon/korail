@@ -64,10 +64,10 @@
 		</div>
 		<div class="admin_main">
 			<ul>
-				<li class="admin_notice_btn"><a href="http://localhost:9000/admin_notice_list.do">공지사항</a></li>
-				<li class="admin_notice_btn"><a href="http://localhost:9000/admin_trainlist.do">열차조회</a></li>
-				<li class="admin_reserv_btn"><a href="http://localhost:9000/admin_reservationlist.do">예매관리</a></li>
-				<li class="admin_member_btn"><a href="http://localhost:9000/admin_member.do">회원관리</a></li>
+				<li class="admin_notice_btn"><a href="http://localhost:9000/admin_notice_list">공지사항</a></li>
+				<li class="admin_notice_btn"><a href="http://localhost:9000/admin_trainlist">열차조회</a></li>
+				<li class="admin_reserv_btn"><a href="http://localhost:9000/admin_reservationlist">예매관리</a></li>
+				<li class="admin_member_btn"><a href="http://localhost:9000/admin_member/1/">회원관리</a></li>
 			</ul>
 		</div>
 		<jsp:include page="../footer.jsp"></jsp:include>

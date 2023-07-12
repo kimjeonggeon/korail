@@ -43,27 +43,30 @@ public class LoginController {
     public String login_proc(MemberDto memberDto, Model model, HttpSession session, String userId) {
         ReservationDto rvo = (ReservationDto) session.getAttribute("rvo");
         SessionDto svo = memberService.getLoginResult(memberDto);
-        System.out.println("svo-->" + svo);
+        String loginReturn = null;
+
         if (svo != null) {
             session.setAttribute("svo", svo);
             if (memberDto.getPagename().equals("mainlogin")) {
                 model.addAttribute("login_result", "ok");
-                System.out.println("로그인 성공");
-                return "redirect:/train_reservation_rotinf";
+                loginReturn = "redirect:/train_reservation_rotinf";
             } else if (memberDto.getPagename().equals("reservation")) {
                 rvo.setSeatNum(memberDto.getSeatNum());
                 rvo.setTicketQty(memberDto.getTicketQty());
                 rvo.setId(memberDto.getId());
-                return "redirect:/train_reservation_stplcfmpym";
+                rvo.setEmail(svo.getEmail());
+                loginReturn = "redirect:/train_reservation_stplcfmpym";
             } else if (memberDto.getPagename().equals("reservationlist")) {
                 session.setAttribute("id", memberDto.getId());
-                return "redirect:/reservation_main";
+                loginReturn = "redirect:/reservation_main";
             } else if (memberDto.getPagename().equals("mylogin")) {
-                return "redirect:/mypage";
+                loginReturn = "redirect:/mypage";
+            }else{
+                loginReturn="redirect:/login_fail";
             }
         }
 
-        return "/login/login_fail";
+        return loginReturn;
     }
 
     @GetMapping("login_fail")

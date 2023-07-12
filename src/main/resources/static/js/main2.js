@@ -91,7 +91,7 @@ $(document).ready(function(){
 			    
 			    
 			    if(result){
-			    let url = "http://localhost:9000/train_reservation_alcnsrch?startId=" + startId + "&endId=" + endId + "&rtime=" + rtime + "&start_add="+ start_add + "&end_add=" + end_add;
+					let url = "http://localhost:9000/train_reservation_alcnsrch/"+startId + "/" + endId + "/" + rtime + "/"+ start_add + "/" + end_add;
 			    location.href = url;
 			    }
 			    return false

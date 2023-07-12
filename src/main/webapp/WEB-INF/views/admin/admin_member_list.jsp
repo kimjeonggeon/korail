@@ -14,10 +14,10 @@
 	$(document).ready(function(){
 		var pager = jQuery('#ampaginationsm').pagination({
 		
-		    maxSize: '${maxSize}',	    		// max page size
-		    totals: '${totals}',	// total pages	
-		    page: '${page}',		// initial page		
-		    pageSize: '${pageSize}',			// max number items per page
+		    maxSize: '${page.pageCount}',	    		// max page size
+		    totals: '${page.dbCount}',	// total pages
+		    page: '${page.reqPage}',		// initial page
+		    pageSize: '${page.pageSize}',			// max number items per page
 		
 		    // custom labels		
 		    lastText: '&raquo;&raquo;', 		
@@ -27,10 +27,11 @@
 				     
 		    btnSize:'sm'	// 'sm'  or 'lg'		
 		});
-		
+
 		jQuery('#ampaginationsm').on('am.pagination.change',function(e){
+				alert(e.page);
 			   jQuery('.showlabelsm').text('The selected page no: '+e.page);
-	           $(location).attr('href', "http://localhost:9000/admin_member.do?page="+e.page);
+	           $(location).attr('href', "http://localhost:9000/admin_member/"+e.page+"/");
 	    });
 		
 		$("#member_search").click(function(){
@@ -82,17 +83,17 @@
 					<th>가입일자</th>
 				</tr>
 			</thead>
-				<c:forEach var="memberVo" items="${list}">
+				<c:forEach var="member" items="${list}">
 				<tr>
-					<td>${memberVo.rno}</td>
-					<td>${memberVo.id }</td>
-					<td>${memberVo.pass }</td>
-					<td>${memberVo.name }</td>
-					<td>${memberVo.email }</td>
-					<td>${memberVo.pnumber }</td>
-					<td>${memberVo.birth }</td>
-					<td>${memberVo.gender }</td>
-					<td>${memberVo.mdate }</td>
+					<td>${member.rno}</td>
+					<td>${member.id }</td>
+					<td>${member.pass }</td>
+					<td>${member.name }</td>
+					<td>${member.email }</td>
+					<td>${member.pnumber }</td>
+					<td>${member.birth }</td>
+					<td>${member.gender }</td>
+					<td>${member.mdate }</td>
 				</tr>	
 				</c:forEach>
 				<tr>
@@ -100,7 +101,7 @@
 				</tr>	
 			</table>
 			
-			<form action ="admin_member_search.do" class ="mem_search" name ="sform1" method ="POST">
+			<form action ="/admin_member_search/1/" class ="mem_search" name ="sform1" method ="POST">
 				<select name ="category" class ="search_put" id="category">
 					<option value ="total">전체</option>
 					<option value ="custname">이름</option>
@@ -109,7 +110,7 @@
 				<input type ="text" name ="cvalue" class ="search_put1" id="cvalue">
 				<input type ="hidden" name ="page" value=1>
 				<button type = "button" class ="search_put"  id ="member_search">검색하기</button>
-			</form>		
+			</form>
 				
 			
 		</section>

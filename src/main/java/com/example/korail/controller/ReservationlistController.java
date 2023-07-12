@@ -17,6 +17,11 @@ import java.util.ArrayList;
 public class ReservationlistController {
     @Autowired
     OrderService orderService;
+    @GetMapping("admin_main")
+    public String admin_main() {
+
+        return "/admin/admin_main";
+    }
 
     @GetMapping("reservation_main")
     public String reservation_main(OrderDto orderDto, HttpSession session, Model model){

@@ -24,7 +24,7 @@ public class ReservationController {
 
     //결제 완료 페이지
     @PostMapping("train_reservation_pymcfm")
-    public String train_reservation_pymcfm(HttpSession session, OrderDto orderDto, CardinfoDto cardinfoDto, ReservationDto reservationDto,Model model){
+    public String train_reservation_pymcfm(HttpSession session, OrderDto orderDto, CardinfoDto cardinfoDto,Model model){
         ReservationDto rvo = (ReservationDto)session.getAttribute("rvo");
         UUID uuid = UUID.randomUUID();
 
@@ -49,8 +49,7 @@ public class ReservationController {
         orderDto.setPrice(Integer.parseInt(rvo.getAdultcharge()));
         orderDto.setTrainnum(Integer.parseInt(rvo.getTrainno()));
         orderDto.setTicketqty(Integer.parseInt(rvo.getTicketQty()));
-        orderDto.setEmail(reservationDto.getEmail());
-
+        orderDto.setEmail(rvo.getEmail());
         orderService.getPayment(orderDto);
 
         return "reservation/train_reservation_pymcfm";
@@ -75,14 +74,15 @@ public class ReservationController {
 
     //로그인 한 상황
     @GetMapping("stplcfmpym")
-    public String stplcfmpym(HttpSession session,String seatNum, String ticketQty, String id){
+    public String stplcfmpym(HttpSession session,String seatNum, String ticketQty, String id, String email){
         ReservationDto rvo = (ReservationDto)session.getAttribute("rvo");
 
         rvo.setSeatNum(seatNum);
         rvo.setTicketQty(ticketQty);
         rvo.setId(id);
+        rvo.setEmail(email);
 
-        return "reservation/train_reservation_stplcfmpym";
+        return "/reservation/train_reservation_stplcfmpym";
     }
 
     //예매 좌석 선택 페이지

@@ -1,15 +1,30 @@
 package com.example.korail.service;
 
 import com.example.korail.dto.MemberDto;
+import com.example.korail.dto.PageDto;
 import com.example.korail.dto.SessionDto;
 import com.example.korail.repository.MemberMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class MemberService {
     @Autowired
     MemberMapper memberMapper;
+
+
+    public List<MemberDto> list(PageDto pageDto){
+        return memberMapper.list(pageDto);
+    }
+
+    public MemberDto getFindPassResult(String email){
+        return memberMapper.findPass(email);
+    }
+    public MemberDto getFindIdResult(String email){
+        return memberMapper.findId(email);
+    }
 
     public int getJoinResult(MemberDto memberDto){
 

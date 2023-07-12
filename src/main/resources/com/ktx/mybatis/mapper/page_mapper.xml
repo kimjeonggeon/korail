@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="com.example.korail.repository.PageMapper">
+	
+	<select id="totalRowCount" parameterType="com.example.korail.dto.PageDto" resultType="int">
+		select count(*) from 
+		<if test='pageDto.getServiceName() == "notice"'>
+			mycgv_notice
+			<if test = 'category == "title"'>
+				where ntitle like '%'||#{cvalue}||'%'
+			</if>
+			<if test = 'category == "content"'>
+				where ncontent like '%'||#{cvalue}||'%'
+			</if>
+			<if test = 'category == "title_content"'>
+				where ntitle like '%'||#{cvalue}||'%' or ncontent like '%'||#{cvalue}||'%'
+			</if>
+		</if>
+		<if test='pageDto.getServiceName() == "member"'>
+			ktx_member
+			<if test= 'category =="custname"'>
+				where name = #{cvalue}
+			</if>
+			<if test= 'category == "id"'>
+				where id = #{cvalue}
+			</if>
+		</if>
+		<if test='pageDto.getServiceName() == "adminReserv"'>
+			ktx_order
+			<if test='category =="reservnumber"'>
+				where reservnum = #{cvalue}
+			</if>
+			<if test= 'category == "id"'>
+				where id = #{cvalue}
+			</if>
+		</if>
+	</select>
+	
+
+</mapper>    
