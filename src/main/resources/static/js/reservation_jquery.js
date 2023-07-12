@@ -1,92 +1,7 @@
 $(document).ready(function(){
 	
-
 	/*******************************
-			 예매 취소 모달 창
-	 *******************************/
-	   // 모달 열기 버튼에 대한 클릭 이벤트 핸들러
-	  $("#cancelReserv").click(function() {
-	 	
-	 	if($("#clickVal_depPlandTime").val() != ""){
-	 		
-		    $(".modal").css("display", "block");
-		    
-		    //main의 선택한 값이 들어있는 input태그의 값 불러와서 넣기
-		    $("#modal_date").text( $("#clickVal_depPlandTime").val());
-		    $("#modal_sstation").text( $("#clickVal_sstation").val());
-		    $("#modal_dstation").text( $("#clickVal_dstation").val());
-		   //$("#modal_runtime").text( $("#clickVal_runtime").val());
-		    $("#modal_reservnum").text( $("#clickVal_reservnum").val());
-		    $("#modal_trainnum").text( $("#clickVal_trainnum").val());
-		    $("#modal_chairnum").text( $("#clickVal_chairnum").val());
-		    
-		    $("#modal_reservnum_input").val( $("#clickVal_reservnum").val());
-		    
-		    }else{
-		    	alert("예매취소할 승차권을 선택해주세요.");
-		    }
-  		});
-		
-	
-		// 모달 닫기 버튼에 대한 클릭 이벤트 핸들러
-	 	$(".remodal-close").click(function() {
-		    $(".modal").css("display", "none");
-		});
-		
-		
-	 /* $(window).click(function(event){
-		 if(event.target == $("#myModal")[0]) {
-		  	$("").fadeOut();
-		  }
-		  
-	  });*/
-	
-	/*******************************
-			예매 내역 ,취소 내역 버튼
-	 *******************************/
-	
-	 //취소내역 버튼 클릭
-	$(".cancel_btn").click(function(){
-		
-		$("#cancelList").show();
-		$("#reserv").hide();
-		$(".cancel_btn").css("color", "#68b3ce");
-		$(".reserv_btn").css("color", "");
-	});
-	
-	 //예매내역 버튼 클릭
-	$(".reserv_btn").click(function(){
-		
-		$("#cancelList").hide();
-		$("#reserv").show();
-		$(".reserv_btn").css("color", "#68b3ce");
-		$(".cancel_btn").css("color", "");
-	});
-	
-	
-	/*******************************
-			     취소 완료 버튼
-	 *******************************/
-	
-	$("#reservCancel").click(function(){
-		
-		$.ajax({
-			url : "reservCancel_check?reservnum="+$("#modal_reservnum_input").val(),  //페이지이동이 아님. 웹에서는 안보이고 백단에서 이동하는 방식 = 비동기식 방식!
-			success : function(result){//문자타입으로 보냈지만 script에서는 타입 정해진거 없음 따라서 숫자타입임
-				if(result == 1){
-					alert("취소가 완료되었습니다.");
-					$(location).attr("href","http://localhost:9000/reservation_main");
-				}else{
-					alert("예매취소에 실패하였습니다.");
-				}
-			}
-		});
-		
-	});
-	
-	
-	/*******************************
-			     예매내역 클릭 이벤트
+	 		예매내역 클릭 이벤트
 	 *******************************/
 	let previousElement = null;
 	
@@ -125,6 +40,7 @@ $(document).ready(function(){
             var chairnum = $("#"+id+" #chairnum").text();
             var depPlaceId = $("#"+id+" #depPlaceId").text();
             var arrPlaceId = $("#"+id+" #arrPlaceId").text();
+            var ticketqty = $("#"+id+" #ticketqty").text();
 
             // clickedValue에 데이터 설정
             $("#clickVal_depPlandTime").val(depPlandTime);
@@ -138,11 +54,130 @@ $(document).ready(function(){
             $("#clickVal_chairnum").val(chairnum);
             $("#clickVal_depPlaceId").val(depPlaceId);
             $("#clickVal_arrPlaceId").val(arrPlaceId);
+            $("#clickVal_ticketqty").val(ticketqty);
      });
 	
 	
+	
 	/*******************************
-		 		영수증 버튼 클릭
+			 예매 취소 모달 창
+	 *******************************/
+	   // 모달 열기 버튼에 대한 클릭 이벤트 핸들러
+	  $("#cancelReserv").click(function() {
+	 	
+	 	if($("#clickVal_depPlandTime").val() != ""){
+	 		
+		    $(".modal").css("display", "block");
+		    
+		    //main의 선택한 값이 들어있는 input태그의 값 불러와서 넣기
+		    $("#modal_date").text( $("#clickVal_depPlandTime").val());
+		    $("#modal_sstation").text( $("#clickVal_sstation").val());
+		    $("#modal_dstation").text( $("#clickVal_dstation").val());
+		   //$("#modal_runtime").text( $("#clickVal_runtime").val());
+		    $("#modal_reservnum").text( $("#clickVal_reservnum").val());
+		    $("#modal_trainnum").text( $("#clickVal_trainnum").val());
+		    $("#modal_chairnum").text( $("#clickVal_chairnum").val());
+		    $("#modal_ticketqty").text( $("#clickVal_ticketqty").val());
+		    $("#modal_price").text( $("#clickVal_price").val());
+		    $("#modal_price2").text( $("#clickVal_price").val());
+		    
+		    $("#modal_reservnum_input").val( $("#clickVal_reservnum").val());
+		    
+		    }else{
+		    	Swal.fire({
+		    		text: "예매를 취소할 승차권을 선택해주세요.",
+		    		width: 600,
+  					padding: '1.5em',
+		    		confirmButtonColor: '#74b3c7',
+		    		confirmButtonText: '확인'
+		    	});
+		    	//alert("예매취소할 승차권을 선택해주세요.");
+		    }
+  		});
+		
+	
+		// 모달 닫기 버튼에 대한 클릭 이벤트 핸들러
+	 	$(".remodal-close").click(function() {
+		    $(".modal").css("display", "none");
+		});
+		
+		
+	 /* $(window).click(function(event){
+		 if(event.target == $("#myModal")[0]) {
+		  	$("").fadeOut();
+		  }
+		  
+	  });*/
+	
+	/*******************************
+	 	예매 내역 ,취소 내역 버튼
+	 *******************************/
+	
+	 //취소내역 버튼 클릭
+	$(".cancel_btn").click(function(){
+		
+		$("#cancelList").show();
+		$("#reserv").hide();
+		$(".cancel_btn").css("color", "#68b3ce");
+		$(".reserv_btn").css("color", "");
+	});
+	
+	 //예매내역 버튼 클릭
+	$(".reserv_btn").click(function(){
+		
+		$("#cancelList").hide();
+		$("#reserv").show();
+		$(".reserv_btn").css("color", "#68b3ce");
+		$(".cancel_btn").css("color", "");
+	});
+	
+	
+	/*******************************
+	 		취소 완료 버튼
+	 *******************************/
+	
+	$("#reservCancel").click(function(){
+		Swal.fire({
+		  title: '예매취소',
+		  text: "정말 예매를 취소하시겠습니까?",
+		  icon: 'warning',
+		  showCancelButton: true,
+		  confirmButtonColor: '#74b3c7',
+		  cancelButtonColor: '#FF6666',
+		  cancelButtonText: '닫기',
+		  confirmButtonText: '예매취소'
+		  
+		}).then((result) => {
+		  if (result.isConfirmed) {
+			  
+		    $.ajax({
+   				url : "/reservCancel_check/"+$("#modal_reservnum_input").val(),  //페이지이동이 아님. 웹에서는 안보이고 백단에서 이동하는 방식 = 비동기식 방식!
+				success : function(result){//문자타입으로 보냈지만 script에서는 타입 정해진거 없음 따라서 숫자타입임
+					if(result == 1){
+						Swal.fire({
+							  title: '취소완료',
+							  text: "예매취소가 완료되었습니다.",
+							  icon: 'success',
+							  showCancelButton: false,
+							  confirmButtonColor: '#74b3c7',
+							  confirmButtonText: '확인'
+						  
+						}).then((result) => {
+							$(location).attr("href","http://localhost:9000/reservation_main");
+						});									 
+					}
+				}
+			});//ajax
+			
+		  }//if
+		});	
+	});//click
+	
+	
+	
+	
+	/*******************************
+	 		영수증 버튼 클릭
 	 *******************************/
 	
 	$("#receipt_btn").click(function(event) {
@@ -150,39 +185,53 @@ $(document).ready(function(){
 
 	   	 if ($("#clickVal_reservnum").val() != "") {
 	        var reservnum = $("#clickVal_reservnum").val();
-	        var url = "reservation_receipt?reservnum=" + reservnum;
+	        var url = "/reservation_receipt/" + reservnum;
 	        window.location.href = url;
 	   	 } else {
-	        alert("영수증을 발행할 티켓을 선택해주세요.");
+	   	 	Swal.fire({
+		    		text: "영수증을 발행할 티켓을 선택해주세요.",
+		    		width: 600,
+  					padding: '1.5em',
+		    		confirmButtonColor: '#74b3c7',
+		    		confirmButtonText: '확인'
+		    	});
+	        //alert("영수증을 발행할 티켓을 선택해주세요.");
 	  	 }
 	});
 	
 	/*******************************
-		 		홈티켓 버튼 클릭
+	 		홈티켓 버튼 클릭
 	 *******************************/
 	$("#hometicket_btn").click(function() {
 	 	event.preventDefault();
 	 	 
 	 	if ($("#clickVal_reservnum").val() != "") {
 	        var reservnum = $("#clickVal_reservnum").val();
-	        var url = "reservation_hometicket?reservnum=" + reservnum;
+	        var url = "/reservation_hometicket/" + reservnum;
 	        window.location.href = url;
 	   	 } else {
-	        alert("홈티켓을 발행할 티켓을 선택해주세요.");
+	        Swal.fire({
+		    		text: "홈티켓을 발행할 티켓을 선택해주세요.",
+		    		width: 600,
+  					padding: '1.5em',
+		    		confirmButtonColor: '#74b3c7',
+		    		confirmButtonText: '확인'
+		    	});
+	        //alert("홈티켓을 발행할 티켓을 선택해주세요.");
 	  	 }
 		
 	});
 	
 	
 	/*******************************
-		 	    예매변경 버튼 클릭
+	 		예매변경 버튼 클릭
 	 *******************************/
 	$("#change_btn").click(function() {
 	 	event.preventDefault();
 	 	 
 	 	if ($("#clickVal_reservnum").val() != "") {
 	        var reservnum = $("#clickVal_reservnum").val();
-	        var url = "reservation_update?reservnum=" + reservnum;
+	        var url = "/reservation_update/" + reservnum;
 	        window.location.href = url;
 	        
 	       /* 
@@ -195,13 +244,20 @@ $(document).ready(function(){
             */
 	        
 	   	 } else {
-	        alert("홈티켓을 발행할 티켓을 선택해주세요.");
+	        Swal.fire({
+		    		text: "예매를 변경할 티켓을 선택해주세요.",
+		    		width: 600,
+  					padding: '1.5em',
+		    		confirmButtonColor: '#74b3c7',
+		    		confirmButtonText: '확인'
+		    	});
+	        //alert("예매를 변경할 티켓을 선택해주세요.");
 	  	 }
 	});
 	
 	
 	/*******************************
-			  관리자 예매내역 클릭 이벤트
+	 	관리자 예매내역 클릭 이벤트
 	 *******************************/
     	
     	var previousRow = null;
@@ -233,7 +289,7 @@ $(document).ready(function(){
   		});
 	
 	/*******************************
-			 예매변경 - 조회하기버튼 클릭
+	 	예매변경 - 조회하기버튼 클릭
 	 *******************************/
 	$("#reserv_search").click(function(event){
 	    event.preventDefault();
@@ -244,11 +300,18 @@ $(document).ready(function(){
 	
 		if($("#traintime").text() != ""){
 		
-			var url = "reservation_updatetime?traintime=" + encodeURIComponent(traintime) + "&depPlaceId=" + encodeURIComponent(depPlaceId) + "&arrPlaceId=" + encodeURIComponent(arrPlaceId);
+			var url = "/reservation_updatetime/" + encodeURIComponent(traintime) +"/"+ encodeURIComponent(depPlaceId) +"/"+ encodeURIComponent(arrPlaceId);
 		    window.location.href = url;
 		
 		}else{
-			alert("출발일을 선택해주세요.");	
+			Swal.fire({
+		    		text: "출발일을 선택해주세요.",
+		    		width: 600,
+  					padding: '1.5em',
+		    		confirmButtonColor: '#74b3c7',
+		    		confirmButtonText: '확인'
+		    	});
+			//alert("출발일을 선택해주세요.");	
 		}
 	    
 });

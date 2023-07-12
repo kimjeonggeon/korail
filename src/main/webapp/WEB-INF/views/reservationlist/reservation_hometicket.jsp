@@ -33,32 +33,32 @@
 						<span class="txt_sml fl">출발일시</span>
 					</li>
 					<li>
-						<span class="txt_large15 fl">${ovo.depPlandTime} ${ovo.stime}</span>
+						<span class="txt_large15 fl">${odt.depPlandTime} ${odt.stime}</span>
 					</li>
 				</ul>
 			</div>
 			<div class="box_section sec02">
 				<span class="qrCode" id="qrcodeTable"><canvas width="76" height="76"></canvas></span>
-				<span class="qrCodeNum">${ovo.reservnum}<br>121320</span>
+				<span class="qrCodeNum">${odt.reservnum}<br>121320</span>
 			</div>
 			<div class="box_section sec03">
 				<ul>
 					<li>
-						<span class="txt_large17">${ovo.sstation}</span>
+						<span class="txt_large17">${odt.sstation}</span>
 					</li>
 					<li>
-						<span class="txt_large17">${ovo.dstation}</span>
+						<span class="txt_large17">${odt.dstation}</span>
 					</li>
 				</ul>
 				<div class="desc01">
-					<span class="fl">${ovo.sstation}&nbsp;${ovo.stime}발 / ${ovo.dstation}행</span>
+					<span class="fl">${odt.sstation}&nbsp;${odt.stime}발 / ${odt.dstation}행</span>
 					<span class="fr distance">166.7km</span>
 				</div>
 				<p class="desc02">
 					<span class="txt_font13_333">요금</span>
 					<span class="price">
 						<!-- 정기권&정액권 일때 -->
-						<span class="txt_large16">${ovo.price}</span>
+						<span class="txt_large16">${odt.price}</span>
 						<span class="txt_large13">원(부가가치세 포함)</span>
 					</span>
 				</p>
@@ -67,25 +67,25 @@
 				<ul>
 					<li>
 						<span class="txt_sml fl">출발시간<br>Time</span>
-						<span class="txt_large15 fr">${ovo.stime}</span>
+						<span class="txt_large15 fr">${odt.stime}</span>
 					</li>
 					<li>
 						<span class="txt_sml fl">열차번호<br>Train NO.</span>
-						<span class="txt_large15 fr">${ovo.trainnum}</span>
+						<span class="txt_large15 fr">${odt.trainnum}</span>
 					</li>
 					<li>
 						<span class="txt_sml fl">도착시간<br>Time</span>
-						<span class="txt_large15 fr">${ovo.dtime}</span>
+						<span class="txt_large15 fr">${odt.dtime}</span>
 					</li>
 					<li>
 						<span class="txt_sml fl">좌석<br>Seat NO.</span>
-						<span class="txt_large15 fr">${ovo.chairnum}</span>
+						<span class="txt_large15 fr">${odt.chairnum}</span>
 					</li>
 				</ul>
 			</div>
 			<div class="box_section sec05">
 				<ul>
-					<li>승인번호 36979216  &nbsp;승인금액 ${ovo.price}</li>
+					<li>승인번호 36979216  &nbsp;승인금액 ${odt.price}</li>
 					<li>신용카드 548020581*******</li>
 					<li class="marT10">유효기간 : 당일 지정차에 한함</li>
 					<li>고속회사 : 동양 1388128578</li>

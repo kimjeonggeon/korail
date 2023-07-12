@@ -13,4 +13,6 @@ public interface OrderMapper {
     ArrayList<OrderDto> select(OrderDto orderDto);
     int payment(OrderDto orderDto);
     List<SeatNumberDto> seatnum(ReservationDto rvo);
+    int cancel(String reservnum);
+    OrderDto selected(String reservnum);
 }

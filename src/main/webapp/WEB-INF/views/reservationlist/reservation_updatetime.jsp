@@ -10,6 +10,7 @@
 <script src="http://localhost:9000/js/jquery-3.6.4.min.js"></script>
 <script src="http://localhost:9000/js/alcnsrch.js"></script>
 <script src="http://localhost:9000/js/reservation_jquery.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <style>
 .bus_time span {
 	height: 40px;
@@ -197,7 +198,7 @@ $.getJSON(url, function(citys){
 						<div class="bustime_wrap">
 							
 						</div>
-						<form name='updateForm' id='updateForm' action='reservation_updatechair' method='post'>
+						<form name='updateForm' id='updateForm' action='reservation_updatechair.do' method='post'>
 							<input type="hidden" name="depplacename" id="depplacename">
 							<input type="hidden" name="arrplacename" id="arrplacename">
 							<input type="hidden" name="start_date" id="start_date">

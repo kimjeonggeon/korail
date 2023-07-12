@@ -37,23 +37,23 @@
 			<div class="box_dot">
 				<ul>
 					<li>카드사<span class="taR fr">BC</span></li>
-					<li>카드번호<span class="taR fr">${ovo.cardnum}</span></li>
-					<li>승인번호<span class="taR fr">${ovo.reservnum}</span></li>
-					<li>승인일시<span class="taR fr">${ovo.rdate}</span></li>
-					<li>승인금액<span class="taR fr">${ovo.price}원</span></li>
+					<li>카드번호<span class="taR fr">${odt.cardnum}</span></li>
+					<li>승인번호<span class="taR fr">${odt.reservnum}</span></li>
+					<li>승인일시<span class="taR fr">${odt.rdate}</span></li>
+					<li>승인금액<span class="taR fr">${odt.price}원</span></li>
 					<li>환불금액<span class="taR fr">0원</span></li>
 					<li>취소수수료<span class="taR fr">0원</span></li>
-					<li class="txt_strong">결제금액<span class="taR fr">${ovo.price}원</span></li>
+					<li class="txt_strong">결제금액<span class="taR fr">${odt.price}원</span></li>
 				</ul>
 				<span class="bg_dashed"><img src="http://localhost:9000/images/bg_dashed.png"></span>
 			</div>
 			<div class="box_row">
 				<ul>
-					<li>출발일 : ${ovo.depPlandTime}</li>
-					<li>출발지 : ${ovo.sstation}</li>
-					<li>도착지 : ${ovo.dstation}</li>
-					<li>출발시간 : ${ovo.stime}</li>
-					<li>일반매수 : ${ovo.ticketqty}</li>
+					<li>출발일 : ${odt.depPlandTime}</li>
+					<li>출발지 : ${odt.sstation}</li>
+					<li>도착지 : ${odt.dstation}</li>
+					<li>출발시간 : ${odt.stime}</li>
+					<li>일반매수 : ${odt.ticketqty}</li>
 				</ul>
 			</div>
 	</div>

@@ -38,47 +38,47 @@
             where reservnum=#{reservnum}
         </update> -->
 
-        <select id="select" parameterType = "com.example.korail.dto.OrderDto" resultType="com.example.korail.dto.OrderDto">
-            SELECT id, sstation, depPlandTime, stime, dstation, price, reservnum, trainnum, chairnum, cancel, depPlaceId, arrPlaceId, cardnum, email, to_char(cdate,'yyyy-mm-dd') cdate
-            FROM KTX_ORDER
-            <choose>
-                <when test='cardnum == null and email == null'>
-                    where id=#{id}
-                </when>
-                <when test='email != null'>
-                    where email=#{email}
-                </when>
-                <otherwise>
-                    where cardnum=#{cardnum}
-                </otherwise>
-            </choose>
-        </select>
+    <select id="select" parameterType = "com.example.korail.dto.OrderDto" resultType="com.example.korail.dto.OrderDto">
+        SELECT id, sstation, depPlandTime, stime, dstation, price, reservnum, trainnum, chairnum, cancel, depPlaceId, arrPlaceId, cardnum, email, to_char(cdate,'yyyy-mm-dd') cdate
+        FROM KTX_ORDER
+        <choose>
+            <when test='cardnum == null and email == null'>
+                where id=#{id}
+            </when>
+            <when test='email != null'>
+                where email=#{email}
+            </when>
+            <otherwise>
+                where cardnum=#{cardnum}
+            </otherwise>
+        </choose>
+    </select>
 
-        <select id="selectcard" parameterType="map" resultType="int">
-            SELECT count(*) from ktx_order
-            <choose>
-                <when test='email == null'>
-                    where cardnum=#{cardnum}
-                </when>
-                <otherwise>
-                    where email=#{email}
-                </otherwise>
-            </choose>
-        </select>
+    <select id="selectcard" parameterType="map" resultType="int">
+        SELECT count(*) from ktx_order
+        <choose>
+            <when test='email == null'>
+                where cardnum=#{cardnum}
+            </when>
+            <otherwise>
+                where email=#{email}
+            </otherwise>
+        </choose>
+    </select>
 
-	<!--<update id="cancel" parameterType="String">
+    <update id="cancel" parameterType="String">
         update ktx_order set
         cancel=1, cdate=sysdate
         where reservnum=#{reservnum}
     </update>
 
-    <select id="selected" parameterType="String" resultType="com.korail.vo.OrderVo">
-        SELECT sstation, rdate, depPlandTime, stime, dtime, dstation, price, reservnum, trainnum, chairnum, cancel, depPlaceId, arrPlaceId, cardnum, ticketqty
-        FROM KTX_ORDER
-        where reservnum=#{reservnum}
+    <select id="selected" parameterType="String" resultType="com.example.korail.dto.OrderDto">
+           SELECT sstation, rdate, depPlandTime, stime, dtime, dstation, price, reservnum, trainnum, chairnum, cancel, depPlaceId, arrPlaceId, cardnum, ticketqty
+           FROM KTX_ORDER
+           where reservnum=#{reservnum}
     </select>
 
-    <select id="orderselect" parameterType="map" resultType="com.korail.vo.OrderVo">
+    <!--   <select id="orderselect" parameterType="map" resultType="com.korail.vo.OrderVo">
         SELECT rno, sstation, rdate, depPlandTime, stime, dtime, dstation, price, reservnum, trainnum, chairnum, id, cardnum, cancel
         FROM (select rownum rno, sstation, to_char(rdate,'yy-mm-dd') rdate, depPlandTime, stime, dtime, dstation, price, reservnum, trainnum, chairnum, id, cardnum, cancel
                  from (select sstation, rdate, depPlandTime, stime, dtime, dstation, price, reservnum, trainnum, chairnum, id, cardnum, cancel

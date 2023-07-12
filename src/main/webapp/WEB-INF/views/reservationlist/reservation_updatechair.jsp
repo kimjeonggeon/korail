@@ -8,16 +8,42 @@
 <link rel="stylesheet" href="http://localhost:9000/css/train_reservation_satschc.css">
 <script src="http://localhost:9000/js/jquery-3.6.4.min.js"></script>
 <script src="http://localhost:9000/js/chairupdate.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
 $(document).ready(function(){
-	$(".btn_selectSeat").click(function() {
+	/* $(".btn_selectSeat").click(function() {
 		let sid = "${sessionScope.svo.id}";
 		let seatNum = $("#seatNum").val();
-		/* alert(sid);
-		alert(seatNum); */
 		
-		$(location).attr("href", 'http://localhost:9000/reservation_updateselect?seatNum='+seatNum+"&id="+sid);
-	});
+		$(location).attr("href", 'http://localhost:9000/reservation_updateselect.do?seatNum='+seatNum+"&id="+sid);
+	}); */
+	
+	$(".btn_selectSeat").click(function() {
+		if($("#seatNum").text() == ""){
+			//alert("좌석을 선택해주세요");
+			Swal.fire({
+	    		text: "좌석을 선택해주세요.",
+	    		width: 600,
+				padding: '1.5em',
+	    		confirmButtonColor: '#74b3c7',
+	    		confirmButtonText: '확인'
+	    	});
+		}else{
+			
+			let sid = "${sessionScope.svo.id}";
+			let seatNum = $("#seatNum1").val();
+			let ticketQty = $("#ticketQty1").val();
+			
+			if(sid == ""){
+			  $(".modal").css("display", "block");
+			  }else{
+				  $(location).attr("href",'http://localhost:9000/reservation_updateselect.do?seatNum='+seatNum +"&ticketQty="+ticketQty+"&id="+sid );
+			  }
+		}
+		
+	  });
+	
+	
 });	
 	
 </script>
@@ -205,9 +231,13 @@ $(document).ready(function(){
 									<strong class="txt_tit">선택좌석</strong>
 								</div>
 								<div>
-									<form name="updateseatForm" id="updateseatForm" action="reservation_updatepay" method="post">
-										<input type="text" name="seatNum" id="seatNum">
-										<input type="hidden" name="ticketQty" id ="ticketQty">
+								<span id="seatNum" id="selectedSeatCount"></span>
+								</div>
+								<div>
+									<form name="updateseatForm" id="updateseatForm" action="reservation_updatepay.do" method="post">
+										<input type="hidden" name="seatNum" id="seatNum1">
+										<input type="hidden" name="ticketQty" id ="ticketQty1">
+										<input type="hidden" name="ticketQty" id ="ticketQty1" value=" ${sessionScope.svo.id }">
 									</form>
 								</div>
 							</section>

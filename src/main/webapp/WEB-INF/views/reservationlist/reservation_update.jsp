@@ -8,6 +8,7 @@
 <link rel="stylesheet" href="http://localhost:9000/css/reservationlist.css">
 <script src="http://localhost:9000/js/jquery-3.6.4.min.js"></script>
 <script src="http://localhost:9000/js/reservation_jquery.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <style>
 	.hidden-span, #traintime, .return{
             display: none;
@@ -68,19 +69,19 @@
 	<div class="page" id="page_updateC">
 		<h3 class="update">출발일 변경</h3>
 		<div class="change_wrap custom_input">
-			<form name="mrschangefrm" id="mrschangefrm" method="post" action="/mrs/mrschantimestep1">
+			<form name="mrschangefrm" id="mrschangefrm" method="post" action="/mrs/mrschantimestep1.do">
 				<div class="routeBody clfix">
 					<div class="routeArea route_wrap" id="update_routeArea">
-						<p id="updatedate" class="date">${ovo.depPlandTime}</p>
-						<p id="updatetime" class="time">${ovo.stime}</p>
+						<p id="updatedate" class="date">${odt.depPlandTime}</p>
+						<p id="updatetime" class="time">${odt.stime}</p>
 						<div class="inner" id="updateinner">
 							<span class="roundBox_start">출발</span>
-							<span class="roundBox departure">${ovo.sstation}</span>
+							<span class="roundBox departure">${odt.sstation}</span>
 							<span class="roundBox_end">도착</span>
-							<span class="roundBox arrive">${ovo.dstation}</span>
+							<span class="roundBox arrive">${odt.dstation}</span>
 						</div>
-						<span class="hidden-span" id="update_depPlaceId">${ovo.depPlaceId}</span>
-						<span class="hidden-span" id="update_arrPlaceId">${ovo.arrPlaceId}</span>
+						<span class="hidden-span" id="update_depPlaceId">${odt.depPlaceId}</span>
+						<span class="hidden-span" id="update_arrPlaceId">${odt.arrPlaceId}</span>
 					</div>
 					<div class="routeArea route_select">
 						<div class="box_inputForm click_box inselect" id="updatetimebox">
