@@ -13,18 +13,18 @@
 	let c_pnum = "${c_pnum}";
 	
 	$(".adtnPrdPT").click(function() {
-		var url = "http://localhost:9000/mypage_receipt.do";
+		var url = "http://localhost:9000/mypage_receipt";
 		window.location.href = url;
 	});
 	
 	if (c_pass == "ok") {
 		alert("비밀번호 변경 완료");
-		var url = "http://localhost:9000/mypage.do";
+		var url = "http://localhost:9000/mypage";
 		$(location).attr('href', url);
 	}
 	if (c_pnum == "ok") {
 		alert("휴대폰번호 변경 완료");
-		var url = "http://localhost:9000/mypage.do";
+		var url = "http://localhost:9000/mypage";
 		$(location).attr('href', url);
 	} else if (c_pnum == "fail") {
 		alert("변경 실패");
