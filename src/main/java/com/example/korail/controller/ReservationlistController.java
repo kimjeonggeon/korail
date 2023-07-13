@@ -4,6 +4,7 @@ import com.example.korail.dto.OrderDto;
 import com.example.korail.dto.SessionDto;
 import com.example.korail.dto.UpdateDto;
 import com.example.korail.service.OrderService;
+import org.apache.ibatis.annotations.Update;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Controller;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 public class ReservationlistController {
@@ -34,6 +36,9 @@ public class ReservationlistController {
         String email = svo.getEmail();
         String orderReturn = null;
 
+        System.out.println("id-->"+id);
+        System.out.println("cardnum-->"+cardnum);
+
         if(id == null){
             orderReturn = "reservationlist/login2";
         }
@@ -41,12 +46,15 @@ public class ReservationlistController {
         orderDto.setId(id);
         orderDto.setCardnum(cardnum);
         orderDto.setEmail(email);
+        System.out.println("id -- >"+ orderDto.getId());
 
-        ArrayList<OrderDto> orderList = orderService.getSelect(orderDto);
-
+        List<OrderDto> orderList = orderService.getSelect(orderDto);
+        System.out.println("orderList--> " + orderList.size());
         if(orderList != null){
             model.addAttribute("orderList",orderList);
             orderReturn = "reservationlist/reservation_main";
+        }else{
+            orderReturn = "index";
         }
 
         return orderReturn;
@@ -94,11 +102,11 @@ public class ReservationlistController {
     public String reservation_update(HttpSession session, @PathVariable String reservnum, Model model) {
         OrderDto orderDto = orderService.getSelected(reservnum);
 
-        UpdateDto updateDto = new UpdateDto();
-        updateDto.setReservnum(reservnum);
+        UpdateDto uvo = new UpdateDto();
+        uvo.setReservnum(reservnum);
 
         model.addAttribute("odt", orderDto);
-        session.setAttribute("uvo", updateDto);
+        session.setAttribute("uvo", uvo);
 
         return "/reservationlist/reservation_update";
     }
@@ -107,15 +115,33 @@ public class ReservationlistController {
     @GetMapping("reservation_updatetime/{traintime}/{depPlaceId}/{arrPlaceId}")
     public String reservation_updatetime(HttpSession session, @PathVariable String traintime, @PathVariable String depPlaceId, @PathVariable String arrPlaceId ) {
 
-        UpdateDto updateDto = (UpdateDto)session.getAttribute("uvo");
+        UpdateDto uvo = (UpdateDto)session.getAttribute("uvo");
 
-        updateDto.setRtime(traintime);
-        updateDto.setStartId(depPlaceId);
-        updateDto.setEndId(arrPlaceId);
+        uvo.setRtime(traintime);
+        uvo.setStartId(depPlaceId);
+        uvo.setEndId(arrPlaceId);
 
         return "/reservationlist/reservation_updatetime";
     }
 
+    /* update3 */
+    @PostMapping("reservation_updatechair")
+    public String reservation_updatechair(UpdateDto uvo, HttpSession session, String depplacename, String arrplacename, String start_date, String end_date, String traingradename, String trainno, String adultcharge, String rtimes) {
 
+        uvo = (UpdateDto)session.getAttribute("uvo");
+
+        uvo.setDepplacename(depplacename);
+        uvo.setArrplacename(arrplacename);
+        uvo.setStart_date(start_date);
+        uvo.setEnd_date(end_date);
+        uvo.setTraingradename(traingradename);
+        uvo.setTrainno(trainno);
+        uvo.setAdultcharge(adultcharge);
+        uvo.setRtimes(rtimes);
+
+        System.out.println("depplacename2-->"+uvo.getDepplacename());
+
+        return "/reservationlist/reservation_updatechair";
+    }
 
 }//controller

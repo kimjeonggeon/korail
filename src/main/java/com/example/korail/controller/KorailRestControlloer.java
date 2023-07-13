@@ -1,6 +1,7 @@
 package com.example.korail.controller;
 
 import com.example.korail.dto.OrderDto;
+import com.example.korail.dto.UpdateDto;
 import com.example.korail.service.MailSendService;
 import com.example.korail.service.MemberService;
 import com.google.gson.Gson;
@@ -59,6 +60,36 @@ public class KorailRestControlloer {
 
         return new Gson().toJson(slist);
     }
+
+    @GetMapping("reservationlist_update_chair_json/{trnumber}")
+    public String reservationlist_update_chair_json(@PathVariable String trnumber, HttpSession session) {
+        System.out.println("trnumber-->"+trnumber);
+        UpdateDto uvo = (UpdateDto)session.getAttribute("uvo");
+
+        uvo.setTrnumber(trnumber);
+        ArrayList<SeatNumberDto> list  = (ArrayList<SeatNumberDto>)orderService.getSeatnumUp(uvo);
+
+        JsonArray seatList = new JsonArray(); //배열로 만들애
+        JsonObject slist = new JsonObject();
+
+        for(SeatNumberDto seatDto : list){
+            String chairNum = seatDto.getChairnum();
+            String[] chairNumArray = chairNum.split(",");
+
+            for(String chair : chairNumArray){
+                String seatNum = chair.substring(4,6);
+                System.out.println("seatNum-->"+seatNum);
+                JsonObject jobj = new JsonObject();
+                jobj.addProperty("seat", seatNum);
+                seatList.add(jobj);
+            }
+        }
+        slist.add("seatList", seatList);
+        System.out.println("slist-->"+slist);
+        return new Gson().toJson(slist);
+    }
+
+
 
     @GetMapping("id_check")
     public String id_check(String id){

@@ -37,7 +37,7 @@ $(document).ready(function(){
 			if(sid == ""){
 			  $(".modal").css("display", "block");
 			  }else{
-				  $(location).attr("href",'http://localhost:9000/reservation_updateselect.do?seatNum='+seatNum +"&ticketQty="+ticketQty+"&id="+sid );
+				  $(location).attr("href",'http://localhost:9000/reservation_updateselect/'+seatNum +"/"+ticketQty+"/"+sid );
 			  }
 		}
 		

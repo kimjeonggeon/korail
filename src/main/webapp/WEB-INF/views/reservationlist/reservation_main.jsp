@@ -76,7 +76,7 @@
 								<option value="/mrs/mrsrecplist.do">영수증 발행</option>
 							</select>
 						</div>
-						<!-- <div class="selectric">
+						<div class="selectric">
 							<p class="label">예매 확인/취소/변경</p>
 							<b class="button">▾</b>
 						</div>
@@ -161,7 +161,7 @@
 									</caption> -->
 									<colgroup>
 										<col style="width:68px;">
-										<col style="width:*;">
+
 									</colgroup>
 									<tbody class="reservMainTable">
 										<tr>
@@ -290,7 +290,7 @@
 									</caption> -->
 									<colgroup>
 										<col style="width:100px;">
-										<col style="width:*;">
+
 									</colgroup>
 									<tbody>
 										<tr>
@@ -357,7 +357,7 @@
 						</div>
 						<div class="routeArea route_wrap mob_route">
 							<div class="tbl_type2">
-								<table><colgroup><col style="width:68px;"><col style="width:*;"></colgroup>
+								<table><colgroup><col style="width:68px;"></colgroup>
 									<tbody>
 										<tr>
 											<th scope="row">예매번호</th>
@@ -384,7 +384,7 @@
 				<div class="box_detail_info bgGray">
 					<div class="routeArea route_wrap mob_route">
 						<div class="tbl_type3">
-							<table><colgroup><col style="width:80px;"><col style="width:*;"></colgroup>
+							<table><colgroup><col style="width:80px;"></colgroup>
 								<tbody>
 									<tr>
 										<th scope="row">결제일시</th>
@@ -400,7 +400,7 @@
 					</div>
 					<div class="routeArea route_wrap mob_route">
 						<div class="tbl_type3">
-							<table class="taR"><colgroup><col style="width:135px;"><col style="width:*;"></colgroup>
+							<table class="taR"><colgroup><col style="width:135px;"></colgroup>
 								<tbody>
 									<tr>
 										<th scope="row">결제금액</th>

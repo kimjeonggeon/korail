@@ -3,6 +3,7 @@ package com.example.korail.service;
 import com.example.korail.dto.OrderDto;
 import com.example.korail.dto.ReservationDto;
 import com.example.korail.dto.SeatNumberDto;
+import com.example.korail.dto.UpdateDto;
 import com.example.korail.repository.OrderMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,7 +19,9 @@ public class OrderService {
     public int getCardnum(String cardnum, String email){
         return orderMapper.selectcard(cardnum,email);
     }
-    public ArrayList<OrderDto> getSelect(OrderDto orderDto){
+    public List<OrderDto> getSelect(OrderDto orderDto){
+
+        System.out.println("id2 -->"+ orderDto.getId());
         return orderMapper.select(orderDto);
     }
     public int getPayment(OrderDto orderDto){
@@ -37,4 +40,13 @@ public class OrderService {
     public OrderDto getSelected(String reservnum){
         return orderMapper.selected(reservnum);
     }
+
+
+    public ArrayList<SeatNumberDto> getSeatnumUp(UpdateDto uvo){
+        List<SeatNumberDto> list = orderMapper.seatnumUp(uvo);
+        return (ArrayList<SeatNumberDto>)list;
+    }
+
+
+
 }

@@ -198,7 +198,7 @@ $.getJSON(url, function(citys){
 						<div class="bustime_wrap">
 							
 						</div>
-						<form name='updateForm' id='updateForm' action='reservation_updatechair.do' method='post'>
+						<form name='updateForm' id='updateForm' action='/reservation_updatechair' method='post'>
 							<input type="hidden" name="depplacename" id="depplacename">
 							<input type="hidden" name="arrplacename" id="arrplacename">
 							<input type="hidden" name="start_date" id="start_date">

@@ -1,3 +1,15 @@
+.spanText {
+	text-align: center;
+    display: block;
+    font-size: 20px;
+    padding: 70px 0px;
+    color: #999;
+}
+
+.reservMainTable td{
+	padding-top: 2px;
+}
+
 input:focus {
   		outline: none;
 	}
@@ -34,7 +46,7 @@ input:focus {
     text-align: left;
     display:inline-block;
 }
-}
+
 
 .tbl_type3{
 	margin-left : 20px;
@@ -738,7 +750,7 @@ section {
 .head_top {position:relative; margin-bottom:10px; padding-bottom:10px; border-bottom:2px solid #000;}
 .head_top .logo img { width: 50%; height: auto;}
 .head_top span.url {position:absolute; right:0; top:0; font-size:12px; letter-spacing:0;}
-.head_top .tit_receipt {margin-top:20px; font-size:24px; font-weight:bold; color:#000; line-height:1.2; padding:4px 0;} 181206 ����
+.head_top .tit_receipt {margin-top:20px; font-size:24px; font-weight:bold; color:#000; line-height:1.2; padding:4px 0;}
 .head_top .tit_receipt span {display:inline-block; padding-left:10px; font-size:15px; color:#000; font-weight:normal; vertical-align:bottom;}
 .box_dot ul li,.box_row ul li {position:relative; margin-top:5px; font-size:13px; color:#000;}
 .box_dot ul li:after,.box_row ul li:after {display:block; content:""; clear:both;}
@@ -759,7 +771,7 @@ section {
 .receipt_wrap .date li .name {display: block; font-size: 14px; color: #333;}
 .receipt_wrap .text .text_date {display:block; height: 100%; padding: 0; font-size: 24px; color: #000;}
 .receipt_wrap .text input {position:absolute; left:-9999px; top:-0; width:1px !important; height:1px !important; padding: 0; font-size:0; color: #000; border:none; background:transparent; opacity:0;}
-.label_tag:after { display: inline-block; content: ''; position: absolute; right: 0; bottom: 0; background: url(/images/page/input_after.png) 0 0 no-repeat; background-size: 100%; width: 8px; height: 8px;}
+.label_tag:after { display: inline-block; content: ''; position: absolute; right: 0; bottom: 0; background: url(http://localhost:9000/images/input_after.png) 0 0 no-repeat; background-size: 100%; width: 8px; height: 8px;}
 
 .receipt_wrap .date li .box_inputForm strong {margin-bottom:8px; font-size:14px; color:#333; font-weight:normal;}
 .receipt_wrap .date li .box_inputForm {padding:12px 15px;}
@@ -913,22 +925,8 @@ select {
 }
 select {
     writing-mode: horizontal-tb !important;
-    font-style: ;
-    font-variant-ligatures: ;
-    font-variant-caps: ;
-    font-variant-numeric: ;
-    font-variant-east-asian: ;
-    font-variant-alternates: ;
-    font-weight: ;
-    font-stretch: ;
-    font-size: ;
-    font-family: ;
-    font-optical-sizing: ;
-    font-kerning: ;
-    font-feature-settings: ;
-    font-variation-settings: ;
+
     text-rendering: auto;
-    color: fieldtext;
     letter-spacing: normal;
     word-spacing: normal;
     line-height: normal;
@@ -942,12 +940,11 @@ select {
     align-items: center;
     white-space: pre;
     -webkit-rtl-ordering: logical;
-    background-color: field;
     cursor: default;
     margin: 0em;
     border-width: 1px;
     border-style: solid;
-    border-color: -internal-light-dark(rgb(118, 118, 118), rgb(133, 133, 133));
+    /*border-color: internal-light-dark(rgb(118, 118, 118), rgb(133, 133, 133));*/
     border-image: initial;
     border-radius: 0px;
 }
@@ -1292,7 +1289,7 @@ img {
     height: 76px;
     margin: 0 auto;
 }
-canvas[Attributes Style] {
+canvas[Attributes_Style] {
     aspect-ratio: auto 76 / 76;
 }
 canvas {
@@ -1602,7 +1599,6 @@ input[type="hidden" i] {
 .login_wrap input {
     writing-mode: horizontal-tb !important;
     text-rendering: auto;
-    color: fieldtext;
     letter-spacing: normal;
     word-spacing: normal;
     line-height: normal;
@@ -1614,12 +1610,11 @@ input[type="hidden" i] {
     appearance: auto;
     -webkit-rtl-ordering: logical;
     cursor: text;
-    background-color: field;
     margin: 0em;
     padding: 1px 2px;
     border-width: 2px;
     border-style: inset;
-    border-color: -internal-light-dark(rgb(118, 118, 118), rgb(133, 133, 133));
+    /*border-color: -internal-light-dark(rgb(118, 118, 118), rgb(133, 133, 133));*/
     border-image: initial;
 }
 
@@ -1876,7 +1871,7 @@ fieldset{
 .price_info .stit { position: relative; padding-bottom: 5px; font-size: 15px; border-bottom: 1px solid #add3e1;}
 .price_info .stit span { position: absolute; right: 0; bottom: 5px; font-size: 12px;}
 .price_info dl {overflow:hidden;}
-.price_info dt, .price_info dd { width: 50%; height: 23px; border-bottom: 1px solid #76b9d2; line-height: 23px;t}
+.price_info dt, .price_info dd { width: 50%; height: 23px; border-bottom: 1px solid #76b9d2; line-height: 23px;}
 .price_info dt { float: left; text-align: left;}
 .price_info dd { float: right; font-size: 13px; font-weight: bold; text-align: right; letter-spacing: -0.01em;}
 .price_info .nocont, .price_info .nocont + dd { color: #b3d6e4;}
@@ -1892,8 +1887,8 @@ fieldset{
 .time { float: left; width: 65px; height: 100%; z-index: 100;}
 .time li { position: relative; margin-top: 8px; padding-right: 8px; -moz-box-sizing: border-box; box-sizing: border-box;}
 .time li:before {  display: inline-block; content: ''; position: absolute; top: 5px; left: 8px; }
-.time .daytime:before { background: url(/images/page/ico_daytime.png) 0 0 no-repeat; background-size: 100%; width: 16px; height: 16px;}
-.time .night:before { background: url(/images/page/ico_night.png) 0 0 no-repeat; background-size: auto 100%; width: 14px; height: 14px;}
+.time .daytime:before { background: url(http://localhost:9000/images/ico_daytime.png) 0 0 no-repeat; background-size: 100%; width: 16px; height: 16px;}
+.time .night:before { background: url(http://localhost:9000/images/ico_night.png) 0 0 no-repeat; background-size: auto 100%; width: 14px; height: 14px;}
 .time li a { display: block; padding: 2px 8px 2px 0; font-size: 14px; color: #68b3ce; text-align: right; -moz-box-sizing: border-box; box-sizing: border-box;}
 .time li:hover a, .time .active a { background: #68b3ce; color: #fff !important;}
 .time a.noselect, .bustime_wrap .noselect span, .bustime_wrap a.noselect { color: #ccc; cursor: default;}
@@ -1936,7 +1931,7 @@ fieldset{
 .bus_time .bus_com { padding-top: 15px; vertical-align: top; line-height: 1;}
 .bus_time .bus_com .no_logo, .bus_time .bus_info .no_logo { padding-top: 6px; font-size: 14px;}
 .bus_time .bus_info { padding-top: 10px;}
-.bus_time .premium a:after, .bus_time .premium2 a:after { display: inline-block; content: ''; position: absolute; right: 0; bottom: 0; background: url(/images/page/label_premium_on.png) 0 0 no-repeat; background-size: 100%; width: 40px; height: 40px;}
+.bus_time .premium a:after, .bus_time .premium2 a:after { display: inline-block; content: ''; position: absolute; right: 0; bottom: 0; background: url(http://localhost:9000/images/label_premium_on.png) 0 0 no-repeat; background-size: 100%; width: 40px; height: 40px;}
 
 
 
@@ -1953,7 +1948,7 @@ fieldset{
 .box_detail_info.noData p {padding:60px 0 !important; font-size:16px; color:#5754b5; text-align:center;} 
 .box_detail_info.noData:before {display:none;}
 .box_detail_info:first-child {margin-top:0;}
-.box_detail_info:before {display:block; content:""; position:absolute; left:50%; top:0; width:1px; height:100%; background-color:#e6e6e6;}
+.box_detail_info:before {display:block; content:""; position:absolute; left:50%; top:0; width:1px; height:80%; background-color:#e6e6e6;}
 .box_detail_info:after {display:block; content:""; clear:both;}
 .routeArea.full { width: 100%;}
 .routeArea.route_wrap {border-bottom:none;}
@@ -1972,7 +1967,7 @@ fieldset{
 .routeArea.route_wrap.full .tbl_type2 table tbody th { padding-left: 30px;}
 .routeArea.route_wrap.full .tbl_type2 table tbody td { padding-left: 15px;}
 .routeArea.route_wrap.full .tbl_type2 table tbody td .error_txt { display: none; font-size: 12px; color: #5895c7}
-.tbl_type2 .error_txt:before { display: inline-block; content: ''; background: url(/images/page/ico_tipB2_s.png) no-repeat 0 0; width: 13px; height: 13px; margin-right: 2px; vertical-align: -1px;}
+.tbl_type2 .error_txt:before { display: inline-block; content: ''; background: url(http://localhost:9000/images/ico_tipB2_s.png) no-repeat 0 0; width: 13px; height: 13px; margin-right: 2px; vertical-align: -1px;}
 .routeArea.route_wrap.full .tbl_type2 table tbody .lack .error_txt { display: inline-block;}
 .routeArea.route_wrap.full .tbl_type2 table tbody td strong { font-size: 16px;}
 
@@ -2005,14 +2000,14 @@ fieldset{
 .seat_detail {position:relative; padding-left:25px; border-left:1px solid #e6e6e6; border-bottom:1px solid #e6e6e6; border-right:1px solid #e6e6e6;}
 .check_com:before {display:block; content:""; position:absolute; left:0; top:0; z-index:100; width:100%; height:100%; background:url(http://localhost:9000/images/bg_cancelTicket_com.png) 0 0 no-repeat; background-color:#fff; background-size:178px 72px; background-position:50% 50%; opacity:0.7;}
 .cancel_com:before {display:block; content:""; position:absolute; left:0; top:0; z-index:100; width:100%; height:100%; background:url(http://localhost:9000/images/bg_cancelTicket_com.png) 0 0 no-repeat; background-color:#fff; background-size:178px 72px; background-position:50% 50%; opacity:0.7;}
-.used_com:before {display:block; content:""; position:absolute; left:0; top:0; z-index:100; width:100%; height:100%; background:url(/images/bg_used_com.png) 0 0 no-repeat; background-color:#fff; background-size:178px 72px; background-position:50% 50%; opacity:0.7;}
-.refund_com:before {display:block; content:""; position:absolute; left:0; top:0; z-index:100; width:100%; height:100%; background:url(/images/bg_refund_com.png) 0 0 no-repeat; background-color:#fff; background-size:178px 72px; background-position:50% 50%; opacity:0.7;} /* 181204 �߰� */
-.timeOver:after {display:block; content:""; position:absolute; left:0; top:0; z-index:101; width:100%; height:100%; background:url(/images/bg_timeOver.png) 50% 50% no-repeat; background-color:#fff; opacity:0.7;} 
+.used_com:before {display:block; content:""; position:absolute; left:0; top:0; z-index:100; width:100%; height:100%; background:url(http://localhost:9000/images/bg_used_com.png) 0 0 no-repeat; background-color:#fff; background-size:178px 72px; background-position:50% 50%; opacity:0.7;}
+.refund_com:before {display:block; content:""; position:absolute; left:0; top:0; z-index:100; width:100%; height:100%; background:url(http://localhost:9000/images/bg_refund_com.png) 0 0 no-repeat; background-color:#fff; background-size:178px 72px; background-position:50% 50%; opacity:0.7;} /* 181204 �߰� */
+.timeOver:after {display:block; content:""; position:absolute; left:0; top:0; z-index:101; width:100%; height:100%; background:url(http://localhost:9000/images/bg_timeOver.png) 50% 50% no-repeat; background-color:#fff; opacity:0.7;}
 .seat_detail > ul li {position:relative; overflow:hidden; height:50px; border-top:1px solid #e6e6e6;}
 .seat_detail > ul li.check_com:before, .seat_detail > ul li.cancel_com:before {background-position:97% 50%; background-size:96px 38px;}
 .seat_detail > ul li:first-child {border-top:none;}
 .seat_detail > ul li > span {display:inline-block; vertical-align:middle; line-height:50px;}
-.seat_detail > ul li .seatNum {width:100px; font-size:20px; color:#323232;}
+.seat_detail > ul li .seatNum {width:100%; font-size:13pt; color:#323232;}
 .seat_detail > ul li .txt_blue {width:45px; margin:0 10px; font-size:14px; color:#68b3ce;}
 .seat_detail > ul li .ticketNum {font-size:14px; color:#999;}
 .seat_detail > ul li .ticketNum2 {margin-left:20px; font-size:14px; color:#999;}

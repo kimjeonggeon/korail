@@ -4,7 +4,7 @@ $(document).ready(function(){
 	function trInitAjax(trnumber) {
 		//alert(trnumber);
 	  $.ajax({
-	    url: "reservationlist_update_chair_json?trnumber="+trnumber,
+	    url: "reservationlist_update_chair_json/"+trnumber,
 	    success: function (result) {
 	      //alert(result);
 	      let jdata = JSON.parse(result);
@@ -62,18 +62,38 @@ $(document).ready(function(){
 	
 	//좌석 선택 이벤트
 	
+	let selectedSeats = [];
+	
 	$(".seatList").on("click", "[id^='chairImg_']", function() {
-		  let seatNum = $("#chldCnt").text() + "호 " +  $(this).parent().text() + "좌석";
+		  let seatNum = " "+ $("#chldCnt").text() + "호 " +  $(this).parent().text() + "좌석"; // 좌석번호
+		  let adltCnt = parseInt($("#adltCnt").text());
 		  
-		  $("#seatNum").val(seatNum);
-		  $("#seatNum1").val(seatNum);
-		  $("#seatNum2").val(seatNum);
-		  $(".box img").css("opacity", "0.5");
-		  $(this).css("opacity", "1.0");
-		  $("#passengersNum").text($("#adltCnt").text());
-		  let ticketQty = $("#adltCnt").text();
-		  $("#ticketQty1").val(ticketQty);
-		  $("#ticketQty2").val(ticketQty);
+		  let index = selectedSeats.indexOf(seatNum); // 이미 선택된 좌석인지 확인을 위한 객체
+		  
+		  if (index > -1) {
+		  		selectedSeats.splice(index, 1); // 배열에서 제거
+    			$(this).css("opacity", "0.5"); 
+    			
+  			} else if (adltCnt > 0 && selectedSeats.length < adltCnt) { 
+  					selectedSeats.push(seatNum);
+				    $(this).css("opacity", "1.0");
+					
+				    $("#seatNum").text(selectedSeats.join(","));
+				    
+				    $("#seatNum1").val($("#seatNum").text());
+				    $("#seatNum2").val($("#seatNum").text());
+				  	
+				    $("#passengersNum").text(adltCnt); 
+				    let ticketQty = adltCnt; // adltCnt 변수 사용
+				    $("#ticketQty1").val(ticketQty);
+					$("#ticketQty2").val(ticketQty);
+			    
+			  }else{
+			  	alert("인원수를 늘려주세요");
+			  }
+			  
+		  $("#selectedSeatCount").text(selectedSeats.length);
+		  
 	});
 	
 	
@@ -178,7 +198,7 @@ $(document).ready(function(){
 	  
 		//비회원 예매 버튼 이벤트
 		$("#btn_nonmember").click(function(){
-			//window.location.href = "http://localhost:9000/train_reservation_stplcfmpym";
+			//window.location.href = "http://localhost:9000/ktx/train_reservation_stplcfmpym.do";
 		});
 	  
 	  
