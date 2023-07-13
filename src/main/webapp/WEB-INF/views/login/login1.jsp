@@ -12,6 +12,9 @@
 	#login_page{
 	padding: 80px 40px 100px;
 	}
+	.box_inputForm input{
+		width: 90%;
+	}
 </style>
 </head>
 <body>
@@ -51,6 +54,7 @@
 									<span class="box_label">
 										<!-- <label for="pass">비밀번호를 입력하세요</label> -->
 										<input type="password" name="pass" id="pass" class="input" >
+										<img src ="http://localhost:9000/images/view.png"   class ="passshow"  id="passshow" style ="width: 7%;">
 									</span>
 								</div>
 							</li>

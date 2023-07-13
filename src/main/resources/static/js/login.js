@@ -52,5 +52,23 @@ $("#btnLogin").click(function(){
 *************************/
 
 
+	/*************************
+	 비밀번호 보여주는 기능
+	 *************************/
+
+	$('.passshow').on('click', function() {
+		$('#pass').toggleClass('active');
+		if ($('#pass').hasClass('active')) {
+			$('#passshow').attr('src', 'http://localhost:9000/images/view.png');
+			$(this).prev('input').attr('type', 'text');
+		} else {
+			$('#passshow').attr('src', 'http://localhost:9000/images/hide.png');
+			$(this).prev('input').attr('type', 'password');
+		}
+	});
+
+
+
+
 
 }); //ready
