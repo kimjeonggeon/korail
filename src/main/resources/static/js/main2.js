@@ -75,25 +75,54 @@ $(document).ready(function(){
 		
 		$("#btnsearch").click(function(){
 			if($("#start_add").text() == "선택"){
-				alert("출발지를 선택해주세요");
+				Swal.fire({
+					text: "출발지를 선택해주세요.",
+					width: 600,
+					padding: '1.5em',
+					confirmButtonColor: '#74b3c7',
+					confirmButtonText: '확인'
+				});
+				return false;
 			}else if($("#end_add").text() == "선택"){
-				alert("도착지를 선택해주세요");
+				Swal.fire({
+					text: "도착지를 선택해주세요.",
+					width: 600,
+					padding: '1.5em',
+					confirmButtonColor: '#74b3c7',
+					confirmButtonText: '확인'
+				});
+				return false;
 			}else if($("#traintime").text() == ""){
-				alert("출발일를 선택해주세요");
+				Swal.fire({
+					text: "출발일를 선택해주세요.",
+					width: 600,
+					padding: '1.5em',
+					confirmButtonColor: '#74b3c7',
+					confirmButtonText: '확인'
+				});
+				return false;
 			}else{
-				
-				var result = confirm("승차권 예매에 따른 취소수수료 내용에 동의하십니까?");
+
+				var result = Swal.fire({
+					text: "승차권 예매에 따른 취소수수료 내용에 동의하십니까?",
+					width: 600,
+					padding: '1.5em',
+					confirmButtonColor: '#74b3c7',
+					confirmButtonText: '확인'
+				});
 				let startId = $("#start_id").text();
 			    let endId = $("#end_id").text();
 			    let rtime =$("#traintime").text();
 			    let start_add =$("#start_add").text();
 			    let end_add =$("#end_add").text();
-			    
-			    
-			    if(result){
-					let url = "http://localhost:9000/train_reservation_alcnsrch/"+startId + "/" + endId + "/" + rtime + "/"+ start_add + "/" + end_add;
-			    location.href = url;
-			    }
+
+
+				result.then((result) => {
+					if (result.isConfirmed) {
+						let url = "http://localhost:9000/train_reservation_alcnsrch/"+startId + "/" + endId + "/" + rtime + "/"+ start_add + "/" + end_add;
+						location.href = url;
+					}
+				});
 			    return false
 			    
 		    }

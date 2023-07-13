@@ -9,6 +9,7 @@
 <script src="http://localhost:9000/js/jquery-3.6.4.min.js"></script>
 <script src="http://localhost:9000/js/rotinf.js"></script>
 <script src="http://localhost:9000/js/rotinf2.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <style>
 	#traintime {
             display: none;

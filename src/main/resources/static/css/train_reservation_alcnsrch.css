@@ -446,19 +446,20 @@ img, fieldset, button {
     width: 65px;
     height: 100%;
     z-index: 100;
+    margin-top: 33px;
 }
 
 .time li {
     position: relative;
-    margin-top: 8px;
+    height: 40px;
     padding-right: 8px;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
 }
 .time li a {
     display: block;
-    padding: 2px 8px 2px 0;
-    font-size: 14px;
+    padding: 8px 8px 2px 0;
+    font-size: 18px;
     color: #68b3ce;
     text-align: right;
     -moz-box-sizing: border-box;
