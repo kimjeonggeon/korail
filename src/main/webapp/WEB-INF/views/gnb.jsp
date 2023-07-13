@@ -87,9 +87,9 @@ $(document).ready(function() {
 				</li>
 				<li><a class="admin">이용안내</a>
 					<ul class="admin_menu" style="display:none;">
-						<li><a href="http://localhost:9000/info_payment">결제 안내</a></li>
-						<li><a href="http://localhost:9000/info_refund">환불 안내</a></li>
-						<li><a href="http://localhost:9000/info_reservation">예매 안내</a></li>
+						<li><a href="http://localhost:9000/ticket/payment">결제 안내</a></li>
+						<li><a href="http://localhost:9000/ticket/refund">환불 안내</a></li>
+						<li><a href="http://localhost:9000/ticket/reservation">예매 안내</a></li>
 					</ul>
 				</li>
 				<li><a class="depth4">회원정보관리</a>
@@ -100,7 +100,7 @@ $(document).ready(function() {
 						<li><a href="http://localhost:9000/mypage" onclick="bye(event)">회원탈퇴</a></li>
 					</ul>
 				</li>
-				<li><a href="http://localhost:9000/notice_list?category=all&cvalue=all&page=1">공지사항</a></li>
+				<li><a href="http://localhost:9000/notice_list/all/all/1/">공지사항</a></li>
 			</ul>
 		</div>
 	</div>

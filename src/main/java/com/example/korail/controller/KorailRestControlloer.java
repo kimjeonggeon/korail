@@ -1,16 +1,14 @@
 package com.example.korail.controller;
 
-import com.example.korail.dto.OrderDto;
+import com.example.korail.dto.ReservationDto;
+import com.example.korail.dto.SeatNumberDto;
 import com.example.korail.service.MailSendService;
 import com.example.korail.service.MemberService;
+import com.example.korail.service.OrderService;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
-import com.example.korail.dto.ReservationDto;
-import com.example.korail.dto.SeatNumberDto;
-import com.example.korail.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
