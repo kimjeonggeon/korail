@@ -21,7 +21,7 @@
 	<h3 class="title-refund">승차권 환불 규정</h3>
 	<div class="refund">
 		<div class="col-left">
-			<img src = "../ktx/images/ico_refund.png">
+			<img src = "../images/ico_refund.png">
 		</div>
 		<div class="col-right">
 			<ul>

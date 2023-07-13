@@ -82,7 +82,7 @@ body {
 	border: 1px solid #e6e6e6;
     margin-bottom: 20px;
 }
-}
+
 
 .search-form button {
 	font-size: 14px;
@@ -99,7 +99,7 @@ body {
 	font-size: 12px;
 	text-align: center;
 	border-collapse: collapse;
-	padding: none;
+	padding: 0;
 }
 
 .notice_search tr:last-child td {
@@ -253,7 +253,7 @@ h1 {
 	padding: 25px 8px;
 	color: rgb(200, 175, 255);
 	font-size: 16px;
-	border-bottom: 3fpx solid rgb(200, 175, 255);
+	border-bottom: 3px solid rgb(200, 175, 255);
 	border-style: hidden;
 }
 
@@ -567,7 +567,7 @@ h1 {
 	padding: 10px 0;
 }
 
-.notice_delete tr:nth-of-child(2) tr {
+.notice_delete tr:nth-child(2) tr {
 	border: none;
 	padding: 10px 0;
 }
@@ -577,7 +577,7 @@ h1 {
 	padding: 10px 0;
 }
 
-.admin_notice_content tr:nth-of-child(2) tr {
+.admin_notice_content tr:nth-child(2) tr {
 	border: none;
 	padding: 10px 0;
 }
@@ -1052,4 +1052,9 @@ table #testTable tr:first-child td {
 	margin: 0;
 	padding: 10px 0;
 	background-color: #f3f4f6;
+}
+
+p#content_content {
+	display: flex;
+	justify-content: space-between;
 }

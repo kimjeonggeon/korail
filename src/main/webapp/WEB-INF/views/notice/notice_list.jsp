@@ -19,11 +19,11 @@
 	<script>
 	$(document).ready(function(){
 		var pager = jQuery('#ampaginationsm').pagination({
-		
-		    maxSize: '${maxSize}',	    		// max page size
-		    totals: '${totals}',	// total pages	
-		    page: '${page}',		// initial page		
-		    pageSize: '${pageSize}',			// max number items per page
+
+			maxSize: '${page.pageCount}',	    		// max page size
+			totals: '${page.dbCount}',	// total pages
+			page: '${page.reqPage}',		// initial page
+			pageSize: '${page.pageSize}',			// max number items per page
 		
 		    // custom labels		
 		    lastText: '&raquo;&raquo;', 		
@@ -35,10 +35,11 @@
 		});
 		
 		jQuery('#ampaginationsm').on('am.pagination.change',function(e){
-				$("#page").val(e.page);
+				//$("#page").val(e.page);
 				//alert(e.page);
 			   jQuery('.showlabelsm').text('The selected page no: '+e.page);
-			   notice_list.submit();
+			   //notice_list.submit();
+				$(location).attr('href', "http://localhost:9000/notice_list/all/all/"+e.page+"/");
 	           //$(location).attr('href', "http://localhost:9000/notice_search.do?page="+e.page);
 	    });
 		
@@ -56,7 +57,7 @@
 	</div>
 	<h2 class="title-notice">KTX 홈페이지의 새로운 소식을 확인하세요.</h2>
 	<div class="search">
-		<form class="search-form" action="notice_list_search.do" name="notice_list" method="post" >
+		<form class="search-form" action="notice_list_search.do" name="notice_list_search" method="post" >
 		<c:choose>
 		<c:when test="${category !=null }">
 			<select name="category" id="category" class="notice_search">
@@ -109,12 +110,12 @@
 			<th style="width: 15px">조회수</th>
 			<th style="width: 30px">등록일자</th>
 		</tr>
-		<c:forEach var="noticeVo" items="${list}">
+		<c:forEach var="notice" items="${list}">
 		<tr>
-			<td>${noticeVo.rno}</td>
-			<td><a href="notice_content.do?nid=${noticeVo.nid}">${noticeVo.ntitle}</a></td>
-			<td>${noticeVo.nhits}</td>
-			<td>${noticeVo.ndate}</td>
+			<td>${notice.rno}</td>
+			<td><a href="/notice_content/${notice.nid}/${page.reqPage}">${notice.ntitle}</a></td>
+			<td>${notice.nhits}</td>
+			<td>${notice.ndate}</td>
 		</tr>
 		</c:forEach>
 		<tr>

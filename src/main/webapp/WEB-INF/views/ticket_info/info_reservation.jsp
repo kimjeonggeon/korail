@@ -22,19 +22,19 @@
 	<h2 class="title-reservation">승차권 예매 발권</h2>
 		<div class="reservation">
 			<div class="ticket">
-				<img src="../ktx/images/ico_info1.png">
+				<img src="../images/ico_info1.png">
 				<p>예매하신 승차권의 창구발권은 출발시간 1시간 이전까지 출발지 기차역에서 발권이 가능하며 예매에 사용하신 신용카드를 지참해주시기 바랍니다.</p>
 			</div>
 			<div class="card">
-				<img src="../ktx/images/ico_info2.png">
+				<img src="../images/ico_info2.png">
 				<p>예매에 사용하신 신용카드를 분실하고 신용카드 번호를 모르고 계신 경우 승차권에 대한 어떠한 변경 또는 취소는 불가하오니 주의하시기 바랍니다.</p>
 			</div>
 			<div class="boarding-time">
-				<img src="../ktx/images/ico_info3.png">
+				<img src="../images/ico_info3.png">
 				<p>출발시간이 지난 후에는 승차권 발권이 불가합니다. 창구 발권 시 반드시 출발시간 이전에 기차엳에 도착하셔서 발권 받으시기 바랍니다.</p>
 			</div>
 			<div class="home-ticket">
-				<img src="../ktx/images/ico_info4.png">
+				<img src="../images/ico_info4.png">
 				<p>홈페이지의 ‘홈티켓’서비스를 이용해서 인쇄하시면 별도의 창구 발권이 필요없습니다. 기차 탑승 시 역무원에게 결제한 휴대폰 번호를 말씀해 주시면 됩니다. </p>
 			</div>
 		</div>
