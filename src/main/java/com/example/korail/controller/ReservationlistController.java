@@ -101,6 +101,8 @@ public class ReservationlistController {
         session.setAttribute("uvo", updateDto);
 
         return "/reservationlist/reservation_update";
+
+
     }
 
     /* update2 */
