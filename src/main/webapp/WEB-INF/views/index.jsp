@@ -9,6 +9,7 @@
 <script src="http://localhost:9000/js/jquery-3.6.4.min.js"></script>
 <script src="http://localhost:9000/js/main.js"></script>
 <script src="http://localhost:9000/js/main2.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
  let login_result = "${login_result}";
  let logout_result = "${logout_result}";

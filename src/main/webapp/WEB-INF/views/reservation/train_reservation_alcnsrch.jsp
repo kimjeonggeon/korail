@@ -10,6 +10,7 @@
 <script src="http://localhost:9000/js/jquery-3.6.4.min.js"></script>
 <script src="http://localhost:9000/js/alcnsrch.js"></script>
 <script src="http://localhost:9000/js/rotinf2.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <style>
 .bus_time span {
 	height: 40px;
@@ -117,7 +118,7 @@ $.getJSON(url, function(citys){
 	
 	
 		<div class="page">
-			<h3>배차조회</h3>
+			<h3>배차 조회</h3>
 			<div class="buscheck_wrap clfix " style="width: 960px;">
 				<!-- 좌측 infoBox -->
 				<div class="infoBox">
@@ -136,14 +137,14 @@ $.getJSON(url, function(citys){
 						</div>
 							
 						
-						<div class="price_info bottom" id="alcnPriceInf">
+						<%--<div class="price_info bottom" id="alcnPriceInf">
 							<p class="stit">요금정보<span>(일반요금)</span></p>
 								<dl>
 									<dt>일반</dt>
 									<dd id="trainfare"></dd>
 									
 								</dl>
-						</div>
+						</div>--%>
 				</div>
 				<!-- //좌측 infoBox -->
 						
@@ -155,12 +156,15 @@ $.getJSON(url, function(citys){
 							<span class="ico_refresh">새로고침</span>
 							</button>
 						</div>
-						<div class="head_date" style="width: 700px">
+						<div style="font-size: 28px;color: #000;text-align: center;padding-top: 10px;">
+							<span>배차 시간표</span>
+						</div>
+						<%--<div class="head_date" style="width: 700px">
 							<span class="date_cont" id="rideDate"></span>
 							<input type="text" id="busDate11" readonly="" class="hasDatepicker">
 							<img class="ui-datepicker-trigger" src="http://localhost:9000/images/ico_calender.png" alt="달력" title="달력">
 							<span class="calender"></span>
-						</div>
+						</div>--%>
 						<%-- <jsp:include page="../reservcalender.jsp"></jsp:include> --%>
 					</div>
 					

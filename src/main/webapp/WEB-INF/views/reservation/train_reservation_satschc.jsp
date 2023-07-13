@@ -9,6 +9,7 @@
 <link rel="stylesheet" href="http://localhost:9000/css/train_reservation_satschc.css">
 <script src="http://localhost:9000/js/jquery-3.6.4.min.js"></script>
 <script src="http://localhost:9000/js/satschc.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <style>
 .box{
 	display:inline-block;
@@ -18,7 +19,33 @@ input:focus {
 }
 </style>
 <script>
+	function updateAdltTotAmt() {
+		// 탑승 인원 수 가져오기
+		var passengersNum = parseInt($("#passengersNum").text());
+
+		// adultcharge 가져오기
+		var adultCharge = parseInt("${ sessionScope.rvo.adultcharge }");
+
+		// 탑승 인원 수에 adultcharge를 곱한 결과 계산
+		var calculatedAmt = passengersNum * adultCharge;
+
+		if (isNaN(calculatedAmt) || calculatedAmt === 0) {
+			calculatedAmt = 0;
+		}
+
+		// 계산된 결과를 화면에 업데이트
+		$("#adltTotAmt").text(calculatedAmt + "원");
+		$("#allTotAmtLocD").text(calculatedAmt + "원");
+	}
 $(document).ready(function(){
+
+	updateAdltTotAmt();
+
+	// 탑승 인원 수가 변경될 때마다 호출되는 이벤트 핸들러 등록
+	$("#passengersNum").on("DOMSubtreeModified", function() {
+		updateAdltTotAmt(); // 변경된 값으로 업데이트
+	});
+
 	//선택 완료
 	$(".btn_selectSeat").click(function() {
 		if($("#seatNum").text() == ""){
@@ -239,7 +266,7 @@ $(document).ready(function(){
 										
 											<tr>
 												<th scope="row">성인 <span id="adltSeatCnt"></span></th>
-												<td id="adltTotAmt">${ sessionScope.rvo.adultcharge }</td>
+												<td id="adltTotAmt"></td>
 											</tr>
 											
 										</tbody>
@@ -253,7 +280,7 @@ $(document).ready(function(){
 							<section class="box_detail total_price "> <!-- 총 결재금액일 시 class="total_price" 추가 -->
 								<div class="box_title">
 									<strong class="txt_tit">총 결제금액</strong>
-									<span class="sel_price" id="allTotAmtLocD">${ sessionScope.rvo.adultcharge }원</span>
+									<span class="sel_price" id="allTotAmtLocD"></span>
 								</div>
 							</section>
 							<!-- //총 결제금액 -->
@@ -300,7 +327,7 @@ $(document).ready(function(){
 											<div class="box_inputForm">
 												<strong>아이디</strong>
 												<span class="box_label">
-													<label for=""></label>
+													<label></label>
 													<input type="text" name="id" id="id" class="input" >
 												</span>
 											</div>

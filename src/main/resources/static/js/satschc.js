@@ -69,7 +69,7 @@ $(document).ready(function(){
 		  let adltCnt = parseInt($("#adltCnt").text());
 		  
 		  let index = selectedSeats.indexOf(seatNum); // 이미 선택된 좌석인지 확인을 위한 객체
-		  
+
 		  if (index > -1) {
 		  		selectedSeats.splice(index, 1); // 배열에서 제거
     			$(this).css("opacity", "0.5"); 
@@ -89,9 +89,16 @@ $(document).ready(function(){
 					$("#ticketQty2").val(ticketQty);
 			    
 			  }else{
-			  	alert("인원수를 늘려주세요");
+			  	//alert("인원수를 늘려주세요");
+				  Swal.fire({
+					  text: "인원수를 늘려주세요.",
+					  width: 600,
+					  padding: '1.5em',
+					  confirmButtonColor: '#74b3c7',
+					  confirmButtonText: '확인'
+				  });
 			  }
-			  
+
 		  $("#selectedSeatCount").text(selectedSeats.length);
 		  
 	});
@@ -118,14 +125,7 @@ $(document).ready(function(){
 		updateseatForm.submit();
 	});
 	
-	
-	
-	
-	
-	
-	
 
-	
 	
 	  $(".modalclose").click(function() {
 		  $(".modal").css("display", "none");
@@ -173,8 +173,28 @@ $(document).ready(function(){
 		    count = 1; // 음수 값이 되지 않도록 조정
 		  }
 		  $("#adltCnt").text(count); // 감소된 값을 화면에 표시
-		  
-		  $("#seatNum .seat-input:last-child").remove();
+
+			if (selectedSeats.length > 0) {
+				var lastSelectedSeat = selectedSeats.pop(); // 배열에서 마지막 요소를 제거하고 가져옴
+				// 마지막으로 선택된 좌석의 선택 상태를 취소하고 투명도를 조정
+				$("[id^='chairImg_']").filter(function() {
+					return $(this).parent().text() + "좌석" === lastSelectedSeat;
+				}).css("opacity", "0.5");
+
+				$("#seatNum").text(selectedSeats.join(","));
+				$("#seatNum1").val($("#seatNum").text());
+				$("#seatNum2").val($("#seatNum").text());
+
+				$("#passengersNum").text(count);
+				let ticketQty = count;
+				$("#ticketQty1").val(ticketQty);
+				$("#ticketQty2").val(ticketQty);
+			}
+
+			// 선택된 좌석 수 업데이트
+			$("#selectedSeatCount").text(selectedSeats.length);
+
+			$("#seatNum .seat-input:last-child").remove();
 		  
 		});
 	  
