@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="com.example.korail.repository.PmyMapper">
+		
+	<select id="getSelect" parameterType="java.util.HashMap" resultType="com.example.korail.dto.OrderDto">
+	    SELECT * FROM KTX_ORDER WHERE id=#{id} AND DepPlandTime BETWEEN to_date(#{date1}, 'yyyy/mm/dd') AND to_date(#{date2}, 'yyyy/mm/dd')
+		<if test='status=="cancel"'>
+			AND cancel=1
+		</if>
+		<if test='status=="payments"'>
+			AND cancel=0
+		</if>
+	</select>
+
+	<select id="getInfo" parameterType="String" resultType="com.example.korail.dto.OrderDto">
+		SELECT sstation, rdate, depPlandTime, stime, dtime, dstation, price, reservnum, trainnum, chairnum, cancel, depPlaceId, arrPlaceId, cardnum, ticketqty
+		FROM KTX_ORDER
+		where reservnum=#{reservnum}
+	</select>
+
+
+	<!-- 	<update id="pass" parameterType="java.lang.String"> -->
+<!-- 		UPDATE KTX_MEMBER SET pass=#{cpass} WHERE pass=#{npass}  -->
+<!-- 	</update> -->
+	
+<!-- 	<update id="pnumber" parameterType="java.lang.String"> -->
+<!-- 		UPDATE KTX_MEMBER SET PHONENUMBER=#{cpnumber} WHERE PHONENUMBER=#{npnumber}  -->
+<!-- 	</update> -->
+	
+<!-- 	<delete id="secession" parameterType="java.lang.String"> -->
+<!-- 		DELETE FROM KTX_MEMBER WHERE ID=#{id} -->
+<!-- 	</delete> -->
+	
+</mapper>

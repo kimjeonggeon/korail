@@ -19,7 +19,7 @@
 			<div id="contentWrap">
 				<div class="dimmed"></div>
 				<div id="contents" style="padding-top: 0px;">
-					<jsp:include page="/header_payment.do"></jsp:include>
+					<jsp:include page="/header_payment"></jsp:include>
 					<div class="page">
 						<div class="tab_wrap tab_type1">
 							<ul class="tabs violet mypage_tabs col3">
@@ -110,7 +110,7 @@
 											</li>
 										</ul>
 									</div>
-									<jsp:include page="/paycal.do"></jsp:include>
+									<jsp:include page="/paycal"></jsp:include>
 									<p class="btns col1">
 										<a class="btnL btn_confirm">조회</a>
 									</p>
