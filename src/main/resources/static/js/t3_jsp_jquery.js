@@ -138,10 +138,12 @@ $(document).ready(function () {
     });
 
     $("#download").click(function () {
+        //체크된 박스 판별
         var checkboxes = $('input[name="check"]:checked');
+        // 해당
         var urls = checkboxes.map(function () {
             var reservnum = $(this).closest('td').find('input[name="rnum"]').val();
-            return "myreservation_receipt?reservnum=" + reservnum;
+            return "myreservation_receipt/" + reservnum;
         }).get();
 
         var downloadFile = function (url, reservnum) {
@@ -505,7 +507,6 @@ $(document).ready(function () {
 
         if (date1 <= date2) {
             initAjax(date1Str, date2Str, checked);
-//			  alert(date1);
         } else {
             alert("잘못된 조회");
         }
@@ -513,10 +514,9 @@ $(document).ready(function () {
 
     function initAjax(date1Str, date2Str, checked) {
         $.ajax({
-            url: "paypment_json_data?&date1Str=" + date1Str + "&date2Str=" + date2Str + "&checked=" + checked,
-            method: 'POST',
+            url: "paypment_json_data" + "/" + date1Str + "/" + date2Str + "/" + checked,
+            method: 'GET',
             success: function (response) {
-//	    alert(id + date1 + date2 + checked);
                 let jdata = JSON.parse(response);
 
                 let output = '<table class="tbl_search_result">';
@@ -563,7 +563,7 @@ $(document).ready(function () {
                     output += '<td> 일반 ' + obj.qty + '<br></td>';
                     output += '<td><span class="txt_price">' + obj.price.toLocaleString() + '원</span> <span class="txt_div"> 카드 </span></td>';
                     if (obj.status === 1) {
-                        output += '<td class="bg_payment_cancel" style="background: url(./images/bg_payment_cancel_s.png) 100% 100% no-repeat;"></td>';
+                        output += '<td class="bg_payment_cancel" style="background: url(/images/bg_payment_cancel_s.png) 100% 100% no-repeat;"></td>';
                     } else {
                         output += '<td class="bg_payment_cancel"></td>';
                     }
