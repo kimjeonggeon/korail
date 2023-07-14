@@ -2,6 +2,7 @@ package com.example.korail.controller;
 
 import com.example.korail.dto.ReservationDto;
 import com.example.korail.dto.SeatNumberDto;
+import com.example.korail.dto.UpdateDto;
 import com.example.korail.service.MailSendService;
 import com.example.korail.service.MemberService;
 import com.example.korail.service.OrderService;
@@ -48,6 +49,30 @@ public class KorailRestControlloer {
 
             for(String chair : chairNumArray){
                 String seatNum = chair.substring(3,5);
+                JsonObject jobj = new JsonObject();
+                jobj.addProperty("seat", seatNum);
+                seatList.add(jobj);
+            }
+        }
+        slist.add("seatList",seatList);
+
+        return new Gson().toJson(slist);
+    }
+
+    @GetMapping("reservationlist_update_chair_json/{trnumber}")
+    public String reservationlist_update_chair_json(HttpSession session, @PathVariable String trnumber){
+        UpdateDto uvo = (UpdateDto)session.getAttribute("uvo");
+        uvo.setTrnumber(trnumber);
+        ArrayList<SeatNumberDto> list =(ArrayList<SeatNumberDto>)orderService.getSeatnumUp(uvo);
+        JsonArray seatList = new JsonArray();
+        JsonObject slist = new JsonObject();
+
+        for(SeatNumberDto seatDto : list){
+            String chairNum = seatDto.getChairnum();
+            String[] chairNumArray = chairNum.split(",");
+
+            for(String chair : chairNumArray){
+                String seatNum = chair.substring(4,6);
                 JsonObject jobj = new JsonObject();
                 jobj.addProperty("seat", seatNum);
                 seatList.add(jobj);

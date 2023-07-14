@@ -151,27 +151,76 @@ $(document).ready(function(){
 		var cardNum3 = $("#cardNum3").val();
 		var cardNum4 = $("#cardNum4").val();
 
-	
+
 		if($("input[name='agree']:checked").length != 3){
-			alert("서비스 이용약관 동의를 체크해주세요");
+			//alert("서비스 이용약관 동의를 체크해주세요");
+			Swal.fire({
+				text: "서비스 이용약관 동의를 체크해주세요.",
+				width: 600,
+				padding: '1.5em',
+				confirmButtonColor: '#74b3c7',
+				confirmButtonText: '확인'
+			});
 			return false;
 		}else if($(".label").text() == "카드를 선택하세요"){
-			alert("카드를 선택해주세요");
+			//alert("카드를 선택해주세요");
+			Swal.fire({
+				text: "카드를 선택해주세요.",
+				width: 600,
+				padding: '1.5em',
+				confirmButtonColor: '#74b3c7',
+				confirmButtonText: '확인'
+			});
 			return false;
 		}else if(cardNum1 === "" || cardNum2 === "" || cardNum3 === "" || cardNum4 === ""){
-			alert("카드 번호를 입력해주세요");
+			//alert("카드 번호를 입력해주세요");
+			Swal.fire({
+				text: "카드 번호를 입력해주세요.",
+				width: 600,
+				padding: '1.5em',
+				confirmButtonColor: '#74b3c7',
+				confirmButtonText: '확인'
+			});
 			return false;
 		}else if($("#cardMonth").val() == ""){
-			alert("유효기간 월을 입력해주세요");
+			//alert("유효기간 월을 입력해주세요");
+			Swal.fire({
+				text: "유효기간 월을 입력해주세요.",
+				width: 600,
+				padding: '1.5em',
+				confirmButtonColor: '#74b3c7',
+				confirmButtonText: '확인'
+			});
 			return false;
 		}else if($("#cardYear").val() == ""){
-			alert("유효기간 년을 입력해주세요");
+			//alert("유효기간 년을 입력해주세요");
+			Swal.fire({
+				text: "유효기간 년도를 입력해주세요.",
+				width: 600,
+				padding: '1.5em',
+				confirmButtonColor: '#74b3c7',
+				confirmButtonText: '확인'
+			});
 			return false;
 		}else if($("#cardPw").val() == ""){
-			alert("비밀번호을 입력해주세요");
+			//alert("비밀번호을 입력해주세요");
+			Swal.fire({
+				text: "비밀번호를 입력해주세요.",
+				width: 600,
+				padding: '1.5em',
+				confirmButtonColor: '#74b3c7',
+				confirmButtonText: '확인'
+			});
 			return false;
 		}else if($("#birthday").val() == ""){
-			alert("생년월일을 입력해주세요");
+			//alert("생년월일을 입력해주세요");
+			Swal.fire({
+				text: "생년월일을 입력해주세요.",
+				width: 600,
+				padding: '1.5em',
+				confirmButtonColor: '#74b3c7',
+				confirmButtonText: '확인'
+			});
 			return false;
 		}else{
 			purchaseForm.submit();

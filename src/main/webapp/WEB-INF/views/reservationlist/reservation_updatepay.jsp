@@ -422,7 +422,7 @@
 									</caption>
 									<colgroup>
 										<col style="width:68px;">
-										<col style="width:*;">
+										<%--<col style="width:*;">--%>
 									</colgroup>
 									<tbody>
 										<tr>
@@ -651,7 +651,7 @@
 								<caption>결제금액 정보</caption>
 								<colgroup>
 									<col style="width:50%;">
-									<col style="width:*;">
+									<%--<col style="width:*;">--%>
 								</colgroup>
 								<tbody>
 									<tr>

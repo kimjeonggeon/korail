@@ -1,5 +1,6 @@
 package com.example.korail.controller;
 
+import com.example.korail.dto.CardinfoDto;
 import com.example.korail.dto.OrderDto;
 import com.example.korail.dto.SessionDto;
 import com.example.korail.dto.UpdateDto;
@@ -94,11 +95,11 @@ public class ReservationlistController {
     public String reservation_update(HttpSession session, @PathVariable String reservnum, Model model) {
         OrderDto orderDto = orderService.getSelected(reservnum);
 
-        UpdateDto updateDto = new UpdateDto();
-        updateDto.setReservnum(reservnum);
+        UpdateDto uvo = new UpdateDto();
+        uvo.setReservnum(reservnum);
 
         model.addAttribute("odt", orderDto);
-        session.setAttribute("uvo", updateDto);
+        session.setAttribute("uvo", uvo);
 
         return "/reservationlist/reservation_update";
 
@@ -109,13 +110,90 @@ public class ReservationlistController {
     @GetMapping("reservation_updatetime/{traintime}/{depPlaceId}/{arrPlaceId}")
     public String reservation_updatetime(HttpSession session, @PathVariable String traintime, @PathVariable String depPlaceId, @PathVariable String arrPlaceId ) {
 
-        UpdateDto updateDto = (UpdateDto)session.getAttribute("uvo");
+        UpdateDto uvo = (UpdateDto)session.getAttribute("uvo");
 
-        updateDto.setRtime(traintime);
-        updateDto.setStartId(depPlaceId);
-        updateDto.setEndId(arrPlaceId);
+        uvo.setRtime(traintime);
+        uvo.setStartId(depPlaceId);
+        uvo.setEndId(arrPlaceId);
 
         return "/reservationlist/reservation_updatetime";
+    }
+
+    /* update3 */
+    @PostMapping("reservation_updatechair")
+    public String reservation_updatechair(UpdateDto uvo, HttpSession session,
+                                          String depplacename, String arrplacename, String start_date, String end_date, String traingradename, String trainno, String adultcharge, String rtimes) {
+
+        //System.out.println(depplacename);
+        uvo = (UpdateDto)session.getAttribute("uvo");
+
+        uvo.setDepplacename(depplacename);
+        uvo.setArrplacename(arrplacename);
+        uvo.setStart_date(start_date);
+        uvo.setEnd_date(end_date);
+        uvo.setTraingradename(traingradename);
+        uvo.setTrainno(trainno);
+        uvo.setAdultcharge(adultcharge);
+        uvo.setRtimes(rtimes);
+
+
+        return "/reservationlist/reservation_updatechair";
+    }
+
+    /* update 3.5 */
+    @GetMapping("reservation_updateselect/{seatNum}/{ticketQty}/{id}")
+    public String reservation_updateselect(@PathVariable String seatNum, @PathVariable String ticketQty, @PathVariable String id ,HttpSession session) {
+
+        System.out.println("seatNum-->"+seatNum);
+        System.out.println("ticketQty-->"+ticketQty);
+        System.out.println("id-->"+id);
+
+        UpdateDto uvo = (UpdateDto)session.getAttribute("uvo");
+
+        uvo.setSeatNum(seatNum);
+        uvo.setTicketQty(ticketQty);
+        uvo.setId(id);
+        //"redirect:/train_reservation_stplcfmpym1.do"
+        return "/reservationlist/reservation_updatepay";
+    }
+
+    /* update 4 */
+    @GetMapping("reservation_updatepay")
+    public String reservation_updatepay(UpdateDto uvo, HttpSession session) {
+        //model.addObject("seatNum", reservationVo.getSeatNum() );
+        return "/reservationlist/reservation_updatepay";
+    }
+
+    /* update 5 - last */
+    @PostMapping("reservation_updatepay")
+    public String reservation_updatepay_proc(HttpSession session, OrderDto orderDto, CardinfoDto cardinfoDto) {
+        String viewName="";
+        UpdateDto uvo = (UpdateDto) session.getAttribute("uvo");
+
+        orderDto.setReservnum(uvo.getReservnum());
+        orderDto.setSstation(uvo.getDepplacename());
+        orderDto.setStime(uvo.getStart_date());
+        orderDto.setDtime(uvo.getEnd_date());
+        orderDto.setDstation(uvo.getArrplacename());
+        orderDto.setChairnum(uvo.getSeatNum());
+        orderDto.setId(uvo.getId());
+        orderDto.setDepPlaceId(uvo.getStartId());
+        orderDto.setArrPlaceId(uvo.getEndId());
+        orderDto.setDepPlandTime(uvo.getRtimes());
+        orderDto.setCardnum(cardinfoDto.getCardnum());
+        orderDto.setPrice(Integer.parseInt(uvo.getAdultcharge()));
+        orderDto.setTrainnum(Integer.parseInt(uvo.getTrainno()));
+        orderDto.setTicketqty(Integer.parseInt(uvo.getTicketQty()));
+
+
+        /*int result = orderService.getPaymentUpdate(orderDto);*/
+        //cardService.getPaymentUpdate(cardVo);
+        /*if(result == 1) {
+            viewName = "redirect:/reservation_main.do";
+        }else {
+            //에러페이지
+        }*/
+        return viewName;
     }
 
 

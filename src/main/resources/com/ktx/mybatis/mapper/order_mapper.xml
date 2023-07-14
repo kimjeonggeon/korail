@@ -7,17 +7,14 @@
 <mapper namespace="com.example.korail.repository.OrderMapper">
 
 
-<!--	<select id="seatnumUp" parameterType="com.korail.vo.UpdateVo" resultType="com.korail.vo.SeatNumberVo">
-			select SUBSTR(CHAIRNUM, 4,2) seatnum 
-				from( select CHAIRNUM  from ktx_order
-				where SSTATION = #{depplacename} and DSTATION= #{arrplacename} and DEPPLANDTIME = #{rtimes}  and STIME = #{start_date})
-				where substr(CHAIRNUM, 1,1) = #{trnumber} 
-				ORDER by seatnum
-	</select>-->
+	<select id="seatnumUp" parameterType="com.example.korail.dto.UpdateDto" resultType="com.example.korail.dto.SeatNumberDto">
+			select CHAIRNUM  from ktx_order
+				where SSTATION = #{depplacename} and DSTATION= #{arrplacename} and DEPPLANDTIME = #{rtimes}  and STIME = #{start_date} and cancel= 0
+	</select>
 
 	<select id="seatnum" parameterType="com.example.korail.dto.ReservationDto" resultType="com.example.korail.dto.SeatNumberDto">
 			select CHAIRNUM  from ktx_order
-				where SSTATION = #{start_add} and DSTATION= #{end_add} and DEPPLANDTIME = #{rtime}  and STIME = #{start_date}
+				where SSTATION = #{start_add} and DSTATION= #{end_add} and DEPPLANDTIME = #{rtime}  and STIME = #{start_date} and cancel= 0
 		<!-- select SUBSTR(CHAIRNUM, 4,2) seatnum from
 		(select CHAIRNUM  from ktx_order where SSTATION ='' and DSTATION='부산' and DEPPLANDTIME = '20230613' and DTIME='09시38분')
 			where substr(CHAIRNUM, 1,1) = '1' -->
@@ -42,7 +39,7 @@
         SELECT id, sstation, depPlandTime, stime, dstation, price, reservnum, trainnum, chairnum, cancel, depPlaceId, arrPlaceId, cardnum, email, to_char(cdate,'yyyy-mm-dd') cdate
         FROM KTX_ORDER
         <choose>
-            <when test='cardnum == null and email == null'>
+            <when test='cardnum == null'>
                 where id=#{id}
             </when>
             <when test='email != null'>
