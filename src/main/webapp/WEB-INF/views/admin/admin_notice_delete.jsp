@@ -18,8 +18,9 @@
 		<jsp:include page="../header.jsp"></jsp:include>
 	<h2 class="title">관리자 - 공지사항</h2>
 	</div>
-	<form id="form_delete" name="deleteForm" action="admin_notice_delete_proc.do" method="post">
+	<form id="form_delete" name="deleteForm" action="/admin_notice_delete" method="post">
 		<input type="hidden" name="nid" value="${nid}">
+		<input type="hidden" name="page" value="${page}">
 		<table class="notice_delete">
 			<tr>
 				<td><img src="http://localhost:9000/images/trash.jpg" id="trash"></td>
@@ -31,8 +32,8 @@
 				<td colspan="2">
 				<div class="button">
 					<a id="btnSubmit_delete" class="btn" >삭제완료</a>
-					<a href="admin_notice_content.do?nid=${nid}" class="btn">이전페이지</a>
-					<a href="http://localhost:9000/admin_notice_list.do" class="btn">리스트</a>
+					<a href="/admin_notice_content/${nid}/${page}" class="btn">이전페이지</a>
+					<a href="/admin_notice_list/all/all/1/" class="btn">리스트</a>
 						</div>					
 				</td>				
 			</tr>				

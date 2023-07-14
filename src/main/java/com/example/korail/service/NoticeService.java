@@ -19,4 +19,20 @@ public class NoticeService {
     public NoticeDto content(String nid) {
         return noticeMapper.content(nid);
     }
+
+    public int insert(NoticeDto noticeDto) {
+        return noticeMapper.insert(noticeDto);
+    }
+
+    public int update(NoticeDto noticeDto) {
+        return noticeMapper.update(noticeDto);
+    }
+
+    public String getNsfile(String nid) {
+        return noticeMapper.getNsfile(nid);
+    }
+
+    public int delete(String nid) {
+        return noticeMapper.delete(nid);
+    }
 }

@@ -10,4 +10,8 @@ import java.util.List;
 public interface NoticeMapper {
     List<NoticeDto> list(PageDto pageDto);
     NoticeDto content(String nid);
+    int insert(NoticeDto noticeDto);
+    int update(NoticeDto noticeDto);
+    String getNsfile(String nid);
+    int delete(String nid);
 }

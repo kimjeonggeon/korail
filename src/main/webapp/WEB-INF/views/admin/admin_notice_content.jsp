@@ -21,28 +21,28 @@
 	<table class="admin_notice_content">
 		<tr>
 			<th>제목</th>
-			<td>${noticeVo.ntitle}</td>
+			<td>${notice.ntitle}</td>
 		</tr>
 		<tr>
 			<th>내용</th>
-			<td>${noticeVo.ncontent}
+			<td>${notice.ncontent}
 			</td>
 		</tr>
 		<tr>
 			<th>조회수</th>
-			<td>${noticeVo.nhits}</td>
+			<td>${notice.nhits}</td>
 		</tr>
 		<tr>
 			<th>작성일자</th>
-			<td>${noticeVo.ndate}</td>
+			<td>${notice.ndate}</td>
 		</tr>
 		<tr>
 			<td colspan="2">
 			<div class="button">
-				<a href="admin_notice_update.do?nid=${noticeVo.nid}" class="btn">수정하기</a>
-				<a href="admin_notice_delete.do?nid=${noticeVo.nid}" class="btn">삭제하기</a>
-				<a href="admin_notice_list.do" class="btn">리스트</a>
-				<a href="admin_main.do" class="btn">관리자홈</a>
+				<a href="/admin_notice_update/${notice.nid}/${page}" class="btn">수정하기</a>
+				<a href="/admin_notice_delete/${notice.nid}/${page}" class="btn">삭제하기</a>
+				<a href="/admin_notice_list/all/all/1/" class="btn">리스트</a>
+				<a href="/admin_main" class="btn">관리자홈</a>
 					</div>
 			</td>
 		</tr>

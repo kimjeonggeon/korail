@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -18,28 +19,45 @@
 		<jsp:include page="../header.jsp"></jsp:include>
 	<h2 class="title">관리자 - 공지사항</h2>
 	</div>
-	<form id="form_update" name="updateForm" action="admin_notice_update_proc.do" method="post">
-		<input type="hidden" name="nid" value="${noticeVo.nid}">
+	<form id="form_update" name="updateForm" action="/admin_notice_update" method="post" enctype="multipart/form-data">
+		<input type="hidden" name="nid" value="${notice.nid}">
+		<input type="hidden" name="page" value="${page}">
 		<table class="notice_update">
 			<tr>
 				<th>제목</th>
 				<td>
-					<input type="text" name="ntitle" id="notice_title" value="${noticeVo.ntitle}">
+					<input type="text" name="ntitle" id="notice_title" value="${notice.ntitle}">
 				</td>
 			</tr>
 			<tr>
 				<th>내용</th>
 				<td>
-					<textarea rows="5" cols="80" name="ncontent" id="notice_content">${noticeVo.ncontent}</textarea>
+					<textarea rows="5" cols="80" name="ncontent" id="notice_content">${notice.ncontent}</textarea>
 				</td>
-			</tr>					
+			</tr>
+			<tr>
+				<th>파일업로드</th>
+				<td>
+					<input type="hidden" name="nfile" value="${notice.nfile}">
+					<input type="hidden" name="nsfile" value="${notice.nsfile}">
+					<input type="file" name="file1" id="file1">
+					<c:choose>
+						<c:when test="${notice.nfile != null}">
+							<span id="update_file">${notice.nfile}</span>
+						</c:when>
+						<c:otherwise>
+							<span id="update_file">선택된 파일 없음</span>
+						</c:otherwise>
+					</c:choose>
+				</td>
+			</tr>
 			<tr>
 				<td colspan="2">
 				<div class="button">
 					<a id="btnSubmit_update" class="btn" >수정완료</a>
 					<a id="btnAgain_update" class="btn" >다시쓰기</a>
-					<a href="admin_notice_content.do?nid=${noticeVo.nid}" class="btn">이전페이지</a>
-					<a href="admin_notice_list.do" class="btn">리스트</a>	
+					<a href="/admin_notice_content/${notice.nid}/${page}" class="btn">이전페이지</a>
+					<a href="/admin_notice_list/all/all/1/" class="btn">리스트</a>
 				</div>						
 				</td>				
 			</tr>
