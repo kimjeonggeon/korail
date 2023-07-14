@@ -1,6 +1,5 @@
-<%@ page language="java" contentType="application/pdf; charset=UTF-8"
+<%@ page contentType="application/pdf; charset=UTF-8"
          pageEncoding="UTF-8" %>
-<%@ page import="java.util.Date" %>
 <%@ page import="com.itextpdf.kernel.font.PdfFontFactory" %>
 <%@ page import="com.itextpdf.kernel.font.PdfFont" %>
 <%@ page import="com.itextpdf.kernel.pdf.PdfDocument" %>
@@ -9,8 +8,7 @@
 <%@ page import="com.itextpdf.layout.element.Paragraph" %>
 <%@ page import="com.itextpdf.layout.element.Cell" %>
 <%@ page import="com.itextpdf.layout.element.Table" %>
-<%@ page
-        import="com.itextpdf.layout.property.BorderCollapsePropertyValue" %>
+<%@ page import="com.itextpdf.layout.property.BorderCollapsePropertyValue" %>
 <%@ page import="com.itextpdf.layout.property.UnitValue" %>
 <%@ page import="com.itextpdf.kernel.colors.ColorConstants" %>
 <%@ page import="com.itextpdf.layout.borders.SolidBorder" %>
@@ -26,8 +24,7 @@
 
 
 <%
-    Date currentDate = new Date();
-    OrderDto ovo = (OrderDto) request.getAttribute("odo");
+    OrderDto ovo = (OrderDto) request.getAttribute("ovo");
 
     int cancel = ovo.getCancel();
     String cardnum = ovo.getCardnum();
@@ -184,9 +181,6 @@
     document.add(table);
     document.add(table_etc);
     document.close();
-
-    // 다운로드 설정
-    String fileName = "receipt_" + reservnum + ".pdf";
 
     // PDF 문서를 클라이언트로 전송
     pdf.close();

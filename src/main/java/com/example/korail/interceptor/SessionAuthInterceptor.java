@@ -29,12 +29,6 @@ public class SessionAuthInterceptor extends HandlerInterceptorAdapter {
 				} else {
 					response.sendRedirect("login");
 				}
-			} else {
-				String sessionId = "test";
-				if (session.getId().equals(sessionId)) {
-					session.setMaxInactiveInterval(-1);
-				}
-				return true;
 			}
 			return false;
 		}
