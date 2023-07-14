@@ -30,14 +30,14 @@ $(document).ready(function(){
 	    	});
 		}else{
 			
-			let sid = "${sessionScope.svo.id}";
+			let id = "${sessionScope.svo.id}";
 			let seatNum = $("#seatNum1").val();
 			let ticketQty = $("#ticketQty1").val();
 			
-			if(sid == ""){
+			if(id == ""){
 			  $(".modal").css("display", "block");
 			  }else{
-				  $(location).attr("href",'http://localhost:9000/reservation_updateselect.do?seatNum='+seatNum +"&ticketQty="+ticketQty+"&id="+sid );
+				  $(location).attr("href",'http://localhost:9000/reservation_updateselect/'+seatNum +"/"+ticketQty+"/"+id );
 			  }
 		}
 		
@@ -103,7 +103,7 @@ $(document).ready(function(){
 									</caption>
 									<colgroup>
 										<col style="width:66px;">
-										<col style="width:*;">
+										<%--<col style="width:*;">--%>
 									</colgroup>
 									<tbody>
 										<tr>
@@ -234,9 +234,9 @@ $(document).ready(function(){
 								<span id="seatNum" id="selectedSeatCount"></span>
 								</div>
 								<div>
-									<form name="updateseatForm" id="updateseatForm" action="reservation_updatepay.do" method="post">
+									<form name="updateseatForm" id="updateseatForm" action="/reservation_updatepay" method="post">
 										<input type="hidden" name="seatNum" id="seatNum1">
-										<input type="hidden" name="ticketQty" id ="ticketQty1">
+										<%--<input type="hidden" name="ticketQty" id ="ticketQty1">--%>
 										<input type="hidden" name="ticketQty" id ="ticketQty1" value=" ${sessionScope.svo.id }">
 									</form>
 								</div>
@@ -252,7 +252,7 @@ $(document).ready(function(){
 										</caption>
 										<colgroup>
 											<col style="width:115px;">
-											<col style="width:*;">
+											<%--<col style="width:*;">--%>
 										</colgroup>
 										<tbody>
 											<tr>
