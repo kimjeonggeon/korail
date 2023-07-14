@@ -38,9 +38,8 @@
 				//$("#page").val(e.page);
 				//alert(e.page);
 			   jQuery('.showlabelsm').text('The selected page no: '+e.page);
-			   //notice_list.submit();
+			   notice_list.submit();
 				$(location).attr('href', "http://localhost:9000/notice_list/all/all/"+e.page+"/");
-	           //$(location).attr('href', "http://localhost:9000/notice_search.do?page="+e.page);
 	    });
 		
  	});
@@ -57,7 +56,7 @@
 	</div>
 	<h2 class="title-notice">KTX 홈페이지의 새로운 소식을 확인하세요.</h2>
 	<div class="search">
-		<form class="search-form" action="notice_list_search.do" name="notice_list_search" method="post" >
+		<form class="search-form" action="notice_list_search" name="notice_list_search" method="post" >
 		<c:choose>
 		<c:when test="${category !=null }">
 			<select name="category" id="category" class="notice_search">

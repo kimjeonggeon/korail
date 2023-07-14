@@ -26,7 +26,7 @@
 		<jsp:include page="../header.jsp"></jsp:include>
 		<h2 class="title">관리자 - 공지사항</h2>
 	</div>
-	<form name="writeForm" action="admin_notice_write_proc.do" method="post" id="form_write">
+	<form name="writeForm" action="/admin_notice_write" method="post" id="form_write" enctype="multipart/form-data">
 		<table class="notice_write">
 			<tr>
 				<th>제목</th>
@@ -39,14 +39,20 @@
 				<td>
 					<textarea rows="5" cols="80" name="ncontent" id="notice_content"></textarea>
 				</td>
-			</tr>					
+			</tr>
+			<tr>
+				<th>파일업로드</th>
+				<td>
+					<input type="file" name="file1" >
+				</td>
+			</tr>
 			<tr>
 				<td colspan="2">
 				<div class="button">
 					<a id="btnSubmit" class="btn" >등록완료</a>
 					<a id="btnAgain" class="btn" >다시쓰기</a>
-					<a href="http://localhost:9000/admin_notice_list.do" class="btn">리스트</a>
-					<a href="admin_main.do" class="btn">관리자홈</a>
+					<a href="http://localhost:9000/admin_notice_list/all/all/1/" class="btn">리스트</a>
+					<a href="/admin_main" class="btn">관리자홈</a>
 					</div>
 				</td>				
 			</tr>

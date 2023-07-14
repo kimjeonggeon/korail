@@ -7,5 +7,5 @@ import org.springframework.web.multipart.MultipartFile;
 public class NoticeDto {
 	int rno, nhits;
 	String nid, ntitle, ncontent, ndate, page, category, cvalue, nfile, nsfile;
-	MultipartFile file1;
+	MultipartFile file1;	// 폼에서 넘어오는 파일 객체
 }
