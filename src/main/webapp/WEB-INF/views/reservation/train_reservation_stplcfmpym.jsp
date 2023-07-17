@@ -19,9 +19,13 @@
 <script>
 	$(document).ready(function(){
 		let id = "${sessionScope.rvo.id}";
-		
+		let email = "${sessionScope.rvo.email}";
+
+
 		if(id != "GUEST"){
 			$(".pass_user").css("display","none");
+			$("#email").val(email);
+			alert(email);
 		}
 	});
 </script>
@@ -398,7 +402,7 @@
 								
 							</div>
 							<div class="detail_info">
-								<span id="takeDrtm">4시간 15분 소요</span>
+								<span id="takeDrtm"></span>
 							</div>
 						</div>
 						<div class="routeArea route_wrap mob_route">
@@ -568,8 +572,8 @@
 						
 							
 						</div>
-							<input type="hidden" name="email1" id="email1" class="email">
-							<input type="hidden" name="email2" id="email2" class="email">
+							<input type="hidden" name="email" id="email" class="email">
+
 							
 								<div class="tab_conts" id="tab2" style="display: none;">
 						 
@@ -588,7 +592,7 @@
 								<tbody>
 									<tr>
 										<th scope="row" class="txt_black">예매금액</th>
-										<td><strong id="estmAmtView">${ sessionScope.rvo.adultcharge }</strong></td>
+										<td><strong id="estmAmtView">${ sessionScope.rvo.adltTotAmt }</strong></td>
 									</tr>
 									
 									<tr>
@@ -597,7 +601,7 @@
 									</tr>
 									<tr class="total">
 										<th scope="row" class="txt_black">총 결제금액</th>
-										<td class="totalPrice"><span id="tissuAmtView">${ sessionScope.rvo.adultcharge }</span></td>
+										<td class="totalPrice"><span id="tissuAmtView">${ sessionScope.rvo.adltTotAmt }</span></td>
 									</tr>
 								</tbody>
 							</table>

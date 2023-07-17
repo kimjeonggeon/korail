@@ -120,7 +120,7 @@
 
 											<tr>
 												<th scope="row">결제금액</th>
-												<td><strong><span id="tissuAmtView">${ sessionScope.rvo.adultcharge }</span></strong><span id="tissuAmtUntView">원</span></td>
+												<td><strong><span id="tissuAmtView">${ sessionScope.rvo.adltTotAmt }</span></strong><span id="tissuAmtUntView">원</span></td>
 											</tr>
 				
 									</tbody>

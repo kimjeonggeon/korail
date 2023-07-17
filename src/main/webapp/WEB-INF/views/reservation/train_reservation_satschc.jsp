@@ -36,6 +36,9 @@ input:focus {
 		// 계산된 결과를 화면에 업데이트
 		$("#adltTotAmt").text(calculatedAmt + "원");
 		$("#allTotAmtLocD").text(calculatedAmt + "원");
+
+		$("#adltTotAmt1").val(calculatedAmt);
+		$("#adltTotAmt2").val(calculatedAmt);
 	}
 $(document).ready(function(){
 
@@ -56,11 +59,13 @@ $(document).ready(function(){
 		let seatNum = $("#seatNum1").val();
 		let ticketQty = $("#ticketQty1").val();
 		let email = "${sessionScope.svo.email}";
-
+		let adltTotAmt = $("#adltTotAmt1").val();
+		let adltTotAmt2 = $("#adltTotAmt2").val();
+		//alert("로인한 경우"+email);
 		if(sid == ""){
 		  $(".modal").css("display", "block");
 		  }else{
-			  $(location).attr("href",'http://localhost:9000/stplcfmpym?seatNum='+seatNum +"&ticketQty="+ticketQty+"&id="+sid + "&email=" +email );
+			  $(location).attr("href",'http://localhost:9000/stplcfmpym?seatNum='+seatNum +"&ticketQty="+ticketQty+"&id="+sid + "&email=" +email +"&adltTotAmt="+adltTotAmt);
 		  }
 
 		}
@@ -351,6 +356,7 @@ $(document).ready(function(){
 										<button type="button" class="btn_confirm ready" id="btn_confirm">로그인</button>
 										<input type="hidden" name="seatNum" id="seatNum1">
 										<input type="hidden" name="ticketQty" id ="ticketQty1">
+										<input type="hidden" name="adltTotAmt" id="adltTotAmt1">
 									</p>
 			</form>
 								
@@ -377,6 +383,7 @@ $(document).ready(function(){
 						<input type="hidden" name="division" id="division" value="nomember">	
 						<input type="hidden" name="seatNum2" id="seatNum2" >
 						<input type="hidden" name="ticketQty2" id ="ticketQty2">
+						<input type="hidden" name="adltTotAmt2" id="adltTotAmt2">
 						
 			</form>
 			
@@ -384,11 +391,13 @@ $(document).ready(function(){
 				</div>	
 			</div>
 		</div>
-	
-		<form id="LoginForm" name="LoginForm" action="train_reservation_stplcfmpym1" method="post">
+
+		<%--로그인이 되어있는경우--%>
+		<form id="LoginForm" name="LoginForm" action="train_reservation_stplcfmpym" method="post">
 			<input type="hidden" name="seatNum" id="seatNum1">
 			<input type="hidden" name="ticketQty" id ="ticketQty1">
 			<input type="hidden" name="ticketQty" id ="ticketQty1" value=" ${sessionScope.svo.id }">
+			<input type="hidden" name="adltTotAmt" id="adltTotAmt1">
 		</form>
 
 
