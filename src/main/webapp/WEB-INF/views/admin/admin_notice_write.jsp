@@ -51,7 +51,7 @@
 				<div class="button">
 					<a id="btnSubmit" class="btn" >등록완료</a>
 					<a id="btnAgain" class="btn" >다시쓰기</a>
-					<a href="http://localhost:9000/admin_notice_list/all/all/1/" class="btn">리스트</a>
+					<a href="http://localhost:9000/admin_notice_list/1/" class="btn">리스트</a>
 					<a href="/admin_main" class="btn">관리자홈</a>
 					</div>
 				</td>				

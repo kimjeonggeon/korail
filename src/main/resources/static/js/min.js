@@ -406,32 +406,194 @@ $(document).ready(function() {
 	});
 });
 
+// $(document).ready(function() {
+// 	//공지사항 검색
+// 	$("#notice_search").click(function() {
+// 	var category = $("#category").val();
+// 	var cvalue = $("#cvalue").val();
+// 		if(category == "title") {
+// 			if(cvalue == ""){
+// 				alert("제목을 입력해주세요");
+// 					$("#cvalue").focus();
+// 						return false;
+// 			}
+// 		} else if(category == "content") {
+// 			if(cvalue == ""){
+// 				alert("내용을 입력해주세요");
+// 					$("#cvalue").focus();
+// 						return false;
+// 			}
+// 		} else if(category == "title_content") {
+// 			if(cvalue == ""){
+// 				alert("제목 또는 내용을 입력해주세요");
+// 					$("#cvalue").focus();
+// 						return false;
+// 			}
+//
+// 		}
+// 		notice_list.submit();
+// 	});
+// });
+
 $(document).ready(function() {
-	//공지사항 검색
-	$("#notice_search").click(function() {
-	var category = $("#category").val();
-	var cvalue = $("#cvalue").val();
-		if(category == "title") {
-			if(cvalue == ""){
-				alert("제목을 입력해주세요");
-					$("#cvalue").focus(); 
-						return false;
-			} 
-		} else if(category == "content") {
-			if(cvalue == ""){
-				alert("내용을 입력해주세요");
-					$("#cvalue").focus(); 
-						return false;
-			} 
-		} else if(category == "title_content") {
-			if(cvalue == ""){
-				alert("제목 또는 내용을 입력해주세요");
-					$("#cvalue").focus(); 
-						return false;
-			} 
-			
-		} 
-		notice_list.submit();
-	});
-	
+
+	initAjax(1);
+
+	function initAjax(page) {
+		$.ajax({
+			url: "notice_list_json_data/" + page + "/",
+			success: function(result) {
+				//alert(result.list[0].ntitle);
+			let output = "<table class='notice_search'>";
+			output += "<tr>";
+			output += "<th style='width: 15px'>번호</th>";
+			output += "<th>제목</th>";
+			output += "<th style='width: 15px'>조회수</th>";
+			output += "<th style='width: 30px'>등록일자</th>";
+			output += "</tr>";
+
+			for(obj of result.list) {
+				output += "<tr>";
+				output += "<td>"+ obj.rno +"</td>";
+				output += "<td class='ntitle' id='"+ obj.nid +"'><a>"+ obj.ntitle  +"</a></td>";
+				output += "<td>"+ obj.nhits +"</td>";
+				output += "<td>"+ obj.ndate +"</td>";
+				output += "</tr>";
+			}
+			output += "<tr>";
+			output += "<td colspan='5' class='paging'>";
+			output += "<div id='ampaginationsm' class='paging'></div>";
+			output += "</td>";
+			output += "</tr>";
+			output += "</table>";
+
+				// output 출력
+				$("table.notice_search").remove();
+				$("h3").after(output);
+
+				// 페이징 처리 함수 호출
+				pager(result.page.dbCount, result.page.pageCount, result.page.pageSize, result.page.reqPage);
+
+				// content(상세보기) 이벤트
+				$(".ntitle").click(function () {
+					contentAjax($(this).attr("id"), page);
+				});
+
+				// 페이지 번호 클릭 이벤트
+				jQuery('#ampaginationsm').on('am.pagination.change',function(e){
+					jQuery('.showlabelsm').text('The selected page no: '+e.page);
+
+					initAjax(e.page);
+				});
+			}
+		});	// ajax
+	}	// initAjax
+
+	// 페이징 처리 함수
+	function pager(totals, maxSize, pageSize, page){
+		//alert(totals+","+maxSize+","+pageSize+","+page);
+
+		var pager = jQuery('#ampaginationsm').pagination({
+
+			maxSize: maxSize,	    		// max page size
+			totals: totals,	// total pages
+			page: page,		// initial page
+			pageSize: pageSize,			// max number items per page
+
+			// custom labels
+			lastText: '&raquo;&raquo;',
+			firstText: '&laquo;&laquo;',
+			prevText: '&laquo;',
+			nextText: '&raquo;',
+
+			btnSize:'sm'	// 'sm'  or 'lg'
+		});
+	}
+
+	// 상세보기
+	function contentAjax(nid, page) {
+		$.ajax({
+			url: "notice_content_json_data/" + nid + "/",
+			success: function (notice) {
+				let output = "<div class='notice_content'>";
+				output += "<div class='line2'></div>";
+				output += "<div class='table_content'><p id='notice_table1'>" + notice.ntitle + "</p><p id='notice_table2'>" + notice.ndate + "</p></div>";
+				output += "<div class='line2'></div>";
+				output += "<p id='content_title'>" + notice.ntitle + "</p>";
+				output += "<p id='content_content'>" + notice.ncontent + "<br>";
+				if(notice.nsfile != null) {
+					output += "<img src='http://localhost:9000/upload/" + notice.nsfile + "'>";
+				}
+				output += "</p><div>";
+				output += "<div class='line2'></div>";
+				output += "<div class='button'>";
+				output += "<a class='btn' id='list'>리스트</a>";
+				output += "<a class='btn' id='click_before'><</a>";
+				output += "<a class='btn' id='click_after'>></a>";
+				output += "<input type='hidden' id='before_hidden'>";
+				output += "<input type='hidden' id='next_hidden'>";
+				output += "</div>";
+				output += "</div>";
+				output += "</div>";
+
+				$("table.notice_search").remove();
+				$("h3").after(output);
+
+				$("#list").click(function() {
+					$(".notice_content").remove();
+					initAjax(page);
+				});
+
+			}	// success
+		});	// ajax
+	}	// contentAjax
+
+	// 공지사항 검색
+	function searchAjax(category, cvalue, page) {
+		$.ajax({
+			url: "notice_search_json_data/" + page + "/",
+			success: function(search) {
+				let output = "<form class='search-form' action='notice_list_search' name='notice_list_search' method='post'>";
+				if (category != null) {
+					output += "<select name='category' id='category' class='notice_search'>";
+					if (category == "all") {
+						output += "<option value='all' selected>전체</option>";
+						output += "<option value='title'>제목</option>";
+						output += "<option value='content'>내용</option>";
+						output += "<option value='title_content'>제목+내용</option>";
+					} else if (category == "title") {
+						output += "<option value='all'>전체</option>";
+						output += "<option value='title' selected>제목</option>";
+						output += "<option value='content'>내용</option>";
+						output += "<option value='title_content'>제목+내용</option>";
+					} else if (category == "content") {
+						output += "<option value='all'>전체</option>";
+						output += "<option value='title'>제목</option>";
+						output += "<option value='content' selected>내용</option>";
+						output += "<option value='title_content'>제목+내용</option>";
+					} else if (category == "title_content") {
+						output += "<option value='all'>전체</option>";
+						output += "<option value='title'>제목</option>";
+						output += "<option value='content'>내용</option>";
+						output += "<option value='title_content' selected>제목+내용</option>";
+					}
+					output += "</select>";
+					output += "<input type='text' name='cvalue' maxLength=100 autocomplete='off' value=" + search.cvalue + "required>";
+				} else {
+					output += "<select name='category' id='category' class='notice_search'>";
+					output += "<option value='all'>전체</option>";
+					output += "<option value='title'>제목</option>";
+					output += "<option value='content'>내용</option>";
+					output += "<option value='title_content'>제목+내용</option>";
+					output += "</select>";
+					output += "<input type='text' name='cvalue' id='cvalue' maxLength=100 autocomplete='off' placeholder='검색어를 입력하세요' required>";
+				}
+				output += "<input type='hidden' name='page' value='1' id='page'>";
+				output += "<button type='button' id='notice_search'>검색</button>";
+				output += "<button type='reset'>다시입력</button>";
+				output += "</form>";
+
+			}	// success
+		});	// ajax
+	}
 });

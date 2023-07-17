@@ -100,7 +100,7 @@ $(document).ready(function() {
 						<li><a href="http://localhost:9000/mypage" onclick="bye(event)">회원탈퇴</a></li>
 					</ul>
 				</li>
-				<li><a href="http://localhost:9000/notice_list/all/all/1/">공지사항</a></li>
+				<li><a href="http://localhost:9000/notice_list_json">공지사항</a></li>
 			</ul>
 		</div>
 	</div>

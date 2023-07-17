@@ -37,7 +37,7 @@
 		<div class="line2"></div>
 			
 			<div class="button">
-				<a href="/notice_list/all/all/1/" class="btn">리스트</a>
+				<a href="/notice_list/1/" class="btn" id="list">리스트</a>
 				<a href="http://localhost:9000/notice_content.do?nid=${nprev}" class="btn" id="click_before"><</a>
 				<a href="http://localhost:9000/notice_content.do?nid=${nnext}" class="btn" id="click_after">></a>
 				<input type="hidden" id="before_hidden" value="${nprev}">

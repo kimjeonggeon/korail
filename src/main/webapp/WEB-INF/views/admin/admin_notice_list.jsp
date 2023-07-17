@@ -32,7 +32,7 @@
 		
 		jQuery('#ampaginationsm').on('am.pagination.change',function(e){
 			   jQuery('.showlabelsm').text('The selected page no: '+e.page);
-	           $(location).attr('href', "http://localhost:9000/admin_notice_list/all/all/"+e.page+"/");
+	           $(location).attr('href', "http://localhost:9000/admin_notice_list/"+e.page+"/");
 	    });
 		
  	});

@@ -64,7 +64,7 @@
 		</div>
 		<div class="admin_main">
 			<ul>
-				<li class="admin_notice_btn"><a href="http://localhost:9000/admin_notice_list/all/all/1/">공지사항</a></li>
+				<li class="admin_notice_btn"><a href="http://localhost:9000/admin_notice_list/1/">공지사항</a></li>
 				<li class="admin_notice_btn"><a href="http://localhost:9000/admin_trainlist">열차조회</a></li>
 				<li class="admin_reserv_btn"><a href="http://localhost:9000/admin_reservationlist">예매관리</a></li>
 				<li class="admin_member_btn"><a href="http://localhost:9000/admin_member/1/">회원관리</a></li>
