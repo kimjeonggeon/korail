@@ -68,6 +68,8 @@ $(document).ready(function(){
 	*******************************/
 	
 	$("#btnJoin").click(function(){
+		var passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
+		var password = $("#pass").val();
 		if($("#id").val() == ""){
 			alert("아이디를 입력해주세요");
 			$("#id").focus();
@@ -76,8 +78,9 @@ $(document).ready(function(){
 			alert("중복체크를 진행해주세요");
 			$("#btnIdCheck").focus();
 			return false;
-		}else if($("#pass").val() == ""){
-			alert("패스워드를 입력해주세요");
+		}else if($("#pass").val() == "" ||
+			!passwordRegex.test(password)){
+			alert("패스워드를 대문자,소문자,숫자 포함하여 8자 이상 입력해주세요");
 			$("#pass").focus();
 			return false;
 		}else if($("#cpass").val() == ""){
