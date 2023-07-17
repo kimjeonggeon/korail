@@ -30,6 +30,7 @@ public class PaymentController {
         return "/payment_history/payment_history_view";
     }
 
+
     @GetMapping("/paycal")
     public String paycal() {
 
@@ -38,37 +39,25 @@ public class PaymentController {
 
     @GetMapping("/paypment_json_data/{date1Str}/{date2Str}/{checked}")
     @ResponseBody
-    public String plahis_json_data(HttpSession session, @PathVariable String date1Str, @PathVariable String date2Str, @PathVariable String checked) {
+    public ArrayList<OrderDto> plahis_json_data(HttpSession session, @PathVariable String date1Str, @PathVariable String date2Str, @PathVariable String checked) {
+        // service 데이터 전송 객체 생성
         HashMap<String, String> param = new HashMap<String, String>();
-		//a s
+
+        // 해당 객체에 id, 조회시작일, 조회종료일, 상태 입력
         SessionDto svo = (SessionDto) session.getAttribute("svo");
         String id = svo.getId();
+
         param.put("id", id);
         param.put("date1", date1Str);
         param.put("date2", date2Str);
-        param.put("status", checked);
-        ArrayList<OrderDto> list
+        param.put("cancel", checked);
+
+        // 결제내역 데이터를 ArrayList 형태로 수령
+        ArrayList<OrderDto> Dtlist
                 = pmyhisService.getSelect(param);
 
-        JsonObject jlist = new JsonObject();
-        JsonArray jarray = new JsonArray();
-
-        for (OrderDto phv : list) {
-            JsonObject jobj = new JsonObject();  //{}
-            jobj.addProperty("rdate", phv.getRdate()); //{rno:1}
-            jobj.addProperty("sstation", phv.getSstation());
-            jobj.addProperty("dstation", phv.getDstation());
-            jobj.addProperty("stime", phv.getStime());
-            jobj.addProperty("price", phv.getPrice());
-            jobj.addProperty("qty", phv.getTicketqty());
-            jobj.addProperty("time", phv.getDepPlandTime());
-            jobj.addProperty("status", phv.getCancel());
-            jobj.addProperty("rnum", phv.getReservnum());
-            jarray.add(jobj);
-        }
-        jlist.add("jlist", jarray);
-//	System.out.println(jlist.toString());
-        return new Gson().toJson(jlist);
+        // aJax에 해당 데이터 리턴
+        return Dtlist;
     }
 
     @GetMapping("/spurchase")

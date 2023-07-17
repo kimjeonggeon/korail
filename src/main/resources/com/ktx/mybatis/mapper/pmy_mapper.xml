@@ -8,10 +8,10 @@
 		
 	<select id="getSelect" parameterType="java.util.HashMap" resultType="com.example.korail.dto.OrderDto">
 	    SELECT * FROM KTX_ORDER WHERE id=#{id} AND DepPlandTime BETWEEN to_date(#{date1}, 'yyyy/mm/dd') AND to_date(#{date2}, 'yyyy/mm/dd')
-		<if test='status=="cancel"'>
+		<if test='cancel=="cancel"'>
 			AND cancel=1
 		</if>
-		<if test='status=="payments"'>
+		<if test='cancel=="payments"'>
 			AND cancel=0
 		</if>
 	</select>

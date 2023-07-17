@@ -512,10 +512,9 @@ $(document).ready(function () {
 
     function initAjax(date1Str, date2Str, checked) {
         $.ajax({
-            url: "paypment_json_data" + "/" + date1Str + "/" + date2Str + "/" + checked,
+            url: "/paypment_json_data" + "/" + date1Str + "/" + date2Str + "/" + checked,
             method: 'GET',
-            success: function (response) {
-                let jdata = JSON.parse(response);
+            success: function (result) {
 
                 let output = '<table class="tbl_search_result">';
                 output += '<colgroup>';
@@ -542,14 +541,14 @@ $(document).ready(function () {
                 output += '</thead>';
                 output += '<tbody>';
 
-                for (obj of jdata.jlist) {
+                for (obj of result) {
 
-                    var time = obj.time.substr(0, 4) + '.' + obj.time.substr(4, 2) + '.' + obj.time.substr(6, 2);
-                    var stime = obj.stime.substr(0, 2) + ':' + obj.stime.substr(3, 3);
+                    var stime = obj.stime.substr(0,2) + obj.stime.substr(3,2);
+                    var dtime = obj.dtime.substr(0,2) + obj.dtime.substr(3,2);
 
                     output += '<tr>';
-                    output += '<td><input type="hidden" name="status" value="' + obj.status + '"><input name="check" type="checkbox" id="checkbox' + jdata.jlist.indexOf(obj) + '">';
-                    output += '<input type="hidden" name="rnum" value="' + obj.rnum + '"></td>';
+                    output += '<td><input type="hidden" name="status" value="' + obj.cancel + '"><input name="check" type="checkbox" id="checkbox' + result.indexOf(obj) + '">';
+                    output += '<input type="hidden" name="rnum" value="' + obj.reservnum + '"></td>';
                     output += '<td>' + obj.rdate + '</td>';
                     output += '<td><span class="txt_purple"> 편도 </span></td>';
                     output += '<td>';
@@ -557,11 +556,11 @@ $(document).ready(function () {
                     output += '<span class="roundBox">' + obj.sstation + '</span> <span class="roundBox">' + obj.dstation + '</span>';
                     output += '</div>';
                     output += '</td>';
-                    output += '<td><span class="tbl_ico ico_departure">' + time + " " + stime + " " + '<span class="txt_date"> 고속 </span></span></td>';
-                    output += '<td> 일반 ' + obj.qty + '<br></td>';
+                    output += '<td><span class="tbl_ico ico_departure">' + stime + " " +dtime + " " + '<span class="txt_date"> 고속 </span></span></td>';
+                    output += '<td> 일반 ' + obj.ticketqty + '<br></td>';
                     output += '<td><span class="txt_price">' + obj.price.toLocaleString() + '원</span> <span class="txt_div"> 카드 </span></td>';
-                    if (obj.status === 1) {
-                        output += '<td class="bg_payment_cancel" style="background: url(/images/bg_payment_cancel_s.png) 100% 100% no-repeat;"></td>';
+                    if (obj.cancel === 1) {
+                        output += '<td class="bg_payment_cancel" style="background: url(http://localhost:9000/images/bg_payment_cancel_s.png) 100% 100% no-repeat;"></td>';
                     } else {
                         output += '<td class="bg_payment_cancel"></td>';
                     }
