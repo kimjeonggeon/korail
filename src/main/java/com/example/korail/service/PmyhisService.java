@@ -23,4 +23,8 @@ public class PmyhisService{
         return pmyMapper.getSelect(param);
     }
 
+    public int preferential( HashMap<String, String> param) {
+        return pmyMapper.preferential(param);
+    }
+
 }

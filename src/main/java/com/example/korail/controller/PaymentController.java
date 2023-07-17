@@ -2,15 +2,16 @@ package com.example.korail.controller;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
+import com.example.korail.dto.MemberDto;
 import com.example.korail.dto.OrderDto;
 import com.example.korail.dto.SessionDto;
 import com.example.korail.service.PmyhisService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import com.google.gson.Gson;
@@ -29,17 +30,6 @@ public class PaymentController {
         return "/payment_history/payment_history_view";
     }
 
-    @GetMapping("/myreservation_receipt")
-    @ResponseBody
-    public String reservation_receipt(String reservnum, Model model) {
-
-        OrderDto orderVo = pmyhisService.getInfo(reservnum);
-
-        model.addAttribute("ovo", orderVo);
-
-        return "/payment_history/payment_receipt";
-    }
-
     @GetMapping("/paycal")
     public String paycal() {
 
@@ -53,7 +43,6 @@ public class PaymentController {
 		//a s
         SessionDto svo = (SessionDto) session.getAttribute("svo");
         String id = svo.getId();
-		String ab ="";
         param.put("id", id);
         param.put("date1", date1Str);
         param.put("date2", date2Str);
@@ -80,5 +69,25 @@ public class PaymentController {
         jlist.add("jlist", jarray);
 //	System.out.println(jlist.toString());
         return new Gson().toJson(jlist);
+    }
+
+    @GetMapping("/spurchase")
+    public String simple_purchased() {
+        return "/payment_history/s_reservation";
+    }
+
+    @GetMapping("/preferential_proc")
+    public String preferential_proc (HttpSession session, MemberDto memberDto) {
+        HashMap<String, String> param = new HashMap<>();
+
+        SessionDto svo = (SessionDto) session.getAttribute("svo");
+        String id = svo.getId();
+        System.out.println("id : " + id);
+
+        param.put("id", id);
+        param.put("preferential", String.valueOf(memberDto.getPREFERENTIAL()));
+        pmyhisService.preferential(param);
+
+        return "index";
     }
 }

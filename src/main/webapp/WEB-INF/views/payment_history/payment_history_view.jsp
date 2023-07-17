@@ -122,6 +122,9 @@
 											선택</button>
 										<button type="button" class="pmy" id="download">영수증
 											다운로드</button>
+										<button type="button" class="pmy" id="aszip">압축
+											다운로드</button>
+
 									</span>
 								</p>
 								<ul class="desc_list">
