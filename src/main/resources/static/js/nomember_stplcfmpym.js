@@ -57,7 +57,22 @@ $(document).ready(function(){
 		var cardNum2 = $("#cardNum2").val();
 		var cardNum3 = $("#cardNum3").val();
 		var cardNum4 = $("#cardNum4").val();
-	
+		var email1 = $("#userEmail1").val();
+		var email2 = $("#userEmail2").val();
+
+		var email = email1 + "@" + email2;
+
+		if(email == "@"){
+			email = $("#email").val();
+			//alert(email);
+		}else {
+			$("#email").val(email);
+			//alert(email);
+		}
+
+
+		//alert(email);
+
 		if($("input[name='agree']:checked").length != 3){
 			//alert("서비스 이용약관 동의를 체크해주세요");
 			Swal.fire({

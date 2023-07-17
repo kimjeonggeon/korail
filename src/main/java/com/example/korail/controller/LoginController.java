@@ -55,6 +55,7 @@ public class LoginController {
                 rvo.setTicketQty(memberDto.getTicketQty());
                 rvo.setId(memberDto.getId());
                 rvo.setEmail(svo.getEmail());
+                rvo.setAdltTotAmt(memberDto.getAdltTotAmt());
                 loginReturn = "redirect:/train_reservation_stplcfmpym";
             } else if (memberDto.getPagename().equals("reservationlist")) {
                 session.setAttribute("id", memberDto.getId());
