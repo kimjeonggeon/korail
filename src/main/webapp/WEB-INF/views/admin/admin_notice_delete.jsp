@@ -33,7 +33,7 @@
 				<div class="button">
 					<a id="btnSubmit_delete" class="btn" >삭제완료</a>
 					<a href="/admin_notice_content/${nid}/${page}" class="btn">이전페이지</a>
-					<a href="/admin_notice_list/all/all/1/" class="btn">리스트</a>
+					<a href="/admin_notice_list/1/" class="btn">리스트</a>
 						</div>					
 				</td>				
 			</tr>				

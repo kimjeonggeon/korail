@@ -50,6 +50,7 @@ body {
 
 .title-notice {
 	text-align: center;
+	font-size: 24px;
 	color: black;
 	font-weight: 700;
 	padding: 30px 0;
@@ -1057,4 +1058,12 @@ table #testTable tr:first-child td {
 p#content_content {
 	display: flex;
 	justify-content: space-between;
+}
+
+.ntitle:hover {
+	cursor: pointer;
+}
+
+#list:hover {
+	cursor: pointer;
 }

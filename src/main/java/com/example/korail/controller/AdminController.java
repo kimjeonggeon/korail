@@ -24,9 +24,9 @@ public class AdminController {
     @Autowired
     FileService fileService;
 
-    @GetMapping("admin_notice_list/{category}/{cvalue}/{page}")
-    public String admin_notice_list(@PathVariable String category, @PathVariable String cvalue, @PathVariable String page, Model model) {
-        PageDto pageDto = pageService.getPageResult(new PageDto(category, cvalue, page, "notice"));
+    @GetMapping("admin_notice_list/{page}")
+    public String admin_notice_list(@PathVariable String page, Model model) {
+        PageDto pageDto = pageService.getPageResult(new PageDto(page, "notice"));
         model.addAttribute("list", noticeService.list(pageDto));
         model.addAttribute("page", pageDto);
         return "/admin/admin_notice_list";
@@ -51,7 +51,7 @@ public class AdminController {
         if(result == 1) {
             fileService.fileSave(noticeDto);
         }
-        return "redirect:/admin_notice_list/all/all/1/";
+        return "redirect:/admin_notice_list/1/";
     }
 
 
@@ -75,7 +75,7 @@ public class AdminController {
                 fileService.fileDelete(oldNsFile);
             }
         }
-        return "redirect:/admin_notice_list/all/all/" + noticeDto.getPage() + "/";
+        return "redirect:/admin_notice_list/" + noticeDto.getPage() + "/";
     }
 
     @GetMapping("admin_notice_delete/{nid}/{page}")
@@ -94,6 +94,6 @@ public class AdminController {
                 fileService.fileDelete(oldNsFile);
             }
         }
-        return "redirect:/admin_notice_list/all/all/" + noticeDto.getPage() + "/";
+        return "redirect:/admin_notice_list/" + noticeDto.getPage() + "/";
     }
 }

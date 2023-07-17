@@ -39,7 +39,7 @@
 				//alert(e.page);
 			   jQuery('.showlabelsm').text('The selected page no: '+e.page);
 			   notice_list.submit();
-				$(location).attr('href', "http://localhost:9000/notice_list/all/all/"+e.page+"/");
+				$(location).attr('href', "http://localhost:9000/notice_list/"+e.page+"/");
 	    });
 		
  	});
@@ -102,25 +102,27 @@
 			<button type="reset">다시입력</button> 
 		</form>
 	</div>
-	<table class="notice_search">
-		<tr>
-			<th style="width: 15px">번호</th>
-			<th>제목</th>
-			<th style="width: 15px">조회수</th>
-			<th style="width: 30px">등록일자</th>
-		</tr>
-		<c:forEach var="notice" items="${list}">
-		<tr>
-			<td>${notice.rno}</td>
-			<td><a href="/notice_content/${notice.nid}/${page.reqPage}">${notice.ntitle}</a></td>
-			<td>${notice.nhits}</td>
-			<td>${notice.ndate}</td>
-		</tr>
-		</c:forEach>
-		<tr>
-			<td colspan="5" class="paging"><div id="ampaginationsm" class="paging"></div></td>
-		</tr>
-	</table>
+	<div class="notice_table">
+		<table class="notice_search">
+			<tr>
+				<th style="width: 15px">번호</th>
+				<th>제목</th>
+				<th style="width: 15px">조회수</th>
+				<th style="width: 30px">등록일자</th>
+			</tr>
+			<c:forEach var="notice" items="${list}">
+			<tr>
+				<td>${notice.rno}</td>
+				<td><a href="/notice_content/${notice.nid}/${page.reqPage}">${notice.ntitle}</a></td>
+				<td>${notice.nhits}</td>
+				<td>${notice.ndate}</td>
+			</tr>
+			</c:forEach>
+			<tr>
+				<td colspan="5" class="paging"><div id="ampaginationsm" class="paging"></div></td>
+			</tr>
+		</table>
+	</div>
 	<jsp:include page="../footer.jsp"></jsp:include>
 	</div>
 </body>

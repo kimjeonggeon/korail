@@ -41,7 +41,7 @@
 			<div class="button">
 				<a href="/admin_notice_update/${notice.nid}/${page}" class="btn">수정하기</a>
 				<a href="/admin_notice_delete/${notice.nid}/${page}" class="btn">삭제하기</a>
-				<a href="/admin_notice_list/all/all/1/" class="btn">리스트</a>
+				<a href="/admin_notice_list/1/" class="btn">리스트</a>
 				<a href="/admin_main" class="btn">관리자홈</a>
 					</div>
 			</td>

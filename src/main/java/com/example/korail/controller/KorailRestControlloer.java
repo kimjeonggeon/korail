@@ -1,11 +1,7 @@
 package com.example.korail.controller;
 
-import com.example.korail.dto.ReservationDto;
-import com.example.korail.dto.SeatNumberDto;
-import com.example.korail.dto.UpdateDto;
-import com.example.korail.service.MailSendService;
-import com.example.korail.service.MemberService;
-import com.example.korail.service.OrderService;
+import com.example.korail.dto.*;
+import com.example.korail.service.*;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
@@ -16,6 +12,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 @RestController
 public class KorailRestControlloer {
@@ -27,6 +26,12 @@ public class KorailRestControlloer {
 
     @Autowired
     MailSendService mailSendService;
+
+    @Autowired
+    NoticeService noticeService;
+
+    @Autowired
+    PageService pageService;
 
 
     @GetMapping("mailCheck/{email}")
@@ -101,7 +106,32 @@ public class KorailRestControlloer {
         return orderService.getCancelResult(reservnum);
     }
 
+    @GetMapping("notice_list_json_data/{page}/")
+    public Map notice_list_json_data(@PathVariable String page) {
+        Map map = new HashMap();
+        PageDto pageDto = pageService.getPageResult(new PageDto(page, "notice"));
+        List<NoticeDto> list = noticeService.list(pageDto);
 
+        map.put("list", list);
+        map.put("page", pageDto);
 
+        return map;
+    }
 
+    @GetMapping("notice_content_json_data/{nid}")
+    public NoticeDto notice_content_json_data(@PathVariable String nid) {
+        return noticeService.content(nid);
+    }
+
+    @GetMapping("notice_search_json_data/{page}")
+    public Map notice_search_json_data(@PathVariable String page) {
+        Map map = new HashMap();
+        PageDto pageDto = pageService.getPageResult(new PageDto(page,"notice"));
+        List<NoticeDto> list = noticeService.list(pageDto);
+
+        map.put("list", list);
+        map.put("page", pageDto);
+
+        return map;
+    }
 }
