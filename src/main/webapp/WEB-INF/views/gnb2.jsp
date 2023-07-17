@@ -24,7 +24,6 @@
 		border: 1px solid #ddd;
 	}
 	
-	
 </style>
 </head>
 <body>
@@ -60,17 +59,14 @@
 				<li><a class="depth4">회원정보관리</a>
 					<ul class="depth4-1" style="padding-left: 2px; display: none;">
 						<li><a href="mypage">나의정보수정</a></li>
-						<li><a href="s_reservation">우대예약 등록</a></li>
-						<li><a href="#">간편구매 정보 등록</a></li>
+						<li><a href="spurchase">맞춤형 우대예약 등록</a></li>
 						<!-- 다자녀, 임신부, 기초생활수급자 -->
-						<li><a href="mypage" onclick="bye(event)">회원탈퇴</a></li>
+						<li><a href="mypage">회원탈퇴</a></li>
 					</ul>
 				
 				<li><a href="http://localhost:9000/admin_main">공지사항</a></li>
 			</ul>
 		</div>
-
-		
 	</div>
 </body>
 </html>

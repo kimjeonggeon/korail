@@ -13,8 +13,8 @@ $(document).ready(function () {
             if (fileInput[0].files.length === 0) {
                 alert("첨부파일을 첨부하여 주시기 바랍니다.");
             } else {
-                //파일 전송
-
+                preferential.submit();
+                alert("abc");
             }
 
         } else {
@@ -114,10 +114,6 @@ $(document).ready(function () {
         }
     });
 
-    function bye(event) {
-        alert("bye");
-    };
-
     /***************************************************************************
      *
      *    payment_history_view
@@ -138,28 +134,30 @@ $(document).ready(function () {
     });
 
     $("#download").click(function () {
-        //체크된 박스 판별한다.
+        //체크된 박스 판별
         var checkboxes = $('input[name="check"]:checked');
-        // 체크된 박스들이 포함한 reservnum으로 각 url을 배열로 저장한다.
-            var urls = checkboxes.map(function () {
-                var reservnum = $(this).closest('td').find('input[name="rnum"]').val();
-                return "myreservation_receipt/" + reservnum;
-            }).get();
+        // 해당 url
+        var urls = checkboxes.map(function () {
+            var reservnum = $(this).closest('td').find('input[name="rnum"]').val();
+            return "/pdf/myreservation_receipt/" + reservnum;
+        }).get();
 
-        var downloadFile = function (url, reservnum) {
-            var link = document.createElement('a');
-            link.href = url;
-            link.download = 'korail_recipt_' + reservnum;
-            link.target = '_blank';
-            link.click();
-        };
-
-        urls.forEach((url, index) => {
-            var reservnum = checkboxes.eq(index).closest('td').find('input[name="rnum"]').val();
+        urls.forEach(function (url, index) {
             setTimeout(function () {
-                downloadFile(url, reservnum);
-            }, index * 1);
+                window.open(url, '_blank')
+            }, index * 10);
         });
+    });
+
+    $("#aszip").click(function () {
+        var checkboxes = $('input[name="check"]:checked');
+        // 해당 url
+        var urls = checkboxes.map(function () {
+            var reservnum = $(this).closest('td').find('input[name="rnum"]').val();
+            return "/pdf/myreservation_receipt/" + reservnum;
+        }).get();
+
+        window.location.href = "/pdf/myreservation_receipts?urls=" + encodeURIComponent(JSON.stringify(urls));
     });
 
     // '전체' 라디오 버튼이 선택되도록 설정
@@ -196,7 +194,7 @@ $(document).ready(function () {
 
             // 공통된 img 생성 로직
             var img = $('<img>').attr({
-                src: './images/pmy_checked.png',
+                src: '/images/pmy_checked.png',
                 style: 'position: absolute; width: 15px; height: 15px; transform: translate(4px, 1px);'
             });
 

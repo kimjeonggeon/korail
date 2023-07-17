@@ -11,4 +11,6 @@ public interface PmyMapper {
     OrderDto getInfo(String reservnum);
 
     ArrayList<OrderDto> getSelect(HashMap<String, String> param);
+
+    int preferential( HashMap<String, String> param);
 }
