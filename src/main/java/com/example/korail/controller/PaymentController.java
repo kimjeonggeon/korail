@@ -71,10 +71,9 @@ public class PaymentController {
 
         SessionDto svo = (SessionDto) session.getAttribute("svo");
         String id = svo.getId();
-        System.out.println("id : " + id);
 
         param.put("id", id);
-        param.put("preferential", String.valueOf(memberDto.getPREFERENTIAL()));
+        param.put("preferential", String.valueOf(memberDto.getPreferential()));
         pmyhisService.preferential(param);
 
         return "index";

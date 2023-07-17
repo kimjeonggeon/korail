@@ -22,8 +22,10 @@
 		where reservnum=#{reservnum}
 	</select>
 
+<!--
 	<update id="preferential" parameterType="String">
-		UPDATE KTX_MEMBER SET preferential=#{preferential} WHERE ID=#{id}
+		UPDATE KTX_MEMBER_ADDINFO SET preferential=#{preferential} WHERE ID=#{id}
 	</update>
+-->
 
 </mapper>

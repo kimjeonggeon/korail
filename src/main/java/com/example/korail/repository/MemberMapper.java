@@ -17,4 +17,5 @@ public interface MemberMapper {
     int emailCheck(String email);
     int idCheck(String id);
     SessionDto loginCheck(MemberDto memberDto);
+
 }

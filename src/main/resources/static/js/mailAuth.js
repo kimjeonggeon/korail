@@ -14,7 +14,7 @@
 				type : 'get',
 				url : 'mailCheck/'+email, // GET방식이라 Url 뒤에 email을 뭍힐수있다.
 				success : function (data) {
-					console.log("data : " +  data);
+					/*console.log("data : " +  data);*/
 					checkInput.attr('disabled',false);
 					code =data;
 					alert('인증번호가 전송되었습니다.')

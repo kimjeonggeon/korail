@@ -22,10 +22,10 @@
 	<div class="content">
 		<section class="join">
 		<div class= "v_noti">
-		<p class="join2_p"> 회원가입을 위한 정보를 입력해주세요.</p>
+		<p class="join2_p"> 회원가입을 위한 정보를 입력해주세요</p>
 		</div>
 			<form name="joinForm" action="join_proc" method="post" class="joinput">
-				<ul>
+				<ul style="margin-left: 250px;">
 					<li>
 						<label>아이디</label>
 						<input type="text" id ="id"  name ="id" placeholder="*8자 이상 영문으로 입력해주세요" class="input1" id="id" >
@@ -70,7 +70,7 @@
 					</li>
 					<li>
 						<label>성별</label>
-						<input type="radio" name="gender" value="m"><span>남자</span> 
+						<input type="radio" name="gender" value="m"><span>남자</span>
 						<input type="radio" name="gender" value="g"><span>여자</span>
 					</li>
 					<li>
