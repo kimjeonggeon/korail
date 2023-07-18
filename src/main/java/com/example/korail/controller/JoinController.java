@@ -1,6 +1,7 @@
 package com.example.korail.controller;
 
 import com.example.korail.dto.MemberDto;
+import com.example.korail.interceptor.BCrypt;
 import com.example.korail.service.MailSendService;
 import com.example.korail.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,6 +34,7 @@ public class JoinController {
     @PostMapping("join_proc")
     public String join_proc(Model model, MemberDto memberDto){
         memberService.aid();
+        memberDto.setPass(BCrypt.hashpw(memberDto.getPass(),BCrypt.gensalt(10)));
         int result = memberService.getJoinResult(memberDto);
         if(result == 1){
             model.addAttribute("join_result","ok");
