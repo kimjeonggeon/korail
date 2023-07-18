@@ -5,7 +5,6 @@ import com.example.korail.dto.PageDto;
 import com.example.korail.dto.SessionDto;
 import com.example.korail.repository.MemberMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -14,8 +13,10 @@ import java.util.List;
 public class MemberService {
     @Autowired
     MemberMapper memberMapper;
-    /*@Autowired
-    private PasswordEncoder passwordEncoder;*/
+
+
+
+
 
     public List<MemberDto> list(PageDto pageDto){
         return memberMapper.list(pageDto);
@@ -29,7 +30,6 @@ public class MemberService {
     }
 
     public int getJoinResult(MemberDto memberDto){
-
         return memberMapper.join(memberDto);
     }
     public int getEmailCheckResult(String email){
