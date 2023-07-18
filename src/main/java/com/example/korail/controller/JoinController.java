@@ -32,6 +32,7 @@ public class JoinController {
 
     @PostMapping("join_proc")
     public String join_proc(Model model, MemberDto memberDto){
+        memberService.aid();
         int result = memberService.getJoinResult(memberDto);
         if(result == 1){
             model.addAttribute("join_result","ok");

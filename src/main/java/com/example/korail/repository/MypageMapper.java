@@ -2,6 +2,7 @@ package com.example.korail.repository;
 
 import com.example.korail.dto.MemberDto;
 
+import com.example.korail.dto.MemberaddDto;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.HashMap;
@@ -19,5 +20,7 @@ public interface MypageMapper {
     int getPnumberUpdate(HashMap<String, String> param);
 
     int getWithresult(String id);
+
+    int update (MemberaddDto memberaddDto);
 
 }

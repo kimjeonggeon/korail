@@ -63,7 +63,7 @@
                         <strong style="padding-top: 15px">우대서비스 종류를 선택하시고 첨부파일을
                             등록하시기 바랍니다.</strong>
                         <div style="width: 100%;">
-                            <form name="preferential" action="preferential_proc" method="get"
+                            <form name="preferential" action="preferential_proc" method="post"
                                   enctype="multipart/form-data">
                                 <table>
                                     <tbody>
@@ -82,7 +82,7 @@
                                     <tr id="apply_input">
                                         <th scope="row" style="height: inherit;"><%--@declare id="filename"--%><label
                                                 for="filename">첨부파일</label></th>
-                                        <td><input type="file" name="filename" id="file"
+                                        <td><input type="file" name="file1" id="file"
                                                    style="width: 450px; background-color: #ffffff;"><br>
                                             <p>주민등록번호 뒷자리를 마스킹(음영처리) 하지 않을 시 제출하신 서류가 반송됩니다.</p></td>
                                     </tr>
