@@ -8,6 +8,7 @@ import com.google.gson.JsonObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpSession;
@@ -110,6 +111,12 @@ public class KorailRestControlloer {
     public Map notice_list_json_data(@PathVariable String page) {
         Map map = new HashMap();
         PageDto pageDto = pageService.getPageResult(new PageDto(page, "notice"));
+
+        if(pageDto.getCategory() == "all") {
+            map = pageService.getPageResult(pageDto.getPage(), "notice", pageDto.getCategory(), pageDto.getCvalue());
+        } else {
+            map = pageService.getPageResult(pageDto.getPage(), "notice", pageDto.getCategory(), pageDto.getCvalue());
+        }
         List<NoticeDto> list = noticeService.list(pageDto);
 
         map.put("list", list);
@@ -120,20 +127,56 @@ public class KorailRestControlloer {
 
     @GetMapping("notice_content_json_data/{nid}")
     public NoticeDto notice_content_json_data(@PathVariable String nid) {
+        Map map = new HashMap();
+        NoticeDto noticeDto = noticeService.content(nid);
+        ArrayList<NoticeDto> nlist = noticeService.getNid(nid);
+        int pidx = 0;
+        int nidx = 0;
+        int idx = 0;
+
+        for(int i=0; i<nlist.size(); i++) {
+            NoticeDto nvo = nlist.get(i);
+            if(nvo.getNid().equals(nid)) {
+                idx = i;
+                if(idx == 0) {
+                    pidx = nlist.size()-1;
+                    nidx = idx+1;
+                } else if(idx == nlist.size()-1) {
+                    pidx = idx-1;
+                    nidx = 0;
+                } else {
+                    pidx = idx-1;
+                    nidx = idx+1;
+                }
+            }
+        }
         if(noticeService.content(nid) != null) {
             noticeService.updateHits(nid);
         }
-        return noticeService.content(nid);
+
+        map.put("noticeDto", noticeDto);
+        map.put("nprev", nlist.get(pidx).getNid());
+        map.put("nnext", nlist.get(nidx).getNid());
+
+        return noticeDto;
     }
 
-    @GetMapping("notice_search_json_data/{category}/{cvalue}/{page}")
+    @PostMapping ("notice_search_json_data/{category}/{cvalue}/{page}")
     public Map notice_search_json_data(@PathVariable String category, @PathVariable String cvalue, @PathVariable String page) {
         Map map = new HashMap();
         PageDto pageDto = pageService.getPageResult(new PageDto(page,"notice"));
-        List<NoticeDto> list = noticeService.list(pageDto);
+
+        if(category == "all") {
+            map = pageService.getPageResult(pageDto.getPage(), "notice", category, cvalue);
+        } else {
+            map = pageService.getPageResult(pageDto.getPage(), "notice", category, cvalue);
+        }
+        ArrayList<NoticeDto> list = noticeService.getSearch(pageDto.getStartCount(), pageDto.getEndCount(), category, cvalue);
 
         map.put("list", list);
         map.put("page", pageDto);
+        map.put("category", category);
+        map.put("cvalue", cvalue);
 
         return map;
     }

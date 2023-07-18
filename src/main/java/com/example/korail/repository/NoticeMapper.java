@@ -4,6 +4,7 @@ import com.example.korail.dto.NoticeDto;
 import com.example.korail.dto.PageDto;
 import org.apache.ibatis.annotations.Mapper;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Mapper
@@ -15,4 +16,6 @@ public interface NoticeMapper {
     String getNsfile(String nid);
     int delete(String nid);
     void updateHits(String nid);
+    ArrayList<NoticeDto> getNid(String nid);
+    ArrayList<NoticeDto> getSearch(int startCount, int endCount, String category, String cvalue);
 }

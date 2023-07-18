@@ -6,6 +6,7 @@ import com.example.korail.repository.NoticeMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 @Service
 public class NoticeService {
@@ -38,5 +39,13 @@ public class NoticeService {
 
     public void updateHits(String nid) {
         noticeMapper.updateHits(nid);
+    }
+
+    public ArrayList<NoticeDto> getNid(String nid) {
+        return noticeMapper.getNid(nid);
+    }
+
+    public ArrayList<NoticeDto> getSearch(int startCount, int endCount, String category, String cvalue) {
+        return noticeMapper.getSearch(startCount, endCount, category, cvalue);
     }
 }
