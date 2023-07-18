@@ -2,13 +2,15 @@ package com.example.korail.controller;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
 import com.example.korail.dto.MemberDto;
+import com.example.korail.dto.MemberaddDto;
 import com.example.korail.dto.OrderDto;
 import com.example.korail.dto.SessionDto;
+import com.example.korail.service.FileService;
+import com.example.korail.service.MypageService;
 import com.example.korail.service.PmyhisService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,7 +24,13 @@ import com.google.gson.JsonObject;
 public class PaymentController {
 
     @Autowired
-    private PmyhisService pmyhisService;
+    PmyhisService pmyhisService;
+
+    @Autowired
+    FileService fileService;
+
+    @Autowired
+    MypageService mypageService;
 
     @GetMapping("/pmyhis")
     public String pmyhis() {
@@ -65,16 +73,24 @@ public class PaymentController {
         return "/payment_history/s_reservation";
     }
 
-    @GetMapping("/preferential_proc")
-    public String preferential_proc (HttpSession session, MemberDto memberDto) {
+    @PostMapping("/preferential_proc")
+    public String preferential_proc (HttpSession session,MemberDto memberDto ,MemberaddDto memberadddto) throws Exception {
         HashMap<String, String> param = new HashMap<>();
-
         SessionDto svo = (SessionDto) session.getAttribute("svo");
-        String id = svo.getId();
+        String aid = svo.getAid();
 
-        param.put("id", id);
+        param.put("aid", aid);
         param.put("preferential", String.valueOf(memberDto.getPreferential()));
+
         pmyhisService.preferential(param);
+
+        memberadddto = (MemberaddDto) fileService.fileCheck(memberadddto);
+        memberadddto.setAid(aid);
+        int result = mypageService.update(memberadddto);
+        System.out.println("result : "+ result);
+        if(result == 1) {
+            fileService.fileSave(memberadddto);
+        }
 
         return "index";
     }

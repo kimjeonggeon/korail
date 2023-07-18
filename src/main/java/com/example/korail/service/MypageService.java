@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import com.example.korail.dto.MemberDto;
+import com.example.korail.dto.MemberaddDto;
 import com.example.korail.dto.OrderDto;
 import com.example.korail.repository.MypageMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,6 +35,10 @@ public class MypageService {
 
 	public int getWithresult(String id) {
 		return mypageMapper.getWithresult(id);
+	}
+
+	public int update(MemberaddDto memberaddDto) {
+		return mypageMapper.update(memberaddDto);
 	}
 
 }

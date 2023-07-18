@@ -88,11 +88,11 @@
 
     <select id="loginCheck" parameterType="com.example.korail.dto.MemberDto"
             resultType="com.example.korail.dto.SessionDto">
-        select count(*) loginResult, name, id, email
+        select count(*) loginResult, name, id, email, aid
         FROM KTX_MEMBER
         where id = #{id}
           and pass = #{pass}
-        group by name, id, email
+        group by name, id, email, aid
     </select>
 
 
@@ -109,21 +109,19 @@
         WHERE email = #{email}
     </select>
 
+    <insert id="aid">
+        insert into KTX_MEMBER_ADDINFO (AID)
+        values ('A_' || ltrim(to_char(SEQU_KTX_ADDINFO.nextval, '0000')))
+    </insert>
+
     <insert id="join" parameterType="com.example.korail.dto.MemberDto">
-        <selectKey keyProperty="aid" resultType="java.lang.String" order="AFTER">
-            insert into KTX_MEMBER_ADDINFO (AID)
-            values ('A_' || ltrim(to_char(SEQU_KTX_ADDINFO.nextval, '0000')))
-        </selectKey>
-        insert into ktx_member
-        (id, pass, name, email, tel, pnumber, birth, gender, mdate, aid)
-        values (#{id}, #{pass}, #{name}, #{email}, #{tel}, #{pnumber}, #{birth}, #{gender}, sysdate, #{aid})
-        select AID
-        from (
-        select AID
-        from KTX_MEMBER_ADDINFO
-        order by AID desc
-        )
-        where ROWNUM = 1
+        INSERT INTO ktx_member (id, pass, name, email, tel, pnumber, birth, gender, mdate, aid)
+        SELECT #{id}, #{pass}, #{name}, #{email}, #{tel}, #{pnumber}, #{birth}, #{gender}, sysdate, AID
+        FROM (
+                 SELECT AID
+                 FROM KTX_MEMBER_ADDINFO
+                 ORDER BY AID DESC
+             ) WHERE ROWNUM = 1
     </insert>
 
 </mapper>

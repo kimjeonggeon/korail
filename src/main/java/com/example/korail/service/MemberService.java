@@ -46,4 +46,7 @@ public class MemberService {
         return memberMapper.loginCheck(memberDto);
     }
 
+    public int aid() {
+        return memberMapper.aid();
+    }
 }

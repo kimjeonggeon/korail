@@ -38,4 +38,11 @@
         WHERE ID = #{id}
     </delete>
 
+    <update id="update" parameterType="com.example.korail.dto.MemberaddDto">
+        update KTX_MEMBER_ADDINFO
+        set afile = #{afile, jdbcType=VARCHAR},
+            asfile = #{asfile, jdbcType=VARCHAR}
+        where aid = #{aid}
+    </update>
+
 </mapper>
