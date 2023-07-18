@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.servlet.http.HttpSession;
+import java.text.DecimalFormat;
 import java.util.UUID;
 
 @Controller
@@ -27,6 +28,9 @@ public class ReservationController {
     public String train_reservation_pymcfm(ReservationDto reservationDto,HttpSession session, OrderDto orderDto, CardinfoDto cardinfoDto,Model model){
         ReservationDto rvo = (ReservationDto)session.getAttribute("rvo");
         UUID uuid = UUID.randomUUID();
+        DecimalFormat decimalFormat = new DecimalFormat("#,###");
+        int number = Integer.parseInt(rvo.getAdltTotAmt());
+        String price = decimalFormat.format(number);
 
         rvo.setEmail(reservationDto.getEmail());
         //System.out.println("reservationDto -->" + reservationDto.getEmail());
@@ -46,7 +50,7 @@ public class ReservationController {
         orderDto.setArrPlaceId(rvo.getEndId());
         orderDto.setDepPlandTime(rvo.getRtimes());
         orderDto.setCardnum(cardinfoDto.getCardnum());
-        orderDto.setPrice(rvo.getAdltTotAmt());
+        orderDto.setPrice(price);
         orderDto.setTrainnum(Integer.parseInt(rvo.getTrainno()));
         orderDto.setTicketqty(Integer.parseInt(rvo.getTicketQty()));
         orderDto.setEmail(rvo.getEmail());

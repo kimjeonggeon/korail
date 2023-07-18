@@ -39,14 +39,14 @@
         SELECT id, sstation, depPlandTime, stime, dstation, ticketqty, price, reservnum, trainnum, chairnum, cancel, depPlaceId, arrPlaceId, cardnum, email, to_char(cdate,'yyyy-mm-dd') cdate
         FROM KTX_ORDER
         <choose>
-            <when test='cardnum == null'>
-                where id=#{id}
-            </when>
-            <when test='email != null'>
+            <when test='id == "guest" and cardnum == ""'>
                 where email=#{email}
             </when>
-            <otherwise>
+            <when test='id == "guest" and email == ""'>
                 where cardnum=#{cardnum}
+            </when>
+            <otherwise>
+                where id=#{id}
             </otherwise>
         </choose>
     </select>
@@ -54,11 +54,11 @@
     <select id="selectcard" parameterType="map" resultType="int">
         SELECT count(*) from ktx_order
         <choose>
-            <when test='email == null'>
-                where cardnum=#{cardnum}
+            <when test='cardnum == ""'>
+                where email=#{email}
             </when>
             <otherwise>
-                where email=#{email}
+                where cardnum=#{cardnum}
             </otherwise>
         </choose>
     </select>

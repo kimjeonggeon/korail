@@ -2,15 +2,14 @@ $(document).ready(function(){
 	trInitAjax(1);
 	
 	function trInitAjax(trnumber) {
-		//alert(trnumber);
+
 	  $.ajax({
 	    url: "reservationlist_update_chair_json/"+trnumber,
 	    success: function (result) {
-	      //alert(result);
+
 	      let jdata = JSON.parse(result);
 	      let seatList = jdata.seatList;
-	
-	      //alert(seatList[0].seat);
+
 	
 	      // 좌석 만들기
 	      let width = 4;
@@ -89,7 +88,13 @@ $(document).ready(function(){
 					$("#ticketQty2").val(ticketQty);
 			    
 			  }else{
-			  	alert("인원수를 늘려주세요");
+				  Swal.fire({
+					  text: "인원수를 늘려주세요",
+					  width: 600,
+					  padding: '1.5em',
+					  confirmButtonColor: '#74b3c7',
+					  confirmButtonText: '확인'
+				  });
 			  }
 			  
 		  $("#selectedSeatCount").text(selectedSeats.length);
@@ -177,7 +182,7 @@ $(document).ready(function(){
 		//기차 호실 증감 이벤트
 		$("#Kind_add").click(function() {
 			var trnumber = parseInt($("#chldCnt").text()) + 1;// 현재 카운트 값을 가져와 1 증가
-			//alert(trnumber);
+
 			  if(trnumber >9){
 			  	trnumber = 9;
 			  }

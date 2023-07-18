@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.servlet.http.HttpSession;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 @Controller
@@ -25,7 +26,8 @@ public class ReservationlistController {
     @GetMapping("reservation_main")
     public String reservation_main(OrderDto orderDto, HttpSession session, Model model){
         SessionDto svo = (SessionDto)session.getAttribute("svo");
-
+        /*System.out.println("cardnum3 -> "+svo.getCardnum());
+        System.out.println("email3 -> "+svo.getEmail());*/
         String id = svo.getId();
         String cardnum = svo.getCardnum();
         String email = svo.getEmail();
@@ -38,9 +40,12 @@ public class ReservationlistController {
         orderDto.setId(id);
         orderDto.setCardnum(cardnum);
         orderDto.setEmail(email);
+        /*System.out.println("cardnum4-->"+orderDto.getCardnum());
+        System.out.println("id-->"+orderDto.getId());
+        System.out.println("email4-->"+orderDto.getEmail());*/
 
         ArrayList<OrderDto> orderList = orderService.getSelect(orderDto);
-        System.out.println("orderList."+ orderList);
+        /*System.out.println("orderList-->"+ orderList);*/
         if(orderList != null){
             model.addAttribute("orderList",orderList);
             orderReturn = "reservationlist/reservation_main";
@@ -49,18 +54,25 @@ public class ReservationlistController {
         return orderReturn;
     }
 
-    @PostMapping("cardnum_check_proc")
+    @PostMapping("cardnum_check")
     public String cardnum_check_proc(String cardnum, String userId, String email, HttpSession session,Model model){
+       /* System.out.println("cardnum1-->"+cardnum);
+        System.out.println("email1-->"+email);*/
+
         int result = orderService.getCardnum(cardnum,email);
+        /*System.out.println("result-->"+result);*/
+
         String orderReturn = null;
         if(result != 0){
             SessionDto svo = new SessionDto();
             svo.setId(userId);
             svo.setCardnum(cardnum);
             svo.setEmail(email);
+           /* System.out.println("cardnum2-->"+svo.getCardnum());
+            System.out.println("email2-->"+svo.getEmail());*/
             session.setAttribute("svo",svo);
 
-            orderReturn = "reservationlist/reservation_main";
+            orderReturn = "redirect:/reservation_main";
         }else {
             orderReturn = "reservationlist/login_fail";
         }
@@ -140,10 +152,10 @@ public class ReservationlistController {
     @GetMapping("reservation_updateselect/{seatNum}/{ticketQty}/{id}/{adltTotAmt}")
     public String reservation_updateselect(@PathVariable String seatNum, @PathVariable String ticketQty, @PathVariable String id , @PathVariable String adltTotAmt, HttpSession session) {
 
-        System.out.println("seatNum-->"+seatNum);
+        /*System.out.println("seatNum-->"+seatNum);
         System.out.println("ticketQty-->"+ticketQty);
         System.out.println("adltTotAmt-->"+adltTotAmt);
-        System.out.println("id-->"+id);
+        System.out.println("id-->"+id);*/
 
         UpdateDto uvo = (UpdateDto)session.getAttribute("uvo");
 
@@ -167,6 +179,9 @@ public class ReservationlistController {
     public String reservation_updatepay_proc(HttpSession session, OrderDto orderDto, CardinfoDto cardinfoDto) {
         String resultPay = "";
         UpdateDto uvo = (UpdateDto) session.getAttribute("uvo");
+        DecimalFormat decimalFormat = new DecimalFormat("#,###");
+        int number = Integer.parseInt(uvo.getAdltTotAmt());
+        String price = decimalFormat.format(number);
 
         orderDto.setReservnum(uvo.getReservnum());
         orderDto.setSstation(uvo.getDepplacename());
@@ -179,7 +194,7 @@ public class ReservationlistController {
         orderDto.setArrPlaceId(uvo.getEndId());
         orderDto.setDepPlandTime(uvo.getRtimes());
         orderDto.setCardnum(cardinfoDto.getCardnum());
-        orderDto.setPrice(uvo.getAdltTotAmt());
+        orderDto.setPrice(price);
         orderDto.setTrainnum(Integer.parseInt(uvo.getTrainno()));
         orderDto.setTicketqty(Integer.parseInt(uvo.getTicketQty()));
 
