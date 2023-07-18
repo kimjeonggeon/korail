@@ -7,8 +7,10 @@
 <title>Insert title here</title>
 <link rel="stylesheet" href="http://localhost:9000/css/reservationlist.css">
 <script src="http://localhost:9000/js/jquery-3.6.4.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="http://localhost:9000/js/login.js"></script>
 <script src="http://localhost:9000/js/mailcheck2.js"></script>
+
 <style>
 	.box_inputForm, #nonMemberbox{
 	margin-top: 4px;
@@ -87,7 +89,7 @@
 				
 				
 			<!-- 비회원로그인 -->
-			<form id="lgnNonUsrFrm" name="lgnNonUsrFrm" action="cardnum_check_proc.do" method="post">
+			<form id="lgnNonUsrFrm" name="lgnNonUsrFrm" action="/cardnum_check" method="post">
 			<div class="box_login non-member">
 				<h3 class="mob_h3">비회원 예매확인</h3>
 				<p class="h3_desc">예매 시 입력하신 정보를 정확히 입력해주세요.</p>
@@ -227,7 +229,14 @@
 			var card_number = $("#card_number01").val() +"-"+ $("#card_number02").val() +"-"+ $("#card_number03").val() +"-"+ $("#card_number04").val();
 			
 			if (card_number.length < 15){
-				alert('카드번호를 확인해주세요.');
+				/*alert('카드번호를 확인해주세요.');*/
+				Swal.fire({
+					text: "카드번호를 확인해주세요.",
+					width: 600,
+					padding: '1.5em',
+					confirmButtonColor: '#74b3c7',
+					confirmButtonText: '확인'
+				});
 				$("#card_number01").focus();
 				return;
 			}else{

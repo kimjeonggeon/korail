@@ -8,6 +8,21 @@
 <link rel="stylesheet" href="http://localhost:9000/css/login.css">
 <script src="http://localhost:9000/js/jquery-3.6.4.min.js"></script>
 <script src="http://localhost:9000/js/login.js"></script>
+<style>
+	img{
+		width:90px;
+	}
+	.failtitle{
+		font-size: 17pt;
+		color:#2E2E2E;
+	}
+	.fail_bord{
+		border: 1px solid #D8D8D8;
+		width:15px;
+	}
+
+
+</style>
 </head>
 <body>
 <div>
@@ -17,7 +32,7 @@
 	<div class="title_wrap_checkTicketingT">
 		<div class="title_wrap">
 			<jsp:include page="../header.jsp"></jsp:include>
-			<h2>로그인 실패</h2>
+			<h2>로그인</h2>
 		</div>
 	</div>
 <!-- contents  -->
@@ -25,13 +40,16 @@
 <div class="content">
 		<section class="login_fail">
 			<div class ="fail_image">
-			<img src="http://localhost:9000/images/login_fail.png" >
+			<img src="http://localhost:9000/images/exclamation-mark.png" >
 			</div>
 			<div class= "fail_alert">
-			<h1 class="failtitle">로그인에 실패하셨습니다.</h1>
+			<h1 class="failtitle">KTX 통합 예매에 로그인을 실패했습니다.</h1>
 			<a href="http://localhost:9000/login"><span></span>
 				<button type="button" class="btn_fail" >로그인 페이지 이동</button>
 			</a>
+			</div>
+			<div class="fail_bord">
+
 			</div>
 		</section>
 	</div>

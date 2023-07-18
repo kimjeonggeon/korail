@@ -49,7 +49,6 @@ $(document).ready(function(){
 	
 	$(".btn_selectSeat").click(function() {
 		if($("#seatNum").text() == ""){
-			//alert("좌석을 선택해주세요");
 			Swal.fire({
 	    		text: "좌석을 선택해주세요.",
 	    		width: 600,
@@ -82,7 +81,9 @@ $(document).ready(function(){
 	background: url(http://localhost:9000/images/visual_chkTicket_bg.gif) center 0 no-repeat;
 	background-size: cover;
 	}
-
+#btnSf{
+	cursor: pointer;
+}
 .box{
 	/* border:1px solid red; */
 	display:inline-block;
@@ -315,9 +316,12 @@ $(document).ready(function(){
 					</div>
 					
 					<!-- //선택좌석 상세보기 -->
-					<div class=" btns btn_selectSeat">
-						<a href="#" id="satsChcCfmBtn" class="btnL btn_confirm ready">선택완료</a>
+					<div class=" btns btn_selectSeat" id="btnSf">
+						<span id="satsChcCfmBtn" class="btnL btn_confirm ready">선택완료</span>
 					</div>
+					<%--<div class=" btns btn_selectSeat">
+						<a href="#" id="satsChcCfmBtn" class="btnL btn_confirm ready">선택완료</a>
+					</div>--%>
 				
 				</div>
 					<!-- 상세설명 -->
