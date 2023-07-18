@@ -1,4 +1,4 @@
-package com.example.korail.service;
+/*package com.example.korail.service;
 
 import org.apache.catalina.User;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -17,4 +17,4 @@ public class UserService {
         String encodedPassword = passwordEncoder.encode(user.getPassword());
         // 암호화된 패스워드를 저장 또는 처리하는 로직 추가
     }
-}
+}*/

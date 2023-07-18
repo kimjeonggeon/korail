@@ -45,7 +45,7 @@ public class PdfService {
             String cardnum = orderDto.getCardnum();
             String reservnum = orderDto.getReservnum();
             String rdate = orderDto.getRdate();
-            int price = orderDto.getPrice();
+            String price = orderDto.getPrice();
             String deptime = orderDto.getDepPlandTime();
             String sstation = orderDto.getSstation();
             String dstation = orderDto.getDstation();
