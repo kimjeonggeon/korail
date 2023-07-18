@@ -52,6 +52,7 @@ public class ReservationController {
         orderDto.setEmail(rvo.getEmail());
         //System.out.println("email -->" + rvo.getEmail());
 
+
         orderService.getPayment(orderDto);
 
         return "reservation/train_reservation_pymcfm";
