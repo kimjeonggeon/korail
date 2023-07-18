@@ -198,7 +198,7 @@ $(document).ready(function(){
 	  
 		//비회원 예매 버튼 이벤트
 		$("#btn_nonmember").click(function(){
-			//window.location.href = "http://localhost:9000/ktx/train_reservation_stplcfmpym.do";
+			//window.location.href = "http://localhost:9000/train_reservation_stplcfmpym.do";
 		});
 	  
 	  

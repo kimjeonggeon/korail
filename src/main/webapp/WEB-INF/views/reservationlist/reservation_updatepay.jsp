@@ -453,7 +453,7 @@
 				
 				<h4 class="mo_page">결제정보 입력</h4>
 				<div class="custom_input clfix">
-					<form name="purchaseForm" id="purchaseForm" action="reservation_updatepay_proc.do" method="post">
+					<form name="purchaseForm" id="purchaseForm" action="/reservation_updatepay" method="post">
 					<div class="tab_wrap inradio tab_type2" data-desc-id="tab-desc1"> <!-- 190109 수정 : data-desc-id 속성 추가 (값은 하단 설명 영역인 .tab_desc_wrap의 id와 매칭) -->					
 						
 						<div class="tab_conts" id="tab1" style="display: block;">
@@ -656,7 +656,7 @@
 								<tbody>
 									<tr>
 										<th scope="row" class="txt_black">예매금액</th>
-										<td><strong id="estmAmtView">${ sessionScope.uvo.adultcharge }</strong></td>
+										<td><strong id="estmAmtView">${ sessionScope.uvo.adltTotAmt }</strong></td>
 									</tr>
 									
 									<tr>
@@ -665,7 +665,7 @@
 									</tr>
 									<tr class="total">
 										<th scope="row" class="txt_black">총 결제금액</th>
-										<td class="totalPrice"><span id="tissuAmtView">${ sessionScope.uvo.adultcharge }</span></td>
+										<td class="totalPrice"><span id="tissuAmtView">${ sessionScope.uvo.adltTotAmt }</span></td>
 									</tr>
 								</tbody>
 							</table>

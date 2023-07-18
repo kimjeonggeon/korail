@@ -12,7 +12,6 @@
 
 <style>
 .admin_main {
-
   display: flex;
   justify-content: center;
   align-items: center;

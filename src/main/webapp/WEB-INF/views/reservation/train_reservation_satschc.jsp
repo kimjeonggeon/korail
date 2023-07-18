@@ -357,6 +357,7 @@ $(document).ready(function(){
 										<input type="hidden" name="seatNum" id="seatNum1">
 										<input type="hidden" name="ticketQty" id ="ticketQty1">
 										<input type="hidden" name="adltTotAmt" id="adltTotAmt1">
+
 									</p>
 			</form>
 								

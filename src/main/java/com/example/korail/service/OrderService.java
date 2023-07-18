@@ -44,4 +44,8 @@ public class OrderService {
 
         return (ArrayList<SeatNumberDto>)list;
     }
+
+    public int getPaymentUpdate(OrderDto orderDto){
+        return orderMapper.updatePayment(orderDto);
+    }
 }

@@ -17,4 +17,5 @@ public interface OrderMapper {
     int cancel(String reservnum);
     OrderDto selected(String reservnum);
     List<SeatNumberDto> seatnumUp(UpdateDto uvo);
+    int updatePayment(OrderDto orderDto);
 }

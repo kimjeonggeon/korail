@@ -20,11 +20,7 @@ import java.util.ArrayList;
 public class ReservationlistController {
     @Autowired
     OrderService orderService;
-    @GetMapping("admin_main")
-    public String admin_main() {
 
-        return "/admin/admin_main";
-    }
 
     @GetMapping("reservation_main")
     public String reservation_main(OrderDto orderDto, HttpSession session, Model model){
@@ -44,7 +40,7 @@ public class ReservationlistController {
         orderDto.setEmail(email);
 
         ArrayList<OrderDto> orderList = orderService.getSelect(orderDto);
-
+        System.out.println("orderList."+ orderList);
         if(orderList != null){
             model.addAttribute("orderList",orderList);
             orderReturn = "reservationlist/reservation_main";
@@ -121,8 +117,7 @@ public class ReservationlistController {
 
     /* update3 */
     @PostMapping("reservation_updatechair")
-    public String reservation_updatechair(UpdateDto uvo, HttpSession session,
-                                          String depplacename, String arrplacename, String start_date, String end_date, String traingradename, String trainno, String adultcharge, String rtimes) {
+    public String reservation_updatechair(UpdateDto uvo, HttpSession session, String depplacename, String arrplacename, String start_date, String end_date, String traingradename, String trainno, String adultcharge, String rtimes) {
 
         //System.out.println(depplacename);
         uvo = (UpdateDto)session.getAttribute("uvo");
@@ -138,14 +133,16 @@ public class ReservationlistController {
 
 
         return "/reservationlist/reservation_updatechair";
+
     }
 
     /* update 3.5 */
-    @GetMapping("reservation_updateselect/{seatNum}/{ticketQty}/{id}")
-    public String reservation_updateselect(@PathVariable String seatNum, @PathVariable String ticketQty, @PathVariable String id ,HttpSession session) {
+    @GetMapping("reservation_updateselect/{seatNum}/{ticketQty}/{id}/{adltTotAmt}")
+    public String reservation_updateselect(@PathVariable String seatNum, @PathVariable String ticketQty, @PathVariable String id , @PathVariable String adltTotAmt, HttpSession session) {
 
         System.out.println("seatNum-->"+seatNum);
         System.out.println("ticketQty-->"+ticketQty);
+        System.out.println("adltTotAmt-->"+adltTotAmt);
         System.out.println("id-->"+id);
 
         UpdateDto uvo = (UpdateDto)session.getAttribute("uvo");
@@ -153,6 +150,7 @@ public class ReservationlistController {
         uvo.setSeatNum(seatNum);
         uvo.setTicketQty(ticketQty);
         uvo.setId(id);
+        uvo.setAdltTotAmt(adltTotAmt);
         //"redirect:/train_reservation_stplcfmpym1.do"
         return "/reservationlist/reservation_updatepay";
     }
@@ -167,7 +165,7 @@ public class ReservationlistController {
     /* update 5 - last */
     @PostMapping("reservation_updatepay")
     public String reservation_updatepay_proc(HttpSession session, OrderDto orderDto, CardinfoDto cardinfoDto) {
-        String viewName="";
+        String resultPay = "";
         UpdateDto uvo = (UpdateDto) session.getAttribute("uvo");
 
         orderDto.setReservnum(uvo.getReservnum());
@@ -181,21 +179,37 @@ public class ReservationlistController {
         orderDto.setArrPlaceId(uvo.getEndId());
         orderDto.setDepPlandTime(uvo.getRtimes());
         orderDto.setCardnum(cardinfoDto.getCardnum());
-        orderDto.setPrice(Integer.parseInt(uvo.getAdultcharge()));
+        orderDto.setPrice(uvo.getAdltTotAmt());
         orderDto.setTrainnum(Integer.parseInt(uvo.getTrainno()));
         orderDto.setTicketqty(Integer.parseInt(uvo.getTicketQty()));
 
 
-        /*int result = orderService.getPaymentUpdate(orderDto);*/
-        //cardService.getPaymentUpdate(cardVo);
-        /*if(result == 1) {
-            viewName = "redirect:/reservation_main.do";
+        int result = orderService.getPaymentUpdate(orderDto);
+
+        if(result == 1) {
+            resultPay = "redirect:/reservation_main";
         }else {
             //에러페이지
-        }*/
-        return viewName;
+        }
+        return resultPay;
     }
 
+
+
+
+    /* admin_main */
+    @GetMapping("admin_main")
+    public String admin_main() {
+
+        return "/admin/admin_main";
+    }
+
+    /* admin - trainTime*/
+    @GetMapping("admin_trainlist")
+    public String admin_trainlist() {
+
+        return "/admin/admin_trainlist";
+    }
 
 
 }//controller
