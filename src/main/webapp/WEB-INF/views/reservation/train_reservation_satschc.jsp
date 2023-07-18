@@ -21,8 +21,9 @@ input:focus {
 <script>
 	function updateAdltTotAmt() {
 		// 탑승 인원 수 가져오기
-		var passengersNum = parseInt($("#passengersNum").text());
+		var passengersNum = parseInt($("#adltCnt").text());
 
+		$("#passengersNum").text($("#adltCnt").text());
 		// adultcharge 가져오기
 		var adultCharge = parseInt("${ sessionScope.rvo.adultcharge }");
 
