@@ -46,7 +46,7 @@ public class ReservationController {
         orderDto.setArrPlaceId(rvo.getEndId());
         orderDto.setDepPlandTime(rvo.getRtimes());
         orderDto.setCardnum(cardinfoDto.getCardnum());
-        orderDto.setPrice(Integer.parseInt(rvo.getAdltTotAmt()));
+        orderDto.setPrice(rvo.getAdltTotAmt());
         orderDto.setTrainnum(Integer.parseInt(rvo.getTrainno()));
         orderDto.setTicketqty(Integer.parseInt(rvo.getTicketQty()));
         orderDto.setEmail(rvo.getEmail());
