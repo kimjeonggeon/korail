@@ -27,4 +27,10 @@ public class PmyhisService{
         return pmyMapper.preferential(param);
     }
 
+    public String oldfile (String name) {
+        return pmyMapper.oldfile(name);
+    }
+
+    public int mileage(String id) { return pmyMapper.mileage(id);}
+
 }

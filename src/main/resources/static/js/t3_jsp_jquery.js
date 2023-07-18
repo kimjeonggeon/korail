@@ -14,7 +14,6 @@ $(document).ready(function () {
                 alert("첨부파일을 첨부하여 주시기 바랍니다.");
             } else {
                 preferential.submit();
-                alert("abc");
             }
 
         } else {
@@ -29,6 +28,10 @@ $(document).ready(function () {
      *    Mypage
      *
      **************************************************************************/
+
+    $(".txt_myMenu").click(function () {
+        window.open('mileage', '마일리지 모달', 'width=900, height=500')
+    })
 
     /**
      * 마이페이지 '회원탈퇴' 클릭
@@ -543,8 +546,8 @@ $(document).ready(function () {
 
                 for (obj of result) {
 
-                    var stime = obj.stime.substr(0,2) + obj.stime.substr(3,2);
-                    var dtime = obj.dtime.substr(0,2) + obj.dtime.substr(3,2);
+                    var stime = obj.stime.substr(0, 2) + obj.stime.substr(3, 2);
+                    var dtime = obj.dtime.substr(0, 2) + obj.dtime.substr(3, 2);
 
                     output += '<tr>';
                     output += '<td><input type="hidden" name="status" value="' + obj.cancel + '"><input name="check" type="checkbox" id="checkbox' + result.indexOf(obj) + '">';
@@ -556,7 +559,7 @@ $(document).ready(function () {
                     output += '<span class="roundBox">' + obj.sstation + '</span> <span class="roundBox">' + obj.dstation + '</span>';
                     output += '</div>';
                     output += '</td>';
-                    output += '<td><span class="tbl_ico ico_departure">' + stime + " " +dtime + " " + '<span class="txt_date"> 고속 </span></span></td>';
+                    output += '<td><span class="tbl_ico ico_departure">' + stime + " " + dtime + " " + '<span class="txt_date"> 고속 </span></span></td>';
                     output += '<td> 일반 ' + obj.ticketqty + '<br></td>';
                     output += '<td><span class="txt_price">' + obj.price.toLocaleString() + '원</span> <span class="txt_div"> 카드 </span></td>';
                     if (obj.cancel === 1) {
