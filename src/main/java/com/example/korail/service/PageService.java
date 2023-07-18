@@ -5,6 +5,9 @@ import com.example.korail.repository.PageMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
+import java.util.Map;
+
 @Service
 public class PageService {
     @Autowired
@@ -56,5 +59,45 @@ public class PageService {
         pageDto.setReqPage(reqPage);
 
         return pageDto;
+    }
+
+    public Map getPageResult(String page, String serviceName, String category, String cvalue) {
+        Map map = new HashMap();
+
+        int startCount = 0;
+        int endCount = 0;
+        int pageSize = 0;
+        int reqPage = 1;
+        int pageCount = 1;
+        int dbCount = 0;
+
+        if(serviceName.equals("notice")) {
+            dbCount = pageMapper.totalRowCount(category, cvalue);
+            pageSize = 3;
+        }
+
+        if(dbCount % pageSize == 0) {
+            pageCount = dbCount/pageSize;
+        } else {
+            pageCount = dbCount/pageSize+1;
+        }
+
+        if(page != null) {
+            reqPage = Integer.parseInt(page);
+            startCount = (reqPage-1) * pageSize+1;
+            endCount = reqPage * pageSize;
+        } else {
+            startCount = 1;
+            endCount = pageSize;
+        }
+
+        map.put("startCount", startCount);
+        map.put("endCount", endCount);
+        map.put("dbCount", dbCount);
+        map.put("pageSize", pageSize);
+        map.put("pageCount", pageCount);
+        map.put("reqPage", reqPage);
+
+        return map;
     }
 }

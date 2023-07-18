@@ -23,26 +23,26 @@
 					where rno between #{startCount} and #{endCount}
 	</select>
 	
-<!--	<select id="list3" parameterType="String" resultType="com.example.korail.dto.NoticeDto">-->
-<!--		select nid from ktx_notice order by ndate desc-->
-<!--	</select>-->
+	<select id="getNid" parameterType="String" resultType="com.example.korail.dto.NoticeDto">
+		select nid from ktx_notice order by ndate desc
+	</select>
 
-<!--	<select id="notice_list" parameterType="com.example.korail.dto.PageDto" resultType="com.example.korail.dto.NoticeDto">-->
-<!--		select rno, nid, ntitle, ncontent, nhits, ndate-->
-<!--			from (select rownum rno, nid, ntitle, ncontent, nhits, ndate-->
-<!--				from (select nid, ntitle, ncontent, nhits, to_char(ndate, 'yyyy-mm-dd') ndate-->
-<!--	  				from (select nid, ntitle, ncontent, nhits, ndate from ktx_notice order by nid desc))-->
-<!--			<if test= 'category == "title"'>-->
-<!--				where ntitle like '%'||#{cvalue}||'%'-->
-<!--			</if>-->
-<!--			<if test= 'category == "content"'>-->
-<!--				where ncontent like '%'||#{cvalue}||'%'-->
-<!--			</if>-->
-<!--			<if test= 'category == "title_content"'>-->
-<!--				where ntitle like '%'||#{cvalue}||'%' or ncontent like '%'||#{cvalue}||'%'-->
-<!--			</if>-->
-<!--				) where rno between #{startCount} and #{endCount}-->
-<!--	</select>-->
+	<select id="getSearch" parameterType="com.example.korail.dto.PageDto" resultType="com.example.korail.dto.NoticeDto">
+		select rno, nid, ntitle, ncontent, nhits, ndate
+			from (select rownum rno, nid, ntitle, ncontent, nhits, ndate
+				from (select nid, ntitle, ncontent, nhits, to_char(ndate, 'yyyy-mm-dd') ndate
+	  				from (select nid, ntitle, ncontent, nhits, ndate from ktx_notice order by nid desc))
+			<if test= 'category == "title"'>
+				where ntitle like '%'||#{cvalue}||'%'
+			</if>
+			<if test= 'category == "content"'>
+				where ncontent like '%'||#{cvalue}||'%'
+			</if>
+			<if test= 'category == "title_content"'>
+				where ntitle like '%'||#{cvalue}||'%' or ncontent like '%'||#{cvalue}||'%'
+			</if>
+				) where rno between #{startCount} and #{endCount}
+	</select>
 
 <!--	<select id="list2" resultType="com.example.korail.dto.NoticeDto">-->
 <!--		select rownum rno, nid, ntitle, nhits, to_char(ndate, 'yyyy-mm-dd') ndate-->

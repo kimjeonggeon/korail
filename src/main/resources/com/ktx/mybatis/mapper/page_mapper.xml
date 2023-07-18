@@ -10,15 +10,15 @@
 		select count(*) from
 		<if test='serviceName == "notice"'>
 			ktx_notice
-<!--			<if test = 'category == "title"'>-->
-<!--				where ntitle like '%'||#{cvalue}||'%'-->
-<!--			</if>-->
-<!--			<if test = 'category == "content"'>-->
-<!--				where ncontent like '%'||#{cvalue}||'%'-->
-<!--			</if>-->
-<!--			<if test = 'category == "title_content"'>-->
-<!--				where ntitle like '%'||#{cvalue}||'%' or ncontent like '%'||#{cvalue}||'%'-->
-<!--			</if>-->
+			<if test = 'category == "title"'>
+				where ntitle like '%'||#{cvalue}||'%'
+			</if>
+			<if test = 'category == "content"'>
+				where ncontent like '%'||#{cvalue}||'%'
+			</if>
+			<if test = 'category == "title_content"'>
+				where ntitle like '%'||#{cvalue}||'%' or ncontent like '%'||#{cvalue}||'%'
+			</if>
 		</if>
 
 	</select>
