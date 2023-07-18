@@ -24,6 +24,7 @@
 			<h2 class="title">공지사항</h2>
 		</div>
 	<h3 class="title-notice">KTX 홈페이지의 새로운 소식을 확인하세요.</h3>
+
 	<jsp:include page="../footer.jsp"></jsp:include>
 	</div>
 </body>

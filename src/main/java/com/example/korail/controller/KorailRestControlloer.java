@@ -120,11 +120,14 @@ public class KorailRestControlloer {
 
     @GetMapping("notice_content_json_data/{nid}")
     public NoticeDto notice_content_json_data(@PathVariable String nid) {
+        if(noticeService.content(nid) != null) {
+            noticeService.updateHits(nid);
+        }
         return noticeService.content(nid);
     }
 
-    @GetMapping("notice_search_json_data/{page}")
-    public Map notice_search_json_data(@PathVariable String page) {
+    @GetMapping("notice_search_json_data/{category}/{cvalue}/{page}")
+    public Map notice_search_json_data(@PathVariable String category, @PathVariable String cvalue, @PathVariable String page) {
         Map map = new HashMap();
         PageDto pageDto = pageService.getPageResult(new PageDto(page,"notice"));
         List<NoticeDto> list = noticeService.list(pageDto);

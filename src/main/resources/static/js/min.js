@@ -477,6 +477,7 @@ $(document).ready(function() {
 				// content(상세보기) 이벤트
 				$(".ntitle").click(function () {
 					contentAjax($(this).attr("id"), page);
+					nhits = nhits+1;
 				});
 
 				// 페이지 번호 클릭 이벤트

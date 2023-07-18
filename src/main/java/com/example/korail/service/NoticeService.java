@@ -35,4 +35,8 @@ public class NoticeService {
     public int delete(String nid) {
         return noticeMapper.delete(nid);
     }
+
+    public void updateHits(String nid) {
+        noticeMapper.updateHits(nid);
+    }
 }

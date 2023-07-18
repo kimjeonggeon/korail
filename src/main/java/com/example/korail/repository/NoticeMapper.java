@@ -14,4 +14,5 @@ public interface NoticeMapper {
     int update(NoticeDto noticeDto);
     String getNsfile(String nid);
     int delete(String nid);
+    void updateHits(String nid);
 }
