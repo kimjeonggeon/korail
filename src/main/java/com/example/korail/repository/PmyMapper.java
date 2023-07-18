@@ -13,4 +13,8 @@ public interface PmyMapper {
     ArrayList<OrderDto> getSelect(HashMap<String, String> param);
 
     int preferential( HashMap<String, String> param);
+
+    String oldfile(String name);
+
+    int mileage (String id);
 }

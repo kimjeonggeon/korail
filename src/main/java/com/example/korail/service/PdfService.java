@@ -74,8 +74,8 @@ public class PdfService {
                     "카드번호", cardnum,
                     "승인번호", reservnum,
                     "승인일시", rdate,
-                    "승인금액", String.valueOf(price),
-                    "결제금액", String.valueOf(price),
+                    "승인금액", price,
+                    "결제금액", price,
             };
 
             String[] labels2 = {

@@ -8,6 +8,7 @@ import javax.servlet.http.HttpSession;
 import com.example.korail.dto.MemberDto;
 import com.example.korail.dto.SessionDto;
 import com.example.korail.service.MypageService;
+import com.example.korail.service.PmyhisService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,8 +22,11 @@ public class MypageController {
     @Autowired
     private MypageService mypageService;
 
+    @Autowired
+    PmyhisService pmyhisService;
+
     @GetMapping("mypage")
-    public String my_page(HttpSession session) {
+    public String my_page(HttpSession session, Model model) {
 
         // Session 확인 후 'null'의 경우 로그인 페이지로 이동
         SessionDto svo = (SessionDto) session.getAttribute("svo");
@@ -46,6 +50,11 @@ public class MypageController {
         session.setAttribute("memberId", memberId);
         session.setAttribute("memberPass", memberPass);
         session.setAttribute("memberPnumber", memberPnumber);
+
+
+        String id = svo.getId();
+        int mileage = pmyhisService.mileage(id);
+        model.addAttribute("mileage", mileage);
 
         return "my_page/my_page";
     }
@@ -130,5 +139,10 @@ public class MypageController {
         }
 
         return "/my_page/my_page";
+    }
+
+    @GetMapping("mileage")
+    public String mypage_modal() {
+        return "/my_page/mileage_modal";
     }
 }

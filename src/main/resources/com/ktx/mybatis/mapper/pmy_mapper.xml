@@ -27,4 +27,14 @@
 		UPDATE KTX_MEMBER_ADDINFO SET preferential=#{preferential} WHERE AID=#{aid}
 	</update>
 
+	<select id="oldfile" parameterType="String" resultType="String">
+		SELECT ASFILE FROM KTX_MEMBER_ADDINFO WHERE AID=#{aid}
+ 	</select>
+
+	<select id="mileage" parameterType="String" resultType="Integer">
+		SELECT COALESCE(SUM(PRICE) * 0.005, 0) AS TOTAL_PRICE
+		FROM KTX_ORDER
+		WHERE ID = #{id} AND CANCEL = 0
+	</select>
+
 </mapper>

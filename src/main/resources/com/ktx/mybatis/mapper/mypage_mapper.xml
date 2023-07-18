@@ -11,6 +11,7 @@
         FROM KTX_ORDER
         WHERE ID = #{userId}
           AND TO_DATE(DepPlandTime, 'YYYYMMDD') >= TRUNC(CURRENT_DATE)
+          AND CANCEL=0
     </select>
 
     <select id="getInfo" parameterType="java.lang.String" resultType="com.example.korail.dto.MemberDto">

@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
 <%@ page isELIgnored="false" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -71,7 +70,7 @@
                                         <th scope="row"><%--@declare id="reguserid"--%><label for="regUserId">우대서비스
                                             대상</label></th>
                                         <td>
-                                            <select name="PREFERENTIAL" id="svcType" title="우대서비스대상"
+                                            <select name="preferential" id="svcType" title="우대서비스대상"
                                                     class="ipt_st04" style="margin-top: 3px;">
                                                 <option value="01" selected>경로자</option>
                                                 <option value="02">장애인</option>
