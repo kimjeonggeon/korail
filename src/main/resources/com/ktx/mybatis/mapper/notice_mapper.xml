@@ -41,7 +41,7 @@
 <!--			<if test= 'category == "title_content"'>-->
 <!--				where ntitle like '%'||#{cvalue}||'%' or ncontent like '%'||#{cvalue}||'%'-->
 <!--			</if>-->
-<!--				)where rno between #{startCount} and #{endCount}-->
+<!--				) where rno between #{startCount} and #{endCount}-->
 <!--	</select>-->
 
 <!--	<select id="list2" resultType="com.example.korail.dto.NoticeDto">-->
@@ -62,7 +62,7 @@
 		select nsfile from ktx_notice where nid=#{nid}
 	</select>
 
-<!--	<update id="updateHits" parameterType="String">-->
-<!--		update ktx_notice set nhits=nhits+1 where nid=#{nid}-->
-<!--	</update>-->
+	<update id="updateHits" parameterType="com.example.korail.dto.NoticeDto">
+		update ktx_notice set nhits=nhits+1 where nid=#{nid}
+	</update>
 </mapper>
