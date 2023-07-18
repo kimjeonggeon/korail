@@ -10,7 +10,36 @@
 <script src="http://localhost:9000/js/chairupdate.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
+	function updateAdltTotAmt() {
+		// 탑승 인원 수 가져오기
+		var passengersNum = parseInt($("#passengersNum").text());
+
+		// adultcharge 가져오기
+		var adultCharge = parseInt("${ sessionScope.uvo.adultcharge }");
+
+		// 탑승 인원 수에 adultcharge를 곱한 결과 계산
+		var calculatedAmt = passengersNum * adultCharge;
+
+		if (isNaN(calculatedAmt) || calculatedAmt === 0) {
+			calculatedAmt = 0;
+		}
+
+		// 계산된 결과를 화면에 업데이트
+		$("#adltTotAmt").text(calculatedAmt + "원");
+		$("#allTotAmtLocD").text(calculatedAmt + "원");
+
+		$("#adltTotAmt1").val(calculatedAmt);
+
+	}
 $(document).ready(function(){
+
+	updateAdltTotAmt();
+
+	// 탑승 인원 수가 변경될 때마다 호출되는 이벤트 핸들러 등록
+	$("#passengersNum").on("DOMSubtreeModified", function() {
+		updateAdltTotAmt(); // 변경된 값으로 업데이트
+	});
+
 	/* $(".btn_selectSeat").click(function() {
 		let sid = "${sessionScope.svo.id}";
 		let seatNum = $("#seatNum").val();
@@ -33,11 +62,12 @@ $(document).ready(function(){
 			let id = "${sessionScope.svo.id}";
 			let seatNum = $("#seatNum1").val();
 			let ticketQty = $("#ticketQty1").val();
+			let adltTotAmt = $("#adltTotAmt1").val();
 			
 			if(id == ""){
 			  $(".modal").css("display", "block");
 			  }else{
-				  $(location).attr("href",'http://localhost:9000/reservation_updateselect/'+seatNum +"/"+ticketQty+"/"+id );
+				  $(location).attr("href",'http://localhost:9000/reservation_updateselect/'+seatNum +"/"+ticketQty+"/"+id +"/"+adltTotAmt);
 			  }
 		}
 		
@@ -238,6 +268,7 @@ $(document).ready(function(){
 										<input type="hidden" name="seatNum" id="seatNum1">
 										<%--<input type="hidden" name="ticketQty" id ="ticketQty1">--%>
 										<input type="hidden" name="ticketQty" id ="ticketQty1" value=" ${sessionScope.svo.id }">
+										<input type="hidden" name="adltTotAmt" id="adltTotAmt1">
 									</form>
 								</div>
 							</section>
@@ -262,7 +293,7 @@ $(document).ready(function(){
 										
 											<tr>
 												<th scope="row">성인 <span id="adltSeatCnt"></span></th>
-												<td id="adltTotAmt">${ sessionScope.uvo.adultcharge }</td>
+												<td id="adltTotAmt"></td>
 											</tr>
 											
 										</tbody>
@@ -276,7 +307,7 @@ $(document).ready(function(){
 							<section class="box_detail total_price "> <!-- 총 결재금액일 시 class="total_price" 추가 -->
 								<div class="box_title">
 									<strong class="txt_tit">총 결제금액</strong>
-									<span class="sel_price" id="allTotAmtLocD">${ sessionScope.uvo.adultcharge }원</span>
+									<span class="sel_price" id="allTotAmtLocD"></span>
 								</div>
 							</section>
 							<!-- //총 결제금액 -->

@@ -28,15 +28,15 @@
 			#{id},'0',#{depPlaceId},#{arrPlaceId},#{depPlandTime},#{cardnum},#{email})
 	</insert>
 
-	<!--	<update id="updatePayment" parameterType="com.korail.vo.OrderVo">
+	<update id="updatePayment" parameterType="com.example.korail.dto.OrderDto">
             update ktx_order set
                 rdate=sysdate, stime=#{stime}, dtime=#{dtime}, price=#{price}, trainnum=#{trainnum},
-                chairnum=#{chairnum}, depPlandTime=#{depPlandTime}, cardnum=#{cardnum}
+                chairnum=#{chairnum}, depPlandTime=#{depPlandTime}, cardnum=#{cardnum}, ticketqty=#{ticketqty}
             where reservnum=#{reservnum}
-        </update> -->
+    </update>
 
     <select id="select" parameterType = "com.example.korail.dto.OrderDto" resultType="com.example.korail.dto.OrderDto">
-        SELECT id, sstation, depPlandTime, stime, dstation, price, reservnum, trainnum, chairnum, cancel, depPlaceId, arrPlaceId, cardnum, email, to_char(cdate,'yyyy-mm-dd') cdate
+        SELECT id, sstation, depPlandTime, stime, dstation, ticketqty, price, reservnum, trainnum, chairnum, cancel, depPlaceId, arrPlaceId, cardnum, email, to_char(cdate,'yyyy-mm-dd') cdate
         FROM KTX_ORDER
         <choose>
             <when test='cardnum == null'>
