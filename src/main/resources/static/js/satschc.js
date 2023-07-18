@@ -4,7 +4,7 @@ $(document).ready(function(){
 	function trInitAjax(trnumber) {
 		//alert(trnumber);
 	  $.ajax({
-	    url: "train_reservation_satschc_json?trnumber="+trnumber,
+	    url: "train_reservation_satschc_json/"+trnumber+"/",
 	    success: function (result) {
 	      //alert(result);
 	      let jdata = JSON.parse(result);

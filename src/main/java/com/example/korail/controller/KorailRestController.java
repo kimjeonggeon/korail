@@ -17,7 +17,7 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-public class KorailRestControlloer {
+public class KorailRestController {
     @Autowired
     OrderService orderService;
 
@@ -40,8 +40,8 @@ public class KorailRestControlloer {
     }
 
 
-    @GetMapping("train_reservation_satschc_json")
-    public String train_reservation_satschc_json(HttpSession session, String trnumber){
+    @GetMapping("train_reservation_satschc_json/{trnumber}")
+    public String train_reservation_satschc_json(HttpSession session,@PathVariable String trnumber){
         ReservationDto rvo = (ReservationDto)session.getAttribute("rvo");
         rvo.setTrnumber(trnumber);
         ArrayList<SeatNumberDto> list =(ArrayList<SeatNumberDto>)orderService.getSeatnum(rvo);
