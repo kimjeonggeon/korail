@@ -29,8 +29,8 @@ public class PageService {
             pageSize = 3;
         } else if(pageDto.getServiceName().equals("member")) {
             pageSize = 5;
-        } else if(pageDto.getServiceName().equals("board")) {
-            pageSize = 10;
+        } else if(pageDto.getServiceName().equals("adminReserv")) {
+            pageSize = 5;
         }
 
         //총 페이지 수 계산

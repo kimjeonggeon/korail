@@ -1,10 +1,8 @@
 package com.example.korail.controller;
 
-import com.example.korail.dto.CardinfoDto;
-import com.example.korail.dto.OrderDto;
-import com.example.korail.dto.SessionDto;
-import com.example.korail.dto.UpdateDto;
+import com.example.korail.dto.*;
 import com.example.korail.service.OrderService;
+import com.example.korail.service.PageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Controller;
@@ -16,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import javax.servlet.http.HttpSession;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.Map;
 
 @Controller
 public class ReservationlistController {
@@ -225,6 +224,23 @@ public class ReservationlistController {
 
         return "/admin/admin_trainlist";
     }
+
+    /* admin - reservationlist */
+    @GetMapping("admin_reservationlist")
+    public String admin_reservationlist(){
+        return "/admin/admin_reservationlist";
+    }
+
+ /*   @GetMapping("admin_reservationlist/{page}")
+    public String admin_reservationlist(@PathVariable String page, Model model) {
+        PageDto pageDto = pageService.getPageResult(new PageDto(page, "adminReserv"));
+
+        model.addAttribute("list", orderService.getOrderSelect(pageDto));
+        model.addAttribute("page", pageDto);
+
+        return "/admin/board_list";
+    }*/
+
 
 
 }//controller

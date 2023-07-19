@@ -48,7 +48,6 @@ $(document).ready(function(){
             $("#clickVal_price").val(price);
             $("#clickVal_sstation").val(sstation);
             $("#clickVal_dstation").val(dstation);
-            //$("#clickVal_runtime").val(runtime);
             $("#clickVal_reservnum").val(reservnum);
             $("#clickVal_trainnum").val(trainnum);
             $("#clickVal_chairnum").val(chairnum);
@@ -73,7 +72,6 @@ $(document).ready(function(){
 		    $("#modal_date").text( $("#clickVal_depPlandTime").val());
 		    $("#modal_sstation").text( $("#clickVal_sstation").val());
 		    $("#modal_dstation").text( $("#clickVal_dstation").val());
-		   //$("#modal_runtime").text( $("#clickVal_runtime").val());
 		    $("#modal_reservnum").text( $("#clickVal_reservnum").val());
 		    $("#modal_trainnum").text( $("#clickVal_trainnum").val());
 		    $("#modal_chairnum").text( $("#clickVal_chairnum").val());
@@ -82,8 +80,73 @@ $(document).ready(function(){
 		    $("#modal_price2").text( $("#clickVal_price").val());
 		    
 		    $("#modal_reservnum_input").val( $("#clickVal_reservnum").val());
+
+			alert("clickVal_price"+$("#clickVal_price").val());
+
+			/******** 예매 취소 수수료 계산하기 *********/
+			function parseDateTime(dateStr, timeStr) {
+				const formattedDateStr = dateStr.replace(/(\d{4})(\d{2})(\d{2})/, '$1-$2-$3');
+				const timeParts = timeStr.match(/(\d+)시(\d+)분/);
+				const hours = parseInt(timeParts[1], 10);
+				const minutes = parseInt(timeParts[2], 10);
+				return new Date(`${formattedDateStr} ${hours}:${minutes}:00`);
+			}
+
+			// 현재 시간을 가져오는 함수
+			function getCurrentTime() {
+				return new Date();
+			}
+
+			// 출발 3시간 이내인지 확인하는 함수
+			function isWithin3HoursFromNow(departureDateTime) {
+				const now = getCurrentTime();
+				const threeHoursFromNow = new Date(now.getTime() + 3 * 60 * 60 * 1000);
+				return departureDateTime <= threeHoursFromNow;
+			}
+
+			// 예약 취소 수수료 계산하는 함수
+			function calculateCancellationFee(depPlandTime, stime) {
+				const departureDateTime = parseDateTime(depPlandTime, stime);
+				const isWithin3Hours = isWithin3HoursFromNow(departureDateTime);
+				const cancellationFeeRate = isWithin3Hours ? 0.05 : 0.0;
+				const ticketPrice = parseInt($("#clickVal_price").val().replace(/,/g, ''), 10); // 티켓 가격 (쉼표 제거하여 파싱)
+				const cancellationFee = ticketPrice * cancellationFeeRate;
+
+				return cancellationFee;
+			}
+
+
+			// 예약 날짜와 시간 데이터
+			const depPlandTime = $("#clickVal_depPlandTime").val(); // 출발 날짜
+			const stime = $("#clickVal_stime").val(); // 출발 시간
+
+
+			// 예약 취소 수수료 계산 및 결과를 화면에 출력
+			const cancellationFee = calculateCancellationFee(depPlandTime, stime);
+
+				// 숫자를 0,000 형식으로 변환하는 함수
+				function formatNumber(number) {
+					return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+				}
+
+			$('#charge1').text(`${formatNumber(cancellationFee)} 원`);
+
+
+
+			//반환금액 계산
+			const price = parseInt($("#clickVal_price").val().replace(/,/g, ''), 10); // 티켓 가격 (쉼표 제거하여 파싱)
+			var returnCharge = price - cancellationFee
+
+			$('#returnCharge1').text(`${formatNumber(returnCharge)} 원`);
+
+
+
+
+
+
+
 		    
-		    }else{
+		 }else{
 		    	Swal.fire({
 		    		text: "예매를 취소할 승차권을 선택해주세요.",
 		    		width: 600,
@@ -120,6 +183,65 @@ $(document).ready(function(){
 		$("#reserv").hide();
 		$(".cancel_btn").css("color", "#68b3ce");
 		$(".reserv_btn").css("color", "");
+
+		/******** 예매 취소 수수료 계산하기 *********/
+		function parseDateTime(dateStr, timeStr) {
+			const formattedDateStr = dateStr.replace(/(\d{4})(\d{2})(\d{2})/, '$1-$2-$3');
+			const timeParts = timeStr.match(/(\d+)시(\d+)분/);
+			const hours = parseInt(timeParts[1], 10);
+			const minutes = parseInt(timeParts[2], 10);
+			return new Date(`${formattedDateStr} ${hours}:${minutes}:00`);
+		}
+
+		// 현재 시간을 가져오는 함수
+		function getCurrentTime() {
+			return new Date();
+		}
+
+		// 출발 3시간 이내인지 확인하는 함수
+		function isWithin3HoursFromNow(departureDateTime) {
+			const now = getCurrentTime();
+			const threeHoursFromNow = new Date(now.getTime() + 3 * 60 * 60 * 1000);
+			return departureDateTime <= threeHoursFromNow;
+		}
+
+
+		// 예약 취소 수수료 계산하는 함수
+		function calculateCancellationFee(depPlandTime, stime) {
+			const departureDateTime = parseDateTime(depPlandTime, stime);
+			const isWithin3Hours = isWithin3HoursFromNow(departureDateTime);
+			const cancellationFeeRate = isWithin3Hours ? 0.05 : 0.0;
+			const ticketPrice = parseInt($("#clickVal_price2").val().replace(/,/g, ''), 10); // 티켓 가격 (쉼표 제거하여 파싱)
+			const cancellationFee = ticketPrice * cancellationFeeRate;
+
+			return cancellationFee;
+		}
+
+		// 예약 날짜와 시간 데이터
+		const depPlandTime = $("#clickVal_depPlandTime2").val(); // 출발 날짜
+		const stime = $("#clickVal_stime2").val(); // 출발 시간
+
+
+		// 예약 취소 수수료 계산 및 결과를 화면에 출력
+		const cancellationFee = calculateCancellationFee(depPlandTime, stime);
+
+		// 숫자를 0,000 형식으로 변환하는 함수
+		function formatNumber(number) {
+			return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+		}
+
+
+		$('#charge2').text(`${formatNumber(cancellationFee)} 원`);
+
+
+		//반환금액 계산
+		const price = parseInt($("#clickVal_price2").val().replace(/,/g, ''), 10); // 티켓 가격 (쉼표 제거하여 파싱)
+		var returnCharge = price - cancellationFee
+
+		$('#returnCharge2').text(`${formatNumber(returnCharge)} 원`);
+
+
+
 	});
 	
 	 //예매내역 버튼 클릭
@@ -314,12 +436,13 @@ $(document).ready(function(){
 			//alert("출발일을 선택해주세요.");	
 		}
 	    
-});
-	
-	
-	
-	
-	
+	});
+
+
+
+
+
+
 	
 	
 	

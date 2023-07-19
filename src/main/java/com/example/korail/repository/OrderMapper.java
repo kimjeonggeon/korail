@@ -1,9 +1,6 @@
 package com.example.korail.repository;
 
-import com.example.korail.dto.OrderDto;
-import com.example.korail.dto.ReservationDto;
-import com.example.korail.dto.SeatNumberDto;
-import com.example.korail.dto.UpdateDto;
+import com.example.korail.dto.*;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.ArrayList;
@@ -18,4 +15,5 @@ public interface OrderMapper {
     OrderDto selected(String reservnum);
     List<SeatNumberDto> seatnumUp(UpdateDto uvo);
     int updatePayment(OrderDto orderDto);
+    List<OrderDto> list(PageDto pageDto);
 }

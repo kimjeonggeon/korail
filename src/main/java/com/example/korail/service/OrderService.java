@@ -1,9 +1,6 @@
 package com.example.korail.service;
 
-import com.example.korail.dto.OrderDto;
-import com.example.korail.dto.ReservationDto;
-import com.example.korail.dto.SeatNumberDto;
-import com.example.korail.dto.UpdateDto;
+import com.example.korail.dto.*;
 import com.example.korail.repository.OrderMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -48,4 +45,9 @@ public class OrderService {
     public int getPaymentUpdate(OrderDto orderDto){
         return orderMapper.updatePayment(orderDto);
     }
+
+    public List<OrderDto> list(PageDto pageDto) {
+        return orderMapper.list(pageDto);
+    }
+
 }

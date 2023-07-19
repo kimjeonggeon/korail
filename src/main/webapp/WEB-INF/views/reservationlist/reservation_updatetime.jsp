@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>KTX 통합 예매</title>
 <link rel="stylesheet" href="http://localhost:9000/css/train_reservation_alcnsrch.css">
 <script src="http://localhost:9000/js/jquery-3.6.4.min.js"></script>
 <script src="http://localhost:9000/js/alcnsrch.js"></script>
@@ -106,26 +106,25 @@ $.getJSON(url, function(citys){
 </style>
 </head>
 <body>
-<div>
-<jsp:include page="../gnb.jsp"></jsp:include>
-	<div id ="contentWrap">
-		<div class="title_wrap in_process ticketingT">
-			<jsp:include page="../header.jsp"></jsp:include>	
-			<h2>예매 변경</h2>
-			<!-- <ol class="process">
-				<li class="active">예매정보입력</li>
-				<li>결제정보입력</li>
-				<li class="last">예매완료</li>
-			</ol> -->
-		</div>
-	
-	
-		<div class="page">
-			<h3>배차조회</h3>
-			<div class="buscheck_wrap clfix " style="width: 960px;">
-				<!-- 좌측 infoBox -->
-				<div class="infoBox">
-					<p class="date" id="alcnDeprDtm"></p>
+	<div>
+		<jsp:include page="../gnb.jsp"></jsp:include>
+		<div id ="contentWrap">
+			<div class="title_wrap in_process ticketingT">
+				<jsp:include page="../header.jsp"></jsp:include>
+				<h2>예매 변경</h2>
+				<!-- <ol class="process">
+					<li class="active">예매정보입력</li>
+					<li>결제정보입력</li>
+					<li class="last">예매완료</li>
+				</ol> -->
+			</div>
+
+			<div class="page">
+				<h3>배차조회</h3>
+				<div class="buscheck_wrap clfix " style="width: 960px;">
+					<!-- 좌측 infoBox -->
+					<div class="infoBox">
+						<p class="date" id="alcnDeprDtm"></p>
 						<div class="route_wrap" id="alcnRotInfo">
 							<div class="inner">
 								<p class="roundBox_start">출발</p>
@@ -140,94 +139,92 @@ $.getJSON(url, function(citys){
 								<a href="#none" class="btn btn_modify white">수정</a>
 							</div>
 						</div>
-							
+
 						<div class="price_info bottom" id="alcnPriceInf">
 							<p class="stit">요금정보<span>(일반요금)</span></p>
-								<dl>
-									<dt>일반</dt>
-									<dd id="trainfare"></dd>
-									
-								</dl>
+							<dl>
+								<dt>일반</dt>
+								<dd id="trainfare"></dd>
+							</dl>
 						</div>
+					</div>
+					<!-- //좌측 infoBox -->
+
+					<!-- 우측 detailBox -->
+					<div class="detailBox">
+						<div class="detailBox_head col3">
+							<div class="box_refresh">
+								<button type="button" class="btn btn_refresh" id="reloadBtn">
+									<span class="ico_refresh">새로고침</span>
+								</button>
+							</div>
+							<div class="head_date" style="width: 700px">
+								<span class="date_cont" id="rideDate"></span>
+								<input type="text" id="busDate11" readonly="" class="hasDatepicker">
+								<img class="ui-datepicker-trigger" src="http://localhost:9000/images/ico_calender.png" alt="달력" title="달력">
+								<span class="calender"></span>
+							</div>
+						</div>
+
+						<div class="detailBox_body clfix">
+							<ul class="time">
+								<li class="night"><a href="#none" class="" data-time="01">1</a></li>
+
+								<li class="night"><a href="#none" class="" data-time="03">3</a></li>
+
+								<li class="night"><a href="#none" class="" data-time="05">5</a></li>
+
+								<li class="daytime"><a href="#none" class="" data-time="07">7</a></li>
+
+								<li class="daytime"><a href="#none" class="" data-time="09">9</a></li>
+
+								<li class="daytime"><a href="#none" class="" data-time="11">11</a></li>
+
+								<li class="daytime"><a href="#none" class="" data-time="13">13</a></li>
+
+								<li class="daytime"><a href="#none" class="" data-time="15">15</a></li>
+
+								<li class="daytime"><a href="#none" class="" data-time="17">17</a></li>
+
+								<li class="daytime"><a href="#none" class="" data-time="19">19</a></li>
+
+								<li class="night"><a href="#none" class="" data-time="21">21</a></li>
+
+								<li class="night"><a href="#none" class="" data-time="23">23</a></li>
+							</ul>
+
+							<div class="bustime_wrap"></div>
+
+							<form name='updateForm' id='updateForm' action='/reservation_updatechair' method='post'>
+								<input type="hidden" name="depplacename" id="depplacename">
+								<input type="hidden" name="arrplacename" id="arrplacename">
+								<input type="hidden" name="start_date" id="start_date">
+								<input type="hidden" name="end_date" id="end_date">
+								<input type="hidden" name="traingradename" id="traingradename">
+								<input type="hidden" name="trainno" id="trainno">
+								<input type="hidden" name="adultcharge" id="adultcharge">
+								<input type="hidden" name="rtimes" id="rtimes">
+							</form>
+						</div>
+					</div>
+					<!-- //우측 detailBox -->
 				</div>
-				<!-- //좌측 infoBox -->
-						
-				<!-- 우측 detailBox -->
-				<div class="detailBox">
-					<div class="detailBox_head col3">
-						<div class="box_refresh">
-							<button type="button" class="btn btn_refresh" id="reloadBtn">
-							<span class="ico_refresh">새로고침</span>
-							</button>
-						</div>
-						<div class="head_date" style="width: 700px">
-							<span class="date_cont" id="rideDate"></span>
-							<input type="text" id="busDate11" readonly="" class="hasDatepicker">
-							<img class="ui-datepicker-trigger" src="http://localhost:9000/images/ico_calender.png" alt="달력" title="달력">
-							<span class="calender"></span>
-						</div>
-					</div>
-					
-					<div class="detailBox_body clfix">
-						<ul class="time">
-							<li class="night"><a href="#none" class="" data-time="01">1</a></li>
-						
-							<li class="night"><a href="#none" class="" data-time="03">3</a></li>
-						
-							<li class="night"><a href="#none" class="" data-time="05">5</a></li>
-						
-							<li class="daytime"><a href="#none" class="" data-time="07">7</a></li>
-						
-							<li class="daytime"><a href="#none" class="" data-time="09">9</a></li>
-						
-							<li class="daytime"><a href="#none" class="" data-time="11">11</a></li>
-						
-							<li class="daytime"><a href="#none" class="" data-time="13">13</a></li>
-						
-							<li class="daytime"><a href="#none" class="" data-time="15">15</a></li>
-						
-							<li class="daytime"><a href="#none" class="" data-time="17">17</a></li>
-						
-							<li class="daytime"><a href="#none" class="" data-time="19">19</a></li>
-						
-							<li class="night"><a href="#none" class="" data-time="21">21</a></li>
-						
-							<li class="night"><a href="#none" class="" data-time="23">23</a></li>
-						</ul>
-						
-						<div class="bustime_wrap">
-							
-						</div>
-						<form name='updateForm' id='updateForm' action='/reservation_updatechair' method='post'>
-							<input type="hidden" name="depplacename" id="depplacename">
-							<input type="hidden" name="arrplacename" id="arrplacename">
-							<input type="hidden" name="start_date" id="start_date">
-							<input type="hidden" name="end_date" id="end_date">
-							<input type="hidden" name="traingradename" id="traingradename">
-							<input type="hidden" name="trainno" id="trainno">
-							<input type="hidden" name="adultcharge" id="adultcharge">
-							<input type="hidden" name="rtimes" id="rtimes">
-						</form>
-					</div>
+				<div class="section">
+					<ul class="desc_list">
+						<li>심야고속 및 심야우등의 할증 요금은 당일 02:00부터 04:00 사이 출발차량</li>
+						<li>노선에 따라 심야요금과 심야할증요금이 동일할 수도 있음</li>
+						<li>마일리지 구매 승차권은 프리미엄/편도 노선(일부노선 제외)에 한정하며 각 1매씩 예매 가능(*회원대상)</li>
+						<li>유아 카시트 가능( <img src="/images/page/ico_child_on.png" alt="" style="width:13px"> ) 표시된 차량에만 유아 카시트 장착 가능 (본인 소유의 유아 카시트 준비)</li>
+						<li>소요(도착)시간은 도로 사정에 따라 지연될 수 있음</li>
+						<!-- 190925 추가 -->
+						<li>휠체어 탑승 가능( <img src="/images/page/ico_wheel_on.png" alt="" style="width:13px"> ) 표시된 차량에만 휠체어 동반 탑승 가능 (전동식 휠체어만 탑승 가능)</li>
+						<li>휠체어 좌석 예매는 wkobus 사이트에서 예매 가능하며, 휠체어 좌석 예매는 출발일로 부터 3일 전까지만 가능<br>(*휠체어 좌석 예매가 없을 시 출발일 이틀 전부터 일반석 예매 가능)</li>
+						<!-- // 190925 추가 -->
+					</ul>
 				</div>
-						<!-- //우측 detailBox -->
-					</div>
-					<div class="section">
-						<ul class="desc_list">
-							<li>심야고속 및 심야우등의 할증 요금은 당일 02:00부터 04:00 사이 출발차량</li>
-							<li>노선에 따라 심야요금과 심야할증요금이 동일할 수도 있음</li>
-							<li>마일리지 구매 승차권은 프리미엄/편도 노선(일부노선 제외)에 한정하며 각 1매씩 예매 가능(*회원대상)</li>
-							<li>유아 카시트 가능( <img src="/images/page/ico_child_on.png" alt="" style="width:13px"> ) 표시된 차량에만 유아 카시트 장착 가능 (본인 소유의 유아 카시트 준비)</li>
-							<li>소요(도착)시간은 도로 사정에 따라 지연될 수 있음</li>
-							<!-- 190925 추가 -->
-	                        <li>휠체어 탑승 가능( <img src="/images/page/ico_wheel_on.png" alt="" style="width:13px"> ) 표시된 차량에만 휠체어 동반 탑승 가능 (전동식 휠체어만 탑승 가능)</li>
-	                        <li>휠체어 좌석 예매는 wkobus 사이트에서 예매 가능하며, 휠체어 좌석 예매는 출발일로 부터 3일 전까지만 가능<br>(*휠체어 좌석 예매가 없을 시 출발일 이틀 전부터 일반석 예매 가능)</li>
-	                        <!-- // 190925 추가 -->
-						</ul>
-					</div>
-				</div>
+			</div>
 			<jsp:include page="../footer.jsp"></jsp:include>
+		</div>
 	</div>
-</div>					
 </body>
 </html>

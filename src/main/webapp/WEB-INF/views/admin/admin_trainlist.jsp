@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>KTX 통합 예매</title>
 <link rel="stylesheet" href="http://localhost:9000/css/reservationlist.css">
 <script src="http://localhost:9000/js/jquery-3.6.4.min.js"></script>
 <script src="http://localhost:9000/js/reservation_jquery.js"></script>
