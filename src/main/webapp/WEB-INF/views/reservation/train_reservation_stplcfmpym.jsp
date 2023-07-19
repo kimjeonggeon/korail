@@ -10,11 +10,16 @@
 <script src="http://localhost:9000/js/nomember_stplcfmpym.js"></script>
 <script src="http://localhost:9000/js/mailAuth.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://cdn.iamport.kr/v1/iamport.js"></script>
+<!-- jQuery -->
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
+<!-- iamport.payment.js -->
+<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
+
 <style>
 	input:focus {
   		outline: none;
 	}
-	
 </style>
 <script>
 	$(document).ready(function(){
@@ -28,6 +33,44 @@
 			alert(email);
 		}
 	});
+
+	var IMP = window.IMP;
+	IMP.init("imp05733820");
+	var today = new Date();
+	var hours = today.getHours(); // 시
+	var minutes = today.getMinutes();  // 분
+	var seconds = today.getSeconds();  // 초
+	var milliseconds = today.getMilliseconds();
+	var makeMerchantUid = hours +  minutes + seconds + milliseconds;
+
+
+	function requestPay() {
+		var merchant_uid = "IMP" + makeMerchantUid(); // 주문번호
+
+		IMP.request_pay({
+			pg: "kcp",
+			pay_method: "card",
+			merchant_uid: merchant_uid,
+			name: "KTX 예매",
+			amount: 64900,
+			buyer_email: "dlawnsdn1209@gmail.com",
+			buyer_name: "임준우",
+			buyer_tel: "010-8994-9577",
+			buyer_addr: "서울특별시 강남구",
+			buyer_postcode: "01181"
+		}, function (rsp) { // callback
+			// rsp.imp_uid 값으로 결제 단건조회 API를 호출하여 결제결과를 판단합니다.
+			if (rsp.success) {
+				console.log("결제 성공");
+				console.log(rsp);
+			} else {
+				console.log("결제 실패");
+				console.log(rsp);
+			}
+		});
+	}
+
+
 </script>
 </head>
 <body>
@@ -611,6 +654,9 @@
 						</p>
 					</div>
 				</div>
+
+
+						<button onclick="requestPay()">결제하기</button>
 
 				<div id="tab-desc1" class="section tab_desc_wrap"> <!-- 190109 수정 : tab_desc_wrap 클래스 및 id 추가 -->
 					<!-- 카드결제 -->
