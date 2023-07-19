@@ -84,6 +84,12 @@ body {
     margin-bottom: 20px;
 }
 
+.search-form {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: 30px auto;
+}
 
 .search-form button {
 	font-size: 14px;
@@ -91,9 +97,8 @@ body {
 }
 
 .notice_search {
-	
-	margin: 30px 0;
-	width: 50%;
+	margin: 10px auto;
+	width: 70%;
 }
 
 .notice_search th {
@@ -583,7 +588,7 @@ h1 {
 	padding: 10px 0;
 }
 
-.notice_list, .notice_search {
+.notice_list {
 	width: 70%;
 	margin: auto;
 	border-collapse: collapse;
@@ -774,6 +779,7 @@ table #testTable tr:first-child td {
     height: 25px;
     font-size: 14px;
     color: black;
+	margin:0;
 }
 
 .notice_search td a{

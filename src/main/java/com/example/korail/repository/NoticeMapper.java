@@ -18,4 +18,5 @@ public interface NoticeMapper {
     void updateHits(String nid);
     ArrayList<NoticeDto> getNid(String nid);
     ArrayList<NoticeDto> getSearch(int startCount, int endCount, String category, String cvalue);
+    ArrayList<NoticeDto> getList(String category, String cvalue);
 }

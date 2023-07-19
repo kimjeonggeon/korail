@@ -59,7 +59,7 @@
 		<form class="search-form" action="notice_list_search" name="notice_list_search" method="post" >
 		<c:choose>
 		<c:when test="${category !=null }">
-			<select name="category" id="category" class="notice_search">
+			<select name="category" id="category" class="notice-search">
 			<c:if test="${category == 'all'}">
 				<option value="all" selected>전체</option>
 				<option value="title">제목</option>
