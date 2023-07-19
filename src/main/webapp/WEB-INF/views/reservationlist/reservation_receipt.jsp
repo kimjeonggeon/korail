@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>KTX 통합 예매</title>
 <link rel="stylesheet" href="http://localhost:9000/css/reservationlist.css">
 <script src="http://localhost:9000/js/jquery-3.6.4.min.js"></script>
 <script src="http://localhost:9000/js/reservation_jquery.js"></script>
@@ -17,9 +17,9 @@
 				<li>현재 페이지에서 출력하신 영수증으로 승차권 대신하여 탑승하실 수 없습니다.</li>
 			</ul>
 			<p class="btnBox">
-			<button type="button" onclick="window.print();" class="print">
-				<img src="http://localhost:9000/images/btn_print_blue.gif" alt="프린트버튼">
-			</button>
+				<button type="button" onclick="window.print();" class="print">
+					<img src="http://localhost:9000/images/btn_print_blue.gif" alt="프린트버튼">
+				</button>
 			</p>
 			<span class="bg_line01"><img src="http://localhost:9000/images/img_line_print.png" alt="라인"></span>
 		</div>
@@ -56,8 +56,8 @@
 					<li>일반매수 : ${odt.ticketqty}</li>
 				</ul>
 			</div>
+		</div>
+		<p style="padding: 0 20px">※ 영수증은 승차권이 아닙니다. 이 영수증으로 승차권을 대신하여 탑승하실 수 없습니다.</p>
 	</div>
-	<p style="padding: 0 20px">※ 영수증은 승차권이 아닙니다. 이 영수증으로 승차권을 대신하여 탑승하실 수 없습니다.</p>
-</div>
 </body>
 </html>

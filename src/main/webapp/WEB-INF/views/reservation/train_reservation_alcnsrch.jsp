@@ -22,7 +22,7 @@ let endId = "${sessionScope.rvo.endId}";
 let rtime = "${sessionScope.rvo.rtime}";
 
 
-let url ="https://apis.data.go.kr/1613000/TrainInfoService/getStrtpntAlocFndTrainInfo?serviceKey=fia82dW58XZekM3fyfsYQjw24d3TDN%2FOCdtbCQWjlYjltamNE5UGs23S0OiE%2BdghuBeQ%2Bt%2FLjncovmHroyfk1Q%3D%3D&pageNo=1&numOfRows=10&_type=json&depPlaceId=" + startId +"&arrPlaceId="+ endId +"&depPlandTime="+ rtime + "&trainGradeCode=00";
+let url ="https://apis.data.go.kr/1613000/TrainInfoService/getStrtpntAlocFndTrainInfo?serviceKey=fia82dW58XZekM3fyfsYQjw24d3TDN%2FOCdtbCQWjlYjltamNE5UGs23S0OiE%2BdghuBeQ%2Bt%2FLjncovmHroyfk1Q%3D%3D&pageNo=1&numOfRows=65&_type=json&depPlaceId=" + startId +"&arrPlaceId="+ endId +"&depPlandTime="+ rtime + "&trainGradeCode=00";
 
 
 $.getJSON(url, function(citys){

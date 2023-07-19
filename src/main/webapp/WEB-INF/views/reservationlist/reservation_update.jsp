@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>KTX 통합 예매</title>
 <link rel="stylesheet" href="http://localhost:9000/css/reservationlist.css">
 <script src="http://localhost:9000/js/jquery-3.6.4.min.js"></script>
 <script src="http://localhost:9000/js/reservation_jquery.js"></script>
@@ -26,45 +26,7 @@
 			<h2>예매 변경</h2>
 		</div>
 	</div>
-	
-	<!------------------------ 예매변경 ---------------------------->
-	<!-- <div class="breadcrumb">
-		<ul class="breadcrumb_list">
-			<li><a href="/main.do">HOME</a></li>
-			<li>
-				<div class="select-box">
-					<div class="selectricWrapper selectric-select">
-						<div class="selectricHideSelect">
-							<select name="" id="" class="select" tabindex="0">
-								<option value="/mrs/rotinf.do">고속버스예매</option>
-								<option value="/mrs/mrscfm.do" selected="selected">예매확인</option>
-								<option value="/oprninf/alcninqr/oprnAlcnPage.do">운행정보</option>
-								<option value="/adtnprdnew/frps/frpsPrchGd.do">고속버스 프리패스/정기권</option>
-								<option value="/ugd/mrsgd/Mrsgd.do">이용안내</option>
-								<option value="/cscn/ntcmttr/readNtcList.do">공지사항</option>
-								<option value="/cscn/qna/readQnaList.do">고객센터</option>
-								<option value="/ugd/bustrop/Bustrop.do">전국고속버스운송사업조합</option>
-								<option value="/ugd/trmlbizr/Trmlbizr.do">터미널사업자협회</option>
-							</select>
-						</div>
-					</div>
-				</div>
-			</li>
-			
-			<li>
-				<div class="select-box">
-					<div class="selectricWrapper selectric-select">
-						<div class="selectricHideSelect">
-							<select name="" id="" class="select" tabindex="0">
-								<option value="/mrs/mrscfm.do" selected="selected">예매 변경</option>
-								<option value="/mrs/mrsrecplist.do">영수증 발행</option>
-							</select>
-						</div>
-					</div>
-				</div>
-			</li>
-		</ul>
-	</div> -->
+
 	<!------------------------ 예매확인하기 ---------------------------->
 	<div class="page" id="page_updateC">
 		<h3 class="update">출발일 변경</h3>

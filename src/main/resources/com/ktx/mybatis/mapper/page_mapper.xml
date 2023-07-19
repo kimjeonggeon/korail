@@ -20,6 +20,15 @@
 				where ntitle like '%'||#{cvalue}||'%' or ncontent like '%'||#{cvalue}||'%'
 			</if>
 		</if>
+		<if test='serviceName == "adminReserv"'>
+			ktx_order
+			<if test='category =="reservnumber"'>
+				where reservnum = #{cvalue}
+			</if>
+			<if test= 'category == "id"'>
+				where id = #{cvalue}
+			</if>
+		</if>
 
 	</select>
 
