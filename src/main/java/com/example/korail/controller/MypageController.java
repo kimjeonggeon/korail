@@ -14,7 +14,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class MypageController {
@@ -41,7 +40,6 @@ public class MypageController {
         String memberId = getUserinfo.get(0).getId();
         String memberPass = getUserinfo.get(0).getPass();
         String memberPnumber = getUserinfo.get(0).getPnumber();
-
         // mypage head의 '나의 예매내역' 건수를 나타내는 변수
         int countNum = mypageService.getCount(memberId);
 

@@ -19,7 +19,7 @@
 		(select CHAIRNUM  from ktx_order where SSTATION ='' and DSTATION='부산' and DEPPLANDTIME = '20230613' and DTIME='09시38분')
 			where substr(CHAIRNUM, 1,1) = '1' -->
 	</select>
-	
+
 	<insert id="payment" parameterType="com.example.korail.dto.OrderDto" >
 		insert into KTX_ORDER
 			(cid,oid,sstation,rdate,stime,dtime,dstation,price,reservnum,trainnum,chairnum,ticketqty,id,cancel,depPlaceId,arrPlaceId,depPlandTime,cardnum,email)
