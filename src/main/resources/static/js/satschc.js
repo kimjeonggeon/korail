@@ -39,7 +39,7 @@ $(document).ready(function(){
 	          
 	          if (!isOccupied) {
 	          	let seatNumber = count.toString().padStart(2, '0');
-	            seat += "<img src='http://localhost:9000/images/seat_p.gif' id='chairImg_${count}' style='opacity: 0.5;'>";
+	            seat += "<img src='http://localhost:9000/images/seat_p.gif' id='chairImg_"+seatNumber+"' style='opacity: 0.5;'>";
 	          }
 	          
 	          seat +=  count.toString().padStart(2, '0');
@@ -72,6 +72,7 @@ $(document).ready(function(){
 
 		  if (index > -1) {
 		  		selectedSeats.splice(index, 1); // 배열에서 제거
+			  	$("#seatNum").text(selectedSeats.join(","));
     			$(this).css("opacity", "0.5");
 
   			} else if (adltCnt > 0 && selectedSeats.length < adltCnt) {
@@ -196,14 +197,15 @@ $(document).ready(function(){
 		$("#adltCnt").text(count); // 감소된 값을 화면에 표시
 		//alert(count);
 		if (selectedSeats.length > 0) {
-			var lastSelectedSeat = selectedSeats.pop(); // 배열에서 마지막 요소를 제거하고 가져옴
-			// 마지막으로 선택된 좌석의 선택 상태를 취소하고 투명도를 조정
-			$("[id^='chairImg_']").filter(function() {
-				return $(this).parent().text() + "좌석" === lastSelectedSeat;
-				//alert($(this).text());
-			}).css("opacity", "0.5");
-		}
+			var lastSelectedSeat = selectedSeats.pop(); // 배열에서 마지막 값 제거
+			var lastSelected = lastSelectedSeat.slice(3,5);
 
+			// 제거된 좌석 투명도를 조정
+			$("#chairImg_" + lastSelected).css("opacity", "0.5");
+
+			alert(lastSelected);
+		}
+		//alert(selectedSeats);
 
 		$("#seatNum").text(selectedSeats.join(","));
 		$("#seatNum1").val($("#seatNum").text());
@@ -230,6 +232,9 @@ $(document).ready(function(){
 			  
 			  $("#chldCnt").text(trnumber); // 증가된 값을 화면에 표시
 			  trInitAjax(trnumber);
+			  selectedSeats = [];
+			  $("#seatNum").text(selectedSeats.join(","));
+			  //alert(selectedSeats);
 			});
 
 		$("#Kind_minus").click(function() {
@@ -239,6 +244,9 @@ $(document).ready(function(){
 			  }
 			  $("#chldCnt").text(trnumber); // 감소된 값을 화면에 표시
 			  trInitAjax(trnumber);
+			  selectedSeats = [];
+			  $("#seatNum").text(selectedSeats.join(","));
+			//alert(selectedSeats);
 			});
 			
 	  
@@ -247,17 +255,7 @@ $(document).ready(function(){
 			//window.location.href = "http://localhost:9000/train_reservation_stplcfmpym";
 		});
 	  
-	  
-	  
-	  
-	  
-	  
-	  
-	  
-	  
-	  
-	  
-	  
+
 	  
 	
 	
