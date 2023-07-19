@@ -8,7 +8,6 @@ import com.google.gson.JsonObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpSession;
@@ -111,12 +110,6 @@ public class KorailRestControlloer {
     public Map notice_list_json_data(@PathVariable String page) {
         Map map = new HashMap();
         PageDto pageDto = pageService.getPageResult(new PageDto(page, "notice"));
-
-        if(pageDto.getCategory() == "all") {
-            map = pageService.getPageResult(pageDto.getPage(), "notice", pageDto.getCategory(), pageDto.getCvalue());
-        } else {
-            map = pageService.getPageResult(pageDto.getPage(), "notice", pageDto.getCategory(), pageDto.getCvalue());
-        }
         List<NoticeDto> list = noticeService.list(pageDto);
 
         map.put("list", list);
@@ -129,6 +122,7 @@ public class KorailRestControlloer {
     public NoticeDto notice_content_json_data(@PathVariable String nid) {
         Map map = new HashMap();
         NoticeDto noticeDto = noticeService.content(nid);
+        //System.out.println(noticeDto);
         ArrayList<NoticeDto> nlist = noticeService.getNid(nid);
         int pidx = 0;
         int nidx = 0;
@@ -161,22 +155,26 @@ public class KorailRestControlloer {
         return noticeDto;
     }
 
-    @PostMapping ("notice_search_json_data/{category}/{cvalue}/{page}")
+    @GetMapping("notice_search_json_data/{category}/{cvalue}/{page}")
     public Map notice_search_json_data(@PathVariable String category, @PathVariable String cvalue, @PathVariable String page) {
         Map map = new HashMap();
         PageDto pageDto = pageService.getPageResult(new PageDto(page,"notice"));
 
         if(category == "all") {
-            map = pageService.getPageResult(pageDto.getPage(), "notice", category, cvalue);
+            ArrayList<NoticeDto> list = noticeService.getSearch(pageDto.getStartCount(), pageDto.getEndCount(), "all", cvalue);
+        } else if(category == "title") {
+            ArrayList<NoticeDto> list = noticeService.getSearch(pageDto.getStartCount(), pageDto.getEndCount(), "title", cvalue);
+        } else if(category == "content") {
+            ArrayList<NoticeDto> list = noticeService.getSearch(pageDto.getStartCount(), pageDto.getEndCount(), "content", cvalue);
         } else {
-            map = pageService.getPageResult(pageDto.getPage(), "notice", category, cvalue);
+            ArrayList<NoticeDto> list = noticeService.getSearch(pageDto.getStartCount(), pageDto.getEndCount(), "title_content", cvalue);
+            map.put("list", list);
         }
-        ArrayList<NoticeDto> list = noticeService.getSearch(pageDto.getStartCount(), pageDto.getEndCount(), category, cvalue);
 
-        map.put("list", list);
+        ArrayList<NoticeDto> list2 = noticeService.getList(category, cvalue);
+
+        map.put("list2", list2);
         map.put("page", pageDto);
-        map.put("category", category);
-        map.put("cvalue", cvalue);
 
         return map;
     }
