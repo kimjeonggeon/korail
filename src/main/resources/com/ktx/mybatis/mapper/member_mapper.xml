@@ -109,19 +109,9 @@
         WHERE email = #{email}
     </select>
 
-    <insert id="aid">
-        insert into KTX_MEMBER_ADDINFO (AID)
-        values ('A_' || ltrim(to_char(SEQU_KTX_ADDINFO.nextval, '0000')))
-    </insert>
-
     <insert id="join" parameterType="com.example.korail.dto.MemberDto">
-        INSERT INTO ktx_member (id, pass, name, email, tel, pnumber, birth, gender, mdate, aid)
-        SELECT #{id}, #{pass}, #{name}, #{email}, #{tel}, #{pnumber}, #{birth}, #{gender}, sysdate, AID
-        FROM (
-                 SELECT AID
-                 FROM KTX_MEMBER_ADDINFO
-                 ORDER BY AID DESC
-             ) WHERE ROWNUM = 1
+        INSERT INTO ktx_member (id, pass, name, email, tel, pnumber, birth, gender, mdate, aid, afile, asfile, preferential, permission)
+        VALUES (#{id}, #{pass}, #{name}, #{email}, #{tel}, #{pnumber}, #{birth}, #{gender}, sysdate, ('M_'||ltrim(to_char(sequ_ktx_mileage.nextval,'0000'))), null, null, null, null)
     </insert>
 
 </mapper>

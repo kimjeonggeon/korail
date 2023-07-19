@@ -33,7 +33,7 @@ public class JoinController {
 
     @PostMapping("join_proc")
     public String join_proc(Model model, MemberDto memberDto){
-        memberService.aid();
+
         memberDto.setPass(BCrypt.hashpw(memberDto.getPass(),BCrypt.gensalt(10)));
         int result = memberService.getJoinResult(memberDto);
         if(result == 1){

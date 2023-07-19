@@ -17,11 +17,10 @@
 	</select>
 
 	<select id="getInfo" parameterType="String" resultType="com.example.korail.dto.OrderDto">
-		SELECT sstation, rdate, depPlandTime, stime, dtime, dstation, price, reservnum, trainnum, chairnum, cancel, depPlaceId, arrPlaceId, cardnum, ticketqty
+		SELECT sstation, rdate, depPlandTime, stime, dtime, dstation, price, reservnum, trainnum, chairnum, cancel, depPlaceId, arrPlaceId, cardnum, ticketqty, id, cid, cdate
 		FROM KTX_ORDER
-		where reservnum=#{reservnum}
+		WHERE reservnum=#{reservnum}
 	</select>
-
 
 	<update id="preferential" parameterType="String">
 		UPDATE KTX_MEMBER_ADDINFO SET preferential=#{preferential} WHERE AID=#{aid}
@@ -32,7 +31,7 @@
  	</select>
 
 	<select id="mileage" parameterType="String" resultType="Integer">
-		SELECT COALESCE(SUM(PRICE) * 0.005, 0) AS TOTAL_PRICE
+		SELECT COALESCE(SUM(TO_NUMBER(REPLACE(PRICE, ',', ''))) * 0.005, 0) AS TOTAL_PRICE
 		FROM KTX_ORDER
 		WHERE ID = #{id} AND CANCEL = 0
 	</select>

@@ -18,6 +18,4 @@ public interface MemberMapper {
     int idCheck(String id);
     SessionDto loginCheck(MemberDto memberDto);
 
-    int aid();
-
 }
