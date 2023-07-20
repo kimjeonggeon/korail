@@ -23,11 +23,11 @@
 	</select>
 
 	<update id="preferential" parameterType="String">
-		UPDATE KTX_MEMBER_ADDINFO SET preferential=#{preferential} WHERE AID=#{aid}
+		UPDATE KTX_MEMBER SET preferential=#{preferential} WHERE AID=#{aid}
 	</update>
 
 	<select id="oldfile" parameterType="String" resultType="String">
-		SELECT ASFILE FROM KTX_MEMBER_ADDINFO WHERE AID=#{aid}
+		SELECT ASFILE FROM KTX_MEMBER WHERE AID=#{aid}
  	</select>
 
 	<select id="mileage" parameterType="String" resultType="Integer">
