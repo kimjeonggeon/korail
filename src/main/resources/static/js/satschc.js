@@ -203,7 +203,7 @@ $(document).ready(function(){
 			// 제거된 좌석 투명도를 조정
 			$("#chairImg_" + lastSelected).css("opacity", "0.5");
 
-			alert(lastSelected);
+			//alert(lastSelected);
 		}
 		//alert(selectedSeats);
 

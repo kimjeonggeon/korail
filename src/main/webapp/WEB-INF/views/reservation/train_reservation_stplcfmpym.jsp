@@ -30,12 +30,13 @@
 		if(id != "GUEST"){
 			$(".pass_user").css("display","none");
 			$("#email").val(email);
-			alert(email);
+			//alert(email);
 		}
 	});
 
 	var IMP = window.IMP;
 	IMP.init("imp05733820");
+
 	var today = new Date();
 	var hours = today.getHours(); // 시
 	var minutes = today.getMinutes();  // 분
@@ -45,26 +46,21 @@
 
 
 	function requestPay() {
-		var merchant_uid = "IMP" + makeMerchantUid(); // 주문번호
-
 		IMP.request_pay({
-			pg: "kcp",
-			pay_method: "card",
-			merchant_uid: merchant_uid,
-			name: "KTX 예매",
-			amount: 64900,
-			buyer_email: "dlawnsdn1209@gmail.com",
-			buyer_name: "임준우",
-			buyer_tel: "010-8994-9577",
-			buyer_addr: "서울특별시 강남구",
-			buyer_postcode: "01181"
+			pg : 'kakaopay',
+			merchant_uid: "IMP"+makeMerchantUid,
+			name : 'KTX 예매',
+			amount : 1004,
+			buyer_email : 'dlawnsdn1209@gmail.com',
+			buyer_name : 'KTX 통합 예매 사이트',
+			buyer_tel : '010-8994-9577',
+			buyer_addr : '서울특별시 강남구 삼성동',
+			buyer_postcode : '123-456'
 		}, function (rsp) { // callback
-			// rsp.imp_uid 값으로 결제 단건조회 API를 호출하여 결제결과를 판단합니다.
 			if (rsp.success) {
-				console.log("결제 성공");
 				console.log(rsp);
+
 			} else {
-				console.log("결제 실패");
 				console.log(rsp);
 			}
 		});
