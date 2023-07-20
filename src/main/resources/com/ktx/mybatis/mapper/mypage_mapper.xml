@@ -40,7 +40,7 @@
     </delete>
 
     <update id="update" parameterType="com.example.korail.dto.MemberaddDto">
-        update KTX_MEMBER_ADDINFO
+        update KTX_MEMBER
         set afile = #{afile, jdbcType=VARCHAR},
             asfile = #{asfile, jdbcType=VARCHAR}
         where aid = #{aid}
