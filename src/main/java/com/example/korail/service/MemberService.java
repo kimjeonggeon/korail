@@ -42,7 +42,6 @@ public class MemberService {
         return memberMapper.idCheck(id);
     }
     public SessionDto getLoginResult(MemberDto memberDto){
-
         return memberMapper.loginCheck(memberDto);
     }
 
