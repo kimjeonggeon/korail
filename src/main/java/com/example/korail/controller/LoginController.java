@@ -3,6 +3,7 @@ package com.example.korail.controller;
 import com.example.korail.dto.MemberDto;
 import com.example.korail.dto.ReservationDto;
 import com.example.korail.dto.SessionDto;
+import com.example.korail.interceptor.BCrypt;
 import com.example.korail.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -42,30 +43,58 @@ public class LoginController {
     @PostMapping("login_proc")
     public String login_proc(MemberDto memberDto, Model model, HttpSession session, String userId) {
         ReservationDto rvo = (ReservationDto) session.getAttribute("rvo");
-        SessionDto svo = memberService.getLoginResult(memberDto);
+        SessionDto sessionDto = memberService.getLoginResult(memberDto);
+        System.out.println("세션은?"+sessionDto.getLoginResult());
         String loginReturn = null;
 
-        if (svo != null) {
-            session.setAttribute("svo", svo);
-            if (memberDto.getPagename().equals("mainlogin")) {
-                model.addAttribute("login_result", "ok");
-                loginReturn = "redirect:/train_reservation_rotinf";
-            } else if (memberDto.getPagename().equals("reservation")) {
-                rvo.setSeatNum(memberDto.getSeatNum());
-                rvo.setTicketQty(memberDto.getTicketQty());
-                rvo.setId(memberDto.getId());
-                rvo.setEmail(svo.getEmail());
-                rvo.setAdltTotAmt(memberDto.getAdltTotAmt());
-                loginReturn = "redirect:/train_reservation_stplcfmpym";
-            } else if (memberDto.getPagename().equals("reservationlist")) {
-                session.setAttribute("id", memberDto.getId());
-                loginReturn = "redirect:/reservation_main";
-            } else if (memberDto.getPagename().equals("mylogin")) {
-                loginReturn = "redirect:/mypage";
-            }else{
-                loginReturn="redirect:/login_fail";
+        if(sessionDto.getLoginResult() == 1) {
+            session.setAttribute("svo", sessionDto);
+            if(BCrypt.checkpw(memberDto.getPass(),sessionDto.getPass())) {
+                if (memberDto.getPagename().equals("mainlogin")) {
+                    model.addAttribute("login_result", "ok");
+                    loginReturn = "redirect:/train_reservation_rotinf";
+                } else if (memberDto.getPagename().equals("reservation")) {
+                    rvo.setSeatNum(memberDto.getSeatNum());
+                    rvo.setTicketQty(memberDto.getTicketQty());
+                    rvo.setId(memberDto.getId());
+                    rvo.setEmail(sessionDto.getEmail());
+                    rvo.setAdltTotAmt(memberDto.getAdltTotAmt());
+                    loginReturn = "redirect:/train_reservation_stplcfmpym";
+                } else if (memberDto.getPagename().equals("reservationlist")) {
+                    session.setAttribute("id", memberDto.getId());
+                    loginReturn = "redirect:/reservation_main";
+                } else if (memberDto.getPagename().equals("mylogin")) {
+                    loginReturn = "redirect:/mypage";
+                }
+
             }
-        }
+        /*}else if(sessionDto.getLoginResult() ){
+                    loginReturn="redirect:/login_fail";*/
+              }
+
+
+//        if (svo != null && BCrypt.checkpw(memberDto.getPass(),svo.getPass())) {
+//
+//            session.setAttribute("svo", svo);
+//            if (memberDto.getPagename().equals("mainlogin")) {
+//                model.addAttribute("login_result", "ok");
+//                loginReturn = "redirect:/train_reservation_rotinf";
+//            } else if (memberDto.getPagename().equals("reservation")) {
+//                rvo.setSeatNum(memberDto.getSeatNum());
+//                rvo.setTicketQty(memberDto.getTicketQty());
+//                rvo.setId(memberDto.getId());
+//                rvo.setEmail(svo.getEmail());
+//                rvo.setAdltTotAmt(memberDto.getAdltTotAmt());
+//                loginReturn = "redirect:/train_reservation_stplcfmpym";
+//            } else if (memberDto.getPagename().equals("reservationlist")) {
+//                session.setAttribute("id", memberDto.getId());
+//                loginReturn = "redirect:/reservation_main";
+//            } else if (memberDto.getPagename().equals("mylogin")) {
+//                loginReturn = "redirect:/mypage";
+//            }else{
+//                loginReturn="redirect:/login_fail";
+//            }
+//        }
 
         return loginReturn;
     }

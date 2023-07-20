@@ -85,14 +85,12 @@
         where rno between #{startCount} and #{endCount}
     </select>
 
-
     <select id="loginCheck" parameterType="com.example.korail.dto.MemberDto"
             resultType="com.example.korail.dto.SessionDto">
-        select count(*) loginResult, name, id, email, aid
+        select count(*) loginResult, name, id , pass, email, aid
         FROM KTX_MEMBER
         where id = #{id}
-          and pass = #{pass}
-        group by name, id, email, aid
+        group by name, id,  pass , email, aid
     </select>
 
 
