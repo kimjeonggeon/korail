@@ -410,13 +410,16 @@
 					<div class="tab_wrap inradio tab_type2" data-desc-id="tab-desc1"> <!-- 190109 수정 : data-desc-id 속성 추가 (값은 하단 설명 영역인 .tab_desc_wrap의 id와 매칭) -->					
 						<div class="tab_conts" id="tab1" style="display: block;">
 							<div class="box_inputForm">
-								<strong>카드종류</strong>
+								<strong>결제 방법</strong>
 								<span class="radio_wrap">
 									<span class="custom_radio">
-										<input type="radio" id="caPerson" name="payCard" checked="true" onclick="fnCardKindSel('indl')">
+										<input type="radio" id="caPerson" name="payCard" checked="true">
 										<label for="caPerson">개인</label>
 									</span>
-									
+									<span class="custom_radio">
+										<input type="radio" id="kakao" name="kakao">
+										<label for="caPerson">카카오 페이</label>
+									</span>
 								</span>
 							</div>
 							<div class="box_inputForm click_box inselect">

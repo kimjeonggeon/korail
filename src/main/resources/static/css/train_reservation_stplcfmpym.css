@@ -1062,10 +1062,6 @@ html:first-child select {
     line-height: 20px;
 }
 
-.payment.select-box .label {
-    color: #bfbfbf;
-}
-
 .selectric .button {
     display: block;
     position: absolute;

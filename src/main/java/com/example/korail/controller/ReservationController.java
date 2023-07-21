@@ -33,11 +33,13 @@ public class ReservationController {
         String price = decimalFormat.format(number);
 
         rvo.setEmail(reservationDto.getEmail());
-        //System.out.println("reservationDto -->" + reservationDto.getEmail());
-        //System.out.println("rvo -->" + rvo.getEmail());
 
-        cardinfoDto.setRecognizenum(uuid.toString().replaceAll("-","").substring(0,10));
-        cardinfoService.getPayment(cardinfoDto);
+        if(cardinfoDto.getPaymentmethod().equals("card")) {
+            cardinfoDto.setRecognizenum(uuid.toString().replaceAll("-", "").substring(0, 10));
+            cardinfoService.getPayment(cardinfoDto);
+        }else if(cardinfoDto.getPaymentmethod().equals("kakao")){
+            cardinfoService.getPayment(cardinfoDto);
+        }
 
         orderDto.setSstation(rvo.getDepplacename());
         orderDto.setStime(rvo.getStart_date());
@@ -54,7 +56,6 @@ public class ReservationController {
         orderDto.setTrainnum(Integer.parseInt(rvo.getTrainno()));
         orderDto.setTicketqty(Integer.parseInt(rvo.getTicketQty()));
         orderDto.setEmail(rvo.getEmail());
-        //System.out.println("email -->" + rvo.getEmail());
 
         orderService.getPayment(orderDto);
 

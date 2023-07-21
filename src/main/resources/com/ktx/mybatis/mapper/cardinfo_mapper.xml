@@ -6,7 +6,13 @@
     <insert id="getPayment" parameterType="com.example.korail.dto.CardinfoDto">
         insert into KTX_CARDINFO
             (cardcomp,cardnum,recognizenum,birthday,cid)
+        <if test="paymentmethod == 'card'">
         values
             (#{cardcomp},#{cardnum},#{recognizenum},#{birthday},'C_'||ltrim(to_char(sequ_ktx_cardinfo.nextval,'0000')))
+        </if>
+        <if test="paymentmethod == 'kakao'">
+            values
+            ('null', 'null', 'null', 'null', 'C_' || ltrim(to_char(sequ_ktx_cardinfo.nextval, '0000')))
+        </if>
     </insert>
 </mapper>

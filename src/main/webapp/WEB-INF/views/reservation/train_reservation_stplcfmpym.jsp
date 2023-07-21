@@ -34,7 +34,7 @@
 		}
 	});
 
-	var IMP = window.IMP;
+	/*var IMP = window.IMP;
 	IMP.init("imp05733820");
 
 	var today = new Date();
@@ -64,7 +64,7 @@
 				console.log(rsp);
 			}
 		});
-	}
+	}*/
 
 
 </script>
@@ -490,13 +490,17 @@
 						
 						<div class="tab_conts" id="tab1" style="display: block;">
 							<div class="box_inputForm">
-								<strong>카드종류</strong>
+								<strong>결제 방법</strong>
 								<span class="radio_wrap">
 									<span class="custom_radio">
-										<input type="radio" id="caPerson" name="payCard" checked="true">
-										<label for="caPerson">개인</label>
+										<input type="radio" id="caPerson" name="paymentmethodlist" checked="true" value="card">
+										<label for="caPerson">카드</label>
 									</span>
-									
+									<span class="custom_radio">
+										<input type="radio" id="kakao" name="paymentmethodlist" value="kakao">
+										<label for="kakao">카카오페이</label>
+									</span>
+									<input type="hidden" id="paymentmethod" name="paymentmethod">
 								</span>
 							</div>
 							<div class="box_inputForm click_box inselect">
@@ -652,7 +656,7 @@
 				</div>
 
 
-						<button onclick="requestPay()">결제하기</button>
+
 
 				<div id="tab-desc1" class="section tab_desc_wrap"> <!-- 190109 수정 : tab_desc_wrap 클래스 및 id 추가 -->
 					<!-- 카드결제 -->
