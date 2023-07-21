@@ -8,7 +8,26 @@
 <link rel="stylesheet" href="http://localhost:9000/css/reservationlist.css">
 <script src="http://localhost:9000/js/jquery-3.6.4.min.js"></script>
 <script src="http://localhost:9000/js/login.js"></script>
-<style>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+	<script>
+		// JSP에서 "loginResult" 값을 가져옴
+		var loginResult = "<%= request.getAttribute("loginResult") %>";
+		// "loginResult" 값이 "failure"인 경우에만 alert 띄우기
+		if (loginResult === "failure") {
+			window.onload = function() {
+				Swal.fire({
+					html: "<div style='white-space: pre-line; font-size: 15pt;'>등록되지 않은 아이디이거나 \n 아이디 또는 비밀번호를 잘못 입력했습니다.</div>",
+					width: 600,
+					padding: '1.5em',
+					confirmButtonColor: '#74b3c7',
+					confirmButtonText: '확인',
+					icon: 'error'
+				});
+			};
+		}
+	</script>
+
+	<style>
 	#login_page{
 	padding: 80px 40px 100px;
 	}
@@ -60,12 +79,18 @@
 							</li>
 						</ul>
 							</fieldset>
-							<p class="btn_squareBox"><button onclick="fnMngChkCfm(this);" type="button" class="btn_confirm ready" id="btn_login">로그인</button></p>
+							<p class="btn_squareBox"><button onclick="fnMngChkCfm(this);" type="button" class="btn_confirm ready" id="btn_login">로그인</button>
+
 							<div class="box_searchId">
 								<a href="http://localhost:9000/findAuth" onclick="lgnSearchId();"><span class="ico_searchId">아이디찾기</span></a>
 								<a href="http://localhost:9000/find_pass" onclick="lgnSearchPwd();"><span class="ico_searchPW">비밀번호찾기</span></a>
 								<a href="http://localhost:9000/join" onclick="mbrsJoin();"><span class="ico_joinUs">회원가입</span></a>
+										<a href="#"><img height="38px"  src="/images/kakao_login_medium_narrow.png "
+														style=" margin-left: 60px;
+														 margin-top: 20px;"
+										/></a>
 							</div>
+
 						</div>
 						<input type="hidden" id="returnUrl" name="returnUrl" value="/mrs/mrscfm?vltlCnt=Y">
 						<input type="hidden" id="popUpDvs" name="popUpDvs" value="N">

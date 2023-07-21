@@ -79,7 +79,7 @@ $(document).ready(function(){
 			$("#btnIdCheck").focus();
 			return false;
 		}else if($("#pass").val() == "" ||
-			passwordRegex.test(password)){
+			!passwordRegex.test(password)){
 			alert("패스워드를 대문자,소문자,숫자 포함하여 8자 이상 입력해주세요");
 			$("#pass").focus();
 			return false;

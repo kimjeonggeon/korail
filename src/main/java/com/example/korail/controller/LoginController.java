@@ -44,12 +44,12 @@ public class LoginController {
     public String login_proc(MemberDto memberDto, Model model, HttpSession session, String userId) {
         ReservationDto rvo = (ReservationDto) session.getAttribute("rvo");
         SessionDto sessionDto = memberService.getLoginResult(memberDto);
-        System.out.println("세션은?"+sessionDto.getLoginResult());
         String loginReturn = null;
+    if(sessionDto != null) {
 
-        if(sessionDto.getLoginResult() == 1) {
-            session.setAttribute("svo", sessionDto);
-            if(BCrypt.checkpw(memberDto.getPass(),sessionDto.getPass())) {
+
+            if (BCrypt.checkpw(memberDto.getPass(), sessionDto.getPass())) {
+                session.setAttribute("svo", sessionDto);
                 if (memberDto.getPagename().equals("mainlogin")) {
                     model.addAttribute("login_result", "ok");
                     loginReturn = "redirect:/train_reservation_rotinf";
@@ -67,12 +67,22 @@ public class LoginController {
                     loginReturn = "redirect:/mypage";
                 }
 
+                }else{
+                model.addAttribute("loginResult", "failure"); // 로그인 실패를 나타내는 값 추가
+                return "/login/login1";
             }
+
+
+     /*   }*/
         /*}else if(sessionDto.getLoginResult() ){
                     loginReturn="redirect:/login_fail";*/
-              }
+      /*  }*/
 
+    } else {
+        model.addAttribute("loginResult", "failure"); // 로그인 실패를 나타내는 값 추가
+        return "/login/login1";
 
+    }
 //        if (svo != null && BCrypt.checkpw(memberDto.getPass(),svo.getPass())) {
 //
 //            session.setAttribute("svo", svo);
@@ -99,8 +109,8 @@ public class LoginController {
         return loginReturn;
     }
 
-    @GetMapping("login_fail")
+ /*   @GetMapping("login_fail")
     public String login_fail(){
         return "login/login_fail";
-    }
+    }*/
 }
