@@ -1,11 +1,61 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>고속버스통합예매 - 나의 마일리지</title>
+    <title>고속버스
+        통합예매 - 나의 마일리지</title>
     <link rel="stylesheet" href="http://localhost:9000/css/mileage.css">
-    <script src="http://localhost:9000/js/mileage_list.js"></script>
+
 </head>
 <body>
+<div class="content">
+    <section class="board">
+        <h1 class="title">마일리지 내역</h1>
+    </section>
+</div>
+<script>
+    window.addEventListener('message', function(event) {
+        memberId = event.data;
+        alert("modal : " + memberId)
+        initAjax(memberId);
 
+        function initAjax(memberId) {
+            $.ajax({
+                url: "mileage_list_json_data/" + memberId + "/", success: function (result) {
+                    //dhtml을 활용하여 테이블로 출력
+                    let output = "<table class='board_list'>";
+                    output += "<tr class='tr'><th>적립일</th><th>적립금</th><th>내역</th><th>만료일</th><th>누적 마일리지</th></tr>";
+
+                    for (obj of result.list) {
+                        output += "<tr class='tr'>";
+                        output += "<td>" + obj.accumulationdate + "</td>";
+
+                        if (obj.changeamout > 0) {
+                            output += "<td calss='add'>" + obj.changeamout + "</td>";
+                        } else {
+                            output += "<td calss='reduce'>" + obj.changeamout + "</td>";
+                        }
+
+                        output += "<td>" + obj.specifics + "</td>";
+
+                        if (obj.expirationdate == null) obj.expirationdate = "";
+                        output += "<td>" + obj.expirationdate + "</td>";
+
+                        output += "<td>" + obj.totalmileage + "</td>";
+                        output += "</tr>";
+                    }
+
+                    output += "<tr>";
+                    output += "<td colspan='5'><div id='ampaginationsm'></td>";
+                    output += "</tr>";
+                    output += "</table>";
+
+                    $("table.board_list").remove();
+                    $("h1").after(output);
+
+                }
+            });
+        }
+    })
+</script>
 </body>
 </html>

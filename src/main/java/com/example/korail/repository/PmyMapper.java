@@ -16,5 +16,4 @@ public interface PmyMapper {
 
     String oldfile(String name);
 
-    int mileage (String id);
 }

@@ -31,6 +31,4 @@ public class PmyhisService{
         return pmyMapper.oldfile(name);
     }
 
-    public int mileage(String id) { return pmyMapper.mileage(id);}
-
 }
