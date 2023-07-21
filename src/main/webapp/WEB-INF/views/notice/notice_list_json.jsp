@@ -33,27 +33,30 @@
 							<option value="title">제목</option>
 							<option value="content">내용</option>
 							<option value="title_content">제목+내용</option>
+							<input type="text" name="cvalue" id="cvalue" maxlength=100 autocomplete="off" value="${cvalue}" disabled>
 						</c:if>
 						<c:if test="${category == 'title'}">
 							<option value="all" >전체</option>
 							<option value="title" selected>제목</option>
 							<option value="content">내용</option>
 							<option value="title_content">제목+내용</option>
+							<input type="text" name="cvalue" id="cvalue" maxlength=100 autocomplete="off" value="${cvalue}" required>
 						</c:if>
 						<c:if test="${category == 'content'}">
 							<option value="all" >전체</option>
 							<option value="title" >제목</option>
 							<option value="content" selected>내용</option>
 							<option value="title_content">제목+내용</option>
+							<input type="text" name="cvalue" id="cvalue" maxlength=100 autocomplete="off" value="${cvalue}" required>
 						</c:if>
 						<c:if test="${category == 'title_content'}">
 							<option value="all" >전체</option>
 							<option value="title" >제목</option>
 							<option value="content" >내용</option>
 							<option value="title_content" selected>제목+내용</option>
+							<input type="text" name="cvalue" id="cvalue" maxlength=100 autocomplete="off" value="${cvalue}" required>
 						</c:if>
 					</select>
-					<input type="text" name="cvalue" id="cvalue" maxlength=100 autocomplete="off" value="${cvalue}" required>
 				</c:when>
 				<c:otherwise>
 					<select name="category" id="category" class="notice_search">
@@ -62,11 +65,11 @@
 						<option value="content">내용</option>
 						<option value="title_content">제목+내용</option>
 					</select>
-					<input type="text" name="cvalue" id="cvalue" maxlength=100 autocomplete="off" placeholder="검색어를 입력하세요" required>
+					<input type="text" name="cvalue" id="cvalue" maxlength=100 autocomplete="off" placeholder="검색어를 입력하세요">
 				</c:otherwise>
 			</c:choose>
 			<input type="hidden" name="page" value="1" id="page">
-			<button type="button" id="notice_search">검색</button>
+			<button type="button" disabled="true" id="notice_search">검색</button>
 			<button type="reset">다시입력</button>
 		</form>
 

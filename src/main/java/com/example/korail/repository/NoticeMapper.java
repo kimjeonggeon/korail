@@ -17,6 +17,5 @@ public interface NoticeMapper {
     int delete(String nid);
     void updateHits(String nid);
     ArrayList<NoticeDto> getNid(String nid);
-    ArrayList<NoticeDto> getSearch(int startCount, int endCount, String category, String cvalue, String page);
-    ArrayList<NoticeDto> getList(String category, String cvalue, String page);
+    ArrayList<NoticeDto> getSearch(PageDto pageDto);
 }

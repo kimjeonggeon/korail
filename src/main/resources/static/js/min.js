@@ -417,10 +417,10 @@ $(document).ready(function() {
 				//alert(result.list[0].ntitle);
 				let output = "<table class='notice_search'>";
 				output += "<tr>";
-				output += "<th style='width: 15px'>번호</th>";
+				output += "<th>번호</th>";
 				output += "<th>제목</th>";
-				output += "<th style='width: 15px'>조회수</th>";
-				output += "<th style='width: 30px'>등록일자</th>";
+				output += "<th>조회수</th>";
+				output += "<th>등록일자</th>";
 				output += "</tr>";
 
 				for(obj of result.list) {
@@ -483,6 +483,7 @@ $(document).ready(function() {
 		});
 	}
 
+	// validation 체크
 	function validation(category, cvalue) {
 		if (category == "title") {
 			if (cvalue == "") {
@@ -514,6 +515,7 @@ $(document).ready(function() {
 
 	// 검색 버튼 클릭 이벤트
 	$("#notice_search").click(function() {
+		//alert("111");
 		var category = $("#category").val();
 		var cvalue = $("#cvalue").val();
 		if(validation(category, cvalue)) {
@@ -524,14 +526,66 @@ $(document).ready(function() {
 
 	});	// search click
 
+	// 값 입력이 될때만 버튼 활성화
+	$(function() {
+		$("#cvalue").on('input', function() {
+			if($("#cvalue").val() == '') {
+				$("#notice_search").attr("disabled", true);
+			} else {
+				$("#notice_search").attr("disabled", false);
+			}
+
+		});
+	});
+
+	// enter 버튼 이벤트 처리
+	$(function () {
+		$("#cvalue").keypress(function (e) {
+			if(e.keyCode && e.keyCode == 13) {
+				$("#notice_search").trigger("click");
+				return false;
+			}
+		});
+	});
+
 	function searchAjax(category, cvalue, page) {
-		//alert(category + cvalue + page);
 		$.ajax({
 			url: "notice_search_json_data/" + category + "/" + cvalue + "/" + page + "/",
-			success: function (search) {
+			success: function (result) {
+
+				let output = "<table class='notice_search'>";
+				output += "<tr>";
+				output += "<th>번호</th>";
+				output += "<th>제목</th>";
+				output += "<th>조회수</th>";
+				output += "<th>등록일자</th>";
+				output += "</tr>";
+
+				for(obj of result.slist) {
+					output += "<tr>";
+					output += "<td>"+ obj.rno +"</td>";
+					output += "<td class='ntitle' nid='"+ obj.nid +"'><a>"+ obj.ntitle  +"</a></td>";
+					output += "<td>"+ obj.nhits +"</td>";
+					output += "<td>"+ obj.ndate +"</td>";
+					output += "</tr>";
+				}
+				output += "<tr>";
+				output += "<td colspan='5' class='paging'>";
+				output += "<div id='ampaginationsm' class='paging'></div>";
+				output += "</td>";
+				output += "</tr>";
+				output += "</table>";
 
 				$("table.notice_search").remove();
-				$("#notice_list_search").after();
+				$("#notice_list_search").after(output);
+
+				pager(result.page.dbCount, result.page.pageCount, result.page.pageSize, result.page.reqPage);
+
+				jQuery('#ampaginationsm').on('am.pagination.change',function(e){
+					jQuery('.showlabelsm').text('The selected page no: '+e.page);
+
+					searchAjax(category, cvalue, e.page);
+				});
 
 			}	// success
 		});	// ajax

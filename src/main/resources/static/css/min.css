@@ -98,11 +98,11 @@ body {
 
 .notice_search {
 	margin: 10px auto;
-	width: 70%;
+	width: 1000px;
 }
 
 .notice_search th {
-	font-size: 12px;
+	font-size: 16px;
 	text-align: center;
 	border-collapse: collapse;
 	padding: 0;
@@ -110,7 +110,6 @@ body {
 
 .notice_search tr:last-child td {
 	border: none;
-	width: 70%;
 	margin: auto;
 }
 .payment-content {
@@ -589,7 +588,7 @@ h1 {
 }
 
 .notice_list {
-	width: 70%;
+	width: 1000px;
 	margin: auto;
 	border-collapse: collapse;
 }
@@ -621,6 +620,27 @@ table #testTable th {
 
 .notice_list tr>td {
 	text-align: center;
+	width: 25%;
+}
+
+.notice_search tr>td:first-child {
+	text-align: center;
+	width: 15%;
+}
+
+.notice_search tr>td:nth-child(2) {
+	text-align: center;
+	width: 35%;
+}
+
+.notice_search tr>td:nth-child(3) {
+	text-align: center;
+	width: 15%;
+}
+
+.notice_search tr>td:last-child {
+	text-align: center;
+	width: 35%;
 }
 
 .notice_list tr:first-child>th {
@@ -643,7 +663,7 @@ table #testTable th {
 	background-color: #8768A1;
 	color: #FFF;
 	height: 40px;
-    font-size: 15px;
+    font-size: 16px;
     border: 1px solid black;
 }
 
