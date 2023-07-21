@@ -72,8 +72,9 @@ public class ReservationlistController {
             session.setAttribute("svo",svo);
 
             orderReturn = "redirect:/reservation_main";
-        }else {
-            orderReturn = "reservationlist/login_fail";
+        }else if (result == 0){
+            model.addAttribute("loginResult", "failure"); // 로그인 실패를 나타내는 값 추가
+            return "/reservationlist/login2";
         }
         return orderReturn;
     }
@@ -209,8 +210,6 @@ public class ReservationlistController {
     }
 
 
-
-
     /* admin_main */
     @GetMapping("admin_main")
     public String admin_main() {
@@ -231,15 +230,7 @@ public class ReservationlistController {
         return "/admin/admin_reservationlist";
     }
 
- /*   @GetMapping("admin_reservationlist/{page}")
-    public String admin_reservationlist(@PathVariable String page, Model model) {
-        PageDto pageDto = pageService.getPageResult(new PageDto(page, "adminReserv"));
 
-        model.addAttribute("list", orderService.getOrderSelect(pageDto));
-        model.addAttribute("page", pageDto);
-
-        return "/admin/board_list";
-    }*/
 
 
 

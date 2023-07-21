@@ -228,11 +228,11 @@ $(document).ready(function(){
 						<div class="bg_seatBox seat28 " style="display:block;">
 							<div class="seatList">
 								<!-- 좌석 선택 위치 -->
-								
+
 							</div>
-							
-							
-							
+
+
+
 						</div>
 					</div>
 					<!-- //좌석선택 -->
