@@ -171,7 +171,7 @@
 			</div>
 		</div>
 	</div>
-    <script>
+<%--    <script>
 		$(".mileage").click(function () {
 			var dataToSend = "${memberId}";
 			alert("header : " + dataToSend);
@@ -184,6 +184,6 @@
 				newWindow.postMessage(dataToSend, "http://localhost:9000/mileage");
 			};
 		});
-    </script>
+    </script>--%>
 </body>
 </html>

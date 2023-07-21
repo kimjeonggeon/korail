@@ -38,9 +38,9 @@
             </li>
             <li class="mileage">
                 <div class="row">
-                    <a href="#" class="txt_myMenu mileage" onclick="return false;">
+                    <a href="#" class="txt_myMenu" onclick="return false;">
                         <span>프리미엄 마일리지<span class="ico_mileage">왕관</span>
-								<strong id="mileage">${mileage}원</strong></a>
+								<strong id="mileage">${mileage}원</strong>
                     </span>
                     </a>
                 </div>
