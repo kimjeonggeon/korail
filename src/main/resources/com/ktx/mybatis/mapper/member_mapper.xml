@@ -87,10 +87,10 @@
 
     <select id="loginCheck" parameterType="com.example.korail.dto.MemberDto"
             resultType="com.example.korail.dto.SessionDto">
-        select count(*) loginResult, name, id , pass, email, aid
+        select  name, id , pass, email, aid
         FROM KTX_MEMBER
         where id = #{id}
-        group by name, id,  pass , email, aid
+
     </select>
 
 
