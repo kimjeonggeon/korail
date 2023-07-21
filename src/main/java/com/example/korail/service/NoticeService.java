@@ -45,11 +45,11 @@ public class NoticeService {
         return noticeMapper.getNid(nid);
     }
 
-    public ArrayList<NoticeDto> getSearch(int startCount, int endCount, String category, String cvalue) {
-        return noticeMapper.getSearch(startCount, endCount, category, cvalue);
+    public ArrayList<NoticeDto> getSearch(int startCount, int endCount, String category, String cvalue, String page) {
+        return noticeMapper.getSearch(startCount, endCount, category, cvalue, page);
     }
 
-    public ArrayList<NoticeDto> getList(String category, String cvalue) {
-        return noticeMapper.getList(category, cvalue);
+    public ArrayList<NoticeDto> getList(String category, String cvalue, String page) {
+        return noticeMapper.getList(category, cvalue, page);
     }
 }

@@ -11,8 +11,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
+@RequestMapping("admin")
 public class AdminController {
 
     @Autowired
@@ -24,45 +26,46 @@ public class AdminController {
     @Autowired
     FileService fileService;
 
-    @GetMapping("admin_notice_list/{page}")
+    @GetMapping("notice_list/{page}")
     public String admin_notice_list(@PathVariable String page, Model model) {
         PageDto pageDto = pageService.getPageResult(new PageDto(page, "notice"));
         model.addAttribute("list", noticeService.list(pageDto));
         model.addAttribute("page", pageDto);
+
         return "/admin/admin_notice_list";
     }
 
-    @GetMapping("admin_notice_content/{nid}/{page}")
+    @GetMapping("notice_content/{nid}/{page}")
     public String admin_notice_content(@PathVariable String nid, @PathVariable String page, Model model) {
         model.addAttribute("notice", noticeService.content(nid));
         model.addAttribute("page", page);
         return "/admin/admin_notice_content";
     }
 
-    @GetMapping("admin_notice_write")
+    @GetMapping("notice_write")
     public String admin_notice_write() {
         return "/admin/admin_notice_write";
     }
 
-    @PostMapping("admin_notice_write")
+    @PostMapping("notice_write")
     public String admin_notice_write_proc(NoticeDto noticeDto) throws Exception {
         noticeDto = (NoticeDto) fileService.fileCheck(noticeDto);
         int result = noticeService.insert(noticeDto);
         if(result == 1) {
             fileService.fileSave(noticeDto);
         }
-        return "redirect:/admin_notice_list/1/";
+        return "redirect:/admin/notice_list/1/";
     }
 
 
-    @GetMapping("admin_notice_update/{nid}/{page}")
+    @GetMapping("notice_update/{nid}/{page}")
     public String admin_notice_update(@PathVariable String nid, @PathVariable String page, Model model) {
         model.addAttribute("notice", noticeService.content(nid));
         model.addAttribute("page", page);
         return "/admin/admin_notice_update";
     }
 
-    @PostMapping("admin_notice_update")
+    @PostMapping("notice_update")
     public String admin_notice_update_proc(NoticeDto noticeDto) throws Exception {
         String oldNsFile = noticeDto.getNsfile();
         noticeDto = (NoticeDto) fileService.fileCheck(noticeDto);
@@ -75,17 +78,17 @@ public class AdminController {
                 fileService.fileDelete(oldNsFile);
             }
         }
-        return "redirect:/admin_notice_list/" + noticeDto.getPage() + "/";
+        return "redirect:/admin/notice_list/" + noticeDto.getPage() + "/";
     }
 
-    @GetMapping("admin_notice_delete/{nid}/{page}")
+    @GetMapping("notice_delete/{nid}/{page}")
     public String admin_notice_delete(@PathVariable String nid, @PathVariable String page, Model model) {
         model.addAttribute("nid", nid);
         model.addAttribute("page", page);
         return "/admin/admin_notice_delete";
     }
 
-    @PostMapping("admin_notice_delete")
+    @PostMapping("notice_delete")
     public String admin_notice_delete_proc(NoticeDto noticeDto) throws Exception {
         String oldNsFile = noticeService.getNsfile(noticeDto.getNid());
         int result = noticeService.delete(noticeDto.getNid());
@@ -94,6 +97,6 @@ public class AdminController {
                 fileService.fileDelete(oldNsFile);
             }
         }
-        return "redirect:/admin_notice_list/" + noticeDto.getPage() + "/";
+        return "redirect:/admin/notice_list/" + noticeDto.getPage() + "/";
     }
 }

@@ -32,7 +32,7 @@
 		
 		jQuery('#ampaginationsm').on('am.pagination.change',function(e){
 			   jQuery('.showlabelsm').text('The selected page no: '+e.page);
-	           $(location).attr('href', "http://localhost:9000/admin_notice_list/"+e.page+"/");
+	           $(location).attr('href', "http://localhost:9000/admin/notice_list/"+e.page+"/");
 	    });
 		
  	});
@@ -58,7 +58,7 @@
 		<c:forEach var="notice" items="${list}">
 		<tr>
 			<td>${notice.rno}</td>
-			<td><a href="/admin_notice_content/${notice.nid}/${page.reqPage}">${notice.ntitle}</a></td>
+			<td><a href="/admin/notice_content/${notice.nid}/${page.reqPage}">${notice.ntitle}</a></td>
 			<td>${notice.nhits}</td>
 			<td>${notice.ndate}</td>
 		</tr>
@@ -68,7 +68,7 @@
 		</tr>
 	</table>
 		<div class="button" id="button">
-			<a href="/admin_notice_write" class="btn">등록하기</a>
+			<a href="/admin/notice_write" class="btn">등록하기</a>
 		</div>
 	<jsp:include page="../footer.jsp"></jsp:include>
 	</div>

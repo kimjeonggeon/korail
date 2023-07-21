@@ -19,7 +19,7 @@
 		<jsp:include page="../header.jsp"></jsp:include>
 	<h2 class="title">관리자 - 공지사항</h2>
 	</div>
-	<form id="form_update" name="updateForm" action="/admin_notice_update" method="post" enctype="multipart/form-data">
+	<form id="form_update" name="updateForm" action="/admin/notice_update" method="post" enctype="multipart/form-data">
 		<input type="hidden" name="nid" value="${notice.nid}">
 		<input type="hidden" name="page" value="${page}">
 		<table class="notice_update">
@@ -56,8 +56,8 @@
 				<div class="button">
 					<a id="btnSubmit_update" class="btn" >수정완료</a>
 					<a id="btnAgain_update" class="btn" >다시쓰기</a>
-					<a href="/admin_notice_content/${notice.nid}/${page}" class="btn">이전페이지</a>
-					<a href="/admin_notice_list/all/all/1/" class="btn">리스트</a>
+					<a href="/admin/notice_content/${notice.nid}/${page}" class="btn">이전페이지</a>
+					<a href="/admin/notice_list/1/" class="btn">리스트</a>
 				</div>						
 				</td>				
 			</tr>
