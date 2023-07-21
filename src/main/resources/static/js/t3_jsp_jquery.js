@@ -29,9 +29,6 @@ $(document).ready(function () {
      *
      **************************************************************************/
 
-    $(".txt_myMenu").click(function () {
-        window.open('mileage', '마일리지 모달', 'width=900, height=500')
-    })
 
     /**
      * 마이페이지 '회원탈퇴' 클릭

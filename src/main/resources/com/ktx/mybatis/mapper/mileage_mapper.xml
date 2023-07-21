@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.korail.repository.MileageMapper">
+
+    <select id="getMileageInfo" parameterType="String" resultType="com.example.korail.dto.MileageDto">
+        SELECT AccumulationDate, ChangeAmout, specifics, ExpirationDate,
+               SUM(ChangeAmout) OVER (PARTITION BY ID ORDER BY AccumulationDate) AS TotalMileage
+        FROM (
+                 SELECT MID, ID, AccumulationDate, ChangeAmout, specifics, ExpirationDate
+                 FROM KTX_MEMBER_MILEAGEADDITIONS
+                 UNION ALL
+                 SELECT MID, ID, AccumulationDate, ChangeAmout, specifics, ExpirationDate
+                 FROM KTX_MEMBER_MILEAGEREDUCED
+             ) CombinedData
+        WHERE ID = #{memberId}
+        ORDER BY AccumulationDate DESC
+    </select>
+
+    <select id="getMileage" parameterType="String" resultType="String">
+        SELECT TotalMileage
+        FROM (
+                 SELECT ID,
+                        SUM(ChangeAmout) OVER (PARTITION BY ID ORDER BY AccumulationDate) AS TotalMileage,
+                         ROW_NUMBER() OVER (PARTITION BY ID ORDER BY AccumulationDate DESC) AS rn
+                 FROM (
+                          SELECT MID, ID, AccumulationDate, ChangeAmout, specifics, ExpirationDate
+                          FROM KTX_MEMBER_MILEAGEADDITIONS
+                          UNION ALL
+                          SELECT MID, ID, AccumulationDate, ChangeAmout, specifics, ExpirationDate
+                          FROM KTX_MEMBER_MILEAGEREDUCED
+                      ) CombinedData
+             ) FilteredData
+        WHERE rn = 1 AND ID = #{memberId}
+    </select>
+</mapper>

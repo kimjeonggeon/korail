@@ -9,14 +9,15 @@
 <link rel="styleSheet" href="http://localhost:9000/css/layout.css">
 <script src="http://localhost:9000/js/jquery-3.6.4.min.js"></script>
 <script>
+
 	let c_pass = "${c_pass}";
 	let c_pnum = "${c_pnum}";
-	
+
 	$(".adtnPrdPT").click(function() {
 		var url = "http://localhost:9000/mypage_receipt";
 		window.location.href = url;
 	});
-	
+
 	if (c_pass == "ok") {
 		alert("비밀번호 변경 완료");
 		var url = "http://localhost:9000/mypage";
@@ -29,9 +30,9 @@
 	} else if (c_pnum == "fail") {
 		alert("변경 실패");
 	}
-	
+
 	$(document).ready(function() {
-			
+
 		$("#usrPw4").on("input", function() {
 			  let pass = "${sessionScope.memberPass}";
 			  let currentPassword = $(this).val().trim();
@@ -45,7 +46,7 @@
 			  }
 			});
 
-		
+
 		$("#usrPw5").on("input", function() {
 		    if (this.value.length !== 11) {
 		        $("#cmsg8").text("잘못된 휴대폰 번호")
@@ -55,7 +56,7 @@
 		            .css("color", "green").css("font-size", "11px").css("display", "block");
 		    }
 		});
-		
+
 		$("#with-confirm").click(function() {
 			let pass = "${sessionScope.memberPass}";
 			if($("#usrPw").val().trim() == pass) {
@@ -66,7 +67,7 @@
 		        $("#usrPw1").focus();
 			}
 		});
-		
+
 		/**
 		 * 마이페이지 비밀번호 변경완료
 		 */
@@ -74,7 +75,7 @@
 			  // 이벤트 처리 로직 작성
 			  let pass = "${sessionScope.memberPass}";
 			  let currentPassword = $(this).val().trim();
-			  
+
 			  // 변경된 값에 따라 원하는 동작 수행
 			  if (currentPassword !== "") {
 				  if(currentPassword == pass) {
@@ -88,12 +89,12 @@
  		    	}
 				  }
 		});
-		
+
 		 $("#usrPw2").on("input", function() {
 			 let pass = "${sessionScope.memberPass}";
 			 let currentPassword = $(this).val().trim();
 			 let passwordPattern = /^(?=.*[a-zA-Z])(?=.*[0-9]).{8,}$/;
-			  
+
 			 if (!passwordPattern.test(currentPassword)) {
 			    $("#cmsg5").text("영문, 숫자 8자리 이상의 새 비밀번호를 입력하세요.")
 			        .css("color", "red").css("font-size", "11px").css("display", "block");
@@ -108,17 +109,17 @@
 			}
 
 		 });
-		 
+
 		 $("#usrPw3").on("input", function() {
 			 let pass = "${sessionScope.memberPass}";
 			 let currentPassword = $(this).val().trim();
-			 
+
 			 if (currentPassword != $("#usrPw2").val()){
 	    		$("#cmsg6").text("새 비밀번호가 일치하지 않습니다.")
                 .css("color", "red").css("font-size", "11px").css("display", "block");
 			 } else if (currentPassword == $("#usrPw2").val()) {
-				 
-				 if(currentPassword == pass) { 
+
+				 if(currentPassword == pass) {
 		    		$("#cmsg6").text("전과 동일한 비밀번호")
 	                .css("color", "red").css("font-size", "11px").css("display", "block");
 				 } else {
@@ -127,7 +128,7 @@
 				 }
 			 }
 		});
-		 
+
 		 $("#pass-confimr").click(function() {
 			 if ($("#cmsg4").css("color") === "rgb(0, 128, 0)" && $("#cmsg5").css("color") === "rgb(0, 128, 0)" && $("#cmsg6").css("color") === "rgb(0, 128, 0)") {
 				  passForm.submit();
@@ -170,5 +171,19 @@
 			</div>
 		</div>
 	</div>
+    <script>
+		$(".mileage").click(function () {
+			var dataToSend = "${memberId}";
+			alert("header : " + dataToSend);
+
+			// 사용자 동작에 의한 창 생성
+			var newWindow = window.open('mileage', '마일리지 모달', 'width=900, height=500');
+
+			// 새 창이 성공적으로 열렸을 때에만 postMessage 호출
+			newWindow.onload = function () {
+				newWindow.postMessage(dataToSend, "http://localhost:9000/mileage");
+			};
+		});
+    </script>
 </body>
 </html>

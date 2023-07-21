@@ -3,7 +3,7 @@ package com.example.korail.dto;
 import lombok.Data;
 
 @Data
-public class MemberMileage {
+public class MileageDto {
 
     String mid;
     String id;
@@ -12,4 +12,5 @@ public class MemberMileage {
     String expirationdate;
 
     int changeamout;
+    int totalmileage;
 }

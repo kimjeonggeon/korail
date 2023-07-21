@@ -30,10 +30,4 @@
 		SELECT ASFILE FROM KTX_MEMBER WHERE AID=#{aid}
  	</select>
 
-	<select id="mileage" parameterType="String" resultType="Integer">
-		SELECT COALESCE(SUM(TO_NUMBER(REPLACE(PRICE, ',', ''))) * 0.005, 0) AS TOTAL_PRICE
-		FROM KTX_ORDER
-		WHERE ID = #{id} AND CANCEL = 0
-	</select>
-
 </mapper>

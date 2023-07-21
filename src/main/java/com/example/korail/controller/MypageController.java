@@ -7,22 +7,23 @@ import javax.servlet.http.HttpSession;
 
 import com.example.korail.dto.MemberDto;
 import com.example.korail.dto.SessionDto;
+import com.example.korail.service.MileageService;
 import com.example.korail.service.MypageService;
-import com.example.korail.service.PmyhisService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class MypageController {
 
     @Autowired
-    private MypageService mypageService;
+    MypageService mypageService;
 
     @Autowired
-    PmyhisService pmyhisService;
+    MileageService mileageService;
 
     @GetMapping("mypage")
     public String my_page(HttpSession session, Model model) {
@@ -49,9 +50,9 @@ public class MypageController {
         session.setAttribute("memberPass", memberPass);
         session.setAttribute("memberPnumber", memberPnumber);
 
+        String mileage = mileageService.getMileage(memberId);
 
-        String id = svo.getId();
-        int mileage = pmyhisService.mileage(id);
+        mileage = (mileage == null) ? "0" : mileage;
         model.addAttribute("mileage", mileage);
 
         return "my_page/my_page";
@@ -140,7 +141,7 @@ public class MypageController {
     }
 
     @GetMapping("mileage")
-    public String mypage_modal() {
+    public String mypage_modal(Model model) {
         return "/my_page/mileage_modal";
     }
 }

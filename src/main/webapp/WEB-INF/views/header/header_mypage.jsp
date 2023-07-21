@@ -38,15 +38,15 @@
             </li>
             <li class="mileage">
                 <div class="row">
-                    <a href="#" class="txt_myMenu" onclick="return false;">
+                    <a href="#" class="txt_myMenu mileage" onclick="return false;">
                         <span>프리미엄 마일리지<span class="ico_mileage">왕관</span>
 								<strong id="mileage">${mileage}원</strong></a>
                     </span>
                     </a>
                 </div>
                 <div class="btnBox">
-                    <a href="http://localhost:9000/mypage_receipt"
-                       class="btn btn_sm_link_white">프리미엄 마일리지 조회</a>
+                    <a href="#"
+                       class="btn btn_sm_link_white mileage">프리미엄 마일리지 조회</a>
                 </div>
             </li>
             <li class="payment">
