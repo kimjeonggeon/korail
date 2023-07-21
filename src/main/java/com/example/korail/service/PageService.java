@@ -5,9 +5,6 @@ import com.example.korail.repository.PageMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.HashMap;
-import java.util.Map;
-
 @Service
 public class PageService {
     @Autowired
@@ -23,7 +20,6 @@ public class PageService {
         int dbCount = 0;	//DB에서 가져온 전체 행수
 
         dbCount = pageMapper.totalRowCount(pageDto);
-
 
         if(pageDto.getServiceName().equals("notice")) {
             pageSize = 3;
@@ -61,8 +57,7 @@ public class PageService {
         return pageDto;
     }
 
-    public Map getPageResult(String page, String serviceName, String category, String cvalue) {
-        Map map = new HashMap();
+    public PageDto getPageResult(PageDto pageDto, String category, String cvalue) {
 
         int startCount = 0;
         int endCount = 0;
@@ -71,33 +66,42 @@ public class PageService {
         int pageCount = 1;
         int dbCount = 0;
 
-        if(serviceName.equals("notice")) {
-            dbCount = pageMapper.totalRowCount(category, cvalue);
+        dbCount = pageMapper.totalRowCount(pageDto);
+
+        if(pageDto.getServiceName().equals("notice")) {
             pageSize = 3;
+        } else if(pageDto.getServiceName().equals("member")) {
+            pageSize = 5;
+        } else if(pageDto.getServiceName().equals("adminReserv")) {
+            pageSize = 5;
         }
 
+        //총 페이지 수 계산
         if(dbCount % pageSize == 0) {
             pageCount = dbCount/pageSize;
         } else {
             pageCount = dbCount/pageSize+1;
         }
 
-        if(page != null) {
-            reqPage = Integer.parseInt(page);
+        //요청 페이지 계산
+        if(pageDto.getPage() != null) {
+            reqPage = Integer.parseInt(pageDto.getPage());
             startCount = (reqPage-1) * pageSize+1;
-            endCount = reqPage * pageSize;
+            endCount = reqPage *pageSize;
         } else {
             startCount = 1;
             endCount = pageSize;
         }
 
-        map.put("startCount", startCount);
-        map.put("endCount", endCount);
-        map.put("dbCount", dbCount);
-        map.put("pageSize", pageSize);
-        map.put("pageCount", pageCount);
-        map.put("reqPage", reqPage);
+        pageDto.setStartCount(startCount);
+        pageDto.setEndCount(endCount);
+        pageDto.setDbCount(dbCount);
+        pageDto.setPageSize(pageSize);
+        pageDto.setPageCount(pageCount);
+        pageDto.setReqPage(reqPage);
+        pageDto.setCategory(category);
+        pageDto.setCvalue(cvalue);
 
-        return map;
+        return pageDto;
     }
 }

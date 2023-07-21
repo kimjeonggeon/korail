@@ -122,8 +122,8 @@ public class KorailRestControlloer {
     public NoticeDto notice_content_json_data(@PathVariable String nid) {
         Map map = new HashMap();
         NoticeDto noticeDto = noticeService.content(nid);
-        //System.out.println(noticeDto);
         ArrayList<NoticeDto> nlist = noticeService.getNid(nid);
+
         int pidx = 0;
         int nidx = 0;
         int idx = 0;
@@ -157,24 +157,22 @@ public class KorailRestControlloer {
 
     @GetMapping("notice_search_json_data/{category}/{cvalue}/{page}")
     public Map notice_search_json_data(@PathVariable String category, @PathVariable String cvalue, @PathVariable String page) {
+//        System.out.println("category ==> " + category);
+//        System.out.println("cvalue  ==> " + cvalue);
+//        System.out.println("page ==> " + page);
         Map map = new HashMap();
-        PageDto pageDto = pageService.getPageResult(new PageDto(page,"notice"));
 
-        if(category == "all") {
-            ArrayList<NoticeDto> list = noticeService.getSearch(pageDto.getStartCount(), pageDto.getEndCount(), "all", cvalue);
-        } else if(category == "title") {
-            ArrayList<NoticeDto> list = noticeService.getSearch(pageDto.getStartCount(), pageDto.getEndCount(), "title", cvalue);
-        } else if(category == "content") {
-            ArrayList<NoticeDto> list = noticeService.getSearch(pageDto.getStartCount(), pageDto.getEndCount(), "content", cvalue);
-        } else {
-            ArrayList<NoticeDto> list = noticeService.getSearch(pageDto.getStartCount(), pageDto.getEndCount(), "title_content", cvalue);
-            map.put("list", list);
-        }
+       PageDto pageDto = pageService.getPageResult(new PageDto(page, "notice"), category, cvalue);
+       ArrayList<NoticeDto> slist = noticeService.getSearch(pageDto.getStartCount(), pageDto.getEndCount(), category, cvalue, pageDto.getPage());
 
-        ArrayList<NoticeDto> list2 = noticeService.getList(category, cvalue);
+        ArrayList<NoticeDto> result = noticeService.getList(category, cvalue, pageDto.getPage());
 
-        map.put("list2", list2);
         map.put("page", pageDto);
+        map.put("slist", slist);
+        System.out.println(pageDto);
+        System.out.println(slist);
+//        System.out.println(result);
+//       System.out.println(map);
 
         return map;
     }

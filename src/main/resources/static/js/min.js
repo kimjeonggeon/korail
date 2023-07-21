@@ -457,6 +457,7 @@ $(document).ready(function() {
 
 					initAjax(e.page);
 				});
+
 			}
 		});	// ajax
 	}	// initAjax
@@ -482,41 +483,59 @@ $(document).ready(function() {
 		});
 	}
 
+	function validation(category, cvalue) {
+		if (category == "title") {
+			if (cvalue == "") {
+				alert("제목을 입력해주세요");
+				$("#cvalue").focus();
+				return false;
+			} else {
+				return true;
+			}
+
+		} else if (category == "content") {
+			if (cvalue == "") {
+				alert("내용을 입력해주세요");
+				$("#cvalue").focus();
+				return false;
+			} else {
+				return true;
+			}
+		} else if (category == "title_content") {
+			if (cvalue == "") {
+				alert("제목 또는 내용을 입력해주세요");
+				$("#cvalue").focus();
+				return false;
+			} else {
+				return true;
+			}
+		}
+	}
+
 	// 검색 버튼 클릭 이벤트
 	$("#notice_search").click(function() {
+		var category = $("#category").val();
+		var cvalue = $("#cvalue").val();
+		if(validation(category, cvalue)) {
+			searchAjax(category, cvalue, 1);
+		} else {
+			$("#cvalue").focus();
+		}
+
+	});	// search click
+
+	function searchAjax(category, cvalue, page) {
+		//alert(category + cvalue + page);
 		$.ajax({
-			url: "notice_search_json_data/" + category + "/" + cvalue + "/",
-			success: function(search) {
+			url: "notice_search_json_data/" + category + "/" + cvalue + "/" + page + "/",
+			success: function (search) {
 
-				var category = $("#category").val();
-				var cvalue = $("#cvalue").val();
-				if(category == "title") {
-					if(cvalue == ""){
-						alert("제목을 입력해주세요");
-						$("#cvalue").focus();
-						return false;
-					} else {
-						
-					}
-
-				} else if(category == "content") {
-					if(cvalue == ""){
-						alert("내용을 입력해주세요");
-						$("#cvalue").focus();
-						return false;
-					}
-				} else if(category == "title_content") {
-					if(cvalue == ""){
-						alert("제목 또는 내용을 입력해주세요");
-						$("#cvalue").focus();
-						return false;
-					}
-				}
+				$("table.notice_search").remove();
+				$("#notice_list_search").after();
 
 			}	// success
 		});	// ajax
-
-	});	// search click
+	}	// searchAjax
 
 	// 상세보기
 	function contentAjax(nid, page) {
