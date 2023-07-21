@@ -12,8 +12,8 @@
 <script>
 	function updateAdltTotAmt() {
 		// 탑승 인원 수 가져오기
-		var passengersNum = parseInt($("#passengersNum").text());
-
+		var passengersNum = parseInt($("#adltCnt").text());
+		$("#passengersNum").text($("#adltCnt").text());
 		// adultcharge 가져오기
 		var adultCharge = parseInt("${ sessionScope.uvo.adultcharge }");
 
@@ -40,13 +40,7 @@ $(document).ready(function(){
 		updateAdltTotAmt(); // 변경된 값으로 업데이트
 	});
 
-	/* $(".btn_selectSeat").click(function() {
-		let sid = "${sessionScope.svo.id}";
-		let seatNum = $("#seatNum").val();
-		
-		$(location).attr("href", 'http://localhost:9000/reservation_updateselect.do?seatNum='+seatNum+"&id="+sid);
-	}); */
-	
+	//선택완료
 	$(".btn_selectSeat").click(function() {
 		if($("#seatNum").text() == ""){
 			Swal.fire({
@@ -115,9 +109,7 @@ $(document).ready(function(){
 									<p class="roundBox_end">도착</p>
 									<p class="roundBox arrive " id="satsArvlTmlNm">${ sessionScope.uvo.arrplacename }</p><!-- 도착지 -->
 								</div>
-								<div class="detail_info">
-									<span id="satsTakeDrtm">4시간 15분 소요</span>
-								</div>
+
 								<div class="btn_r">
 									<a href="#" class="btn btn_modify white" id="back2">수정</a>
 								</div>
@@ -136,8 +128,8 @@ $(document).ready(function(){
 										</colgroup>
 										<tbody>
 											<tr>
-												<th scope="row">차량</th>
-												<td>ktx</td>
+												<th scope="row">열차</th>
+												<td>KTX</td>
 											</tr>
 											<tr>
 												<th scope="row">열차번호</th>

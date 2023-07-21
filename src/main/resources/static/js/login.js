@@ -32,7 +32,7 @@ $("#pass").val("");
 /*************************
 		로그인2 -예매내역용 
 *************************/
-$("#btnLogin").click(function(){
+/*$("#btnLogin").click(function(){
 	if($("#id").val() == ""){
 		//alert("아이디를 입력해주세요");
 		Swal.fire({
@@ -59,8 +59,40 @@ $("#btnLogin").click(function(){
 		loginForm.submit();
 	}
 	
-});
+});*/
+	//엔터키 로그인
+		$('#id, #pass').on('keydown', function(e) {
+			if (e.code === 'Enter' || e.keyCode === 13) {
+				e.preventDefault(); // 기본 엔터 키 동작을 막습니다.
 
+				var idValue = $("#id").val();
+				var passValue = $("#pass").val();
+
+				if (idValue === "") {
+					Swal.fire({
+						text: "아이디를 입력해주세요",
+						width: 600,
+						padding: '1.5em',
+						confirmButtonColor: '#74b3c7',
+						confirmButtonText: '확인'
+					});
+					$("#id").focus();
+					return false;
+				} else if (passValue === "") {
+					Swal.fire({
+						text: "패스워드를 입력해주세요",
+						width: 600,
+						padding: '1.5em',
+						confirmButtonColor: '#74b3c7',
+						confirmButtonText: '확인'
+					});
+					$("#pass").focus();
+					return false;
+				} else {
+					loginForm.submit(); // 폼을 제출합니다. 이 때, loginForm은 실제로 로그인 폼을 감싸는 form 요소여야 합니다.
+				}
+			}
+		});
 
 
 	/*************************

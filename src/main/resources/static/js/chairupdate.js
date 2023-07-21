@@ -38,8 +38,8 @@ $(document).ready(function(){
 	          
 	          if (!isOccupied) {
 	          	let seatNumber = count.toString().padStart(2, '0');
-	            seat += "<img src='http://localhost:9000/images/seat_p.gif' id='chairImg_${count}' style='opacity: 0.5;'>";
-	          }
+				  seat += "<img src='http://localhost:9000/images/seat_p.gif' id='chairImg_"+seatNumber+"' style='opacity: 0.5;'>";
+			  }
 	          
 	          seat +=  count.toString().padStart(2, '0');
 	          seat += "</span></div>";
@@ -71,6 +71,7 @@ $(document).ready(function(){
 		  
 		  if (index > -1) {
 		  		selectedSeats.splice(index, 1); // 배열에서 제거
+			  	$("#seatNum").text(selectedSeats.join(","));
     			$(this).css("opacity", "0.5"); 
     			
   			} else if (adltCnt > 0 && selectedSeats.length < adltCnt) { 
@@ -125,11 +126,6 @@ $(document).ready(function(){
 	});
 	
 	
-	
-	
-	
-	
-	
 
 	
 	//선택 완료 시 로그인 모달창
@@ -168,7 +164,33 @@ $(document).ready(function(){
 	  $(".adult_add").click(function() {
 		  var count = parseInt($("#adltCnt").text()) + 1; // 현재 카운트 값을 가져와 1 증가
 		  $("#adltCnt").text(count); // 증가된 값을 화면에 표시
-		});
+		  var inputTag = $('<input>').attr({
+			  type: 'text',
+			  name: 'selectedSeat[]',
+			  value: '',
+			  class: 'seatNum-input'
+		  });
+
+		  // 금액 업데이트
+		  var seatPrice = 1000; // 좌석 가격에 해당하는 변수 (예시 값)
+		  var totalAmount = count * seatPrice; // seatPrice를 실제 가격으로 수정
+		  $("#totalAmount").text(totalAmount); // 금액을 업데이트할 요소의 ID를 확인해주세요.
+
+		  // 선택된 좌석 수와 좌석 번호 업데이트
+		  $("#selectedSeatCount").text(selectedSeats.length);
+		  $("#seatNum").text(selectedSeats.join(","));
+		  $("#seatNum1").val($("#seatNum").text());
+
+		  $("#passengersNum").text(count);
+		  let ticketQty = count;
+		  $("#ticketQty1").val(ticketQty);
+
+		  // 선택된 좌석 수 업데이트
+		  $("#selectedSeatCount").text(selectedSeats.length);
+
+	  });
+
+
 
 		$(".adult_minus").click(function() {
 		  var count = parseInt($("#adltCnt").text()) - 1; // 현재 카운트 값을 가져와 1 감소
@@ -176,29 +198,59 @@ $(document).ready(function(){
 		    count = 1; // 음수 값이 되지 않도록 조정
 		  }
 		  $("#adltCnt").text(count); // 감소된 값을 화면에 표시
+			//alert(count);
+			if (selectedSeats.length > 0) {
+				var lastSelectedSeat = selectedSeats.pop(); // 배열에서 마지막 값 제거
+				var lastSelected = lastSelectedSeat.slice(4,6);
+
+				// 제거된 좌석 투명도를 조정
+				$("#chairImg_" + lastSelected).css("opacity", "0.5");
+
+				//alert(lastSelected);
+			}
+			//alert(selectedSeats);
+
+			$("#seatNum").text(selectedSeats.join(","));
+			$("#seatNum1").val($("#seatNum").text());
+			$("#seatNum2").val($("#seatNum").text());
+
+			$("#passengersNum").text(count);
+			let ticketQty = count;
+			$("#ticketQty1").val(ticketQty);
+			$("#ticketQty2").val(ticketQty);
+
+			// 선택된 좌석 수 업데이트
+			$("#selectedSeatCount").text(selectedSeats.length);
+
+			$("#seatNum .seat-input:last-child").remove();
 		});
 	  
 		
 		//기차 호실 증감 이벤트
 		$("#Kind_add").click(function() {
 			var trnumber = parseInt($("#chldCnt").text()) + 1;// 현재 카운트 값을 가져와 1 증가
-
 			  if(trnumber >9){
 			  	trnumber = 9;
 			  }
-			  
-			  $("#chldCnt").text(trnumber); // 증가된 값을 화면에 표시
-			  trInitAjax(trnumber);
+
+			$("#chldCnt").text(trnumber); // 증가된 값을 화면에 표시
+			trInitAjax(trnumber);
+			selectedSeats = [];
+			$("#seatNum").text(selectedSeats.join(","));
+			//alert(selectedSeats);
 			});
 
 		$("#Kind_minus").click(function() {
-			  var trnumber = parseInt($("#chldCnt").text()) - 1; // 현재 카운트 값을 가져와 1 감소
-			  if (trnumber < 1) {
-			    trnumber = 1; // 음수 값이 되지 않도록 조정
-			  }
-			  $("#chldCnt").text(trnumber); // 감소된 값을 화면에 표시
-			  trInitAjax(trnumber);
-			});
+			var trnumber = parseInt($("#chldCnt").text()) - 1; // 현재 카운트 값을 가져와 1 감소
+			if (trnumber < 1) {
+				trnumber = 1; // 음수 값이 되지 않도록 조정
+			}
+			$("#chldCnt").text(trnumber); // 감소된 값을 화면에 표시
+			trInitAjax(trnumber);
+			selectedSeats = [];
+			$("#seatNum").text(selectedSeats.join(","));
+			//alert(selectedSeats);
+		});
 			
 	  
 		//비회원 예매 버튼 이벤트

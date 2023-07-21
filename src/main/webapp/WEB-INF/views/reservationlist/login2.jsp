@@ -10,8 +10,26 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="http://localhost:9000/js/login.js"></script>
 <script src="http://localhost:9000/js/mailcheck2.js"></script>
+	<script>
+		// JSP에서 "loginResult" 값을 가져옴
+		var loginResult = "<%= request.getAttribute("loginResult") %>";
 
-<style>
+		// "loginResult" 값이 "failure"인 경우에만 alert 띄우기
+		if (loginResult === "failure") {
+			window.onload = function() {
+				Swal.fire({
+					text: "인증에 실패했습니다. 다시 입력해 주세요.",
+					width: 600,
+					padding: '1.5em',
+					confirmButtonColor: '#74b3c7',
+					confirmButtonText: '확인',
+					icon: 'error'
+				});
+			};
+		}
+	</script>
+
+	<style>
 	.box_inputForm, #nonMemberbox{
 	margin-top: 4px;
 	}

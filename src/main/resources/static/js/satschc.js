@@ -65,7 +65,7 @@ $(document).ready(function(){
 	let selectedSeats = [];
 	
 	$(".seatList").on("click", "[id^='chairImg_']", function() {
-		  let seatNum = $("#chldCnt").text() + "호 " +  $(this).parent().text() + "좌석"; // 좌석번호
+		  let seatNum = " "+ $("#chldCnt").text() + "호 " +  $(this).parent().text() + "좌석"; // 좌석번호
 		  let adltCnt = parseInt($("#adltCnt").text());
 
 		  let index = selectedSeats.indexOf(seatNum); // 이미 선택된 좌석인지 확인을 위한 객체
@@ -198,7 +198,7 @@ $(document).ready(function(){
 		//alert(count);
 		if (selectedSeats.length > 0) {
 			var lastSelectedSeat = selectedSeats.pop(); // 배열에서 마지막 값 제거
-			var lastSelected = lastSelectedSeat.slice(3,5);
+			var lastSelected = lastSelectedSeat.slice(4,6);
 
 			// 제거된 좌석 투명도를 조정
 			$("#chairImg_" + lastSelected).css("opacity", "0.5");
