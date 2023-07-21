@@ -119,7 +119,7 @@ public class KorailRestControlloer {
     }
 
     @GetMapping("notice_content_json_data/{nid}")
-    public NoticeDto notice_content_json_data(@PathVariable String nid) {
+    public Map notice_content_json_data(@PathVariable String nid) {
         Map map = new HashMap();
         NoticeDto noticeDto = noticeService.content(nid);
         ArrayList<NoticeDto> nlist = noticeService.getNid(nid);
@@ -151,28 +151,21 @@ public class KorailRestControlloer {
         map.put("noticeDto", noticeDto);
         map.put("nprev", nlist.get(pidx).getNid());
         map.put("nnext", nlist.get(nidx).getNid());
+        System.out.println(map);
 
-        return noticeDto;
+        return map;
     }
 
     @GetMapping("notice_search_json_data/{category}/{cvalue}/{page}")
     public Map notice_search_json_data(@PathVariable String category, @PathVariable String cvalue, @PathVariable String page) {
-//        System.out.println("category ==> " + category);
-//        System.out.println("cvalue  ==> " + cvalue);
-//        System.out.println("page ==> " + page);
+
         Map map = new HashMap();
-
-       PageDto pageDto = pageService.getPageResult(new PageDto(page, "notice"), category, cvalue);
-       ArrayList<NoticeDto> slist = noticeService.getSearch(pageDto.getStartCount(), pageDto.getEndCount(), category, cvalue, pageDto.getPage());
-
-        ArrayList<NoticeDto> result = noticeService.getList(category, cvalue, pageDto.getPage());
+        PageDto pageDto = new PageDto(page, "notice", category, cvalue);
+        pageDto = pageService.getPageResult(pageDto);
+        ArrayList<NoticeDto> slist = noticeService.getSearch(pageDto);
 
         map.put("page", pageDto);
         map.put("slist", slist);
-        System.out.println(pageDto);
-        System.out.println(slist);
-//        System.out.println(result);
-//       System.out.println(map);
 
         return map;
     }
