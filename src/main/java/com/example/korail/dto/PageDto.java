@@ -15,6 +15,7 @@ public class PageDto {
     private String category;
     private String cvalue;
 
+
     public PageDto(String page, String serviceName) {
         this.page = page;
         this.serviceName = serviceName;

@@ -16,26 +16,26 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 
-/*@Controller
+@Controller
 @RequestMapping("admin")
 public class Admin_memberController {
 	@Autowired
 	 MemberService memberService;
 	@Autowired
-	PageService pageService;*/
-/*
-	@GetMapping("member_list/{page}")
-	public ModelAndView admin_member_search(@PathVariable String page, String category, String cvalue) {
+	PageService pageService;
+
+	/*@GetMapping("member_list/{category}/{cvalue}/{page}")
+	public ModelAndView admin_member_search(@PathVariable String page, @PathVariable String category, @PathVariable String cvalue) {
 		Map<String, Integer> param = null;
-		
+
 		ModelAndView model = new ModelAndView();
 		if(category.equals("total")){
-			param = pageService.getPageResult(page, "member");
+			PageDto pageDto = pageService.getPageResult(new PageDto(page, "member"));
 		}else {
-			param = pageService.getPageResult(page, "member", category, cvalue);		
-			
+			param = pageService.getPageResult(new PageDto(page,"member",category,cvalue));
+
 		}
-		ArrayList<MemberVo> list 
+		ArrayList<MemberVo> list
 		= memberService.getList(param.get("startCount"), param.get("endCount"),category, cvalue);
 		model.addObject("list", list);
 		model.addObject("totals", param.get("dbCount"));
@@ -46,27 +46,18 @@ public class Admin_memberController {
 		model.setViewName("/admin/admin_member_list");
 		
 		return model;
-	}*/
-
-	
-/*
-
-	@GetMapping(value="/admin_member/")
-	public String admin_member_list(@PathVariable String page, Model model) {
-		PageDto pageDto = pageService.getPageResult(page, "member","all","all");
-		ArrayList<MemberVo> list 
-			= memberService.getList(param.get("startCount"), param.get("endCount"));
-		System.out.println(param.get("dbCount"));
-		model.addObject("list", list);
-		model.addObject("totals", param.get("dbCount"));
-		model.addObject("pageSize", param.get("pageSize"));
-		model.addObject("maxSize", param.get("maxSize"));
-		model.addObject("page", param.get("page"));
-		
-		model.setViewName("/admin/admin_member_list");
-		
-		return model;
 	}
-		
-}
 */
+	
+
+
+	@GetMapping(value="member_list/{page}")
+	public String admin_member_list(@PathVariable String page, Model model) {
+		PageDto pageDto = pageService.getPageResult(new PageDto(page, "member"));
+		model.addAttribute("list", memberService.list(pageDto));
+		model.addAttribute("page", pageDto);
+
+		return "/admin/admin_member_list";
+	}
+
+}

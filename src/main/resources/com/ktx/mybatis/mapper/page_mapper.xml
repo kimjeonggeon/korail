@@ -29,6 +29,18 @@
 				where id = #{cvalue}
 			</if>
 		</if>
+		<if test='serviceName == "member"'>
+			ktx_member
+			<if test= 'category =="custname"'>
+				where name = #{cvalue}
+			</if>
+			<if test= 'category == "id"'>
+				where id = #{cvalue}
+			</if>
+		</if>
+
+
+
 
 	</select>
 
