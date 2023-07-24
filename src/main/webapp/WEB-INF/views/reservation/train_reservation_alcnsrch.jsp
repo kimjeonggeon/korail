@@ -26,7 +26,9 @@ let url ="https://apis.data.go.kr/1613000/TrainInfoService/getStrtpntAlocFndTrai
 
 
 $.getJSON(url, function(citys){
-	
+	//현제 날짜를 저장
+	let date = new Date();
+
 	let code = "<p class='bustime_head' id='d2'>";
 		code += "<span style='width: 60px'>출발역</span><span style='width:75px'>도착역</span><span class='start_time' style='width: 75px'>출발시간</span><span class='end_time' style='width: 95px'>도착시간</span>"
 		code += "<span class='bus_com' style='width:50px'>열차명</span><span class='grade' style='width: 101px'>열차번호</span><span class='fare'>운임</span><span class='status' style='width: 70px'></span></p>";
@@ -43,17 +45,29 @@ $.getJSON(url, function(citys){
 	 	 let end_date = arrplandtime.slice(8,10)+"시";
 			 end_date += arrplandtime.slice(10,12)+"분";	
 
-	 	
-		code +="<p>"
-		code +="<span style='width:80px' id='input1'>"+kobi.depplacename+"</span>";
-		code +="<span style='width:80px' id='input2'>"+kobi.arrplacename+"</span>";
-		code +="<span id='input3'>"+start_date+"</span>";
-		code +="<span id='input4'>"+end_date+"</span>";
-		code +="<span style='text-align: center' id='input5'>"+kobi.traingradename+"</span>";
-		code +="<span id='input6' style='text-indent: 10px'>"+kobi.trainno+"</span>";
-		code +="<span id='input7'>"+kobi.adultcharge+"</span>";
-		code +="<span class='accent btn_arrow' id='input_add'>선택</span>";
-		code +="</p>"
+		//출발일을 필요한 부분한 잘라서 Date형태로 변환
+		let departureDate = new Date(
+				depplandtime.slice(0, 4), // Year
+				parseInt(depplandtime.slice(4, 6)) - 1, // Month (Month is 0-indexed)
+				depplandtime.slice(6, 8), // Day
+				depplandtime.slice(8, 10), // Hours
+				depplandtime.slice(10, 12) // Minutes
+		);
+
+		//출발일이이랑 오늘날짜 비교해서 지난시간대는 미출력
+	 	if(departureDate > date){
+			code +="<p>"
+			code +="<span style='width:80px' id='input1'>"+kobi.depplacename+"</span>";
+			code +="<span style='width:80px' id='input2'>"+kobi.arrplacename+"</span>";
+			code +="<span id='input3'>"+start_date+"</span>";
+			code +="<span id='input4'>"+end_date+"</span>";
+			code +="<span style='text-align: center' id='input5'>"+kobi.traingradename+"</span>";
+			code +="<span id='input6' style='text-indent: 10px'>"+kobi.trainno+"</span>";
+			code +="<span id='input7'>"+kobi.adultcharge+"</span>";
+			code +="<span class='accent btn_arrow' id='input_add'>선택</span>";
+			code +="</p>"
+		}
+
 		
 		
 	}
@@ -69,9 +83,11 @@ $.getJSON(url, function(citys){
 	$("#alcnDeprTmlNm").text(kobi.depplacename);
 	$("#alcnArvlTmlNm").text(kobi.arrplacename);
 	$("#trainfare").text(kobi.adultcharge);
-	
+
+
+	//선택 클릭 이벤트
 	$(".btn_arrow").click(function() {
-		
+
 	    let depplacename = $(this).siblings("#input1").text();
 	    let arrplacename = $(this).siblings("#input2").text();
 	    let start_date = $(this).siblings("#input3").text();
@@ -80,19 +96,50 @@ $.getJSON(url, function(citys){
 	    let trainno = $(this).siblings("#input6").text();
 	    let adultcharge = $(this).siblings("#input7").text();
 	    let rtimes = rtime;
-	    
-	    $("#depplacename").val(depplacename);
-	    $("#arrplacename").val(arrplacename);
-	    $("#start_date").val(start_date);
-	    $("#end_date").val(end_date);
-	    $("#traingradename").val(traingradename);
-	    $("#trainno").val(trainno);
-	    $("#adultcharge").val(adultcharge);
-	    $("#rtimes").val(rtimes);
-		
-		
-		 testForm.submit();
-		
+
+		$("#depplacename").val(depplacename);
+		$("#arrplacename").val(arrplacename);
+		$("#start_date").val(start_date);
+		$("#end_date").val(end_date);
+		$("#traingradename").val(traingradename);
+		$("#trainno").val(trainno);
+		$("#adultcharge").val(adultcharge);
+		$("#rtimes").val(rtimes);
+
+		let selectedDepartureDate = new Date(
+				parseInt(rtimes.slice(0, 4)), // Year
+				parseInt(rtimes.slice(4, 6)) - 1, // Month (Month is 0-indexed)
+				parseInt(rtimes.slice(6, 8)), // Day
+				parseInt(start_date.slice(0, 2)), // Hours
+				parseInt(start_date.slice(3, 5)) // Minutes
+		);
+
+
+		let currentDate = new Date();
+
+		// 선택한 시간과 현재 시간의 차이를 계산
+		let timeDifferenceInMilliseconds = selectedDepartureDate - currentDate;
+		let timeDifferenceInHours = timeDifferenceInMilliseconds / (1000 * 60 * 60);
+
+		// 출발까지 3시간 미만인 경우에만 알림 출력
+		if (timeDifferenceInHours < 3) {
+			Swal.fire({
+				text: "출발까지 3시간 미만입니다. 취소시 수수료가 발생합니다.",
+				width: 600,
+				padding: '1.5em',
+				confirmButtonColor: '#74b3c7',
+				confirmButtonText: '확인'
+			}).then((result) => {
+				// 확인 버튼을 클릭하면 testForm.submit() 실행
+				if (result.isConfirmed) {
+					testForm.submit();
+				}
+			});
+		} else {
+			// 3시간 이상 남았을 때 바로 testForm.submit() 실행
+			testForm.submit();
+		}
+
 	});
 	
 	

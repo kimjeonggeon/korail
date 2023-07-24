@@ -1,6 +1,3 @@
-
-
-
 #contentWrap {
     left: 220px;
     width: calc(100% - 220px);
@@ -1369,13 +1366,15 @@ html:first-child select {
     letter-spacing: 0;
 }
 
-/* .selectricOpen {
-    z-index: 9999;
-} */
-
-/* .selectricOpen .selectricItems {
-    display: block;
-} */
+#kakaopayment {
+    display: inline-block;
+    height: 323px;
+    background-color: #f3f4f6;
+    margin-top: 10px;
+    text-align: center;
+    font-size: 18px;
+    line-height: 323px;
+}
 
 
 
