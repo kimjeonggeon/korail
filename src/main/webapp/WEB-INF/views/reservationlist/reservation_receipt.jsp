@@ -8,6 +8,16 @@
 <link rel="stylesheet" href="http://localhost:9000/css/reservationlist.css">
 <script src="http://localhost:9000/js/jquery-3.6.4.min.js"></script>
 <script src="http://localhost:9000/js/reservation_jquery.js"></script>
+	<style>
+		.share_btn{
+			margin-top: 20px;
+		}
+
+		.desc_list li:before, p.bul:before{
+			background-color: white;
+		}
+
+	</style>
 </head>
 <body>
 	<div class="print_wrap">
@@ -15,6 +25,7 @@
 		<div class="print_head">
 			<ul class="desc_list">
 				<li>현재 페이지에서 출력하신 영수증으로 승차권 대신하여 탑승하실 수 없습니다.</li>
+				<li class="share_btn"><img src="http://localhost:9000/images/share.png" style="width: 30px;"></li>
 			</ul>
 			<p class="btnBox">
 				<button type="button" onclick="window.print();" class="print">

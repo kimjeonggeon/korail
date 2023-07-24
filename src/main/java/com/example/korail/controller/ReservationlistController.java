@@ -3,6 +3,7 @@ package com.example.korail.controller;
 import com.example.korail.dto.*;
 import com.example.korail.service.OrderService;
 import com.example.korail.service.PageService;
+import com.google.gson.internal.Streams;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Controller;
@@ -13,8 +14,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.servlet.http.HttpSession;
 import java.text.DecimalFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Map;
+
+import static java.lang.Integer.parseInt;
 
 @Controller
 public class ReservationlistController {
@@ -23,10 +30,9 @@ public class ReservationlistController {
 
 
     @GetMapping("reservation_main")
-    public String reservation_main(OrderDto orderDto, HttpSession session, Model model){
+    public String reservation_main(OrderDto orderDto, HttpSession session, Model model) throws ParseException {
         SessionDto svo = (SessionDto)session.getAttribute("svo");
-        /*System.out.println("cardnum3 -> "+svo.getCardnum());
-        System.out.println("email3 -> "+svo.getEmail());*/
+
         String id = svo.getId();
         String cardnum = svo.getCardnum();
         String email = svo.getEmail();
@@ -39,19 +45,63 @@ public class ReservationlistController {
         orderDto.setId(id);
         orderDto.setCardnum(cardnum);
         orderDto.setEmail(email);
-        /*System.out.println("cardnum4-->"+orderDto.getCardnum());
-        System.out.println("id-->"+orderDto.getId());
-        System.out.println("email4-->"+orderDto.getEmail());*/
 
         ArrayList<OrderDto> orderList = orderService.getSelect(orderDto);
-        /*System.out.println("orderList-->"+ orderList);*/
+
         if(orderList != null){
-            model.addAttribute("orderList",orderList);
+            
+            /* 서버날짜 가져오기 */
+            Date currentDate = new Date();
+            SimpleDateFormat formatDate = new SimpleDateFormat("yyyyMMdd");
+            int serverDate = parseInt(formatDate.format(currentDate));
+
+            ArrayList<OrderDto> reservList = new ArrayList<>();
+            ArrayList<OrderDto> cancelList = new ArrayList<>();
+
+            for (OrderDto order : orderList) {
+                String depPlandTime = order.getDepPlandTime(); // 출발일 값을 가져옴
+                int depPlandDate = parseInt(depPlandTime); //출발일
+
+                String rdate = order.getRdate(); //예매일
+                System.out.println("rdate-->"+rdate);
+
+                SimpleDateFormat transFormat = new SimpleDateFormat("yyyy-MM-dd");
+                Date date = transFormat.parse(rdate);
+
+                SimpleDateFormat formatRDate = new SimpleDateFormat("yyyyMMdd");
+                int rdate1 = Integer.parseInt(formatRDate.format(date));
+                System.out.println("rdate1-->" + rdate1);
+
+                Calendar cal1 = Calendar.getInstance();
+                cal1.setTime(date);
+                cal1.add(Calendar.MONTH, 3); // 월 연산
+
+                int rdate2 = Integer.parseInt(formatDate.format(cal1.getTime()));
+                System.out.println("rdate2-->" + rdate2);
+
+
+                /* 예매내역 확인 : 출발날짜가 서버날짜 당일이거나 이후인 경우만 담기 */
+                if (depPlandDate >= serverDate) {
+                    reservList.add(order);
+                }
+
+                // rdate와 rdate2를 정수로 비교하여 cancelList에 추가
+                if (serverDate <= rdate2) {
+                    cancelList.add(order);
+                }
+                
+            }
+
+            model.addAttribute("reservList", reservList);
+            model.addAttribute("cancelList", cancelList);
+            model.addAttribute("orderList", orderList);
+
             orderReturn = "reservationlist/reservation_main";
         }
 
         return orderReturn;
     }
+    
 
     @PostMapping("cardnum_check")
     public String cardnum_check_proc(String cardnum, String userId, String email, HttpSession session,Model model){
@@ -180,7 +230,7 @@ public class ReservationlistController {
         String resultPay = "";
         UpdateDto uvo = (UpdateDto) session.getAttribute("uvo");
         DecimalFormat decimalFormat = new DecimalFormat("#,###");
-        int number = Integer.parseInt(uvo.getAdltTotAmt());
+        int number = parseInt(uvo.getAdltTotAmt());
         String price = decimalFormat.format(number);
 
         orderDto.setReservnum(uvo.getReservnum());
@@ -195,8 +245,8 @@ public class ReservationlistController {
         orderDto.setDepPlandTime(uvo.getRtimes());
         orderDto.setCardnum(cardinfoDto.getCardnum());
         orderDto.setPrice(price);
-        orderDto.setTrainnum(Integer.parseInt(uvo.getTrainno()));
-        orderDto.setTicketqty(Integer.parseInt(uvo.getTicketQty()));
+        orderDto.setTrainnum(parseInt(uvo.getTrainno()));
+        orderDto.setTicketqty(parseInt(uvo.getTicketQty()));
 
 
         int result = orderService.getPaymentUpdate(orderDto);

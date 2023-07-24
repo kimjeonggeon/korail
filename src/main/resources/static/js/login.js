@@ -66,7 +66,8 @@ $("#pass").val("");
 /*************************
 		로그인2 -예매내역용 
 *************************/
-/*$("#btnLogin").click(function(){
+//버튼 클릭 로그인
+$("#btnLogin").click(function(){
 	if($("#id").val() == ""){
 		//alert("아이디를 입력해주세요");
 		Swal.fire({
@@ -93,9 +94,9 @@ $("#pass").val("");
 		loginForm.submit();
 	}
 	
-});*/
+});
 	//엔터키 로그인
-		$('#id, #pass').on('keydown', function(e) {
+		$("#id, #pass").on('keydown', function(e) {
 			if (e.code === 'Enter' || e.keyCode === 13) {
 				e.preventDefault(); // 기본 엔터 키 동작을 막습니다.
 

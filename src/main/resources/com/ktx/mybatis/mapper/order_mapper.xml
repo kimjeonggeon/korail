@@ -36,7 +36,7 @@
     </update>
 
     <select id="select" parameterType = "com.example.korail.dto.OrderDto" resultType="com.example.korail.dto.OrderDto">
-        SELECT id, sstation, depPlandTime, stime, dstation, ticketqty, price, reservnum, trainnum, chairnum, cancel, depPlaceId, arrPlaceId, cardnum, email, to_char(cdate,'yyyy-mm-dd') cdate
+        SELECT id, sstation, depPlandTime, stime, dstation, ticketqty, price, reservnum, trainnum, chairnum, cancel, depPlaceId, arrPlaceId, cardnum, email, to_char(cdate,'yyyy-mm-dd') cdate, rdate
         FROM KTX_ORDER
         <choose>
             <when test='id == "guest" and cardnum == ""'>
