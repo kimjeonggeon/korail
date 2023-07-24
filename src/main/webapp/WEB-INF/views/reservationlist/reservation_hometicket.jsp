@@ -13,6 +13,13 @@
 		width: 130px;
 		margin: -20px;
 	}
+	.share_btn{
+		margin-top: 20px;
+	}
+
+	.desc_list li:before, p.bul:before{
+		background-color: white;
+	}
 
 
 </style>
@@ -22,7 +29,8 @@
 		<div class="print_head">
 			<ul class="desc_list">
 				<li>인쇄된 홈티켓이 아닌 화면을 휴대폰으로 사진 촬영하거나 캡쳐한 이미지는 효력이 없습니다.</li>
-				<li>홈티켓 인쇄시 QR코드가 정상적으로 인쇄되어 출력되어야 합니다. <br>정상출력이 불가할 경우 프린트물을 폐기하시고 터미널창구에서 재발행<br> 받으시기 바랍니다.<span class="txt_puple">(예매 시 사용한 신용카드 지참)</span></li>
+				<li>정상출력이 불가할 경우 터미널창구에서 재발행 받으시기 바랍니다.</li>
+				<li class="share_btn"><img src="http://localhost:9000/images/share.png" style="width: 30px;"></li>
 			</ul>
 			<p class="btnBox">
 				<button type="button" onclick="window.print();" class="homeT_btn">

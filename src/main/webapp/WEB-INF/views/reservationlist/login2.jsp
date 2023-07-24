@@ -81,7 +81,7 @@
 							</li>
 						</ul>
 							</fieldset>
-							<p class="btn_squareBox"><button onclick="fnMngChkCfm(this);" type="button" class="btn_confirm ready" id="btnLogin">로그인</button></p>
+							<p class="btn_squareBox"><button type="button" class="btn_confirm ready" id="btnLogin">로그인</button></p>
 							<div class="box_searchId">
 								<a href="#none" onclick="lgnSearchId();"><span class="ico_searchId">아이디찾기</span></a>
 								<a href="#none" onclick="lgnSearchPwd();"><span class="ico_searchPW">비밀번호찾기</span></a>
