@@ -171,11 +171,9 @@
 			</div>
 		</div>
 	</div>
-<%--    <script>
+    <script>
 		$(".mileage").click(function () {
 			var dataToSend = "${memberId}";
-			alert("header : " + dataToSend);
-
 			// 사용자 동작에 의한 창 생성
 			var newWindow = window.open('mileage', '마일리지 모달', 'width=900, height=500');
 
@@ -184,6 +182,6 @@
 				newWindow.postMessage(dataToSend, "http://localhost:9000/mileage");
 			};
 		});
-    </script>--%>
+    </script>
 </body>
 </html>

@@ -7,10 +7,11 @@ public class MileageDto {
 
     String mid;
     String id;
-    String accumulationdate;
+    String accumulationDate;
+    int changeAmount;
     String specifics;
-    String expirationdate;
+    String expirationDate;
+    int type;
 
-    int changeamout;
-    int totalmileage;
+    int rno;
 }
