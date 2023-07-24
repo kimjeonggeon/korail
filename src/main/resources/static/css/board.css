@@ -1,0 +1,290 @@
+#contentWrap {
+    left: 220px;
+    width: calc(100% - 220px);
+    min-width: 708px;
+    position: absolute;
+    top: 0;
+}
+
+.title_wrap {
+    background-image:url("http://localhost:9000/images/visual_route_bg.jpg");
+    width:100%;
+    height:105px;
+    text-align: center;
+    position: relative;
+    padding-top: 75px;
+
+}
+.title_wrap h2 {
+    font-size: 34px;
+    color: #fff;
+    text-align: center;
+}
+ul, ol {
+    list-style: none;
+
+}
+.title .process li{
+    display: inline-block;
+    font-size: 15px;
+    color: #a1a6b3;
+    border:1px solid red;
+}
+
+.title_wrap.in_process .process {
+    display: inline-block;
+    margin-top: 10px;
+}
+
+.title_wrap.in_process .process li {
+    display: inline-block;
+    font-size: 15px;
+    color: #a1a6b3;
+}
+
+.title_wrap.in_process .process .active {
+    color: #fff;
+}
+
+.title_wrap.in_process .process li.active:after {
+    background-position: right 0;
+}
+
+.title_wrap.in_process .process li.last:after {
+    display: none;
+}
+
+.title_wrap.in_process .process li:after {
+    display: inline-block;
+    content: '';
+    background: url("http://localhost:9000/images/arrow_process.png") right -18px no-repeat;
+    background-size: 28px auto;
+    width: 28px;
+    height: 18px;
+    margin: 0 0 -3px 30px;
+}
+
+.title_wrap.in_process .process li + li {
+    margin-left: 30px;
+}
+
+.buscheck_wrap {
+    margin-top: 25px;
+}
+
+.buscheck_wrap .infoBox {
+    position: relative;
+}
+
+.buscheck_wrap .infoBox {
+    min-height: 640px;
+}
+
+.infoBox {
+    float: left;
+    width: 230px;
+    min-height: 748px;
+    background-color: #68b3ce;
+}
+.infoBox .date {
+    margin-bottom: 22px;
+    padding: 19px 19px 0;
+    color: #fff;
+    font-weight: bold;
+    font-size: 15px;
+    letter-spacing: 0;
+}
+.route_wrap {
+    position: relative;
+    border-bottom: 1px solid #86c2d8;
+}
+.route_wrap .inner {
+    position: relative;
+}
+
+.route_wrap .roundBox {
+    display: block;
+    overflow: hidden;
+    position: relative;
+    min-height: 35px;
+    padding-left: 67px;
+    font-size: 22px;
+    color: #f7f7f7;
+    padding-bottom: 10px;
+}
+
+.detail_info {
+    margin-bottom: 10px;
+}
+
+.detail_info span {
+    display: block;
+    margin-top: 4px;
+    padding-left: 67px;
+    font-size: 12px;
+    color: #f7f7f7;
+    letter-spacing: 0;
+}
+.route_wrap .btn_r {
+    margin-bottom: 10px;
+    padding-left: 20px;
+    text-align: left;
+}
+
+.page h3 {
+    font-size: 28px;
+    color: #000;
+    text-align: center;
+    margin: 20px 0px;
+}
+h3 {
+    display: block;
+    font-size: 1.17em;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+}
+
+.page {
+    width: 100%;
+    max-width: 960px;
+    min-width: 708px;
+    margin: 0 auto;
+    padding: 30px 40px 100px;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.page {
+    width: 960px;
+    -moz-box-sizing: border-box;
+    box-sizing: content-box;
+}
+
+.page h3 {
+    font-size: 28px;
+    color: #000;
+    text-align: center;
+}
+
+.page {
+    width: 100%;
+    max-width: 960px;
+    min-width: 708px;
+    margin: 0 auto;
+    padding: 30px 40px 100px;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.page {
+    width: 960px;
+    -moz-box-sizing: border-box;
+    box-sizing: content-box;
+}
+
+section.board table, section.board th, section.board td {
+    border:1px solid #777;
+    border-collapse:collapse;
+    text-align:center;
+    font-size:10pt;
+    color:#333;
+}
+
+section.board th, section.board td {
+    padding:6px 0;
+}
+
+section.board tr > td:nth-child(2) {
+    text-align:left;
+    text-indent:20px;
+}
+
+section.board tr > td:nth-child(2) > a{
+    text-decoration:none;
+}
+
+section.board tr > td:nth-child(2) > a:hover{
+    text-decoration:underline;
+}
+
+section.board tr:nth-child(2) {
+    background:#ddd;
+    color:#333;
+}
+
+section.board tr:last-child td {
+    border:1px solid white;
+    padding-bottom:40px;
+}
+
+section.board table.board_list tr:first-child td {
+    border:1px solid white;
+    border-bottom:1px solid #777;
+    text-align:right;
+}
+section.board table.board_list tr:first-child td button{
+    margin:0 20px 5px 0;
+    width:70px;
+    padding:7px 0;
+}
+section.board form[name='writeForm'] table button,
+section.board table.board_content button,
+section.board form[name='updateForm'] table button,
+section.board form[name='deleteForm'] table button {
+    width:100px;
+    margin:40px 5px;
+}
+section.board form[name='writeForm'] table th,
+section.board table.board_content th,
+section.board form[name='updateForm'] table th{
+    background:#ddd;
+    color:#333;
+    width:140px;
+}
+section.board form[name='writeForm'] table td,
+section.board table.board_content td,
+section.board form[name='updateForm'] table td{
+    background:white;
+}
+section.board form[name='writeForm'] table input,
+section.board form[name='writeForm'] table textarea,
+section.board form[name='updateForm'] table input,
+section.board form[name='updateForm'] table textarea {
+    width:80%;
+    padding:6px 20px;
+    border:1px solid #ddd;
+    border-radius:4px;
+}
+section.board form[name='writeForm'] table,
+section.board form[name='updateForm'] table {
+    width:65%;
+}
+section.board form[name='writeForm'] table textarea,
+section.board form[name='updateForm'] table textarea {
+    height:140px;
+}
+section.board form[name='deleteForm'] img {
+    width:30%;
+}
+section.board form[name='deleteForm'] table td {
+    border:1px solid white;
+    background:white;
+    font-size:13pt;
+    font-weight:700;
+}
+section.board{
+    margin:auto;
+}
+section.board table{
+    width:70%;
+    margin:auto;
+}
+
+.page h3 {
+    font-size: 28px;
+    color: #000;
+    text-align: center;
+}

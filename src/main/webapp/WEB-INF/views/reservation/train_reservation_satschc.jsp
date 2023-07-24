@@ -53,7 +53,14 @@ $(document).ready(function(){
 	//선택 완료
 	$(".btn_selectSeat").click(function() {
 		if($("#seatNum").text() == ""){
-			alert("좌석을 선택해주세요");
+			//alert("좌석을 선택해주세요");
+			Swal.fire({
+				text: "좌석을 선택해주세요.",
+				width: 600,
+				padding: '1.5em',
+				confirmButtonColor: '#74b3c7',
+				confirmButtonText: '확인'
+			});
 		}else{
 
 		let sid = "${sessionScope.svo.id}";
