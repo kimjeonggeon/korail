@@ -1,5 +1,7 @@
+<%@ page import="java.util.Date" %>
+<%@ page import="java.text.SimpleDateFormat" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+		 pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
@@ -48,100 +50,128 @@
 			<div id="reserv">
 			
 				<section class="detail_info_wrap homeTicket marT30 ">
-					<!-- cancel 수량 계산 -->
+					<%--<% Date currentDate = new Date(); %>
+					<% SimpleDateFormat formatDate = new SimpleDateFormat("yyyyMMdd"); %>
+
+					<c:set var="serverDate" value="<%= formatDate.format(currentDate) %>" />--%>
+
+
+					<c:set var="cancelCount" value="0" />
 					<c:set var="reservCount" value="0" />
 
-					<c:forEach var="ovo" items="${orderList}">
+					<c:forEach var="ovo" items="${reservList}">
+						<!-- cancel 수량 계산 -->
+						<c:if test="${ovo.cancel == 1}">
+							<c:set var="cancelCount" value="${cancelCount + 1}" />
+						</c:if>
+
+						<!-- reserv 수량 계산 -->
 						<c:if test="${ovo.cancel == 0}">
 							<c:set var="reservCount" value="${reservCount + 1}" />
 						</c:if>
 					</c:forEach>
 
-					<%-- <!-- reservCount 변수의 값 출력 test -->
-					${reservCount} --%>
+
 
 					<!-- 최근 예매 내역이 없는 경우 -->
-					<c:if test="${empty orderList or reservCount == 0}">
-						<span class="spanText">최근 예매 내역이 없습니다.</span>
+					<c:if test="${empty reservList or reservCount == 0}">
+						<span class="spanText">최근 예매 내역이 없습니다.1</span>
 					</c:if>
 
 
+					<c:forEach var="ovo" items="${reservList}">
+						<!-- 최근 예매 내역이 있는 경우 -->
+						<c:if test="${ovo.cancel == 0 }">
 
-					<!-- 최근 예매 내역이 있는 경우 -->
-					<c:forEach var="ovo" items="${orderList}">
-						<c:if test="${not empty ovo and ovo.cancel == 0 }">
 
-							<div class="box_detail_info" id="${ovo.reservnum}">
-								<div class="routeHead">
-									<p class="date" id="depPlandTime">${ovo.depPlandTime}</p>
-									<p class="stime" id="stime">${ovo.stime}</p>
-									<p class="stime" id="Go">출발</p>
-									<p class="ticketPrice">총 결제금액
-										<span class="price" id="price">${ovo.price}원</span>
-										<span class="txt_div">(카드)</span>
-									</p>
-								</div>
-								<div class="routeBody">
-									<div class="routeArea route_wrap">
-										<div class="inner">
-											<span class="roundBox_start">출발</span>
-											<span class="roundBox departure" id="sstation">${ovo.sstation}</span>
-											<span class="roundBox_end">도착</span>
-											<span class="roundBox arrive" id="dstation">${ovo.dstation}</span>
+							<%--<c:if test="${date == 0}">
+								<span class="spanText">최근 예매 내역이 없습니다.4</span>
+							</c:if>--%>
+							<%--<c:if test="${reser}">--%>
+
+								<!-- 최근 예매 내역이 없는 경우 1 : 취소내역도 없고 예매내역도 없는 경우 -->
+								<c:if test="${cancelCount == 0 && ovo.ticketqty < 1}">
+									<span class="spanText">최근 예매 내역이 없습니다.2</span>
+								</c:if>
+
+								<!-- 최근 예매 내역이 없는 경우 2 : 취소내역은 있고 예매내역은 없는 경우 -->
+								<c:if test="${cancelCount > 0 && ovo.ticketqty < 1}">
+									<span class="spanText">최근 예매 내역이 없습니다.3</span>
+								</c:if>
+
+								<div class="box_detail_info" id="${ovo.reservnum}">
+									<div class="routeHead">
+										<p class="date" id="depPlandTime">${ovo.depPlandTime}</p>
+										<p class="stime" id="stime">${ovo.stime}</p>
+										<p class="stime" id="Go">출발</p>
+										<p class="ticketPrice">총 결제금액
+											<span class="price" id="price">${ovo.price}원</span>
+											<span class="txt_div">(카드)</span>
+										</p>
+									</div>
+									<div class="routeBody">
+										<div class="routeArea route_wrap">
+											<div class="inner">
+												<span class="roundBox_start">출발</span>
+												<span class="roundBox departure" id="sstation">${ovo.sstation}</span>
+												<span class="roundBox_end">도착</span>
+												<span class="roundBox arrive" id="dstation">${ovo.dstation}</span>
+											</div>
+											<div class="detail_info">
+												<!-- <span id="runtime">소요</span> --> <!-- 예상소요시간 -->
+											</div>
 										</div>
-										<div class="detail_info">
-											<!-- <span id="runtime">소요</span> --> <!-- 예상소요시간 -->
+										<div class="routeArea route_wrap mob_route">
+											<div class="tbl_type2">
+												<table class="tbl_info">
+													<!-- <caption>
+														<strong>버스 정보</strong>
+														<p>고속사, 등급, 출발</p>
+													</caption> -->
+													<colgroup>
+														<col style="width:68px;">
+														<%--<col style="width:*;">--%>
+													</colgroup>
+													<tbody class="reservMainTable">
+														<tr>
+															<th scope="row">예매번호</th>
+															<td id="reservnum">${ovo.reservnum}</td>
+														</tr>
+														<tr>
+															<th scope="row">차량</th>
+															<td>
+																ktx<span class="jabus ico_bus"></span>
+															</td>
+														</tr>
+														<tr>
+															<th scope="row">열차번호</th>
+															<td id="trainnum">${ovo.trainnum}</td>
+														</tr>
+														<tr>
+															<th scope="row">매수</th>
+															<td id="ticketqty">${ovo.ticketqty}명 </td>
+														</tr>
+													</tbody>
+												</table>
+											</div>
 										</div>
 									</div>
-									<div class="routeArea route_wrap mob_route">
-										<div class="tbl_type2">
-											<table class="tbl_info">
-												<!-- <caption>
-													<strong>버스 정보</strong>
-													<p>고속사, 등급, 출발</p>
-												</caption> -->
-												<colgroup>
-													<col style="width:68px;">
-													<%--<col style="width:*;">--%>
-												</colgroup>
-												<tbody class="reservMainTable">
-													<tr>
-														<th scope="row">예매번호</th>
-														<td id="reservnum">${ovo.reservnum}</td>
-													</tr>
-													<tr>
-														<th scope="row">차량</th>
-														<td>
-															ktx<span class="jabus ico_bus"></span>
-														</td>
-													</tr>
-													<tr>
-														<th scope="row">열차번호</th>
-														<td id="trainnum">${ovo.trainnum}</td>
-													</tr>
-													<tr>
-														<th scope="row">매수</th>
-														<td id="ticketqty">${ovo.ticketqty}명 </td>
-													</tr>
-												</tbody>
-											</table>
-										</div>
+
+								<!-- 좌석상세내역 -->
+								<!-- 전체검표완료 시 class="check_com" 추가-->
+									<div class="seat_detail">
+										<ul>
+											<li class="seatL" style="border-top: none;">
+												<span class="seatNum" id="chairnum">${ovo.chairnum}</span>
+											</li>
+										</ul>
+										<span class="hidden-span" id="depPlaceId">${ovo.depPlaceId}</span>
+										<span class="hidden-span" id="arrPlaceId">${ovo.arrPlaceId}</span>
 									</div>
 								</div>
+							</c:if>
+						<%--</c:if>--%>
 
-							<!-- 좌석상세내역 -->
-							<!-- 전체검표완료 시 class="check_com" 추가-->
-								<div class="seat_detail">
-									<ul>
-										<li class="seatL" style="border-top: none;">
-											<span class="seatNum" id="chairnum">${ovo.chairnum}</span>
-										</li>
-									</ul>
-									<span class="hidden-span" id="depPlaceId">${ovo.depPlaceId}</span>
-									<span class="hidden-span" id="arrPlaceId">${ovo.arrPlaceId}</span>
-								</div>
-							</div>
-						</c:if>
 					</c:forEach>
 
 					<div id="inputContainer">
@@ -168,7 +198,7 @@
 					</p>
 
 					<ul class="desc_list marT30">
-						<li>과거 예매 내역은 <strong class="txt_puple">출발일 날짜 기준 당일</strong>까지, 예매 <strong class="txt_puple">취소 내역은 과거 3개월</strong>까지 조회 가능합니다.</li>
+						<li>예매 내역은 <strong class="txt_puple">출발일 날짜 기준 당일</strong>까지, 예매 <strong class="txt_puple">취소 내역은 예매일 기준 3개월</strong>까지 조회 가능합니다.</li>
 						<li><strong class="txt_puple">홈티켓으로 발권된 내역은 변경이 불가</strong>하니 변경을 원하시면 취소 후 다시 예매를 진행하시기 바랍니다.</li>
 						<li>신용카드 예매 취소 또는 변경 시 일주일 내로 예매했던 카드로 청구 취소 처리가 되면서 반환됩니다.</li>
 						<li><strong class="txt_puple">시간 변경은 취소 위약금을 부과하지 않습니다.</strong></li>
@@ -181,82 +211,99 @@
 		<div class="tab_conts" id="cancelList">
 					
 			<section class="detail_info_wrap homeTicket marT30">
-				
-				<c:set var="cancelCount" value="0" />
-				<c:forEach var="ovo" items="${orderList}">
-					<!-- cancel 수량 -->
-				    <c:if test="${ovo.cancel == 1}">
-				        <c:set var="cancelCount" value="${cancelCount + 1}" />
-				    </c:if>
+
+				<c:set var="cancelCount2" value="0" />
+				<c:set var="reservCount2" value="0" />
+
+				<c:forEach var="ovo" items="${cancelList}">
+					<!-- cancel 수량 계산 -->
+					<c:if test="${ovo.cancel == 1}">
+						<c:set var="cancelCount2" value="${cancelCount2 + 1}" />
+					</c:if>
+
+					<!-- reserv 수량 계산 -->
+					<c:if test="${ovo.cancel == 0}">
+						<c:set var="reservCount2" value="${reservCount2 + 1}" />
+					</c:if>
 				</c:forEach>
-				
-				
-				<!-- 예매 취소내역 없는경우 -->
-				<c:if test="${empty orderList or cancelCount == 0}"> 
+
+				<!-- 최근 취소 내역이 없는 경우 -->
+				<c:if test="${empty cancelList or cancelCount2 == 0}">
 					<span class="spanText">최근 취소 내역이 없습니다.</span>
 				</c:if>
 
 
-				<c:forEach var="ovo" items="${orderList}">
-				
-				<!-- 예매 취소내역 있는경우 -->
-					<c:if test="${not empty ovo and ovo.cancel == 1}">
-						<div class="box_detail_info">
-							<div class="routeHead">
-								<p class="date txt_black">${ovo.depPlandTime}&nbsp;${ovo.stime}</p>
-								<p class="ticketPrice cancel">취소일시
-									<span class="txt_cancelDate">${ovo.cdate}</span>
-								</p>
-							</div>
-							<div class="routeBody">
-								<div class="routeArea route_wrap cancel_com">
-									<div class="inner">
-										<span class="roundBox_start">출발</span>
-										<span class="roundBox departure">${ovo.sstation}</span>
-										<span class="roundBox_end">도착</span>
-										<span class="roundBox arrive">${ovo.dstation}</span>
+				<c:forEach var="ovo" items="${cancelList}">
+
+					<!-- 최근 취소 내역이 있는 경우 -->
+					<c:if test="${ovo.cancel == 1}">
+
+							<!-- 최근 취소 내역이 없는 경우 1 : 예매내역도 없고 취소내역도 없는 경우 -->
+							<c:if test="${reservCount2 == 0 && ovo.ticketqty < 1}">
+								<span class="spanText">최근 취소 내역이 없습니다.</span>
+							</c:if>
+
+							<!-- 최근 취소 내역이 없는 경우 2 : 예매내역은 있고 취소내역은 없는 경우 -->
+							<c:if test="${reservCount2 > 0 && ovo.ticketqty < 1}">
+								<span class="spanText">최근 취소 내역이 없습니다.</span>
+							</c:if>
+
+							<div class="box_detail_info">
+								<div class="routeHead">
+									<p class="date txt_black">${ovo.depPlandTime}&nbsp;${ovo.stime}</p>
+									<p class="ticketPrice cancel">취소일시
+										<span class="txt_cancelDate">${ovo.cdate}</span>
+									</p>
+								</div>
+								<div class="routeBody">
+									<div class="routeArea route_wrap cancel_com">
+										<div class="inner">
+											<span class="roundBox_start">출발</span>
+											<span class="roundBox departure">${ovo.sstation}</span>
+											<span class="roundBox_end">도착</span>
+											<span class="roundBox arrive">${ovo.dstation}</span>
+										</div>
+										<div class="detail_info">
+											<input type="hidden" id="clickVal_price2" name="clickVal_price2" value="${ovo.price}"/>
+											<input type="hidden" id="clickVal_stime2" name="clickVal_stime2" value="${ovo.stime}"/>
+											<input type="hidden" id="clickVal_depPlandTime2" name="clickVal_depPlandTime2" value="${ovo.depPlandTime}" />
+										</div>
 									</div>
-									<div class="detail_info">
-										<input type="hidden" id="clickVal_price2" name="clickVal_price2" value="${ovo.price}"/>
-										<input type="hidden" id="clickVal_stime2" name="clickVal_stime2" value="${ovo.stime}"/>
-										<input type="hidden" id="clickVal_depPlandTime2" name="clickVal_depPlandTime2" value="${ovo.depPlandTime}" />
+									<div class="routeArea route_wrap mob_route">
+										<div class="tbl_type2">
+											<table class="taR">
+												<!-- <caption>
+													<strong>취소결제 정보</strong>
+													<p>결제금, 취소 위약금, 총 반환 금액</p>
+												</caption> -->
+												<colgroup>
+													<col style="width:100px;">
+													<%--<col style="width:*;">--%>
+												</colgroup>
+												<tbody>
+													<tr>
+														<th scope="row">결제금</th>
+														<td id="priceC">${ovo.price} 원</td>
+													</tr>
+													<tr>
+														<th scope="row">취소 위약금</th>
+														<td id="charge2"></td>
+													</tr>
+													<tr>
+														<th scope="row">총 반환 금액</th>
+														<td id="returnCharge2"></td>
+													</tr>
+												</tbody>
+											</table>
+										</div>
 									</div>
 								</div>
-								<div class="routeArea route_wrap mob_route">
-									<div class="tbl_type2">
-										<table class="taR">
-											<!-- <caption>
-												<strong>취소결제 정보</strong>
-												<p>결제금, 취소 위약금, 총 반환 금액</p>
-											</caption> -->
-											<colgroup>
-												<col style="width:100px;">
-												<%--<col style="width:*;">--%>
-											</colgroup>
-											<tbody>
-												<tr>
-													<th scope="row">결제금</th>
-													<td id="priceC">${ovo.price} 원</td>
-												</tr>
-												<tr>
-													<th scope="row">취소 위약금</th>
-													<td id="charge2"></td>
-												</tr>
-												<tr>
-													<th scope="row">총 반환 금액</th>
-													<td id="returnCharge2"></td>
-												</tr>
-											</tbody>
-										</table>
-									</div>
-								</div>
 							</div>
-						</div>
-					</c:if>
+						</c:if>
 				</c:forEach>
 			</section>
 				<ul class="desc_list marT30">
-					<li>과거 예매 내역은 <strong class="txt_puple">출발일 날짜 기준 당일</strong>까지, 예매 <strong class="txt_puple">취소 내역은 과거 3개월</strong>까지 조회 가능합니다.</li>
+					<li>예매 내역은 <strong class="txt_puple">출발일 날짜 기준 당일</strong>까지, 예매 <strong class="txt_puple">취소 내역은 예매일 기준 3개월</strong>까지 조회 가능합니다.</li>
 					<li><strong class="txt_puple">홈티켓으로 발권된 내역은 변경이 불가</strong>하니 변경을 원하시면 취소 후 다시 예매를 진행하시기 바랍니다.</li>
 					<li>신용카드 예매 취소 또는 변경 시 일주일 내로 예매했던 카드로 청구 취소 처리가 되면서 반환됩니다.</li>
 					<li><strong class="txt_puple">시간 변경은 취소 위약금을 부과하지 않습니다.</strong></li>

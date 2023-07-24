@@ -5,34 +5,24 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.korail.repository.MileageMapper">
 
-    <select id="getMileageInfo" parameterType="String" resultType="com.example.korail.dto.MileageDto">
-        SELECT AccumulationDate, ChangeAmout, specifics, ExpirationDate,
-               SUM(ChangeAmout) OVER (PARTITION BY ID ORDER BY AccumulationDate) AS TotalMileage
-        FROM (
-                 SELECT MID, ID, AccumulationDate, ChangeAmout, specifics, ExpirationDate
-                 FROM KTX_MEMBER_MILEAGEADDITIONS
-                 UNION ALL
-                 SELECT MID, ID, AccumulationDate, ChangeAmout, specifics, ExpirationDate
-                 FROM KTX_MEMBER_MILEAGEREDUCED
-             ) CombinedData
-        WHERE ID = #{memberId}
-        ORDER BY AccumulationDate DESC
+    <select id="getMileageInfo" parameterType="map"
+            resultType="com.example.korail.dto.MileageDto">
+        SELECT RNO, MID, ID, AccumulationDate, ChangeAmount, specifics, ExpirationDate, TYPE
+        FROM
+            (SELECT ROWNUM RNO, MID, ID, AccumulationDate, ChangeAmount, specifics, ExpirationDate, TYPE
+             FROM
+                 (SELECT MID, ID, AccumulationDate, ChangeAmount, specifics, ExpirationDate, TYPE FROM KTX_MILEAGE_HISTORY ORDER BY AccumulationDate DESC))
+        WHERE ID = #{memberId} AND RNO BETWEEN #{pageDto.startCount} AND #{pageDto.endCount}
     </select>
 
     <select id="getMileage" parameterType="String" resultType="String">
-        SELECT TotalMileage
-        FROM (
-                 SELECT ID,
-                        SUM(ChangeAmout) OVER (PARTITION BY ID ORDER BY AccumulationDate) AS TotalMileage,
-                         ROW_NUMBER() OVER (PARTITION BY ID ORDER BY AccumulationDate DESC) AS rn
-                 FROM (
-                          SELECT MID, ID, AccumulationDate, ChangeAmout, specifics, ExpirationDate
-                          FROM KTX_MEMBER_MILEAGEADDITIONS
-                          UNION ALL
-                          SELECT MID, ID, AccumulationDate, ChangeAmout, specifics, ExpirationDate
-                          FROM KTX_MEMBER_MILEAGEREDUCED
-                      ) CombinedData
-             ) FilteredData
-        WHERE rn = 1 AND ID = #{memberId}
+        SELECT SUM(
+                       CASE
+                           WHEN TYPE = 1 THEN -ChangeAmount
+                           ELSE ChangeAmount
+                           END
+                   ) AS TotalChangeAmount
+        FROM KTX_MILEAGE_HISTORY
+        WHERE ID= #{memberId}
     </select>
 </mapper>

@@ -29,6 +29,7 @@
 				where id = #{cvalue}
 			</if>
 		</if>
+
 		<if test='serviceName == "member"'>
 			ktx_member
 			<if test= 'category =="custname"'>
@@ -39,9 +40,11 @@
 			</if>
 		</if>
 
+	</select>
 
 
-
+	<select id="totalRowCount2" parameterType="String" resultType="int">
+		SELECT COUNT(*) FROM KTX_MILEAGE_HISTORY WHERE ID = #{id}
 	</select>
 
 </mapper>    
