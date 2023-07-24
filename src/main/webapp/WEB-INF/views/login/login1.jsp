@@ -85,10 +85,9 @@
 								<a href="http://localhost:9000/findAuth" onclick="lgnSearchId();"><span class="ico_searchId">아이디찾기</span></a>
 								<a href="http://localhost:9000/find_pass" onclick="lgnSearchPwd();"><span class="ico_searchPW">비밀번호찾기</span></a>
 								<a href="http://localhost:9000/join" onclick="mbrsJoin();"><span class="ico_joinUs">회원가입</span></a>
-										<a href="#"><img height="38px"  src="/images/kakao_login_medium_narrow.png "
+								<a href="#"><img height="38px"  src="/images/kakao_login_medium_narrow.png "
 														style=" margin-left: 60px;
-														 margin-top: 20px;"
-										/></a>
+														 margin-top: 20px;"/></a>
 							</div>
 
 						</div>

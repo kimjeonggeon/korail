@@ -36,6 +36,7 @@
     </select>
 
 
+
     <select id="search_list" parameterType="com.example.korail.dto.PageDto"
             resultType="com.example.korail.dto.MemberDto">
         select rno, id, pass, name, email, pnumber, birth, gender, mdate
@@ -51,6 +52,7 @@
         )
         where rno between #{startCount} and #{endCount}
     </select>
+
 
 
     <select id="list" parameterType="com.example.korail.dto.PageDto" resultType="com.example.korail.dto.MemberDto">

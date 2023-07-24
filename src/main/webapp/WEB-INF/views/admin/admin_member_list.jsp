@@ -31,7 +31,7 @@
 		jQuery('#ampaginationsm').on('am.pagination.change',function(e){
 				alert(e.page);
 			   jQuery('.showlabelsm').text('The selected page no: '+e.page);
-	           $(location).attr('href', "http://localhost:9000/admin_member/"+e.page+"/");
+	           $(location).attr('href', "http://localhost:9000/admin/member_list/"+e.page+"/");
 	    });
 		
 		$("#member_search").click(function(){
