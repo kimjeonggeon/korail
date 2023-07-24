@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-	<%@ page import=" com.korail.vo.StationVo" %>
-		<%@ page import=" com.korail.dao.StationDao" %>
+	<%@ page import=" com.example.korail.dto.StationDto" %>
 			<%@ page import=" java.util.*" %>
 					
 					<!DOCTYPE html>
@@ -123,7 +122,7 @@
 												};
 
 												var map = new kakao.maps.Map(container, options);
-												// 마커가 표시될 위치입니다 
+												// 마커가 표시될 위치입니다
 												var markerPosition = new kakao.maps.LatLng(<%=stationVo.getMlink() %>);
 
 												// 마커를 생성합니다
