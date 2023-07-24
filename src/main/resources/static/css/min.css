@@ -1093,3 +1093,21 @@ p#content_content {
 #list:hover {
 	cursor: pointer;
 }
+
+.text {
+	display: flex;
+	justify-content: flex-start;
+	margin-right: 1300px;
+}
+
+#textCount {
+	position: absolute;
+	left: 5px;
+	display: inline-block;
+}
+
+#textTotal {
+	position: absolute;
+	left: 15px;
+	display: inline-block;
+}

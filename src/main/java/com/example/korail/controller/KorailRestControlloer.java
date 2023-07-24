@@ -118,45 +118,19 @@ public class KorailRestControlloer {
         return map;
     }
 
-    @GetMapping("notice_content_json_data/{nid}")
-    public Map notice_content_json_data(@PathVariable String nid) {
+    @GetMapping("notice_content_json_data/{nid}/")
+    public NoticeDto notice_content_json_data(@PathVariable String nid) {
         Map map = new HashMap();
         NoticeDto noticeDto = noticeService.content(nid);
-        ArrayList<NoticeDto> nlist = noticeService.getNid(nid);
 
-        int pidx = 0;
-        int nidx = 0;
-        int idx = 0;
-
-        for(int i=0; i<nlist.size(); i++) {
-            NoticeDto nvo = nlist.get(i);
-            if(nvo.getNid().equals(nid)) {
-                idx = i;
-                if(idx == 0) {
-                    pidx = nlist.size()-1;
-                    nidx = idx+1;
-                } else if(idx == nlist.size()-1) {
-                    pidx = idx-1;
-                    nidx = 0;
-                } else {
-                    pidx = idx-1;
-                    nidx = idx+1;
-                }
-            }
-        }
         if(noticeService.content(nid) != null) {
             noticeService.updateHits(nid);
         }
 
-        map.put("noticeDto", noticeDto);
-        map.put("nprev", nlist.get(pidx).getNid());
-        map.put("nnext", nlist.get(nidx).getNid());
-        System.out.println(map);
-
-        return map;
+        return noticeDto;
     }
 
-    @GetMapping("notice_search_json_data/{category}/{cvalue}/{page}")
+    @GetMapping("notice_search_json_data/{category}/{cvalue}/{page}/")
     public Map notice_search_json_data(@PathVariable String category, @PathVariable String cvalue, @PathVariable String page) {
 
         Map map = new HashMap();

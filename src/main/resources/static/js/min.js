@@ -538,6 +538,33 @@ $(document).ready(function() {
 		});
 	});
 
+	// category all일 땐 값 입력 불가능하기 처리 이벤트
+	$(function() {
+		$("#category").on('change', function() {
+			if($("#category").val() == "all") {
+				$("#cvalue").attr("disabled", true);
+			} else {
+				$("#cvalue").attr("disabled", false);
+			}
+		});
+	});
+
+	// 공지사항 등록 글자수 세기
+	$("#notice_content").keyup(function (e) {
+		let content = $(this).val();
+
+		if(content.length == 0 || content =="") {
+			$(".textCount").text('0자');
+		} else {
+			$(".textCount").text(content.length + '자');
+		}
+
+		// 글자수 제한
+		if(content.length > 200) {
+			$(this).val($(this).val().substring(0, 200));
+		}
+	});
+
 	// enter 버튼 이벤트 처리
 	$(function () {
 		$("#cvalue").keypress(function (e) {
@@ -628,17 +655,80 @@ $(document).ready(function() {
 
 				$("#click_before").click(function() {
 					$(".notice_content").remove();
-					contentAjax(notice.nprev, page);
+					contentAjax(notice.nnext, page);
 				});
 
 				$("#click_after").click(function() {
 					$(".notice_content").remove();
-					alert(notice.nnext);
-					contentAjax(notice.nnext, page);
+					contentAjax(notice.nprev, page);
 				});
 
 			}	// success
 		});	// ajax
 	}	// contentAjax
+
+	function stationAjax(page) {
+		$.ajax({
+			url: "/route_info_json/" + page + "/",
+			success: function (result) {
+				let output = "<div class='station-section two-column'>";
+				output += "<div class='col-left'>";
+				for(obj of result.slist) {
+					output += "<img src='http://localhost:9000/images/" + obj.clink1 + "'class='train_category'>";
+					output += "<img src='http://localhost:9000/images/" + obj.clink2 + "'class='category_map'>";
+					output += "</div>";
+					output += "<div class='col-right'>";
+					output += "<div class='container-top'>";
+					output += "<h2 class='title'>" + obj.station + "</h2>";
+					output += "<div class='container-mover'>";
+					output += "<a class='btn' id='before'><</a>";
+					output += "<a class='btn' id='next'>></a></div>";
+					output += "<img src='http://localhost:9000/images/" + obj.plink + "'class='station_map'></div>";
+					output += "<div class='container-bottom'>";
+					output += "<table><tr><td>위치</td>";
+					output += "<td>" + obj.location + "</td></tr>";
+					output += "<tr><td>연락처</td>";
+					output += "<td>" + obj.sphone + "</td></tr>";
+
+					output += "</table><div class='button'><a href='#info' class='btn'>기차역 상세</a></div>";
+					output += "</div></div></div></div>";
+					output += "<div class='station-basic-info'>";
+					output += "<div class='info-top'>";
+					output += "<h3 id='info'>기본 정보</h3>";
+					output += "<div class='station-info'>" + obj.info + "</div></div>";
+					output += "<div class='info-bottom'>";
+					output += "<h3>" + obj.station + " 연혁</h3>";
+					output += "<ol>";
+					output += "StringTokenizer st=new StringTokenizer(" + obj.history + ",']');";
+					output += "while(st.hasMoreTokens()){";
+					output += "<li>&nbsp;st.nextToken()</li>}</ol>";
+					output += "</div>";
+				}
+				output += "<div className='station-map-info'>";
+				output += "<h3>위치/교통</h3>";
+				output += "<div id='map' style='width:1100px;height:700px;'></div>";
+				output += "<script>";
+
+				for(obj of result.slist) {
+					output += "var container = document.getElementById('map')";
+					output += "var options = {";
+					output += "center: new kakao.maps.LatLng(" + obj.mlink + "),";
+					output += "level: 3}";
+
+					output += "var map = new kakao.maps.Map(container, options);";
+					output += "var markerPosition = new kakao.maps.LatLng(" + obj.mlink + ");";
+
+					output += "var marker = new kakao.maps.Marker({";
+					output += "position: markerPosition});";
+					output += "marker.setMap(map)";
+				}
+				output += "</script></div>";
+
+				$("#station").remove();
+				$(".line").after(output);
+			}
+
+		});	// Ajax
+	}	// stationAjax
 
 });

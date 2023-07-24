@@ -65,7 +65,7 @@
 						<option value="content">내용</option>
 						<option value="title_content">제목+내용</option>
 					</select>
-					<input type="text" name="cvalue" id="cvalue" maxlength=100 autocomplete="off" placeholder="검색어를 입력하세요">
+					<input type="text" name="cvalue" id="cvalue" maxlength=100 autocomplete="off" placeholder="검색어를 입력하세요" disabled>
 				</c:otherwise>
 			</c:choose>
 			<input type="hidden" name="page" value="1" id="page">
