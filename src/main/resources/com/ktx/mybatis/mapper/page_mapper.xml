@@ -40,6 +40,10 @@
 			</if>
 		</if>
 
+		<if test='serviceName == "board"'>
+			ktx_board
+		</if>
+
 	</select>
 
 

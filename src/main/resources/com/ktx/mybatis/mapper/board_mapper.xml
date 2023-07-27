@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.korail.repository.BoardMapper">
+
+    <select id="list" parameterType="com.example.korail.dto.PageDto" resultType="com.example.korail.dto.BoardDto">
+        SELECT RNO, BID, BTITLE, BCONTENT, BHITS, ID, BDATE
+        FROM (SELECT ROWNUM RNO, BID, BTITLE, BCONTENT, BHITS, ID, to_char(BDATE,'yyyy-mm-dd') bdate
+              FROM (SELECT BID, BTITLE,BCONTENT,BHITS, ID, BDATE FROM ktx_board
+                    ORDER BY BDATE DESC))
+        WHERE RNO BETWEEN #{startCount} and #{endCount}
+    </select>
+
+</mapper>

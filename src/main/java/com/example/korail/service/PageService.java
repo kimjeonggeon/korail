@@ -33,6 +33,8 @@ public class PageService {
             pageSize = 5;
         } else if (pageDto.getServiceName().equals("mileage")) {
             pageSize = 10;
+        }else if(pageDto.getServiceName().equals("board")){
+            pageSize = 5;
         }
 
         //총 페이지 수 계산

@@ -68,8 +68,15 @@ public class LoginController {
                 }
 
                 }else{
-                model.addAttribute("loginResult", "failure"); // 로그인 실패를 나타내는 값 추가
-                return "/login/login1";
+
+                if(memberDto.getPagename().equals("reservationlist")){
+                    model.addAttribute("loginResult", "failure"); // 로그인 실패를 나타내는 값 추가
+                    return "/reservationlist/login2";
+                }else{
+                    model.addAttribute("loginResult", "failure"); // 로그인 실패를 나타내는 값 추가
+                    return "/login/login1";
+                }
+
             }
 
 
