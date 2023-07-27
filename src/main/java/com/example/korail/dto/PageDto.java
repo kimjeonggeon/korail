@@ -14,7 +14,11 @@ public class PageDto {
     private int reqPage;
     private String category;
     private String cvalue;
+    private String custname;
+    private String id;
 
+
+    public  PageDto(){}
 
     public PageDto(String page, String serviceName) {
         this.page = page;
