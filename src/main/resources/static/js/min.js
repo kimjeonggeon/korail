@@ -667,9 +667,9 @@ $(document).ready(function() {
 		});	// ajax
 	}	// contentAjax
 
-	function stationAjax(page) {
+	function stationAjax(category, station) {
 		$.ajax({
-			url: "/route_info_json/" + page + "/",
+			url: "route_info_json_data/" + category + "/" + station + "/",
 			success: function (result) {
 				let output = "<div class='station-section two-column'>";
 				output += "<div class='col-left'>";
@@ -698,34 +698,30 @@ $(document).ready(function() {
 					output += "<div class='station-info'>" + obj.info + "</div></div>";
 					output += "<div class='info-bottom'>";
 					output += "<h3>" + obj.station + " 연혁</h3>";
-					output += "<ol>";
-					output += "StringTokenizer st=new StringTokenizer(" + obj.history + ",']');";
-					output += "while(st.hasMoreTokens()){";
-					output += "<li>&nbsp;st.nextToken()</li>}</ol>";
-					output += "</div>";
+
 				}
 				output += "<div className='station-map-info'>";
 				output += "<h3>위치/교통</h3>";
-				output += "<div id='map' style='width:1100px;height:700px;'></div>";
-				output += "<script>";
+				output += "<div id='map' style='width:1100px;height:700px;'></div></div>";
+				// output += "<script>";
+				//
+				// for(obj of result.slist) {
+				// 	output += "var container = document.getElementById('map')";
+				// 	output += "var options = {";
+				// 	output += "center: new kakao.maps.LatLng(" + obj.mlink + "),";
+				// 	output += "level: 3}";
+				//
+				// 	output += "var map = new kakao.maps.Map(container, options);";
+				// 	output += "var markerPosition = new kakao.maps.LatLng(" + obj.mlink + ");";
+				//
+				// 	output += "var marker = new kakao.maps.Marker({";
+				// 	output += "position: markerPosition});";
+				// 	output += "marker.setMap(map)";
+				// }
+				// output += "</script></div>";
 
-				for(obj of result.slist) {
-					output += "var container = document.getElementById('map')";
-					output += "var options = {";
-					output += "center: new kakao.maps.LatLng(" + obj.mlink + "),";
-					output += "level: 3}";
-
-					output += "var map = new kakao.maps.Map(container, options);";
-					output += "var markerPosition = new kakao.maps.LatLng(" + obj.mlink + ");";
-
-					output += "var marker = new kakao.maps.Marker({";
-					output += "position: markerPosition});";
-					output += "marker.setMap(map)";
-				}
-				output += "</script></div>";
-
-				$("#station").remove();
 				$(".line").after(output);
+
 			}
 
 		});	// Ajax

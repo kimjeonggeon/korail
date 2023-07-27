@@ -1,47 +1,58 @@
 package com.example.korail.service;
 
-import com.example.korail.dao.StationDao;
+import com.example.korail.dao.StationRepository;
 import com.example.korail.entity.Station;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class StationServiceImpl implements StationService {
 
-    private StationDao stationDao;
+    private StationRepository stationRepository;
 
     @Autowired
-    public StationServiceImpl(StationDao theStationDao) {
-        stationDao = theStationDao;
+    public StationServiceImpl(StationRepository theStationRepository) {
+        stationRepository = theStationRepository;
     }
 
     @Override
     public List<Station> findAll() {
-        return stationDao.findAll();
+        return stationRepository.findAll();
     }
 
     @Override
     public Station findById(int theId) {
-        return stationDao.findById(theId);
+        Optional<Station> result = stationRepository.findById(theId);
+
+        Station theStation = null;
+        if(result.isPresent()) {
+            theStation = result.get();
+        } else {
+            throw new RuntimeException("Did not find Station id - " + theId);
+        }
+
+        return theStation;
     }
 
-    @Transactional
     @Override
     public Station save(Station theStation) {
-        return stationDao.save(theStation);
+        return stationRepository.save(theStation);
     }
 
-    @Transactional
     @Override
     public void deleteById(int theId) {
-        stationDao.deleteById(theId);
+        stationRepository.deleteById(theId);
     }
 
-    @Override
-    public List<Station> findByCategory(String category) {
-        return stationDao.findByCategory(category);
+    public List<String> getHistory() {
+        List<String> history = stationRepository.findAll().stream().map(Station::getHistory).collect(Collectors.toCollection(ArrayList::new));
+
+        return history;
     }
+
 }

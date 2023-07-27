@@ -13,8 +13,8 @@ public class TrainController {
         return "train_info/timetable";
     }
 
-    @GetMapping("route_info")
+    @GetMapping("route_info_json")
     public String train_route_info() {
-        return "train_info/route_info";
+        return "train_info/route_info_json";
     }
 }
