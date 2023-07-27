@@ -6,7 +6,7 @@ $(document).ready(function(){
 	let previousElement = null;
 	
 	$(".box_detail_info").click(function(){
-	    
+
 	    // 이전에 클릭한 요소에 적용된 CSS 제거
  		 if (previousElement !== null) {
   		 	previousElement.find(".routeHead").css("background", "");
@@ -41,6 +41,7 @@ $(document).ready(function(){
             var depPlaceId = $("#"+id+" #depPlaceId").text();
             var arrPlaceId = $("#"+id+" #arrPlaceId").text();
             var ticketqty = $("#"+id+" #ticketqty").text();
+            var cid = $("#"+id+" #cid").text();
 
             // clickedValue에 데이터 설정
             $("#clickVal_depPlandTime").val(depPlandTime);
@@ -54,6 +55,7 @@ $(document).ready(function(){
             $("#clickVal_depPlaceId").val(depPlaceId);
             $("#clickVal_arrPlaceId").val(arrPlaceId);
             $("#clickVal_ticketqty").val(ticketqty);
+            $("#clickVal_cid").val(cid);
      });
 	
 	
@@ -140,11 +142,6 @@ $(document).ready(function(){
 			$('#returnCharge1').text(`${formatNumber(returnCharge)} 원`);
 
 
-
-
-
-
-
 		    
 		 }else{
 		    	Swal.fire({
@@ -154,7 +151,6 @@ $(document).ready(function(){
 		    		confirmButtonColor: '#74b3c7',
 		    		confirmButtonText: '확인'
 		    	});
-		    	//alert("예매취소할 승차권을 선택해주세요.");
 		    }
   		});
 		
@@ -178,7 +174,7 @@ $(document).ready(function(){
 	
 	 //취소내역 버튼 클릭
 	$(".cancel_btn").click(function(){
-		
+
 		$("#cancelList").show();
 		$("#reserv").hide();
 		$(".cancel_btn").css("color", "#68b3ce");
@@ -246,7 +242,7 @@ $(document).ready(function(){
 	
 	 //예매내역 버튼 클릭
 	$(".reserv_btn").click(function(){
-		
+
 		$("#cancelList").hide();
 		$("#reserv").show();
 		$(".reserv_btn").css("color", "#68b3ce");
@@ -353,7 +349,9 @@ $(document).ready(function(){
 	 	 
 	 	if ($("#clickVal_reservnum").val() != "") {
 	        var reservnum = $("#clickVal_reservnum").val();
-	        var url = "/reservation_update/" + reservnum;
+	        var cid = $("#clickVal_cid").val();
+			alert("cid1->"+cid);
+	        var url = "/reservation_update/" + reservnum + "/" + cid;
 	        window.location.href = url;
 	        
 	       /* 
@@ -440,11 +438,30 @@ $(document).ready(function(){
 
 
 
+	/*******************************
+	 	영수증 공유하기 버튼 이벤트
+	 *******************************/
+	let depthMenuVisible = false;
+
+	$(".share_btn").click(function() {
+		if (!depthMenuVisible) {
+			$(".share_ul").css("display", "block");
+			$(".share_img").attr({ src: "http://localhost:9000/images/share2.png" });
+			depthMenuVisible = true;
+		} else {
+			$(".share_ul").css("display", "none");
+			$(".share_img").attr({ src: "http://localhost:9000/images/share_click.png" });
+			depthMenuVisible = false;
+		}
+	});
 
 
 
 	
-	
+
+
+
+
 	
 	
 	

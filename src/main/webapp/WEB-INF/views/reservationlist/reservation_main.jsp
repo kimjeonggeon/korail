@@ -75,7 +75,7 @@
 
 					<!-- 최근 예매 내역이 없는 경우 -->
 					<c:if test="${empty reservList or reservCount == 0}">
-						<span class="spanText">최근 예매 내역이 없습니다.1</span>
+						<span class="spanText">최근 예매 내역이 없습니다.</span>
 					</c:if>
 
 
@@ -83,20 +83,14 @@
 						<!-- 최근 예매 내역이 있는 경우 -->
 						<c:if test="${ovo.cancel == 0 }">
 
-
-							<%--<c:if test="${date == 0}">
-								<span class="spanText">최근 예매 내역이 없습니다.4</span>
-							</c:if>--%>
-							<%--<c:if test="${reser}">--%>
-
 								<!-- 최근 예매 내역이 없는 경우 1 : 취소내역도 없고 예매내역도 없는 경우 -->
 								<c:if test="${cancelCount == 0 && ovo.ticketqty < 1}">
-									<span class="spanText">최근 예매 내역이 없습니다.2</span>
+									<span class="spanText">최근 예매 내역이 없습니다.</span>
 								</c:if>
 
 								<!-- 최근 예매 내역이 없는 경우 2 : 취소내역은 있고 예매내역은 없는 경우 -->
 								<c:if test="${cancelCount > 0 && ovo.ticketqty < 1}">
-									<span class="spanText">최근 예매 내역이 없습니다.3</span>
+									<span class="spanText">최근 예매 내역이 없습니다.</span>
 								</c:if>
 
 								<div class="box_detail_info" id="${ovo.reservnum}">
@@ -167,6 +161,7 @@
 										</ul>
 										<span class="hidden-span" id="depPlaceId">${ovo.depPlaceId}</span>
 										<span class="hidden-span" id="arrPlaceId">${ovo.arrPlaceId}</span>
+										<span class="hidden-span" id="cid">${ovo.cid}</span>
 									</div>
 								</div>
 							</c:if>
@@ -177,6 +172,7 @@
 					<div id="inputContainer">
 						<input type="hidden" id="clickVal_depPlandTime" name="clickVal_depPlandTime" />
 						<input type="hidden" id="clickVal_stime" name="clickVal_stime" value="${ovo.stime}"/>
+						<input type="hidden" id="clickVal_cid" name="clickVal_cid" />
 						<input type="hidden" id="clickVal_price" name="clickVal_price" />
 						<input type="hidden" id="clickVal_sstation" name="clickVal_sstation" />
 						<input type="hidden" id="clickVal_dstation" name="clickVal_dstation" />
@@ -189,8 +185,7 @@
 						<input type="hidden" id="clickVal_ticketqty" name="clickVal_ticketqty" />
 					</div>
 
-					<p class="btns multi mainclfix col4">
-
+					<p class="btns multi mainclfix col4" id="reservlistBtn">
 						<a href="http://localhost:9000/reservation_update"  class="btnL btn_cancel" id="change_btn">예매변경</a>
 						<a href="http://localhost:9000/reservation_receipt" target="_blank"  class="btnL btn_cancel" id="receipt_btn">영수증 발행</a>
 						<a href="#" onclick="fnRecpCanInfo(0,'');" class="btnL btn_cancel" id="cancelReserv">예매취소</a>
@@ -229,7 +224,7 @@
 
 				<!-- 최근 취소 내역이 없는 경우 -->
 				<c:if test="${empty cancelList or cancelCount2 == 0}">
-					<span class="spanText">최근 취소 내역이 없습니다.</span>
+					<span class="spanTextCancel">최근 취소 내역이 없습니다.</span>
 				</c:if>
 
 
@@ -240,12 +235,12 @@
 
 							<!-- 최근 취소 내역이 없는 경우 1 : 예매내역도 없고 취소내역도 없는 경우 -->
 							<c:if test="${reservCount2 == 0 && ovo.ticketqty < 1}">
-								<span class="spanText">최근 취소 내역이 없습니다.</span>
+								<span class="spanTextCancel">최근 취소 내역이 없습니다.</span>
 							</c:if>
 
 							<!-- 최근 취소 내역이 없는 경우 2 : 예매내역은 있고 취소내역은 없는 경우 -->
 							<c:if test="${reservCount2 > 0 && ovo.ticketqty < 1}">
-								<span class="spanText">최근 취소 내역이 없습니다.</span>
+								<span class="spanTextCancel">최근 취소 내역이 없습니다.</span>
 							</c:if>
 
 							<div class="box_detail_info">
@@ -446,4 +441,14 @@
 		</div>
 	</div>
 </body>
+
+<script>
+	// jQuery를 사용하여 span 요소의 텍스트를 가져오기
+	var spanText = $(".spanText").text();
+	var spanTextSize = spanText.length;
+	if (spanTextSize >= 15){
+		$("#reservlistBtn").hide();
+	}
+</script>
+
 </html>

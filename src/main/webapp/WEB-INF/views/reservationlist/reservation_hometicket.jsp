@@ -15,12 +15,14 @@
 	}
 	.share_btn{
 		margin-top: 20px;
+
 	}
 
 	.desc_list li:before, p.bul:before{
 		background-color: white;
 	}
-
+	.share_btn, .share_ul, .share_li{float: left; cursor:pointer;}
+	.share_ul{margin: 20px 10px;}
 
 </style>
 </head>
@@ -31,6 +33,10 @@
 				<li>인쇄된 홈티켓이 아닌 화면을 휴대폰으로 사진 촬영하거나 캡쳐한 이미지는 효력이 없습니다.</li>
 				<li>정상출력이 불가할 경우 터미널창구에서 재발행 받으시기 바랍니다.</li>
 				<li class="share_btn"><img src="http://localhost:9000/images/share.png" style="width: 30px;"></li>
+					<ul class="share_ul" style="display: none;">
+						<li class="share_li">naver</li>
+						<li class="share_li">kakao</li>
+					</ul>
 			</ul>
 			<p class="btnBox">
 				<button type="button" onclick="window.print();" class="homeT_btn">
@@ -75,7 +81,7 @@
 						<span class="price">
 							<!-- 정기권&정액권 일때 -->
 							<span class="txt_large16">${odt.price}</span>
-							<span class="txt_large13">원(부가가치세 포함)</span>
+							<span class="txt_large13">원</span>
 						</span>
 					</p>
 				</div>
@@ -101,11 +107,11 @@
 				</div>
 				<div class="box_section sec05">
 					<ul>
-						<li>승인번호 36979216  &nbsp;승인금액 ${odt.price}</li>
-						<li>신용카드 548020581*******</li>
+						<li>승인번호 ${odt.recognizenum}</li>
+						<li>승인금액 ${odt.price}</li>
+						<li>${odt.cardcomp} 카드번호 : ${odt.cardnum}</li>
 						<li class="marT10">유효기간 : 당일 지정차에 한함</li>
-						<li>고속회사 : 동양 1388128578</li>
-						<li>터미널 사업자번호 : 111-11-11111</li>
+						<li>사업자번호 : 111-11-11111</li>
 					</ul>
 				</div>
 			</div>

@@ -36,7 +36,7 @@
     </update>
 
     <select id="select" parameterType = "com.example.korail.dto.OrderDto" resultType="com.example.korail.dto.OrderDto">
-        SELECT id, sstation, depPlandTime, stime, dstation, ticketqty, price, reservnum, trainnum, chairnum, cancel, depPlaceId, arrPlaceId, cardnum, email, to_char(cdate,'yyyy-mm-dd') cdate, rdate
+        SELECT id, sstation, depPlandTime, stime, dstation, ticketqty, price, reservnum, trainnum, chairnum, cancel, depPlaceId, arrPlaceId, cardnum, email, to_char(cdate,'yyyy-mm-dd') cdate, rdate, cid
         FROM KTX_ORDER
         <choose>
             <when test='id == "guest" and cardnum == ""'>
@@ -70,9 +70,10 @@
     </update>
 
     <select id="selected" parameterType="String" resultType="com.example.korail.dto.OrderDto">
-           SELECT sstation, rdate, depPlandTime, stime, dtime, dstation, price, reservnum, trainnum, chairnum, cancel, depPlaceId, arrPlaceId, cardnum, ticketqty
-           FROM KTX_ORDER
-           where reservnum=#{reservnum}
+        SELECT O.sstation, O.rdate, O.DEPPLANDTIME, O.STIME, O.DTIME, O.DSTATION, O.PRICE, O.RESERVNUM, O.TRAINNUM, O.CHAIRNUM, O.CANCEL, O.DEPPLACEID, O.ARRPLACEID, O.CARDNUM, O.TICKETQTY, C.CARDCOMP
+             ,C.RECOGNIZENUM
+        FROM ktx_order O, ktx_cardinfo C
+        WHERE O.cid= C.cid and reservnum=#{reservnum}
     </select>
 
     <select id="list" parameterType="com.example.korail.dto.PageDto" resultType="com.example.korail.dto.OrderDto">

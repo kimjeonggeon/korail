@@ -12,7 +12,17 @@
         </if>
         <if test="paymentmethod == 'kakao'">
             values
-            ('null', 'null', 'null', 'null', 'C_' || ltrim(to_char(sequ_ktx_cardinfo.nextval, '0000')))
+            ('카카오 페이', '---', '---', '---', 'C_' || ltrim(to_char(sequ_ktx_cardinfo.nextval, '0000')))
         </if>
     </insert>
+    <update id="getPaymentUPdate" parameterType="com.example.korail.dto.CardinfoDto">
+        update KTX_CARDINFO
+        <if test="paymentmethod == 'card'">
+            set cardcomp=#{cardcomp}, cardnum=#{cardnum}, recognizenum=#{recognizenum},birthday=#{birthday}
+        </if>
+        <if test="paymentmethod == 'kakao'">
+            set cardcomp='카카오 페이', cardnum='---', recognizenum='---',birthday='---'
+        </if>
+            where cid=#{cid}
+    </update>
 </mapper>

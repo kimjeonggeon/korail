@@ -123,66 +123,41 @@
 							<ul class="ph_form">
 								<li class="clearfix send no_member_ticketing01" id="nonMemberbox" style="display: list-item;">
 									<div class= "v_noti"></div>
-						<div class="login_id" style="width: 515px;">
-                		 <div class="input-group">
-          					<div class="input_email" style="background-color:#f3f4f6;">
-								<div style="width:190px;"><strong>이메일</strong>
-								<input type="text" class="form-control" name="userEmail1" id="userEmail1" style="margin-left:20px;"></div>
-								<div style="width:20px;"><strong style="color:#f3f4f6;">이</strong>
-								<input type="text" readonly placeholder="@" style="::placeholder { color: black; }"></div>
-								<div style="width:190px;"><strong style="color:#f3f4f6;">이</strong>
-								<input type="text"  class="email_input"name ="userEmail2" id="userEmail2" style="margin-left:60px;" ></div>
-							
-							<select  id ="userEmail3" name="userEmail3" style="display:inline-block;">
-								<option value="default">선택</option>
-								<option value="naver.com">네이버</option>
-								<option value="gmail.com">구글</option>
-								<option value="daum.net">다음</option>
-								<option value="korea.com">코리아</option>
-								<option value="self">직접입력</option>		
-							</select>
-							</div>
-						</div>  
-					<ul class= "loginBoth">
-						<li>
-							<button type="button"  id="mail-Check-Btn"  class ="btnJoin" >  인증번호 발송 </button>
-						</li>
-					</ul>
-				</div>	
+									<div class="login_id" style="width: 515px;">
+										<div class="input-group">
+											<div class="input_email" style="background-color:#f3f4f6;">
+												<div style="width:190px;"><strong>이메일</strong>
+												<input type="text" class="form-control" name="userEmail1" id="userEmail1" style="margin-left:20px;"></div>
+												<div style="width:20px;"><strong style="color:#f3f4f6;">이</strong>
+												<input type="text" readonly placeholder="@" style="::placeholder { color: black; }"></div>
+												<div style="width:190px;"><strong style="color:#f3f4f6;">이</strong>
+												<input type="text"  class="email_input"name ="userEmail2" id="userEmail2" style="margin-left:60px;" ></div>
+
+												<select  id ="userEmail3" name="userEmail3" style="display:inline-block;">
+													<option value="default">선택</option>
+													<option value="naver.com">네이버</option>
+													<option value="gmail.com">구글</option>
+													<option value="daum.net">다음</option>
+													<option value="korea.com">코리아</option>
+													<option value="self">직접입력</option>
+												</select>
+											</div>
+										</div>
+										<ul class= "loginBoth">
+											<li>
+												<button type="button"  id="mail-Check-Btn"  class ="btnJoin" >  인증번호 발송 </button>
+											</li>
+										</ul>
+									</div>
 				
 				
-				<div class="mail-check-box" style="display:none">
-					<div class="checknum" style="width: 515px;"><strong>인증번호 6자리를 입력해주세요</strong>
-					<input class="form-control mail-check-input" id="mailinput" disabled="disabled" maxlength="6"></div>
-					<input type="hidden" name="email" id="email">
-					<div><span id="mail-check-warn"></span></div>
-					<div><button type="button"  id="authcheckBtn"  class ="btnJoin" >  인증번호 확인 </button></div>
-				</div>
-								
-								<!-- <li class="clearfix no_member_tab no_member_tab01">
-									<p class="credit on">신용카드 예매 티켓</p>
-									<p class="easypay">간편결제 예매 티켓</p>
-								</li> -->
-									
-								<!-- <li class="credit01 mt0">
-									<div class="box_inputForm"> 
-										<strong>생년월일(YYMMDD)</strong>
-										<span class="box_label">
-											<label for="birthday1">생년월일 6자리를 입력하세요</label>
-											<input type="text" name="birthday1" id="birthday1" maxlength="10" onkeyup="fnIcoCheck(this),fnNumCheck(this);" class="input">
-										</span>
+									<div class="mail-check-box" style="display:none">
+										<div class="checknum" style="width: 515px;"><strong>   인증번호 6자리를 입력해주세요</strong>
+											<input class="form-control mail-check-input" id="mailinput" disabled="disabled" maxlength="6"></div>
+											<input type="hidden" name="email" id="email">
+										<div><span id="mail-check-warn"></span></div>
+										<div><button type="button"  id="authcheckBtn"  class ="btnJoin" >  인증번호 확인 </button></div>
 									</div>
-								</li> -->
-								
-								<!-- <li class="credit02 mt0">
-									<div class="box_inputForm"> 
-										<strong>출발일(YYYYMMDD)</strong>
-										<span class="box_label">
-											<label for="start_date1">출발일 8자리를 입력하세요</label>
-											<input type="text" name="start_date1" id="start_date1" maxlength="8" onkeyup="fnIcoCheck(this),fnNumCheck(this);" class="input">
-										</span>
-									</div>
-								</li> -->
 							</ul>
 						</li>
 							
@@ -204,19 +179,6 @@
 										<input type="hidden" id="userId" name="userId" value="guest">
 									</div>
 								</li>
-								<!-- <li class="clearfix no_member_tab no_member_tab02">
-									<p class="credit on">신용카드 예매 티켓</p>
-								</li> -->
-								<!-- <li class=" credit03 mt0">
-									<div class="box_inputForm"> 
-										<strong>생년월일(YYMMDD)</strong>
-										<span class="box_label">
-											<label for="birthday2">생년월일 6자리를 입력하세요</label>
-											<input type="text" name="birthday2" id="birthday2" maxlength="10" onkeyup="fnIcoCheck(this),fnNumCheck(this);" class="input">
-										</span>
-									</div>
-								</li> -->
-								<!-- <li class="credit03"><span class="notice02 ">※ 법인카드로 결제 한 경우 사업자번호(10자리)를 입력하세요.</span></li> -->
 							</ul>
 						</li>		
 					</ul>
@@ -263,210 +225,43 @@
 			}
 			
 		});
-	
-	
-	
-	
-	
-	});
-	
-	
-				/* 1-1, 1-2  */
-					/* $(".send_btn").on("click",function(){
-						if ($("#nonMbrsHp").val().length < 10){
-							alert("휴대폰번호를 확인해주세요.");
-							return;
-						}
-						
-						$("#loading").show();
-						$("#nonMbrsAuthYn").val("N");
-						
-						var sms_yn = $("#sms_yn").prop("checked");
-						
-						$.ajax({	
-					        url      : "/mbrs/lgn/askAuthNoNonUser.ajax",
-					        type     : "post",
-					        data     : {
-					        	hp_no : $("#nonMbrsHp").val(),
-					        	sms_yn : (sms_yn) ? 'Y' : 'N',
-					        },
-					        dataType : "json",
-					        async    : true,
-					        success  : function(lgnNonUsrMap){
-					        	$("#loading").hide();
-					        	
-					        	if (lgnNonUsrMap.resultStatus == "Y"){
-						        	
-						        	alert("인증번호가 전송되었습니다.");
-						        	$("#nonMbrsAuthNo").val('');
-						        	$("#nonMbrsAuthNo").focus();
-						        	$(".send_btn").text('인증번호 재발송');
-						        	
-					        	} else {
-					        		alert("인증번호 전송에 실패하였습니다. \n\n잠시 후 다시 이용하여 주시기 바랍니다.");
-					        	}
-					        },
-					        error : function (e){
-					        	$("#loading").hide();
-					            alert("잠시 후 다시 이용하여 주시기 바랍니다.");
-					            return;
-					        }
-						});
-						
-					}); */
-				
-					/*  1, 2  */
-					/* $(".ph_check").on("click",function(){
-						
-						if ($("#nonMbrsHp").val().length < 10){
-							alert("휴대폰번호를 확인해주세요.");
-							return;
-						}
-						if ($("#nonMbrsAuthNo").val().length < 6){
-							alert("인증번호를 확인해주세요.");
-							return;
-						}
-						
-						$("#loading").show();
-						$("#nonMbrsAuthYn").val("N");
-						
-						$.ajax({	
-					        url      : "/mbrs/lgn/insertAuthNonUserInfo.ajax",
-					        type     : "post",
-					        data     : {
-					        	hp_no : $("#nonMbrsHp").val(),
-					        	aou_no : $("#nonMbrsAuthNo").val(),
-					        	in_type : '1'
-					        },
-					        dataType : "json",
-					        async    : true,
-					        success  : function(lgnNonUsrMap){
-					        	$("#loading").hide();
-					        	
-					        	if (lgnNonUsrMap.resultStatus == "Y"){
-						        	alert("인증되었습니다.");
-						        	
-									$(".no_member_ticketing01").hide();
-									$(".pay_wrap_ph").show();
-									$(".resend").hide();
-									$("#nonMbrsAuthYn").val("Y");
-					        	} else {
-					        		alert("인증에 실패하였습니다. \n\n인증번호를 확인하여 주시기 바랍니다.");
-					        	}
-					        },
-					        error : function (e){
-					        	$("#loading").hide();
-					            alert("잠시 후 다시 이용하여 주시기 바랍니다.");
-					            return;
-					        }
-						});
-						
-					}); */
-					/*  2-2 */
-					$(".no_member_tab01 p").on("click", function(){
-						$(".no_member_tab01 p").removeClass("on");
-						$(this).addClass("on");
-						if($(".no_member_tab01 p.easypay").hasClass("on")){
-							$(".credit01").hide();
-							$(".credit02").show();
-							$("#cal_flg2").val('2');
-						}else{
-							$(".credit01").show();
-							$(".credit02").hide();
-							$("#cal_flg2").val('1');
-						}
-					});
-					
-					$(".find_tab p").on("click", function(){
-						$(".find_tab p").removeClass("on");
-						$(this).addClass("on");
-						if($(".card_find").hasClass("on")){
-							$(".no_member_ticketing01").hide();
-							$(".pay_wrap_card").show();
-							$(".pay_wrap_ph").hide();
-							$(".resend").hide();
-							$("#cal_flg1").val('2');
-						}else{
-							$(".no_member_ticketing01").show();
-							$(".pay_wrap_card").hide();
-							$(".pay_wrap_ph").hide();
-							$("#cal_flg1").val('0');
-						}
-					});
-					/* 3-2 */
-					/* $(".no_member_tab02 p").on("click", function(){
-						$(".no_member_tab02 p").removeClass("on");
-						$(this).addClass("on");
-						if($(".no_member_tab02 p.easypay").hasClass("on")){
-							$(".credit03").hide();
-							$(".credit04").show();
-							$("#cal_flg2").val('2');
-						}else{
-							$(".credit03").show();
-							$(".credit04").hide();
-							$("#cal_flg2").val('1');
-						}
-					});
-					function fnChkNext(obj,nextFld){
-						if($(obj).val().length == 4){
-							$("#"+nextFld).val('');
-							$("#"+nextFld).focus();
-						}
-					}
-					function fnNonUsr_Search(){
-						var cal_flg1 = Number($("#cal_flg1").val());
-						var cal_flg2 = Number($("#cal_flg2").val());
-						var card_number = $("#card_number01").val() +"-"+ $("#card_number02").val() +"-"+ $("#card_number03").val() +"-"+ $("#card_number04").val(); */
-						
-						/* if(cal_flg1 == 0 && $("#nonMbrsAuthYn").val() != "Y"){
-							alert("비회원 인증이 필요합니다.");
-							return;
-						}
-						if (cal_flg1 == 0 && $("#nonMbrsHp").val() == ''){
-							alert('휴대폰번호를 확인해주세요.');
-							return;
-						}
-						if (cal_flg1 == 0 && cal_flg2 == 1 && $("#birthday1").val().length != 6 && $("#birthday1").val().length != 10){
-							alert('생년월일을 확인해주세요.');
-							$("#birthday1").focus();
-							return;
-						}
-						if (cal_flg1 == 0 && cal_flg2 == 2 && $("#start_date1").val().length != 8){
-							alert('출발일을 확인해주세요.');
-							$("#start_date1").focus();
-							return;
-						} */
-						/* if (cal_flg1 == 2 && card_number.length < 15){
-							alert('카드번호를 확인해주세요.');
-							$("#card_number01").focus();
-							return;
-						} */
-						/* if (cal_flg1 == 2 && cal_flg2 == 1 && $("#birthday2").val().length != 6 && $("#birthday2").val().length != 10){
-							alert('생년월일을 확인해주세요.');
-							$("#birthday2").focus();
-							return;
-						} */
-						/* if (cal_flg1 == 2 && cal_flg2 == 2 && $("#start_date2").val().length != 8){
-							alert('출발일을 확인해주세요.');
-							$("#start_date2").focus();
-							return;
-						} */
 
-						/* if (cal_flg1 == 2){
-							if (ajaxDecode('card_number03') == false) { return; }
-							if (ajaxDecode('card_number04') == false) { return; }
-						} */
-						
-						/* var returnUrl = $('#lgnNonUsrFrm #returnUrl').val();
-						if(returnUrl != ""){
-							$('#lgnNonUsrFrm').attr('method', 'post');
-							$('#lgnNonUsrFrm').attr('action', returnUrl);
-							$('#lgnNonUsrFrm').submit();
-						 }else{
-							location.href = "/main.do";
-						 }
-					} */
-				</script>
+
+
+		/*  2-2 */
+		$(".no_member_tab01 p").on("click", function(){
+			$(".no_member_tab01 p").removeClass("on");
+			$(this).addClass("on");
+			if($(".no_member_tab01 p.easypay").hasClass("on")){
+				$(".credit01").hide();
+				$(".credit02").show();
+				$("#cal_flg2").val('2');
+			}else{
+				$(".credit01").show();
+				$(".credit02").hide();
+				$("#cal_flg2").val('1');
+			}
+		});
+
+		$(".find_tab p").on("click", function(){
+			$(".find_tab p").removeClass("on");
+			$(this).addClass("on");
+			if($(".card_find").hasClass("on")){
+				$(".no_member_ticketing01").hide();
+				$(".pay_wrap_card").show();
+				$(".pay_wrap_ph").hide();
+				$(".resend").hide();
+				$("#cal_flg1").val('2');
+			}else{
+				$(".no_member_ticketing01").show();
+				$(".pay_wrap_card").hide();
+				$(".pay_wrap_ph").hide();
+				$("#cal_flg1").val('0');
+			}
+		});
+
+	});
+	</script>
 				
 				<!-- //비회원로그인 -->
 			</div>
