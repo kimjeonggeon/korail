@@ -26,6 +26,9 @@
 			};
 		}
 	</script>
+	<script src = "https://developers.kakao.com/sdk/js/kakao.min.js"></script>
+
+
 
 	<style>
 	#login_page{
@@ -85,9 +88,45 @@
 								<a href="http://localhost:9000/findAuth" onclick="lgnSearchId();"><span class="ico_searchId">아이디찾기</span></a>
 								<a href="http://localhost:9000/find_pass" onclick="lgnSearchPwd();"><span class="ico_searchPW">비밀번호찾기</span></a>
 								<a href="http://localhost:9000/join" onclick="mbrsJoin();"><span class="ico_joinUs">회원가입</span></a>
-								<a href="#"><img height="38px"  src="/images/kakao_login_medium_narrow.png "
+								<a  id ="kakao-login-btn" ><img height="38px"  src="/images/kakao_login_medium_narrow.png "
 														style=" margin-left: 60px;
 														 margin-top: 20px;"/></a>
+
+					<script type='text/javascript'>
+						Kakao.init('bd27f13f50ce91501ed93616a3adb827');
+
+
+						$("#kakao-login-btn").on("click", function(){
+							//1. 로그인 시도
+							Kakao.Auth.login({
+								success: function(authObj) {
+
+									//2. 로그인 성공시, API 호출
+									Kakao.API.request({
+										url: '/v2/user/me',
+										success: function(res) {
+											console.log(res);
+											var id = res.id;
+											scope : 'account_email';
+											alert('로그인성공');
+											location.href="http://localhost:9000/train_reservation_rotinf";
+
+
+
+										}
+									})
+									console.log(authObj);
+									var token = authObj.access_token;
+								},
+								fail: function(err) {
+									alert(JSON.stringify(err));
+								}
+							});
+
+						}) //
+
+
+					</script>
 							</div>
 
 						</div>

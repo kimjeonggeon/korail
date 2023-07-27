@@ -101,14 +101,14 @@
 				</tr>	
 			</table>
 			
-			<form action ="/admin_member_search/1/" class ="mem_search" name ="sform1" method ="POST">
+			<form action ="/admin/admin_member_search" class ="mem_search" name ="sform1" method ="POST">
 				<select name ="category" class ="search_put" id="category">
 					<option value ="total">전체</option>
 					<option value ="custname">이름</option>
 					<option value ="id">아이디</option>
 				</select>
 				<input type ="text" name ="cvalue" class ="search_put1" id="cvalue">
-				<input type ="hidden" name ="page" value=1>
+				<input type ="text" name ="page" value='1'>
 				<button type = "button" class ="search_put"  id ="member_search">검색하기</button>
 			</form>
 				

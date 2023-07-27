@@ -9,7 +9,7 @@ import java.util.List;
 
 @Mapper
 public interface MemberMapper {
-    PageDto search_list(PageDto pageDto, String category,String cvalue );
+    List<MemberDto> search_list(PageDto pageDto);
     List<MemberDto> list(PageDto pageDto);
     MemberDto findPass(String email);
     MemberDto findId(String email);

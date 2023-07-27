@@ -21,11 +21,12 @@ public class MemberService {
     public List<MemberDto> list(PageDto pageDto){
         return memberMapper.list(pageDto);
     }
-/*
-    public search_list(PageDto pageDto, String category,String cvalue ){
-        return memberMapper.search_list(PageDto pageDto, String category,String cvalue);
+
+    public List<MemberDto> search_list(PageDto pageDto ){
+        System.out.println("memberMapper.search_list(pageDto)"+memberMapper.search_list(pageDto));
+        return memberMapper.search_list(pageDto);
     }
-*/
+
 
     public MemberDto getFindPassResult(String email){
         return memberMapper.findPass(email);
