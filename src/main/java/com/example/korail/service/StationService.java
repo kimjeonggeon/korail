@@ -14,5 +14,6 @@ public interface StationService {
 
     void deleteById(int theId);
 
-    List<Station> findByCategory(String category);
+    List<String> getHistory();
+
 }
