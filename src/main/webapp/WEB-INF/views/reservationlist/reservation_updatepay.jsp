@@ -9,6 +9,11 @@
 <script src="http://localhost:9000/js/jquery-3.6.4.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="http://localhost:9000/js/nomember_stplcfmpym.js"></script>
+<script src="https://cdn.iamport.kr/v1/iamport.js"></script>
+<!-- jQuery -->
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
+<!-- iamport.payment.js -->
+<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
 <style>
 	.title_wrap { 
 		background: url(http://localhost:9000/images/visual_chkTicket_bg.gif) center 0 no-repeat;
@@ -19,6 +24,19 @@
 	}
 
 </style>
+	<script>
+		$(document).ready(function() {
+			$("#kakaoradio label").click(function () {
+				$("#kakaopayment").css("display", "block");
+				$("#cardpayment").css("display", "none");
+			});
+
+			$("#cardradio label").click(function () {
+				$("#kakaopayment").css("display", "none");
+				$("#cardpayment").css("display", "block");
+			});
+		});
+	</script>
 </head>
 <body>
 	<div>
@@ -370,179 +388,135 @@
 								<div class="box_inputForm">
 									<strong>카드종류</strong>
 									<span class="radio_wrap">
-										<span class="custom_radio">
-											<input type="radio" id="caPerson" name="payCard" checked="true" onclick="fnCardKindSel('indl')">
-											<label for="caPerson">개인</label>
-										</span>
+									<span class="custom_radio" id="cardradio">
+										<input type="radio" id="caPerson" name="paymentmethodlist" checked="true" value="card">
+										<label for="caPerson">카드</label>
 									</span>
+									<span class="custom_radio" id="kakaoradio">
+										<input type="radio" id="kakao" name="paymentmethodlist" value="kakao">
+										<label for="kakao">카카오페이</label>
+									</span>
+									<input type="hidden" id="paymentmethod" name="paymentmethod">
+								</span>
 								</div>
-								<div class="box_inputForm click_box inselect">
-									<strong>카드 선택</strong>
-									<div class="payment select-box default_txt" id="cardKindList">
-										<div class="selectricWrapper selectricOpen">
-											<div class="selectricHideSelect">
-												<select name="cardKndCd" id="cardKndCd">
-													<option value="0">카드를 선택하세요</option>
-													<option value="09">롯데</option>
-													<option value="24">하나</option>
-													<option value="02">국민</option>
-													<option value="01">BC</option>
-													<option value="05">신한</option>
-													<option value="04">삼성</option>
-													<option value="15">농협</option>
-													<option value="08">현대</option>
-													<option value="18">전북</option>
-													<option value="12">수협</option>
-													<option value="14">우리</option>
-													<option value="17">광주</option>
-													<option value="26">씨티</option>
-												</select>
-											</div>
-											<div class="selectric" id="selectric">
+
+								<div id="cardpayment">
+									<div class="box_inputForm click_box inselect" style="margin-top: 10px;">
+										<strong>카드 선택</strong>
+										<div class="payment select-box default_txt" id="cardKindList">
+											<div class="selectricWrapper selectricOpen">
+												<div class="selectricHideSelect">
+													<select name="cardKndCd" id="cardKndCd">
+														<option value="0">카드를 선택하세요</option>
+														<option value="09">롯데</option>
+														<option value="24">하나</option>
+														<option value="02">국민</option>
+														<option value="01">BC</option>
+														<option value="05">신한</option>
+														<option value="04">삼성</option>
+														<option value="15">농협</option>
+														<option value="08">현대</option>
+														<option value="18">전북</option>
+														<option value="12">수협</option>
+														<option value="14">우리</option>
+														<option value="17">광주</option>
+														<option value="26">씨티</option>
+													</select>
+												</div>
+
+												<div class="selectric" id="selectric">
 													<p class="label">카드를 선택하세요</p>
 													<b class="button">▾</b>
-											</div>
+												</div>
 
-											<div class="selectricItems" tabindex="-1" style="width: 636.667px; height: 500px;">
-												<div class="selectricScroll">
-													<ul>
-														<li class="selected">카드를 선택하세요</li>
-														<li class="">롯데</li>
-														<li class="">하나</li>
-														<li class="">국민</li>
-														<li class="">BC</li>
-														<li class="">신한</li>
-														<li class="">삼성</li>
-														<li class="">농협</li>
-														<li class="">현대</li>
-														<li class="">전북</li>
-														<li class="">수협</li>
-														<li class="">우리</li>
-														<li class="">광주</li>
-														<li class="last">씨티</li>
-													</ul>
+												<div class="selectricItems" tabindex="-1" style="width: 636.667px; height: 500px;">
+													<div class="selectricScroll">
+														<ul>
+															<li class="selected">카드를 선택하세요</li>
+															<li class="">롯데</li>
+															<li class="">하나</li>
+															<li class="">국민</li>
+															<li class="">BC</li>
+															<li class="">신한</li>
+															<li class="">삼성</li>
+															<li class="">농협</li>
+															<li class="">현대</li>
+															<li class="">전북</li>
+															<li class="">수협</li>
+															<li class="">우리</li>
+															<li class="">광주</li>
+															<li class="last">씨티</li>
+														</ul>
+													</div>
 												</div>
 											</div>
-											<input type="" class="selectricInput" name="" tabindex="0">
+											<input type="text" class="selectricInput" name="cardcomp">
 										</div>
 									</div>
-								</div>
-								<div class="box_inputForm card_num clfix">
-									<strong>카드번호</strong>
-									<span class="box_label">
-										<label for="cardNum1">입력</label>
-										<input type="text" name="cardNum1" id="cardNum1" class="input" maxlength="4">
+									<div class="box_inputForm card_num clfix">
+										<strong>카드번호</strong>
+										<span class="box_label">
+										<!-- <label for="cardNum1">입력</label> -->
+										<input type="text" name="cardNum1" id="cardNum1" class="input" maxlength="4" placeholder="입력">
 									</span>
-									<span class="box_label">
-										<label for="cardNum2">입력</label>
-										<input type="text" name="cardNum2" id="cardNum2" class="input" maxlength="4">
+										<span class="box_label">
+										<!-- <label for="cardNum2">입력</label> -->
+										<input type="text" name="cardNum2" id="cardNum2" class="input" maxlength="4"  placeholder="입력">
 									</span>
-									<span class="box_label">
-										<label for="cardNum3">입력</label>
-										<input type="password" name="cardNum3" id="cardNum3" class="input" maxlength="4">
+										<span class="box_label">
+										<!-- <label for="cardNum3">입력</label> -->
+										<input type="password" name="cardNum3" id="cardNum3" class="input" maxlength="4"  placeholder="입력">
 									</span>
-									<span class="box_label">
-										<label for="cardNum4">입력</label>
-										<input type="password" name="cardNum4" id="cardNum4" class="input" maxlength="4">
+										<span class="box_label">
+										<!-- <label for="cardNum4">입력</label> -->
+										<input type="password" name="cardNum4" id="cardNum4" class="input" maxlength="4"  placeholder="입력">
 									</span>
-								</div>
+									</div>
 
-								<div class="boxinput_wrap col2 clfix">
-									<div class="box_inputForm">
-										<strong>유효기간 월(MONTH)</strong>
-										<span class="box_label">
-											<label for="cardMonth">2자리 입력(MM)</label>
-											<input type="text" name="cardMonth" id="cardMonth" class="input" maxlength="2">
-										</span>
-									</div>
-									<div class="box_inputForm">
-										<strong>유효기간 년(YEAR)</strong>
-										<span class="box_label">
-											<label for="cardYear">2자리 입력(YY)</label>
-											<input type="text" name="cardYear" id="cardYear" class="input" maxlength="2">
-										</span>
-									</div>
-								</div>
-								<div class="boxinput_wrap col2 clfix">
-									<div class="box_inputForm">
-										<strong>카드 비밀번호</strong>
-										<span class="box_label">
-											<label for="cardPw">**** 비밀번호 앞 2자리 입력</label> <!-- 170118 텍스트 수정 -->
-											<input type="password" name="cardPw" id="cardPw" class="input" maxlength="2">
-										</span>
-									</div>
-								</div>
 
-								<!-- 카드결제 : 개인 -->
-								<div class="box_inputForm" id="indlBrdtCard">
-									<strong>생년월일 6자리(YYMMDD)</strong>
-									<span class="box_label">
+
+
+									<div class="boxinput_wrap col2 clfix">
+										<div class="box_inputForm">
+											<strong>유효기간 월(MONTH)</strong>
+											<span class="box_label">
+											<!-- <label for="cardMonth">2자리 입력(MM)</label> -->
+											<input type="text" name="cardMonth" id="cardMonth" class="input" maxlength="2"  placeholder="2자리 입력(MM)">
+										</span>
+										</div>
+										<div class="box_inputForm">
+											<strong>유효기간 년(YEAR)</strong>
+											<span class="box_label">
+											<!-- <label for="cardYear">2자리 입력(YY)</label> -->
+											<input type="text" name="cardYear" id="cardYear" class="input" maxlength="2" placeholder="2자리 입력(YY)">
+										</span>
+										</div>
+									</div>
+									<div class="boxinput_wrap col2 clfix">
+										<div class="box_inputForm">
+											<strong>카드 비밀번호</strong>
+											<span class="box_label">
+											<!-- <label for="cardPw">**** 비밀번호 앞 2자리 입력</label> 170118 텍스트 수정 -->
+											<input type="password" name="cardPw" id="cardPw" class="input" maxlength="2" placeholder="**** 비밀번호 앞 2자리 입력">
+										</span>
+										</div>
+									</div>
+
+									<!-- 카드결제 : 개인 -->
+									<div class="box_inputForm" id="indlBrdtCard">
+										<strong>생년월일 6자리(YYMMDD)</strong>
+										<span class="box_label">
 										<!-- <label for="caBirth">예)1980년11월11일 → 801111</label> -->
 										<input type="text" name="birthday" id="birthday" class="input" maxlength="6" placeholder="예)1980년11월11일 → 801111">
 									</span>
-								</div>
-
-								<!-- // 카드결제  -->
-								<div class="box_inputForm click_box inselect" id="mipMmSel" style="display:none">
-									<strong>할부 개월수 (5만원 이상만 가능)</strong>
-									<div class="payment select-box value box_bottom">
-										<div class="selectricWrapper">
-											<div class="selectricHideSelect">
-												<select name="mipMm" id="mipMm" title="할부 개월수선택" tabindex="0">
-													<option value="0">일시불</option>
-													<!-- 개월 선택 -->
-
-														<option value="2">2 개월</option>
-
-														<option value="3">3 개월</option>
-
-														<option value="4">4 개월</option>
-
-														<option value="5">5 개월</option>
-
-														<option value="6">6 개월</option>
-
-														<option value="7">7 개월</option>
-
-														<option value="8">8 개월</option>
-
-														<option value="9">9 개월</option>
-
-														<option value="10">10 개월</option>
-
-														<option value="11">11 개월</option>
-
-														<option value="12">12 개월</option>
-
-												</select>
-											</div>
-											<div class="selectric">
-												<p class="label add">일시불</p>
-												<b class="button">▾</b>
-											</div>
-											<div class="selectricItems" tabindex="-1">
-												<div class="selectricScroll">
-													<ul>
-														<li class="selected">일시불</li>
-														<li class="">2 개월</li>
-														<li class="">3 개월</li>
-														<li class="">4 개월</li>
-														<li class="">5 개월</li>
-														<li class="">6 개월</li>
-														<li class="">7 개월</li>
-														<li class="">8 개월</li>
-														<li class="">9 개월</li>
-														<li class="">10 개월</li>
-														<li class="">11 개월</li>
-														<li class="last">12 개월</li>
-													</ul>
-												</div>
-											</div>
-											<input class="selectricInput" tabindex="0">
-										</div>
 									</div>
+
+
 								</div>
 							</div>
+							<sapn id="kakaopayment" style="display: none;">
+								카카오페이로 결제시 예매 조회는 인증하신 이메일로만 조회가 가능합니다
+							</sapn>
 							<div class="tab_conts" id="tab2" style="display: none;"></div>
 						</div>
 					</form>

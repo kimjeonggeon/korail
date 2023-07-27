@@ -1,6 +1,7 @@
 package com.example.korail.controller;
 
 import com.example.korail.dto.*;
+import com.example.korail.service.CardinfoService;
 import com.example.korail.service.OrderService;
 import com.example.korail.service.PageService;
 import com.google.gson.internal.Streams;
@@ -16,10 +17,7 @@ import javax.servlet.http.HttpSession;
 import java.text.DecimalFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.Map;
+import java.util.*;
 
 import static java.lang.Integer.parseInt;
 
@@ -27,7 +25,8 @@ import static java.lang.Integer.parseInt;
 public class ReservationlistController {
     @Autowired
     OrderService orderService;
-
+    @Autowired
+    CardinfoService cardinfoService;
 
     @GetMapping("reservation_main")
     public String reservation_main(OrderDto orderDto, HttpSession session, Model model) throws ParseException {
@@ -49,7 +48,7 @@ public class ReservationlistController {
         ArrayList<OrderDto> orderList = orderService.getSelect(orderDto);
 
         if(orderList != null){
-            
+
             /* 서버날짜 가져오기 */
             Date currentDate = new Date();
             SimpleDateFormat formatDate = new SimpleDateFormat("yyyyMMdd");
@@ -59,6 +58,7 @@ public class ReservationlistController {
             ArrayList<OrderDto> cancelList = new ArrayList<>();
 
             for (OrderDto order : orderList) {
+
                 String depPlandTime = order.getDepPlandTime(); // 출발일 값을 가져옴
                 int depPlandDate = parseInt(depPlandTime); //출발일
 
@@ -103,6 +103,8 @@ public class ReservationlistController {
     }
     
 
+
+
     @PostMapping("cardnum_check")
     public String cardnum_check_proc(String cardnum, String userId, String email, HttpSession session,Model model){
        /* System.out.println("cardnum1-->"+cardnum);
@@ -130,10 +132,13 @@ public class ReservationlistController {
     }
 
 
+
+
     @GetMapping("reservation_receipt/{reservnum}")
     public String reservation_receipt(@PathVariable String reservnum, Model model) {
 
         OrderDto orderDto = orderService.getSelected(reservnum);
+
 
         model.addAttribute("odt", orderDto);
         return "reservationlist/reservation_receipt";
@@ -148,13 +153,17 @@ public class ReservationlistController {
         return "reservationlist/reservation_hometicket";
     }
 
-    /* update1 */
-    @GetMapping("reservation_update/{reservnum}")
-    public String reservation_update(HttpSession session, @PathVariable String reservnum, Model model) {
-        OrderDto orderDto = orderService.getSelected(reservnum);
 
+
+
+    /* update1 */
+    @GetMapping("reservation_update/{reservnum}/{cid}")
+    public String reservation_update(HttpSession session, @PathVariable String reservnum, @PathVariable String cid, Model model) {
+        OrderDto orderDto = orderService.getSelected(reservnum);
+        System.out.println("cid2-->"+cid);
         UpdateDto uvo = new UpdateDto();
         uvo.setReservnum(reservnum);
+        uvo.setCid(cid);
 
         model.addAttribute("odt", orderDto);
         session.setAttribute("uvo", uvo);
@@ -228,10 +237,22 @@ public class ReservationlistController {
     @PostMapping("reservation_updatepay")
     public String reservation_updatepay_proc(HttpSession session, OrderDto orderDto, CardinfoDto cardinfoDto) {
         String resultPay = "";
+        UUID uuid = UUID.randomUUID();
         UpdateDto uvo = (UpdateDto) session.getAttribute("uvo");
         DecimalFormat decimalFormat = new DecimalFormat("#,###");
         int number = parseInt(uvo.getAdltTotAmt());
         String price = decimalFormat.format(number);
+
+        System.out.println("cid=>"+uvo.getCid());
+        cardinfoDto.setCid(uvo.getCid());
+        System.out.println("cid마지막->"+cardinfoDto.getCid());
+
+        if(cardinfoDto.getPaymentmethod().equals("card")) {
+            cardinfoDto.setRecognizenum(uuid.toString().replaceAll("-", "").substring(0, 10));
+            cardinfoService.getPaymentUPdate(cardinfoDto);
+        }else if(cardinfoDto.getPaymentmethod().equals("kakao")){
+            cardinfoService.getPaymentUPdate(cardinfoDto);
+        }
 
         orderDto.setReservnum(uvo.getReservnum());
         orderDto.setSstation(uvo.getDepplacename());

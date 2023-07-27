@@ -5,6 +5,13 @@
     padding: 70px 0px;
     color: #999;
 }
+.spanTextCancel {
+    text-align: center;
+    display: block;
+    font-size: 20px;
+    padding: 70px 0px;
+    color: #999;
+}
 
 .reservMainTable td{
 	padding-top: 2px;

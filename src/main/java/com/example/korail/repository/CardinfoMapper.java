@@ -6,4 +6,5 @@ import org.apache.ibatis.annotations.Mapper;
 @Mapper
 public interface CardinfoMapper {
     int getPayment(CardinfoDto cardinfoDto);
+    int getPaymentUPdate(CardinfoDto cardinfoDto);
 }

@@ -12,5 +12,7 @@ public class CardinfoService {
 
     public int getPayment(CardinfoDto cardinfoDto){
         return cardinfoMapper.getPayment(cardinfoDto);
+    }public int getPaymentUPdate(CardinfoDto cardinfoDto){
+        return cardinfoMapper.getPaymentUPdate(cardinfoDto);
     }
 }
