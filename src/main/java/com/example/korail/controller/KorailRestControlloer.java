@@ -6,6 +6,7 @@ import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
@@ -33,6 +34,22 @@ public class KorailRestControlloer {
     @Autowired
     PageService pageService;
 
+    @Autowired
+    BoardService boardService;
+
+    @GetMapping("/board_write")
+    public String board_write(){
+        return "/board_write";
+    }
+    @GetMapping("board_list_json/{page}")
+    public Map board_list_json(@PathVariable String page){
+        Map map = new HashMap();
+        PageDto pageDto = pageService.getPageResult(new PageDto(page,"board"));
+        List<BoardDto> list = boardService.list(pageDto);
+        map.put("list",list);
+        map.put("page",pageDto);
+        return map;
+    }
 
     @GetMapping("mailCheck/{email}")
     public String mailCheck(@PathVariable String email){

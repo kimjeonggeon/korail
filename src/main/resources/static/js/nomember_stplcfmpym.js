@@ -200,7 +200,38 @@ $(document).ready(function(){
 				purchaseForm.submit();
 			}
 		}else if(paymentMethod === "kakao"){
-			requestPay();
+			var email = email1 + "@" + email2;
+
+			if (email == "@") {
+				email = $("#email").val();
+			} else {
+				$("#email").val(email);
+			}
+
+			if ($("input[name='agree']:checked").length != 3) {
+				//alert("서비스 이용약관 동의를 체크해주세요");
+				Swal.fire({
+					text: "서비스 이용약관 동의를 체크해주세요.",
+					width: 600,
+					padding: '1.5em',
+					confirmButtonColor: '#74b3c7',
+					confirmButtonText: '확인'
+				});
+				return false;
+			} else if ($("#mail-check-warn").text() != "인증번호가 일치합니다." && $(".pass_user").css("display") != "none") {
+				//alert("이메일 인증을 진행해주세요");
+				Swal.fire({
+					text: "이메일 인증을 진행해주세요.",
+					width: 600,
+					padding: '1.5em',
+					confirmButtonColor: '#74b3c7',
+					confirmButtonText: '확인'
+				});
+				return false;
+			}else{
+				requestPay();
+			}
+
 		}
 	});
 
