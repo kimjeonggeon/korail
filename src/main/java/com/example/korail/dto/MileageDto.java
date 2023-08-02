@@ -2,6 +2,8 @@ package com.example.korail.dto;
 
 import lombok.Data;
 
+import java.time.LocalDate;
+
 @Data
 public class MileageDto {
 
@@ -10,8 +12,9 @@ public class MileageDto {
     String accumulationDate;
     int changeAmount;
     String specifics;
-    String expirationDate;
+    LocalDate expirationDate;
     int type;
 
+    int accumulatedAmount;
     int rno;
 }

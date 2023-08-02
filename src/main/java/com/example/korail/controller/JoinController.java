@@ -4,6 +4,7 @@ import com.example.korail.dto.MemberDto;
 import com.example.korail.interceptor.BCrypt;
 import com.example.korail.service.MailSendService;
 import com.example.korail.service.MemberService;
+import com.example.korail.service.MileageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,6 +20,9 @@ public class JoinController {
 
     @Autowired
     MailSendService mailSendService;
+
+    @Autowired
+    MileageService mileageService;
 
     @GetMapping("joinAuth")
     public String mailAuth(){
@@ -36,10 +40,11 @@ public class JoinController {
 
         memberDto.setPass(BCrypt.hashpw(memberDto.getPass(),BCrypt.gensalt(10)));
         int result = memberService.getJoinResult(memberDto);
-        if(result == 1){
+        if(result == 1) {
+            mileageService.setMileage(memberDto.getId(), "회원가입", 3000);
             model.addAttribute("join_result","ok");
             return "login/login1";
-        }else {
+        } else {
             //회원가입 실패 페이지
         }
 

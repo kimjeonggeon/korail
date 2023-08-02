@@ -8,6 +8,9 @@ import java.util.HashMap;
 import java.util.List;
 @Mapper
 public interface MileageMapper {
+
+    int setMileage(String Id, String source,int amount);
+
     List<MileageDto> getMileageInfo(HashMap map);
 
     String getMileage(String memberId);

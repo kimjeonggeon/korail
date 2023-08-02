@@ -7,13 +7,13 @@ import javax.servlet.http.HttpSession;
 
 import com.example.korail.dto.MemberDto;
 import com.example.korail.dto.SessionDto;
+import com.example.korail.interceptor.BCrypt;
 import com.example.korail.service.MileageService;
 import com.example.korail.service.MypageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
@@ -26,7 +26,7 @@ public class MypageController {
     MileageService mileageService;
 
     @GetMapping("mypage")
-    public String my_page(HttpSession session, Model model) {
+    public String my_page(HttpSession session, Model model, BCrypt bCrypt) {
 
         // Session 확인 후 'null'의 경우 로그인 페이지로 이동
         SessionDto svo = (SessionDto) session.getAttribute("svo");
@@ -39,7 +39,8 @@ public class MypageController {
 
         // 위 변수를 id, pass, phoneNumber를 변수로 세분화, 이는 mypage에서 사용된다.
         String memberId = getUserinfo.get(0).getId();
-        String memberPass = getUserinfo.get(0).getPass();
+        String memberPass = svo.getPass();
+                //getUserinfo.get(0).getPass();
         String memberPnumber = getUserinfo.get(0).getPnumber();
         // mypage head의 '나의 예매내역' 건수를 나타내는 변수
         int countNum = mypageService.getCount(memberId);
@@ -75,6 +76,8 @@ public class MypageController {
 
         // usrPw4는 현재 비밀번호와 비교, usrPw5는 새롭게 바뀔 비밀번호
 
+        MemberDto memberDto = new MemberDto();
+
         // Session 정보 수집
         SessionDto svo = (SessionDto) session.getAttribute("svo");
         
@@ -87,7 +90,7 @@ public class MypageController {
         String pass = getUserinfo.get(0).getPass();
 
         // modal창의 입력란에 현재 비밀번호 입력이 정확한 경우
-        if (usrPw4.equals(pass)) {
+        if (usrPw4.equals(memberDto.getPass())) {
 
             // Mybatis로 WHERE절에 들어갈 데이터 전송
             param.put("memberId", memberId);
