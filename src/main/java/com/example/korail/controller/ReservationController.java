@@ -37,6 +37,7 @@ public class ReservationController {
         String price = decimalFormat.format(number);
 
         rvo.setEmail(reservationDto.getEmail());
+
         if(cardinfoDto.getPaymentmethod().equals("card")) {
             cardinfoDto.setRecognizenum(uuid.toString().replaceAll("-", "").substring(0, 10));
             cardinfoService.getPayment(cardinfoDto);

@@ -30,7 +30,7 @@ $.getJSON(url, function(citys){
 	let date = new Date();
 
 	let code = "<p class='bustime_head' id='d2'>";
-		code += "<span style='width: 60px'>출발역</span><span style='width:75px'>도착역</span><span class='start_time' style='width: 75px'>출발시간</span><span class='end_time' style='width: 95px'>도착시간</span>"
+		code += "<span style='width: 60px'>출발역</span><span style='width:75px'>도착역</span><span class='start_time' style='width: 75px'>출발시간</span><span class='end_time' style='width: 85px'>도착시간</span>";
 		code += "<span class='bus_com' style='width:50px'>열차명</span><span class='grade' style='width: 101px'>열차번호</span><span class='fare'>운임</span><span class='status' style='width: 70px'></span></p>";
 		code += "<div class='bus_time'>";
 	for(kobi of citys.response.body.items.item){
