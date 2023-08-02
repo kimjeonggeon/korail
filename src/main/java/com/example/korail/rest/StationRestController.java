@@ -19,25 +19,27 @@ public class StationRestController {
         stationService = theStationService;
     }
 
-    @GetMapping("route_info_json_data/{category}/{station}")
+    @GetMapping("/route_info_json_data/{category}/{station}")
     public Map route_info_json(@PathVariable String category, @PathVariable String station) {
         List<Station> slist = stationService.findAll();
         List<String> hlist = stationService.getHistory();
         //System.out.println(hlist);
-        //System.out.println(slist);
-        Map map = new HashMap();
+        //System.out.println(slist)
 
+        Map map = new HashMap();
+        ArrayList<String> list = new ArrayList<>();
         for(int i=0; i<hlist.size(); i++) {
             String historyData = hlist.get(i);
-            System.out.println(historyData);
-//            StringTokenizer st = new StringTokenizer(historyData, "]");
-//            while (st.hasMoreTokens()) {
-//                historyData = st.nextToken() + "]";
-//                map.put("historyData", historyData);
-//            }
+            StringTokenizer st = new StringTokenizer(historyData, "]");
+            while (st.hasMoreTokens()) {
+                list.add(i, st.nextToken() + "]");
+
+            }
         }
+        map.put("list", list);
+        map.put("slist", slist);
 
-
+       //System.out.println(map);
         return map;
     }
 
