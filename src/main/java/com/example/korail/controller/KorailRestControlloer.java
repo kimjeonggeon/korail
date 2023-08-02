@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpSession;
@@ -163,7 +164,7 @@ public class KorailRestControlloer {
 
     @GetMapping("admin_reservationlist_json_data/{page}/")
     public Map admin_reservationlist_json_data(@PathVariable String page){
-        System.out.println("page-->"+page);
+        //System.out.println("page-->"+page);
         Map map = new HashMap();
         PageDto pageDto = pageService.getPageResult(new PageDto(page,"adminReserv"));
         List<OrderDto> list = orderService.list(pageDto);
@@ -173,6 +174,24 @@ public class KorailRestControlloer {
 
         return map;
     }
+    /*@PostMapping("admin_reservationlist_search/{page}/{category}/{cvalue}/")
+    public Map admin_reservationlist_search(@PathVariable String page, @PathVariable String category, @PathVariable String cvalue) {
+
+        Map map = new HashMap();
+
+        if(category.equals("total")){
+            PageDto pageDto = pageService.getPageResult(new PageDto(page,"adminReserv"));
+        }else {
+            PageDto pageDto = pageService.getPageResult(new PageDto(page, "adminReserv", category, cvalue));
+        }
+
+        List<OrderDto> orderList = orderService.getOrderSearch(pageDto);
+
+        map.put("list", orderList);
+        map.put("page", pageDto);
+
+        return map;
+    }*/
 
 
 }

@@ -418,7 +418,8 @@
 										</tr>
 										<tr class="Ttr">
 											<td>KTX 출발 3시간 전 ~ 출발시간 전 취소</td>
-											<td style="padding-left: 100px;">5%</td></tr>
+											<td style="padding-left: 100px;">5%</td>
+										</tr>
 										<tr class="Ttr">
 											<td style="padding-left: 15px;">출발 후(역 창구에서 환불 신청)</td>
 										</tr>

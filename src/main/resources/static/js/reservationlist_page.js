@@ -83,70 +83,26 @@ $(document).ready(function(){
         });
     }
 
-
-    /* content 상세보기 함수 */
-    /*function contentAjax(bid, page) {
-        $.ajax({
-            url: "/board_content_json_data/" + bid + "/",
-            success: function (result) {
-                //alert(result.btitle);
-
-                //dhtml을 활용하여 상세보기 화면 출력
-                let output = "<table class='board_content'>";
-                output += "<tr><th>제목</th>";
-                output += "<td>result.btitle</td>";
-                output += "</tr>";
-
-                output += "<tr><th>내용</th>";
-                output += "<td>"+result.bcontent+"<br><br><br>";
-                if (result.bsfile != null){
-                    output += "<img src='http://localhost:9000/upload/"+result.bsfile+"'>";
+    /* 검색 */
+/*    function search(page, category) {
+        $("#reserv_search").click(function () {
+            if ($("#category").val() == "reservnumber") {
+                if ($("#cvalue").val() == "") {
+                    alert("예매번호를 입력해주세요");
+                    $("#cvalue").focus();
+                    return false;
                 }
-                output += "</td></tr>";
+            } else if ($("#category").val() == "id") {
+                if ($("#cvalue").val() == "") {
+                    alert("아이디를 입력해주세요");
+                    $("#cvalue").focus();
+                    return false;
+                }
+            }
+            searchform.submit();
+        });
+    }*/
 
-                output += "<tr><th>조회수</th>";
-                output += "<td>" + result.bhits + "</td>";
-                output += "</tr>";
-
-                output += "<tr><th>작성자</th>";
-                output += "<td>" + result.id + "</td>";
-                output += "</tr>";
-
-                output += "<tr><th>작성일자</th>";
-                output += "<td>" +result.bdate +"</td>";
-                output += "</tr>";
-
-                output += "<tr><td colspan='2'>";
-                output += "<button type='button' class='btn_style' >수정하기</button>";
-                output += "<button type='button' class='btn_style'>삭제하기</button>";
-                output += "<button type='button' class='btn_style' id='list'>리스트</button>";
-                output += "<button type='button' class='btn_style' id='home'>홈으로</button>";
-                output += "</td></tr></table>";
-
-                //지우고 띄우기
-                $("table.reservlist").remove();
-                $("h1").after(output);
-
-                //리스트 버튼 클릭이벤트
-                $("#list").click(function (){
-                    $("table.board_content").remove();
-                    initAjax(page);
-                })
-
-                //홈으로 버튼 클릭이벤트
-                $("#home").click(function (){
-                    $(location).attr('href','http://localhost:9000/');
-                })
-
-                //수정하기 버튼 클릭이벤트
-
-
-                //삭제하기 버튼 클릭이벤트
-
-
-            }//success
-        });//ajax
-    }*///contentAjax
 
 
 });	//ready
