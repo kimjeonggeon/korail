@@ -1,23 +1,47 @@
-body {
+body, html {
     width: 100%;
     height: 100%;
     margin: 0;
 }
 
-.tr {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    grid-gap: 5px;
+.content {
+    padding: 20px;
 }
 
-.tr > td {
-    margin:auto;
-}
-
-.board_list{
-    margin: auto;
-}
-
-#ampaginationsm{
+h1 {
+    margin: 0;
+    padding: 10px;
+    background-color: #a13ac7;
+    color: #fff;
+    font-size: 24px;
     text-align: center;
+}
+
+.board_list {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.board_list th, .board_list td {
+    padding: 10px;
+    border: 1px solid #ccc;
+}
+
+.board_list th {
+    background-color: #f1c40f;
+    font-weight: bold;
+    text-align: center;
+}
+
+.board_list tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.board_list tr:hover {
+    background-color: #e0e0e0;
+}
+
+#ampaginationsm {
+    text-align: center;
+    margin-top: 20px;
 }

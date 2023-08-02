@@ -37,7 +37,7 @@
 			  let pass = "${sessionScope.memberPass}";
 			  let currentPassword = $(this).val().trim();
 
-			  if (currentPassword == pass) {
+			  if(BCrypt.checkpw(memberDto.getPass(), pass)){
 			    $("#cmsg2").text("비밀번호 확인 완료")
 			      .css("color", "green").css("font-size", "11px").css("display", "block");
 			  } else {
@@ -172,10 +172,16 @@
 		</div>
 	</div>
     <script>
+		let newWindow;
 		$(".mileage").click(function () {
 			var dataToSend = "${memberId}";
+
+			if (newWindow && !newWindow.closed) {
+				newWindow.close(); // 이미 열려있는 창이 있다면 닫기
+			}
+
 			// 사용자 동작에 의한 창 생성
-			var newWindow = window.open('mileage', '마일리지 모달', 'width=900, height=500');
+			newWindow = window.open('mileage', '마일리지 모달', 'width=900, height=500');
 
 			// 새 창이 성공적으로 열렸을 때에만 postMessage 호출
 			newWindow.onload = function () {

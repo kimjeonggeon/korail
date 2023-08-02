@@ -4,6 +4,7 @@ import com.example.korail.dto.CardinfoDto;
 import com.example.korail.dto.OrderDto;
 import com.example.korail.dto.ReservationDto;
 import com.example.korail.service.CardinfoService;
+import com.example.korail.service.MileageService;
 import com.example.korail.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -23,6 +24,9 @@ public class ReservationController {
 @Autowired
     CardinfoService cardinfoService;
 
+    @Autowired
+    MileageService mileageService;
+
     //결제 완료 페이지
     @PostMapping("train_reservation_pymcfm")
     public String train_reservation_pymcfm(ReservationDto reservationDto,HttpSession session, OrderDto orderDto, CardinfoDto cardinfoDto,Model model){
@@ -33,7 +37,6 @@ public class ReservationController {
         String price = decimalFormat.format(number);
 
         rvo.setEmail(reservationDto.getEmail());
-
         if(cardinfoDto.getPaymentmethod().equals("card")) {
             cardinfoDto.setRecognizenum(uuid.toString().replaceAll("-", "").substring(0, 10));
             cardinfoService.getPayment(cardinfoDto);
@@ -58,6 +61,8 @@ public class ReservationController {
         orderDto.setEmail(rvo.getEmail());
 
         orderService.getPayment(orderDto);
+
+        mileageService.setMileage(rvo.getId(), "열차 예매", Integer.parseInt(orderDto.getPrice()));
 
         return "reservation/train_reservation_pymcfm";
     }
