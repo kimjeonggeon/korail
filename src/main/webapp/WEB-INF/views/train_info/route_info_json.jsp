@@ -42,7 +42,7 @@
 										<li><span class="underline" id="joongang">중앙선</span></li>
 										<li><span class="underline" id="joongbu">중부내륙선</span></li>
 									</ul>
-									<div class="line"></div>
+									<div class="line" id="line"></div>
 								</nav>
 								
 								<%-- <div id="station">
