@@ -108,7 +108,7 @@
 					<option value ="id">아이디</option>
 				</select>
 				<input type ="text" name ="cvalue" class ="search_put1" id="cvalue">
-				<input type ="text" name ="page" value='1'>
+				<input type ="hidden" name ="page" value='1'>
 				<button type = "button" class ="search_put"  id ="member_search">검색하기</button>
 			</form>
 				
