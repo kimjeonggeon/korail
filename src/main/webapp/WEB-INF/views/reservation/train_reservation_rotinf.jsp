@@ -111,7 +111,7 @@
 								<p>
 									<span class="custom_radio grade3" style="margin-left: 54px;">
 										<!-- <input type="radio" id="busClsCd5" name="busClsCdR" onclick="fnBusClsCd(this)" value="2"> -->
-										<label for="busClsCd5">일반</label>
+										<label>일반</label>
 									</span>
 								</p>
 							</div>

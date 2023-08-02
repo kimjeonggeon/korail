@@ -470,7 +470,7 @@
 								<strong>결제 방법</strong>
 								<span class="radio_wrap">
 									<span class="custom_radio" id="cardradio">
-										<input type="radio" id="caPerson" name="paymentmethodlist" checked="true" value="card">
+										<input type="radio" id="caPerson" name="paymentmethodlist" value="card">
 										<label for="caPerson">카드</label>
 									</span>
 									<span class="custom_radio" id="kakaoradio">

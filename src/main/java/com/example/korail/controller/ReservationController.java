@@ -34,6 +34,8 @@ public class ReservationController {
 
         rvo.setEmail(reservationDto.getEmail());
 
+        System.out.println("getPaymentmethod -->>" + cardinfoDto.getPaymentmethod());
+
         if(cardinfoDto.getPaymentmethod().equals("card")) {
             cardinfoDto.setRecognizenum(uuid.toString().replaceAll("-", "").substring(0, 10));
             cardinfoService.getPayment(cardinfoDto);

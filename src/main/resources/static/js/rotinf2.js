@@ -21,7 +21,7 @@ $(document).ready(function(){
 			$(".start_train").click(function(){
 				let city_code = $(this).attr("id");
 				//alert(city_code);
-				start_test(city_code);
+				start_train(city_code);
 			});
 			
 	});
@@ -32,7 +32,7 @@ $(document).ready(function(){
 	
 		
 	//$("#start_city").change(function(){
-	function start_test(city_code){
+	function start_train(city_code){
 		let url2 ="https://apis.data.go.kr/1613000/TrainInfoService/getCtyAcctoTrainSttnList?serviceKey=fia82dW58XZekM3fyfsYQjw24d3TDN%2FOCdtbCQWjlYjltamNE5UGs23S0OiE%2BdghuBeQ%2Bt%2FLjncovmHroyfk1Q%3D%3D&pageNo=1&numOfRows=10&_type=json&cityCode="+city_code;
 		/*alert(url2);*/
 		
@@ -125,7 +125,7 @@ $(document).ready(function(){
 
 				result.then((result) => {
 					if (result.isConfirmed) {
-						let url = "http://localhost:9000/train_reservation_alcnsrch/"+startId + "/" + endId + "/" + rtime + "/"+ start_add + "/" + end_add;
+						let url = "http://localhost:9000/train_reservation_alcnsrch/"+startId + "/" + endId + "/" + rtime + "/"+ start_add + "/" + end_add + "/";
 						location.href = url;
 					}
 				});
