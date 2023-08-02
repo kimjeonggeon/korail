@@ -178,11 +178,10 @@ button {
     cursor: pointer;
 }
 .box_searchId {
-    margin-top: 15px;
-    padding-left: 10px;
+    margin-top: 30px;
+    padding-left: 150px;
     font-size: 0;
-    text-align: left;
-}
+    text-align: left;}
 .box_searchId a:first-child {
     margin-left: 0;
 }

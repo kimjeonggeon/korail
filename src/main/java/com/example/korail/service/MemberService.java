@@ -23,7 +23,6 @@ public class MemberService {
     }
 
     public List<MemberDto> search_list(PageDto pageDto ){
-        System.out.println("memberMapper.search_list(pageDto)"+memberMapper.search_list(pageDto));
         return memberMapper.search_list(pageDto);
     }
 
