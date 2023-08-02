@@ -50,4 +50,8 @@ public class OrderService {
         return orderMapper.list(pageDto);
     }
 
+    public List<OrderDto> getOrderSearch(PageDto pageDto){
+        return orderMapper.search(pageDto);
+    }
+
 }

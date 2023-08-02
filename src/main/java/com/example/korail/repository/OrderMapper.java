@@ -16,4 +16,5 @@ public interface OrderMapper {
     List<SeatNumberDto> seatnumUp(UpdateDto uvo);
     int updatePayment(OrderDto orderDto);
     List<OrderDto> list(PageDto pageDto);
+    List<OrderDto> search(PageDto pageDto);
 }

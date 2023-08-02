@@ -23,7 +23,7 @@
 			<c:otherwise>
 				<ul>
 					<c:if test="${sessionScope.svo.name != null }">
-					<li class="account">${sessionScope.svo.name}! 반갑습니다~</li>
+					<li class="account">${sessionScope.svo.name}님! 반갑습니다~</li>
 					</c:if>
 					<li class="logout"><a href="http://localhost:9000/logout"><span>로그아웃</span></a></li>
 					<li><a href="http://localhost:9000/mypage">마이페이지</a></li>
