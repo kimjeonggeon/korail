@@ -327,16 +327,15 @@ b {
 }
 
 ul.myPage_list {
-	height: -webkit-fill-available;
-	display: inline-block;
-	width: inherit;
+	display: flex;
 	padding-left: 0px !important;
 	margin-top: 0px !important;
+	justify-content: space-between;
 }
 
 .mypage_title .inner {
 	position: relative;
-	width: 920px;
+	width: 600px;
 	margin: 0 auto;
 	margin-top: 115px;
 	height: -webkit-fill-available;

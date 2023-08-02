@@ -26,20 +26,22 @@
                     let output = "<table class='board_list'>";
                     output += "<tr class='tr'><th>적립일</th><th>적립금</th><th>내역</th><th>만료일</th><th>누적 마일리지</th></tr>";
 
-                    for (obj of result.list) {
+                    for (let i = result.list.length - 1; i >= 0; i--) {
+                        const obj = result.list[i];
                         output += "<tr class='tr'>";
                         output += "<td>" + obj.accumulationDate + "</td>";
 
-                        output += "<td class='" + (obj.TYPE == 1 ? "reduce" : "add") + "'>" + obj.changeAmount + "</td>";
+                        output += "<td class='changeAmount'" + (obj.changeAmount <= 0 ? " style='color:red;'" : "") + ">" + obj.changeAmount + "</td>";
 
                         output += "<td>" + obj.specifics + "</td>";
 
                         if (obj.expirationDate == null) obj.expirationDate = "";
                         output += "<td>" + obj.expirationDate + "</td>";
 
-                        output += "<td>" + obj.totalmileage + "</td>";
+                        output += "<td>" + obj.accumulatedAmount + "</td>";
                         output += "</tr>";
                     }
+
 
                     output += "<tr>";
                     output += "<td colspan='5'><div id='ampaginationsm'></td>";

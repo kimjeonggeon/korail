@@ -7,22 +7,22 @@
 
     <select id="getMileageInfo" parameterType="map"
             resultType="com.example.korail.dto.MileageDto">
-        SELECT RNO, MID, ID, AccumulationDate, ChangeAmount, specifics, ExpirationDate, TYPE
+        SELECT RNO, MID, ID, AccumulationDate, ChangeAmount, specifics, ExpirationDate, type, SUM(ChangeAmount) OVER (ORDER BY AccumulationDate) AS accumulatedAmount
         FROM
-            (SELECT ROWNUM RNO, MID, ID, AccumulationDate, ChangeAmount, specifics, ExpirationDate, TYPE
+            (SELECT ROWNUM RNO, MID, ID, AccumulationDate, ChangeAmount, specifics, ExpirationDate, type
              FROM
-                 (SELECT MID, ID, AccumulationDate, ChangeAmount, specifics, ExpirationDate, TYPE FROM KTX_MILEAGE_HISTORY ORDER BY AccumulationDate DESC))
+                 (SELECT MID, ID, AccumulationDate, ChangeAmount, specifics, ExpirationDate, type FROM KTX_MILEAGE_HISTORY ORDER BY AccumulationDate DESC))
         WHERE ID = #{memberId} AND RNO BETWEEN #{pageDto.startCount} AND #{pageDto.endCount}
     </select>
 
     <select id="getMileage" parameterType="String" resultType="String">
-        SELECT SUM(
-                       CASE
-                           WHEN TYPE = 1 THEN -ChangeAmount
-                           ELSE ChangeAmount
-                           END
-                   ) AS TotalChangeAmount
+        SELECT SUM(ChangeAmount) AS TotalChangeAmount
         FROM KTX_MILEAGE_HISTORY
         WHERE ID= #{memberId}
     </select>
+
+    <insert id="setMileage" parameterType="String">
+        INSERT INTO KTX_MILEAGE_HISTORY (MID, ID, AccumulationDate, ChangeAmount, specifics, ExpirationDate, TYPE)
+        VALUES (('M_'||ltrim(to_char(sequ_ktx_mileage.nextval,'0000'))), #{Id}, SYSDATE, #{amount}, #{source}, ADD_MONTHS(SYSDATE, 12 * 5), 0)
+    </insert>
 </mapper>

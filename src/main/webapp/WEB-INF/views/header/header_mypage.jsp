@@ -24,24 +24,12 @@
                        class="btn btn_sm_link ">예매확인/변경/취소</a>
                 </div>
             </li>
-            <li class="additional">
-                <div class="row">
-                    <a class="txt_myMenu adtnPrdPT" style="cursor:pointer;">
-                        <span>영수증 출력</span>
-                        <strong>&nbsp;</strong>
-                    </a>
-                </div>
-                <div class="btnBox">
-                    <a class="btn btn_sm_link_white adtnPrdPT" style="cursor:pointer;">영수증 출력
-                    </a>
-                </div>
-            </li>
             <li class="mileage">
                 <div class="row">
                     <a href="#" class="txt_myMenu" onclick="return false;">
-                        <span>프리미엄 마일리지<span class="ico_mileage">왕관</span>
+                        <span>프리미엄 마일리지
 								<strong id="mileage">${mileage}원</strong>
-                    </span>
+                        </span>
                     </a>
                 </div>
                 <div class="btnBox">
