@@ -37,38 +37,38 @@ $(document).ready(function() {
 
 	});	//onClick
 
-	function display_station(category) {
-		$(".map_station").css("display", "none");
-		if(category == "kyeongbu") {
-			$("#station01").css("display", "block");
-			$("#station02").css("display", "block");
-			$("#station03").css("display", "block");
-		} else if(category == "honam") {
-			$("#station04").css("display", "block");
-			$("#station05").css("display", "block");
-			$("#station06").css("display", "block");
-		} else if(category == "kyeongjeon") {
-			$("#station07").css("display", "block");
-			$("#station08").css("display", "block");
-			$("#station09").css("display", "block");
-		} else if(category == "jeonla") {
-			$("#station10").css("display", "block");
-			$("#station11").css("display", "block");
-			$("#station12").css("display", "block");
-		} else if(category == "kangleung") {
-			$("#station13").css("display", "block");
-			$("#station14").css("display", "block");
-			$("#station15").css("display", "block");
-		} else if(category == "joongang") {
-			$("#station16").css("display", "block");
-			$("#station17").css("display", "block");
-			$("#station18").css("display", "block");
-		} else {
-			$("#station19").css("display", "block");
-			$("#station20").css("display", "block");
-			$("#station21").css("display", "block");
-		}
-	}
+	// function display_station(category) {
+	// 	$(".map_station").css("display", "none");
+	// 	if(category == "kyeongbu") {
+	// 		$("#station01").css("display", "block");
+	// 		$("#station02").css("display", "block");
+	// 		$("#station03").css("display", "block");
+	// 	} else if(category == "honam") {
+	// 		$("#station04").css("display", "block");
+	// 		$("#station05").css("display", "block");
+	// 		$("#station06").css("display", "block");
+	// 	} else if(category == "kyeongjeon") {
+	// 		$("#station07").css("display", "block");
+	// 		$("#station08").css("display", "block");
+	// 		$("#station09").css("display", "block");
+	// 	} else if(category == "jeonla") {
+	// 		$("#station10").css("display", "block");
+	// 		$("#station11").css("display", "block");
+	// 		$("#station12").css("display", "block");
+	// 	} else if(category == "kangleung") {
+	// 		$("#station13").css("display", "block");
+	// 		$("#station14").css("display", "block");
+	// 		$("#station15").css("display", "block");
+	// 	} else if(category == "joongang") {
+	// 		$("#station16").css("display", "block");
+	// 		$("#station17").css("display", "block");
+	// 		$("#station18").css("display", "block");
+	// 	} else {
+	// 		$("#station19").css("display", "block");
+	// 		$("#station20").css("display", "block");
+	// 		$("#station21").css("display", "block");
+	// 	}
+	// }
 
 	// function initAjax(category, rno, station, type) {
 	// 	$.ajax({
@@ -653,16 +653,6 @@ $(document).ready(function() {
 					initAjax(page);
 				});
 
-				$("#click_before").click(function() {
-					$(".notice_content").remove();
-					contentAjax(notice.nnext, page);
-				});
-
-				$("#click_after").click(function() {
-					$(".notice_content").remove();
-					contentAjax(notice.nprev, page);
-				});
-
 			}	// success
 		});	// ajax
 	}	// contentAjax
@@ -672,11 +662,14 @@ $(document).ready(function() {
 	function stationAjax(category, station) {
 
 		$.ajax({
-			url: "route_info_json_data/" + category + "/" + station + "/",
+			url: "/route_info_json_data/" + category + "/" + station + "/",
 			success: function (result) {
 				let output = "<div class='station-section two-column'>";
-				output += "<div class='col-left'>";
-				for(obj of result.slist) {
+				let obj = result.slist[0];
+				alert(result.list);
+
+
+					output += "<div class='col-left'>";
 					output += "<img src='http://localhost:9000/images/" + obj.clink1 + "'class='train_category'>";
 					output += "<img src='http://localhost:9000/images/" + obj.clink2 + "'class='category_map'>";
 					output += "</div>";
@@ -702,12 +695,12 @@ $(document).ready(function() {
 					output += "<div class='info-bottom'>";
 					output += "<h3>" + obj.station + " 연혁</h3>";
 					output += "<ol>";
-					for(hobj of obj.list) {
-						output += "<li class='info-bottom'>" + hobj.history + "</li>";
-					}
+
+						output += "<li class='info-bottom'>" + obj.history + "</li>";
+
 					output += "</ol>";
 
-				}
+
 				output += "<div className='station-map-info'>";
 				output += "<h3>위치/교통</h3>";
 				output += "<div id='map' style='width:1100px;height:700px;'></div></div>";
@@ -728,11 +721,38 @@ $(document).ready(function() {
 				}
 				output += "</script></div>";
 
+				$("#station").remove();
 				$("#line").after(output);
-
 			}
 
 		});	// Ajax
 	}	// stationAjax
 
+	$("#kyeongbu").click(function() {
+		stationAjax("kyeongbu", "서울역");
+	});
+
+	$("#honam").click(function() {
+		stationAjax("honam", "용산역");
+	});
+
+	$("#kyeongjeon").click(function() {
+		stationAjax("kyeongjeon", "서울역");
+	});
+
+	$("#jeonla").click(function() {
+		stationAjax("jeonla", "용산역");
+	});
+
+	$("#kangleung").click(function() {
+		stationAjax("kangleung", "청량리역");
+	});
+
+	$("#joongang").click(function() {
+		stationAjax("joongang", "청량리역");
+	});
+
+	$("#joongbu").click(function() {
+		stationAjax("joongbu", "부발역");
+	});
 });
