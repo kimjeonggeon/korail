@@ -23,6 +23,31 @@
 
     <insert id="setMileage" parameterType="String">
         INSERT INTO KTX_MILEAGE_HISTORY (MID, ID, AccumulationDate, ChangeAmount, specifics, ExpirationDate, TYPE)
-        VALUES (('M_'||ltrim(to_char(sequ_ktx_mileage.nextval,'0000'))), #{Id}, SYSDATE, #{amount}, #{source}, ADD_MONTHS(SYSDATE, 12 * 5), 0)
+        VALUES (('M_'||ltrim(to_char(sequ_ktx_mileage.nextval,'0000'))), #{Id}, SYSDATE,
+        <if test="specifics == '회원가입'">
+            #{changeAmount},
+        </if>
+        <if test="specifics != '회원가입'">
+            #{changeAmount} * 0.05,
+        </if>
+        #{specifics}, ADD_MONTHS(SYSDATE, 12 * 5), 0)
     </insert>
+
+
+    <insert id="setMileage_Reduce" parameterType="String">
+        INSERT INTO KTX_MILEAGE_HISTORY (MID, ID, AccumulationDate, ChangeAmount, specifics, ExpirationDate, TYPE)
+        SELECT
+            'M_' || LTRIM(TO_CHAR(sequ_ktx_mileage.nextval, '0000')),
+            (SELECT ID FROM KTX_ORDER WHERE reservnum = #{reservnum}),
+            SYSDATE,
+            (-TO_NUMBER((SELECT PRICE FROM KTX_ORDER WHERE reservnum = #{reservnum})) * 0.05),
+            '예매 취소',
+            null,
+            1
+        FROM
+            KTX_ORDER
+        WHERE
+            reservnum = #{reservnum}
+    </insert>
+
 </mapper>

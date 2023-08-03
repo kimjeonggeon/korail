@@ -41,6 +41,18 @@ $(document).ready(function () {
         }
     });
 
+    $("#with-confirm").click(function () {
+        mypage_wtihProc.submit();
+    });
+
+    $("#pass-confimr").click(function () {
+        mypage_cpassProc.submit();
+    });
+
+    $("#phone-confirm").click(function () {
+        mypage_Phoneproc.submit();
+    });
+
     /**
      * 마이페이지 '비밀번호 변경' 클릭
      */

@@ -25,7 +25,6 @@ public class MypageService {
 	}
 
 	public int getPassupdate(HashMap<String, String> param) {
-		System.out.println("Service pass");
 		return mypageMapper.getPassupdate(param);
 	}
 

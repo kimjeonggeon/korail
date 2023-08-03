@@ -12,7 +12,7 @@
 	<div class="with_modal">
 		<!-- 회원탈퇴 -->
 		<div class="with_modal_contents">
-			<form name="withForm" method="post" action="mypage_wtihProc">
+			<form name="withForm" method="post" action="mypage_wtihProc" id="mypage_wtihProc">
 				<div class="cont">
 					<p class="txt">
 						<span class="accent">알림</span><br> <br>탈퇴하시려면 사이트에 등록된
@@ -23,7 +23,7 @@
 						<div class="inner">
 							<div class="box_inputForm">
 								<strong>비밀번호</strong> <span class="box_label"><input
-									type="password" name="usrPw" id="usrPw" class="input"
+									type="password" name="pass" id="pass" class="input"
 									placeholder=" 현재 사이트에 등록된 비밀번호를 입력하세요."> </span><span
 									id="cmsg7"></span>
 							</div>
@@ -39,7 +39,7 @@
 
 
 		<div class="pass_modal_cotents">
-			<form name="passForm" method="post" action="mypage_cpassProc">
+			<form name="passForm" method="post" action="mypage_cpassProc" id="mypage_cpassProc">
 				<div class="cont">
 					<p class="txt">
 						<span class="accent">알림</span><br> <br>안전한 고속버스 홈페이지 사용을
@@ -79,7 +79,7 @@
 
 
 		<div class="phonenum_modal_cotents">
-			<form name="phonenumForm" method="post" action="mypage_Phoneproc">
+			<form name="phonenumForm" method="post" action="mypage_Phoneproc" id="mypage_Phoneproc">
 				<div class="cont">
 					<p class="txt">
 						<span class="accent">현재 사이트에 등록된 비밀번호와 변경하실 새로운 휴대폰 번호를

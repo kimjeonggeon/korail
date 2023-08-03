@@ -26,7 +26,7 @@ public class MypageController {
     MileageService mileageService;
 
     @GetMapping("mypage")
-    public String my_page(HttpSession session, Model model, BCrypt bCrypt) {
+    public String my_page(HttpSession session, Model model) {
 
         // Session 확인 후 'null'의 경우 로그인 페이지로 이동
         SessionDto svo = (SessionDto) session.getAttribute("svo");
@@ -39,8 +39,6 @@ public class MypageController {
 
         // 위 변수를 id, pass, phoneNumber를 변수로 세분화, 이는 mypage에서 사용된다.
         String memberId = getUserinfo.get(0).getId();
-        String memberPass = svo.getPass();
-                //getUserinfo.get(0).getPass();
         String memberPnumber = getUserinfo.get(0).getPnumber();
         // mypage head의 '나의 예매내역' 건수를 나타내는 변수
         int countNum = mypageService.getCount(memberId);
@@ -48,7 +46,7 @@ public class MypageController {
         // 해당 페이지에 session으로 생성한 변수 할당
         session.setAttribute("countNum", countNum);
         session.setAttribute("memberId", memberId);
-        session.setAttribute("memberPass", memberPass);
+
         session.setAttribute("memberPnumber", memberPnumber);
 
         String mileage = mileageService.getMileage(memberId);
@@ -80,7 +78,7 @@ public class MypageController {
 
         // Session 정보 수집
         SessionDto svo = (SessionDto) session.getAttribute("svo");
-        
+
         // 비밀번호 변경을 위한 Id와 Password 데이터 전달 객체
         HashMap<String, String> param = new HashMap<String, String>();
 
@@ -90,7 +88,8 @@ public class MypageController {
         String pass = getUserinfo.get(0).getPass();
 
         // modal창의 입력란에 현재 비밀번호 입력이 정확한 경우
-        if (usrPw4.equals(memberDto.getPass())) {
+        if (BCrypt.checkpw(usrPw4, svo.getPass())) {
+
 
             // Mybatis로 WHERE절에 들어갈 데이터 전송
             param.put("memberId", memberId);
@@ -102,27 +101,34 @@ public class MypageController {
                 // mypage의 Script로 alert창 생성 및 새로운 url로 이동을 위한 model 전달
                 model.addAttribute("c_pnum", "ok");
             }
+        } else {
+            model.addAttribute("c_pnum", "noop");
         }
+
 
         return "my_page/my_page";
     }
 
     @PostMapping("/mypage_wtihProc")
-    public String mypage_wtihProc(HttpSession session) {
+    public String mypage_wtihProc(HttpSession session, MemberDto memberDto) {
         // Session 정보 수집
         SessionDto svo = (SessionDto) session.getAttribute("svo");
-
-        // 탈퇴 시, session의 id로 Mybatis를 활용해 탈퇴 진행
-        int result = mypageService.getWithresult(svo.getId());
-        if (result == 1) {
-            session.invalidate();
+        if (BCrypt.checkpw(memberDto.getPass(), svo.getPass())) {
+            System.out.println("good");
+            // 탈퇴 시, session의 id로 Mybatis를 활용해 탈퇴 진행
+            int result = mypageService.getWithresult(svo.getId());
+            if (result == 1) {
+                session.invalidate();
+            }
+        } else {
+            System.out.println("fail");
         }
         return "index";
     }
 
     @PostMapping("/mypage_cpassProc")
     public String my_page_cpass(HttpSession session, String usrPw1, String usrPw2, Model model) {
-        
+
         // Session 데이터 수집
         SessionDto svo = (SessionDto) session.getAttribute("svo");
 
@@ -130,14 +136,21 @@ public class MypageController {
         HashMap<String, String> param = new HashMap<String, String>();
 
         param.put("memberId", svo.getId());
-        param.put("nPass", usrPw1);
-        param.put("cPass", usrPw2);
-        
+        param.put("nPass", svo.getPass());
+        param.put("cPass", BCrypt.hashpw(usrPw2, BCrypt.gensalt(10)));
+/*        System.out.println("입력된 비밀번호 : " + usrPw1);
+        System.out.println("암호화된 비밀번호 : " + svo.getPass());
+        System.out.println("변경할 비밀번호 : " + usrPw2);
+        System.out.println("변경된 비밀번호 : " + BCrypt.hashpw(usrPw2, BCrypt.gensalt(10)));*/
         // HashMap으로 비밀번호 변경 업데이트의 매개변수 전달
-        int result = mypageService.getPassupdate(param);
-        if (result == 1) {
-            // 이후 비밀번호 변경 성공 시, myapgealert창과 함께 mypage로 이동하는 url 생성
-            model.addAttribute("c_pass", "ok");
+        if (BCrypt.checkpw(usrPw1, svo.getPass())) {
+            int result = mypageService.getPassupdate(param);
+            if (result == 1) {
+                // 이후 비밀번호 변경 성공 시, myapgealert창과 함께 mypage로 이동하는 url 생성
+                model.addAttribute("c_pass", "ok");
+            }
+        } else {
+            model.addAttribute("c_pass", "noop");
         }
 
         return "/my_page/my_page";

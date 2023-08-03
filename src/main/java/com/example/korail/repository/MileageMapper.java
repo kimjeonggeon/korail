@@ -9,7 +9,9 @@ import java.util.List;
 @Mapper
 public interface MileageMapper {
 
-    int setMileage(String Id, String source,int amount);
+    int setMileage_Reduce(String reservnum);
+
+    int setMileage(String Id, String changeAmount, String specifics);
 
     List<MileageDto> getMileageInfo(HashMap map);
 

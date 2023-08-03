@@ -1,6 +1,7 @@
 package com.example.korail.controller;
 
 import com.example.korail.dto.MemberDto;
+import com.example.korail.dto.MileageDto;
 import com.example.korail.interceptor.BCrypt;
 import com.example.korail.service.MailSendService;
 import com.example.korail.service.MemberService;
@@ -41,7 +42,7 @@ public class JoinController {
         memberDto.setPass(BCrypt.hashpw(memberDto.getPass(),BCrypt.gensalt(10)));
         int result = memberService.getJoinResult(memberDto);
         if(result == 1) {
-            mileageService.setMileage(memberDto.getId(), "회원가입", 3000);
+            mileageService.setMileage(memberDto.getId(), "3000", "회원가입");
             model.addAttribute("join_result","ok");
             return "login/login1";
         } else {

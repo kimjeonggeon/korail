@@ -1,6 +1,7 @@
 package com.example.korail.controller;
 
 import com.example.korail.dto.CardinfoDto;
+import com.example.korail.dto.MileageDto;
 import com.example.korail.dto.OrderDto;
 import com.example.korail.dto.ReservationDto;
 import com.example.korail.service.CardinfoService;
@@ -33,8 +34,9 @@ public class ReservationController {
         ReservationDto rvo = (ReservationDto)session.getAttribute("rvo");
         UUID uuid = UUID.randomUUID();
         DecimalFormat decimalFormat = new DecimalFormat("#,###");
-        int number = Integer.parseInt(rvo.getAdltTotAmt());
-        String price = decimalFormat.format(number);
+        //int number = Integer.parseInt(rvo.getAdltTotAmt());
+        String price = rvo.getAdltTotAmt();
+        //String price = decimalFormat.format(number);
 
         rvo.setEmail(reservationDto.getEmail());
 
@@ -60,10 +62,11 @@ public class ReservationController {
         orderDto.setTrainnum(Integer.parseInt(rvo.getTrainno()));
         orderDto.setTicketqty(Integer.parseInt(rvo.getTicketQty()));
         orderDto.setEmail(rvo.getEmail());
+        System.out.println("Price : " + price);
 
         orderService.getPayment(orderDto);
 
-        mileageService.setMileage(rvo.getId(), "열차 예매", Integer.parseInt(orderDto.getPrice()));
+        mileageService.setMileage(rvo.getId(),price, "열차 예매");
 
         return "reservation/train_reservation_pymcfm";
     }

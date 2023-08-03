@@ -38,6 +38,9 @@ public class KorailRestControlloer {
     @Autowired
     BoardService boardService;
 
+    @Autowired
+    MileageService mileageService;
+
     @GetMapping("/board_write")
     public String board_write(){
         return "/board_write";
@@ -121,6 +124,8 @@ public class KorailRestControlloer {
 
     @GetMapping("reservCancel_check/{reservnum}")
     public String reservCancel_check(@PathVariable String reservnum){
+        System.out.println("Reservnum : " + reservnum);
+        mileageService.setMileage_Reduce(reservnum);
         return orderService.getCancelResult(reservnum);
     }
 
