@@ -21,7 +21,7 @@ $(document).ready(function(){
 		
 		
 	$("#start_city").change(function(){
-		let url2 ="https://apis.data.go.kr/1613000/TrainInfoService/getCtyAcctoTrainSttnList?serviceKey=fia82dW58XZekM3fyfsYQjw24d3TDN%2FOCdtbCQWjlYjltamNE5UGs23S0OiE%2BdghuBeQ%2Bt%2FLjncovmHroyfk1Q%3D%3D&pageNo=1&numOfRows=10&_type=json&cityCode="+$(this).val();
+		let url2 ="https://apis.data.go.kr/1613000/TrainInfoService/getCtyAcctoTrainSttnList?serviceKey=fia82dW58XZekM3fyfsYQjw24d3TDN%2FOCdtbCQWjlYjltamNE5UGs23S0OiE%2BdghuBeQ%2Bt%2FLjncovmHroyfk1Q%3D%3D&pageNo=1&numOfRows=65&_type=json&cityCode="+$(this).val();
 		$.getJSON(url2, function(train){
 			
 			let code = "<option class='c1' value='default'>출발역</option>";
@@ -57,7 +57,7 @@ $(document).ready(function(){
 		
 	
 	$("#end_city").change(function(){
-		let url2 ="https://apis.data.go.kr/1613000/TrainInfoService/getCtyAcctoTrainSttnList?serviceKey=fia82dW58XZekM3fyfsYQjw24d3TDN%2FOCdtbCQWjlYjltamNE5UGs23S0OiE%2BdghuBeQ%2Bt%2FLjncovmHroyfk1Q%3D%3D&pageNo=1&numOfRows=10&_type=json&cityCode="+$(this).val();
+		let url2 ="https://apis.data.go.kr/1613000/TrainInfoService/getCtyAcctoTrainSttnList?serviceKey=fia82dW58XZekM3fyfsYQjw24d3TDN%2FOCdtbCQWjlYjltamNE5UGs23S0OiE%2BdghuBeQ%2Bt%2FLjncovmHroyfk1Q%3D%3D&pageNo=1&numOfRows=65&_type=json&cityCode="+$(this).val();
 		$.getJSON(url2, function(train){
 			
 			let code = "<option class='c2' value='default'>도착역</option>";
@@ -76,49 +76,39 @@ $(document).ready(function(){
 	});*/
 	
 		$("#btnsearch").click(function(){
-			
-			let url ="https://apis.data.go.kr/1613000/TrainInfoService/getStrtpntAlocFndTrainInfo?serviceKey=fia82dW58XZekM3fyfsYQjw24d3TDN%2FOCdtbCQWjlYjltamNE5UGs23S0OiE%2BdghuBeQ%2Bt%2FLjncovmHroyfk1Q%3D%3D&pageNo=1&numOfRows=10&_type=json&depPlaceId="+$("#start").val() +"&arrPlaceId="+$("#end").val()+"&depPlandTime="+$("#traintime").val()+"&trainGradeCode=00";
-					 			$.getJSON(url, function(citys){
+
+			let url ="https://apis.data.go.kr/1613000/TrainInfoService/getStrtpntAlocFndTrainInfo?serviceKey=fia82dW58XZekM3fyfsYQjw24d3TDN%2FOCdtbCQWjlYjltamNE5UGs23S0OiE%2BdghuBeQ%2Bt%2FLjncovmHroyfk1Q%3D%3D&pageNo=1&numOfRows=65&_type=json&depPlaceId="+$("#start").val() +"&arrPlaceId="+$("#end").val()+"&depPlandTime="+$("#traintime").val()+"&trainGradeCode=00";
+
+			$.getJSON(url, function(citys){
+				//alert(JSON.stringify(citys, null, 2)); //citys 결과값 확인용
+
 				let code = "<form name='testForm' action='testProc.jsp' method='post'><div id='d2'>";
-					code += "<table id='testTable'><tr><th>출발역</th><th>도착역</th><th>출발일시</th><th>도착시간</th><th>열차명</th><th>열차번호</th><th>운임</th></tr>";
-				for(kobi of citys.response.body.items.item){
-					
-					code +="<td>"+kobi.depplacename+"</td>";
-					code +="<td>"+kobi.arrplacename+"</td>";
-					code +="<td>"+kobi.depplandtime+"</td>";
-					code +="<td>"+kobi.arrplandtime+"</td>";
-					code +="<td>"+kobi.traingradename+"</td>";
-					code +="<td>"+kobi.trainno+"</td>";
-					code +="<td>"+kobi.adultcharge+"</td>";
-					
-					code += "</tr>";
-				}
+					if (citys.response.body.items == ""){
+						code += "<span id='testSpan'>조회가능한 정보가 없습니다. 경로와 날짜를 확인해주세요.</span>";
+					}else {
+						code += "<table id='testTable'><tr><th>출발역</th><th>도착역</th><th>출발일시</th><th>도착시간</th><th>열차명</th><th>열차번호</th><th>운임</th></tr>";
+						for(kobi of citys.response.body.items.item){
+							code +="<td id='tableT'>"+kobi.depplacename+"</td>";
+							code +="<td>"+kobi.arrplacename+"</td>";
+							code +="<td>"+kobi.depplandtime+"</td>";
+							code +="<td>"+kobi.arrplandtime+"</td>";
+							code +="<td>"+kobi.traingradename+"</td>";
+							code +="<td>"+kobi.trainno+"</td>";
+							code +="<td>"+kobi.adultcharge+"</td>";
 
-				code +="</table>"
-				code +="</div> </form>"
+							code += "</tr>";
+						}
+						code +="</table>"
+					}
+
+					code +="</div> </form>"
+
+
+				$("#d2").remove();
 				
-				
-				
-				$("div#d2").remove();
-				
-				$("div#trainList").after(code);
-				
-				});
-		})
-	
-		
-		
-			
+				$("#trainList").after(code);
 
 
-
-
-
-
-
-
-
-
-
+			});
+		});
 });
-	
