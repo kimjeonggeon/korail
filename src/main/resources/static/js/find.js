@@ -137,7 +137,20 @@ $(document).ready(function(){
 	$("#mail-Check-Btn").click(function(){
 			$(".authnum").css('display','block');
 });
+//비밀번호 변경
+$("#btnChange").click(function() {
 
+	var passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
+	var password = $("#newpass").val();
+if($("#newpass").val() == "" || passwordRegex.test(password)) {
+	alert("패스워드를 대문자,소문자,숫자 포함하여 8자 이상 입력해주세요");
+	$("#pass").focus();
+	return false;
+}else{
+	changeForm.submit();
+
+	}
+});//btnchange
 
 
 

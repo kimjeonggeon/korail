@@ -1,8 +1,11 @@
 package com.example.korail.controller;
 
 import com.example.korail.dto.MemberDto;
+import com.example.korail.dto.SessionDto;
+import com.example.korail.interceptor.BCrypt;
 import com.example.korail.service.MailSendService;
 import com.example.korail.service.MemberService;
+import oracle.jdbc.proxy.annotation.Post;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,6 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.servlet.http.HttpSession;
+import java.util.HashMap;
 
 @Controller
 public class FindController {
@@ -36,11 +40,24 @@ public class FindController {
     }
 
     @PostMapping("find_pass2")
-    public String findpass2(HttpSession session, String email,Model model){
-        MemberDto mvo = memberService.getFindPassResult(email);
-
-        model.addAttribute("mvo",mvo);
-
+    public String findpass2(HttpSession session, MemberDto memberDto){
+        session.setAttribute("mvo",memberDto);
         return "find_pass/find_pass2";
     }
+    @PostMapping("change_proc")
+    public String changePass(HttpSession session, String newpass){
+        MemberDto memberDto = (MemberDto) session.getAttribute("mvo");
+        HashMap<String, String> param = new HashMap<String, String>();
+        param.put("memberEmail", memberDto.getEmail());
+        param.put("Pass", newpass);
+
+        // 새로운 비밀번호를 해시화하여 memberDto에 설정
+        memberDto.setPass(BCrypt.hashpw(newpass, BCrypt.gensalt(10)));
+
+        // 데이터베이스에 새로운 비밀번호를 업데이트
+        memberService.updateMemberPassword(param);
+        return "login/login1";
+    }
+
+
 }

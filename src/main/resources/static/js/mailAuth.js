@@ -9,7 +9,6 @@
 			const checkInput = $('.mail-check-input') // 인증번호 입력하는곳 
 				$("#email1").val($('#userEmail1').val());
 				$("#email2").val($('#userEmail2').val());
-				alert(email);
 			$.ajax({
 				type : 'get',
 				url : 'mailCheck/'+email, // GET방식이라 Url 뒤에 email을 뭍힐수있다.
