@@ -64,7 +64,7 @@ $(document).ready(function(){
 			 예매 취소 모달 창
 	 *******************************/
 	   // 모달 열기 버튼에 대한 클릭 이벤트 핸들러
-	  $("#cancelReserv").click(function() {
+		  $("#cancelReserv").click(function() {
 	 	
 	 	if($("#clickVal_depPlandTime").val() != ""){
 	 		
@@ -279,10 +279,10 @@ $(document).ready(function(){
 							  showCancelButton: false,
 							  confirmButtonColor: '#74b3c7',
 							  confirmButtonText: '확인'
-						  
+
 						}).then((result) => {
 							$(location).attr("href","http://localhost:9000/reservation_main");
-						});									 
+						});
 					}
 				}
 			});//ajax

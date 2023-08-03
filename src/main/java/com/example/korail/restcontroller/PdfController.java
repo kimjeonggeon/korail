@@ -63,7 +63,6 @@ public class PdfController {
             }
 
             String reservnum = url.substring(startIndex, endIndex);
-            System.out.println("reservnum: " + reservnum);
             reservnums.add(reservnum);
         }
 

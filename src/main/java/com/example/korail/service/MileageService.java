@@ -16,7 +16,9 @@ public class MileageService {
     @Autowired
     private MileageMapper mileageMapper;
 
-    public int setMileage(String Id, String source,int amount) { return mileageMapper.setMileage(Id, source, amount);}
+    public int setMileage_Reduce(String reservnum) { return mileageMapper.setMileage_Reduce(reservnum);}
+
+    public int setMileage(String Id, String changeAmount, String specifics) { return mileageMapper.setMileage(Id, changeAmount, specifics);}
 
     public List<MileageDto> getMileageInfo(Map tempMap) {
         return mileageMapper.getMileageInfo((HashMap) tempMap);

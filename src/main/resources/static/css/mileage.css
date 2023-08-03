@@ -8,10 +8,10 @@ body, html {
     padding: 20px;
 }
 
-h1 {
+h1.title {
     margin: 0;
     padding: 10px;
-    background-color: #a13ac7;
+    background-color: #333;
     color: #fff;
     font-size: 24px;
     text-align: center;
@@ -28,8 +28,9 @@ h1 {
 }
 
 .board_list th {
-    background-color: #f1c40f;
+    background-color: #555;
     font-weight: bold;
+    color: #fff;
     text-align: center;
 }
 
@@ -45,3 +46,13 @@ h1 {
     text-align: center;
     margin-top: 20px;
 }
+
+.tr th {
+    color: #fff;
+    background: #666;
+}
+
+.tr {
+    font-weight: bold;
+    color: #6b6666;
+    }

@@ -24,13 +24,13 @@
 							<div class="box_list">
 								<h4>예매</h4>
 								<ul>
-									<li><a href="http://localhost:9000/train_reservation_rotinf.do">고속버스 예매</a></li>
-									<li><a href="http://localhost:9000/reservation_main.do">예매확인/취소/변경</a></li>
+									<li><a href="http://localhost:9000/train_reservation_rotinf">고속버스 예매</a></li>
+									<li><a href="http://localhost:9000/reservation_main">예매확인/취소/변경</a></li>
 								</ul>
 								<h4>운행정보</h4>
 								<ul>
-									<li><a href="http://localhost:9000/train_timetable.do">시간표 조회</a></li>
-									<li><a href="http://localhost:9000/train_route_info.do">기차역 정보</a></li>
+									<li><a href="http://localhost:9000/train_timetable">시간표 조회</a></li>
+									<li><a href="http://localhost:9000/train_info/route_info_json">기차역 정보</a></li>
 								</ul>
 							</div>
 						</div>
@@ -39,11 +39,11 @@
 							<div class="box_list">
 								<h4>마이페이지</h4>
 								<ul>
-									<li><a href="http://localhost:9000/mypage.do">나의 정보</a></li>
-									<li><a href="http://localhost:9000/mypage.do">비밀번호 변경</a></li>
-									<li><a href="http://localhost:9000/mypage.do">휴대폰번호 변경</a></li>
-									<li><a href="http://localhost:9000/s_reservation.do">우대예약  등록</a></li>
-									<li><a href="http://localhost:9000/pmyhis.do">결제내역조회</a></li>
+									<li><a href="http://localhost:9000/mypage">나의 정보</a></li>
+									<li><a href="http://localhost:9000/mypage">비밀번호 변경</a></li>
+									<li><a href="http://localhost:9000/mypage">휴대폰번호 변경</a></li>
+									<li><a href="http://localhost:9000/spurchase">우대예약  등록</a></li>
+									<li><a href="http://localhost:9000/pmyhis">결제내역조회</a></li>
 								</ul>
 							</div>
 						</div>
@@ -52,13 +52,13 @@
 							<div class="box_list">
 								<h4>이용안내</h4>
 								<ul>
-									<li><a href="http://localhost:9000/info_reservation.do">예매 안내</a></li>
-									<li><a href="http://localhost:9000/info_payment.do">결제수단 안내</a></li>
-									<li><a href="http://localhost:9000/info_refund.do">승차권 환불안내</a></li>
+									<li><a href="http://localhost:9000/reservation_info">예매 안내</a></li>
+									<li><a href="http://localhost:9000/payment_info">결제수단 안내</a></li>
+									<li><a href="http://localhost:9000/refund_info">승차권 환불안내</a></li>
 								</ul>
 								<h4>고객센터</h4>
 								<ul>
-									<li><a href="http://localhost:9000/notice_list.do?category=all&cvalue=all&page=1">공지사항</a></li>
+									<li><a href="http://localhost:9000/notice_list_json">공지사항</a></li>
 								</ul>
 							</div>
 						</div>

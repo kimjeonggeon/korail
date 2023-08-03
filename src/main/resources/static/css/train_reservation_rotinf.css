@@ -1303,7 +1303,7 @@ h4 + [class *='tbl'],
     border-collapse: collapse;
 }
 
-..tbl_typel caption {
+.tbl_typel caption {
     height: 0;
     width: 0;
     font-size: 0;
