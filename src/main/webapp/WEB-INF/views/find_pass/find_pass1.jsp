@@ -35,7 +35,7 @@
 	
 	<form name = "verti" action ="find_pass2" method ="POST">
 	<div class= "v_noti">
-	<p class="join2_p"> 본인 인증을 위한 이메일을 입력해 주세요.</p>
+	<p class="join2_p"> 비밀번호 찾고자 하는 이메일을 입력해 주세요.</p>
 	</div>
                 	 
 						<div class="login_id" id="authsend">

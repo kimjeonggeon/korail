@@ -114,4 +114,15 @@
         VALUES (#{id}, #{pass}, #{name}, #{email}, #{tel}, #{pnumber}, #{birth}, #{gender}, sysdate, ('M_'||ltrim(to_char(sequ_ktx_mileage.nextval,'0000'))), null, null, null, null)
     </insert>
 
+
+
+    <update id="update" parameterType="HashMap">
+        UPDATE KTX_MEMBER
+        SET PASS=#{nPass}
+        WHERE email = #{memberEmail}
+    </update>
+
+
+
+
 </mapper>

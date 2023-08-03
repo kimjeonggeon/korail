@@ -33,20 +33,26 @@
 	<div class = "verti_form">
 	
 	<div class= "v_noti">
-	<p class="join2_p"> 회원님의 비밀번호는 다음과 같습니다.</p>
-	
+	<p class="join2_p"> 변경하실 비밀번호를 입력해주세요.</p>
+
+
 	</div>
       <div class="input-group">
-						<label>비밀번호</label>
-						<input type="text" name="userEmail1" id="email1" readonly value="${mvo.pass}"> 
-      
-      
+		  <form name="changeForm" action="/change_proc" method="post" class="changeput">
+		  <ul style="margin-left: 250px;">
+			  <li>
+				  <label style="margin-right: 30px;">비밀번호</label>
+				  <input type="hidden"  class ="join_email" name="userEmail1" id="email1" placeholder ="이메일을 입력해주세요" readonly value="${sessionScope.mvo.email}">
+				  <input type="text" id ="newpass"  name ="newpass" placeholder="*변경하실 비밀번호 8자 이상 영문으로 입력해주세요" class="input1"  >
+				  <button type="button" class="btn_style2" id="btnChange" style="
+    margin-right: 150px;
+">변경하기</button>
+				  <span id="idcheck_msg"></span>
+			  </li>
+		  </ul>
+		  </form>
       </div>            	 
-             <div class="box_searchId">
-					<a href="http://localhost:9000/login" onclick="lgnSearchPwd();" style="margin-left:50px"><span class="ico_searchPW">로그인하기</span></a>
-             </div>
-             
-                	
+
 		<jsp:include page="../footer.jsp"></jsp:include>
 	</div>
 	</div>

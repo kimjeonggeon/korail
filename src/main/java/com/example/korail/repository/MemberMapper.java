@@ -5,6 +5,7 @@ import com.example.korail.dto.PageDto;
 import com.example.korail.dto.SessionDto;
 import org.apache.ibatis.annotations.Mapper;
 
+import java.util.HashMap;
 import java.util.List;
 
 @Mapper
@@ -17,5 +18,5 @@ public interface MemberMapper {
     int emailCheck(String email);
     int idCheck(String id);
     SessionDto loginCheck(MemberDto memberDto);
-
+    int update(HashMap<String, String> param);
 }

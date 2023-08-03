@@ -7,6 +7,7 @@ import com.example.korail.repository.MemberMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
 
 @Service
@@ -49,5 +50,11 @@ public class MemberService {
     public SessionDto getLoginResult(MemberDto memberDto){
         return memberMapper.loginCheck(memberDto);
     }
+
+    public  int updateMemberPassword(HashMap<String, String> param){
+        return memberMapper.update(param);
+    }
+
+
 
 }
