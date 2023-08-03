@@ -8,9 +8,9 @@
 <title>KTX 통합 예매</title>
 <link rel="stylesheet" href="http://localhost:9000/css/train_reservation_alcnsrch.css">
 <script src="http://localhost:9000/js/jquery-3.6.4.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="http://localhost:9000/js/alcnsrch.js"></script>
 <script src="http://localhost:9000/js/reservation_jquery.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <style>
 .bus_time span {
 	height: 40px;

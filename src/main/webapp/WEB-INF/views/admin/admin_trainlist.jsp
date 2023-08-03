@@ -11,9 +11,27 @@
 <script src="http://localhost:9000/js/jquery-3.6.4.min.js"></script>
 <script src="http://localhost:9000/js/reservation_jquery.js"></script>
 <script src="http://localhost:9000/js/ktx_getJson.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <style>
 	#d2{
 		margin-bottom: 70px;
+	}
+	#testTable{
+		width:800px;
+		margin: auto;
+	}
+	#d2{
+		width: 850px;
+		height: 400px;
+		margin: auto;
+		overflow: auto;
+		margin-bottom: 50px;
+	}
+	#testSpan{
+		text-align: center;
+		display: block;
+		font-size: 18px;
+		color: #999;
 	}
 </style>
 </head>
@@ -44,4 +62,5 @@
 		<jsp:include page="../footer.jsp"></jsp:include>
 	</div>
 </body>
+
 </html>
