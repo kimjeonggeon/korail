@@ -30,7 +30,7 @@
 							
 							<div class="train-route">
 								<nav class="route">
-									<input type="hidden" id="route_name" class="route_name" value="kyeongbu">
+									<input type="hidden" id="category_name" class="category_name" value="kyeongbu">
 									<input type="hidden" id="station_count1" value="1">
 									<input type="hidden" id="station_count2" value="2">
 									<ul>
@@ -45,7 +45,8 @@
 									<div class="line" id="line"></div>
 								</nav>
 								
-								<%-- <div id="station">
+								<%-- <div class="station_data">
+										<div id="station">
 										<div class="station-section two-column">
 											<div class="col-left">
 												<% for(StationVo stationVo : list){ %>
@@ -136,6 +137,7 @@
 
 										</script>
 									</div>
+								</div>
 								</div>--%>
 								<jsp:include page="../footer.jsp"></jsp:include>
 							</div>

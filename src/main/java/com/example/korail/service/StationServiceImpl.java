@@ -15,6 +15,7 @@ public class StationServiceImpl implements StationService {
 
     private StationRepository stationRepository;
 
+
     @Autowired
     public StationServiceImpl(StationRepository theStationRepository) {
         stationRepository = theStationRepository;
@@ -49,10 +50,14 @@ public class StationServiceImpl implements StationService {
         stationRepository.deleteById(theId);
     }
 
-    public List<String> getHistory() {
+    public List<String> historyList() {
         List<String> history = stationRepository.findAll().stream().map(Station::getHistory).collect(Collectors.toCollection(ArrayList::new));
 
         return history;
     }
 
+    @Override
+    public List<String> historyListByStation(String station) {
+        return stationRepository.historyListByStation(station);
+    }
 }
