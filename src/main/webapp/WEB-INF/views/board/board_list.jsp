@@ -11,8 +11,10 @@
 <html>
 <head>
   <link rel="stylesheet" href="http://localhost:9000/css/board.css">
+  <link rel="stylesheet" href="http://localhost:9000/css/am-pagination.css">
   <script src="http://localhost:9000/js/jquery-3.6.4.min.js"></script>
   <script src="http://localhost:9000/js/board.js"></script>
+  <script src="http://localhost:9000/js/am-pagination.js"></script>
     <title>Title</title>
 
 </head>
