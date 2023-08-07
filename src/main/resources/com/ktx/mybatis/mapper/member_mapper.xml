@@ -118,7 +118,7 @@
 
     <update id="update" parameterType="HashMap">
         UPDATE KTX_MEMBER
-        SET PASS=#{nPass}
+        SET PASS= #{Pass}
         WHERE email = #{memberEmail}
     </update>
 
