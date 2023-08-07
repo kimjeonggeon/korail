@@ -19,12 +19,13 @@ public class StationRestController {
         stationService = theStationService;
     }
 
+
     @GetMapping("/route_info_json_data/{category}/{station}")
     public Map route_info_json(@PathVariable String category, @PathVariable String station) {
         List<Station> slist = stationService.findAll();
-        List<String> hlist = stationService.getHistory();
+        List<String> hlist = stationService.historyList();
         //System.out.println(hlist);
-        //System.out.println(slist)
+        //System.out.println(slist);
 
         Map map = new HashMap();
         ArrayList<String> list = new ArrayList<>();
@@ -32,10 +33,10 @@ public class StationRestController {
             String historyData = hlist.get(i);
             StringTokenizer st = new StringTokenizer(historyData, "]");
             while (st.hasMoreTokens()) {
-                list.add(i, st.nextToken() + "]");
-
+                list.add(i, st.nextToken());
             }
         }
+        //System.out.println(list);
         map.put("list", list);
         map.put("slist", slist);
 
