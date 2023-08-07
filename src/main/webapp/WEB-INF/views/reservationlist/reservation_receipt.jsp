@@ -7,23 +7,9 @@
 <title>KTX 통합 예매</title>
 <link rel="stylesheet" href="http://localhost:9000/css/reservationlist.css">
 <script src="http://localhost:9000/js/jquery-3.6.4.min.js"></script>
+<script src="http://localhost:9000/js/html2canvas.js"></script>
+<script src="http://localhost:9000/js/jspdf.min.js"></script>
 <script src="http://localhost:9000/js/reservation_jquery.js"></script>
-	<script src="https://t1.kakaocdn.net/kakao_js_sdk/2.3.0/kakao.min.js"
-			integrity="sha384-70k0rrouSYPWJt7q9rSTKpiTfX6USlMYjZUtr1Du+9o4cGvhPAWxngdtVZDdErlh" crossorigin="anonymous"></script>
-	<script>
-		Kakao.init('b6403c52c67005231281f3087ceac09b'); // 사용하려는 앱의 JavaScript 키 입력
-	</script>
-	<script>
-		// NAVER
-		function shareNaver() {
-			const title = "영수증 출력";
-			const url = "http://localhost:9000/reservation_receipt/${odt.reservnum}";
-			window.open(
-					"https://share.naver.com/web/shareView?url=" + url + "&title=" + title
-			);
-		}
-	</script>
-
 	<style>
 		.share_btn{
 			margin-top: 20px;
@@ -31,12 +17,20 @@
 		.desc_list li:before, p.bul:before{
 			background-color: white;
 		}
-		.share_btn, .share_ul, .share_li{float: left; cursor:pointer;}
+		/*.share_btn, .share_ul, .share_li{float: left; cursor:pointer;}
 		.share_ul{
 			margin: 20px 10px;
+		}*/
+		#savePdfBtn {
+			margin: 20px -5px;
+			border: none;
+			padding: 7px;
+			background: gainsboro;
+			/* color: black; */
+			font-size: inherit;
 		}
-		.share_btn:hover{
-
+		#savePdfBtn:hover{
+			color: black;
 		}
 	</style>
 </head>
@@ -46,42 +40,7 @@
 		<div class="print_head">
 			<ul class="desc_list">
 				<li>현재 페이지에서 출력하신 영수증으로 승차권 대신하여 탑승하실 수 없습니다.</li>
-				<li class="share_btn"><img class="share_img" src="http://localhost:9000/images/share_click.png" style="width: 30px;"></li>
-					<ul class="share_ul" style="display: none;" >
-						<li class="share_li">
-							<span>
-								<script type="text/javascript" src="https://ssl.pstatic.net/share/js/naver_sharebutton.js"></script>
-								<script type="text/javascript">
-								new ShareNaver.makeButton({"type": "c"});
-								</script>
-							</span>
-						</li>
-						<li class="share_li">
-							<a id="kakaotalk-sharing-btn" href="javascript:;" >
-								<img src="https://developers.kakao.com/assets/img/about/logos/kakaotalksharing/kakaotalk_sharing_btn_medium.png" style="width: 25px;"
-									 alt="카카오톡 공유 보내기 버튼" />
-							</a>
-							<script>
-								Kakao.Share.createScrapButton({
-									container: '#kakaotalk-sharing-btn',
-									requestUrl: 'http://localhost:9000/reservation_receipt/${odt.reservnum}'
-								});
-
-								Kakao.Link.createDefaultButton({
-									container:".kakao-link",
-									objectType:"feed",
-									content:{
-										title:"KTX 영수증",
-										description:"모바일에서는 확인이 불가합니다.",
-										link:{
-											webUrl:"http://localhost:9000/reservation_receipt/${odt.reservnum}"
-										},
-									},
-								});
-							</script>
-
-						</li>
-					</ul>
+				<li> <button id="savePdfBtn">pdf 다운로드</button> </li>
 			</ul>
 			<p class="btnBox">
 				<button type="button" onclick="window.print();" class="print">
@@ -90,7 +49,7 @@
 			</p>
 			<span class="bg_line01"><img src="http://localhost:9000/images/img_line_print.png" alt="라인"></span>
 		</div>
-		<div class="receiptWrap">
+		<div class="receiptWrap" id="receiptWrap">
 			<div class="head_top">
 				<p class="tit_receipt">KTX 영수증<span>(카드)</span></p>
 			</div>
@@ -126,5 +85,33 @@
 		</div>
 		<p style="padding: 0 20px">※ 영수증은 승차권이 아닙니다. 이 영수증으로 승차권을 대신하여 탑승하실 수 없습니다.</p>
 	</div>
+
 </body>
+
+<script>
+
+	$('#savePdfBtn').click(function() {
+		html2canvas($('#receiptWrap')[0]).then(function(canvas) {
+			// 캔버스를 이미지로 변환
+			let imgData = canvas.toDataURL('image/png');
+
+			let margin = 50; // 출력 페이지 여백설정
+			let imgWidth = 210 - (50 * 2); // 이미지 가로 길이(mm) A4 기준
+			let pageHeight = imgWidth * 1.414;  // 출력 페이지 세로 길이 계산 A4 기준
+			let imgHeight = canvas.height * imgWidth / canvas.width;
+			let heightLeft = imgHeight;
+
+			let doc = new jsPDF('p', 'mm');
+			let position = margin;
+
+			// 첫 페이지 출력
+			doc.addImage(imgData, 'PNG', margin, position, imgWidth, imgHeight);
+			heightLeft -= pageHeight;
+
+
+			// 파일 저장
+			doc.save('receipt.pdf');
+		});
+	});
+</script>
 </html>
