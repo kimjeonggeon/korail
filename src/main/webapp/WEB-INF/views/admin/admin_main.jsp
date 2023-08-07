@@ -46,7 +46,7 @@
 }
 
 .admin_main li:not(:last-child) {
-  margin-right: 100px;
+  margin-right: 50px;
 }
 
 </style>
