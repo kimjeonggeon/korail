@@ -6,11 +6,23 @@ $(document).ready(function(){
 *************************/
 $("#btn_login").click(function(){
 	if($("#id").val() == ""){
-		alert("아이디를 입력해주세요");
+		Swal.fire({
+			text: "아이디를 입력해주세요.",
+			width: 600,
+			padding: '1.5em',
+			confirmButtonColor: '#74b3c7',
+			confirmButtonText: '확인'
+		});
 		$("#id").focus();
 		return false;
 	}else if($("#pass").val()==""){
-		alert("패스워드를 입력해주세요");
+		Swal.fire({
+			text: "패스워드를 입력해주세요",
+			width: 600,
+			padding: '1.5em',
+			confirmButtonColor: '#74b3c7',
+			confirmButtonText: '확인'
+		});
 		$("#pass").focus();
 		return false;
 	}else{

@@ -18,7 +18,13 @@ $(document).ready(function(){
 
 		$("#btnIdCheck").click(function(){
 		if($("#id").val() == ""){
-			alert("아이디를 입력해주세요");
+			Swal.fire({
+				text: "아이디를 입력해주세요.",
+				width: 600,
+				padding: '1.5em',
+				confirmButtonColor: '#74b3c7',
+				confirmButtonText: '확인'
+			});
 			$("#id").focus();
 			return false;
 		}else{
@@ -66,58 +72,109 @@ $(document).ready(function(){
 	/*******************************
 		회원가입 폼 체크 - 유효성체크(값의 유무만 확인)
 	*******************************/
-	
 	$("#btnJoin").click(function(){
-		var passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
-		var password = $("#pass").val();
 		if($("#id").val() == ""){
-			alert("아이디를 입력해주세요");
+			Swal.fire({
+				text: "아이디를 입력해주세요.",
+				width: 600,
+				padding: '1.5em',
+				confirmButtonColor: '#74b3c7',
+				confirmButtonText: '확인'
+			});
 			$("#id").focus();
 			return false;
 		}else if($("#idcheck_msg").text() == ""){
-			alert("중복체크를 진행해주세요");
+			Swal.fire({
+				text: "중복체크를 진행해주세요.",
+				width: 600,
+				padding: '1.5em',
+				confirmButtonColor: '#74b3c7',
+				confirmButtonText: '확인'
+			});
 			$("#btnIdCheck").focus();
 			return false;
-		}else if($("#pass").val() == "" ||
-			passwordRegex.test(password)){
-			alert("패스워드를 대문자,소문자,숫자 포함하여 8자 이상 입력해주세요");
+		}else if($("#pass").val() == ""){
+			Swal.fire({
+				text: "패스워드를 입력해주세요.",
+				width: 600,
+				padding: '1.5em',
+				confirmButtonColor: '#74b3c7',
+				confirmButtonText: '확인'
+			});
 			$("#pass").focus();
 			return false;
 		}else if($("#cpass").val() == ""){
-			alert("패스워드 확인을 입력해주세요");
+			Swal.fire({
+				text: "패스워드 확인을 입력해주세요.",
+				width: 600,
+				padding: '1.5em',
+				confirmButtonColor: '#74b3c7',
+				confirmButtonText: '확인'
+			});
 			$("#cpass").focus();
 			return false;
 		}else if($("#name").val() == ""){
-			alert("성명을 입력해주세요");
+			Swal.fire({
+				text: "성명을 입력해주세요.",
+				width: 600,
+				padding: '1.5em',
+				confirmButtonColor: '#74b3c7',
+				confirmButtonText: '확인'
+			});
 			$("#name").focus();
 			return false;
 		}else if($("input[name='tel']:checked").length == 0){
-			alert("통신사를 선택해주세요");
+			Swal.fire({
+				text: "통신사를 선택해주세요.",
+				width: 600,
+				padding: '1.5em',
+				confirmButtonColor: '#74b3c7',
+				confirmButtonText: '확인'
+			});
 			return false;
-		}else if($("#phonenumber1").val() == "default"){
-			alert("번호를 입력해주세요");
+		}else if($("input[name='birth']:checked").length == 0){
+			Swal.fire({
+				text: "출생년도를 입력해주세요.",
+				width: 600,
+				padding: '1.5em',
+				confirmButtonColor: '#74b3c7',
+				confirmButtonText: '확인'
+			});
 			return false;
-		}else if($("#phone2").val() == ""){
-			alert("번호을 입력해주세요");
-			$("#phone2").focus();
-			return false;
-		}else if($("#phone3").val() == ""){
-			alert("번호을 입력해주세요");
-			$("#phone3").focus();
-			return false;
-		}else if($("#birth").val() == ""){
-			alert("출생년도를 입력해주세요");
+		}else if($("#pnumber").val() == ""){
+			Swal.fire({
+				text: "폰번호를 입력해주세요.",
+				width: 600,
+				padding: '1.5em',
+				confirmButtonColor: '#74b3c7',
+				confirmButtonText: '확인'
+			});
+			$("#pnumber").focus();
 			return false;
 		}else if($("input[name='gender']:checked").length == 0){
-		alert("성별을 선택해주세요");
-		return false;
+			Swal.fire({
+				text: "성별을 선택해주세요.",
+				width: 600,
+				padding: '1.5em',
+				confirmButtonColor: '#74b3c7',
+				confirmButtonText: '확인'
+			});
+
+			return false;
 		}else{
 			//서버전송
-			alert("회원가입에 성공하셨습니다.")
+			Swal.fire({
+				text: "회원가입에 성공하셨습니다.",
+				width: 600,
+				padding: '1.5em',
+				confirmButtonColor: '#74b3c7',
+				confirmButtonText: '확인'
+			});
 			joinForm.submit();
 		}
 	});	//btnJoin
-/******
+
+	/******
 
 인증번호 발송 후 나오게 하기
 ******/
@@ -137,7 +194,13 @@ $(document).ready(function(){
 		
 	$("#userEmail3").on("change", function(){
 		if($("#userEmail3").val() == "default"){
-			alert("이메일을 선택해주세요");
+			Swal.fire({
+				text: "이메일을 선택해주세요.",
+				width: 600,
+				padding: '1.5em',
+				confirmButtonColor: '#74b3c7',
+				confirmButtonText: '확인'
+			});
 			$("#userEmail2").val("");
 			$("#usereEmail3").focus();
 		}else if($("#userEmail3").val() == "self"){
@@ -178,7 +241,14 @@ $(document).ready(function(){
 			});
 			return false;
 		}else{
-			alert("이메일을 입력해주세요");
+			Swal.fire({
+				text: "이메일을 입력해주세요.",
+				width: 600,
+				padding: '1.5em',
+				confirmButtonColor: '#74b3c7',
+				confirmButtonText: '확인'
+			});
+
 		}
 	});
 	
