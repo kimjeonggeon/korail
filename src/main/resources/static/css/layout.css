@@ -5,9 +5,9 @@ body {
 	box-sizing: border-box;
 }
 
-div {
+/*div {
 	display: block;
-}
+}*/
 
 #gnb .logo a {
 	font-size: 13px;

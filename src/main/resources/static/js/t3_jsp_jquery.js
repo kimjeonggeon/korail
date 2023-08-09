@@ -42,15 +42,15 @@ $(document).ready(function () {
     });
 
     $("#with-confirm").click(function () {
-        mypage_wtihProc.submit();
+        withForm.submit();
     });
 
     $("#pass-confimr").click(function () {
-        mypage_cpassProc.submit();
+        passForm.submit();
     });
 
     $("#phone-confirm").click(function () {
-        mypage_Phoneproc.submit();
+        phonenumForm.submit();
     });
 
     /**
@@ -86,14 +86,15 @@ $(document).ready(function () {
      */
 
     $(".remodal-cancel").click(function () {
-        $(".with_modal").toggle().css("display", "none");
+/*        $(".with_modal").toggle().css("display", "none");
         $(".with_modal_contents").toggle().css("display", "none");
         $(".pass_modal_cotents").toggle().css("display", "none");
         $(".phonenum_modal_cotents").toggle().css("display", "none");
         $(".with_modal_contents input").val("");
         $(".pass_modal_cotents input").val("");
         $(".phonenum_modal_cotents input").val("");
-        $("span[id*='cmsg']").text("");
+        $("span[id*='cmsg']").text("");*/
+        window.location.href = "http://localhost:9000/mypage";
     });
 
     /***************************************************************************
@@ -568,7 +569,7 @@ $(document).ready(function () {
                     output += '<span class="roundBox">' + obj.sstation + '</span> <span class="roundBox">' + obj.dstation + '</span>';
                     output += '</div>';
                     output += '</td>';
-                    output += '<td><span class="tbl_ico ico_departure">' + stime + " " + dtime + " " + '<span class="txt_date"> 고속 </span></span></td>';
+                    output += '<td><span class="tbl_ico ico_departure">' + obj.depPlandTime + '</span> ' + stime + " " + dtime + " " + '<span class="txt_date"> 고속 </span></td>';
                     output += '<td> 일반 ' + obj.ticketqty + '<br></td>';
                     output += '<td><span class="txt_price">' + obj.price.toLocaleString() + '원</span> <span class="txt_div"> 카드 </span></td>';
                     if (obj.cancel === 1) {
