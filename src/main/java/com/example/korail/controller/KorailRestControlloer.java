@@ -41,14 +41,40 @@ public class KorailRestControlloer {
     @Autowired
     MileageService mileageService;
 
-    @GetMapping("/board_write")
-    public String board_write(){
-        return "/board_write";
+    @GetMapping("board_delete_proc_json/{bid}")
+    public String board_delete_proc_json(@PathVariable String bid){
+        System.out.println("컨트롤러는 와지나?");
+        int result = boardService.delete(bid);
+        System.out.println("result -->"+result);
+        return String.valueOf(result);
+    }
+    @PostMapping("board_update_proc_json/{bid}")
+    public String board_update_proc_json(@PathVariable String bid,BoardDto boardDto){
+        int result = boardService.update(boardDto);
+        return String.valueOf(result);
+    }
+
+    @GetMapping("board_update_json/{bid}")
+    public BoardDto board_update_json(@PathVariable String bid){
+
+        return boardService.boardupdate(bid);
+    }
+    @GetMapping("board_content_json/{bid}")
+    public BoardDto board_content_json(@PathVariable String bid){
+
+        return boardService.content(bid);
+    }
+
+    @PostMapping("board_write_proc")
+    public String board_write_proc(BoardDto boardDto){
+        int result=boardService.getRegistration(boardDto);
+        return String.valueOf(result);
     }
     @GetMapping("board_list_json/{page}")
     public Map board_list_json(@PathVariable String page){
         Map map = new HashMap();
         PageDto pageDto = pageService.getPageResult(new PageDto(page,"board"));
+        //System.out.println("pageDto" + pageDto);
         List<BoardDto> list = boardService.list(pageDto);
         map.put("list",list);
         map.put("page",pageDto);

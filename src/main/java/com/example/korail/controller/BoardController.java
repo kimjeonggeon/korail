@@ -1,5 +1,6 @@
 package com.example.korail.controller;
 
+import com.example.korail.dto.BoardDto;
 import com.example.korail.dto.PageDto;
 import com.example.korail.service.BoardService;
 import com.example.korail.service.PageService;
@@ -8,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class BoardController {
@@ -16,9 +18,12 @@ public class BoardController {
     @Autowired
     BoardService boardService;
 
-    @GetMapping("board_content")
+
+
+    @GetMapping("board_content/{bid}/{page}")
     public String board_content(){
-        return "board/board_content";
+
+        return "/board/board_content";
     }
 
     @GetMapping("board_list/{page}")
@@ -26,7 +31,7 @@ public class BoardController {
         PageDto pageDto = pageService.getPageResult(new PageDto(page,"board"));
         model.addAttribute("list",boardService.list(pageDto));
         model.addAttribute("page",pageDto);
-        return "board/board_list";
+        return "/board/board_list";
     }
 
 

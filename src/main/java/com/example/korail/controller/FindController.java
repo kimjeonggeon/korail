@@ -41,18 +41,21 @@ public class FindController {
 
     @PostMapping("find_pass2")
     public String findpass2(HttpSession session, MemberDto memberDto){
+
         session.setAttribute("mvo",memberDto);
         return "find_pass/find_pass2";
     }
     @PostMapping("change_proc")
-    public String changePass(HttpSession session, String newpass){
+    public String changePass(HttpSession session){
         MemberDto memberDto = (MemberDto) session.getAttribute("mvo");
+        // 새로운 비밀번호를 해시화하여 memberDto에 설정
+        memberDto.setPass(BCrypt.hashpw(memberDto.getPass(),BCrypt.gensalt(10)));
+
         HashMap<String, String> param = new HashMap<String, String>();
         param.put("memberEmail", memberDto.getEmail());
-        param.put("Pass", newpass);
+        param.put("Pass", memberDto.getPass());
 
-        // 새로운 비밀번호를 해시화하여 memberDto에 설정
-        memberDto.setPass(BCrypt.hashpw(newpass, BCrypt.gensalt(10)));
+
 
         // 데이터베이스에 새로운 비밀번호를 업데이트
         memberService.updateMemberPassword(param);

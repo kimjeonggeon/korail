@@ -4,6 +4,6 @@ import lombok.Data;
 
 @Data
 public class BoardDto {
-    String bid,btitle,bcontent,bdate,bfile,bfiles;
+    String rno,bid,btitle,bcontent,bdate,bfile,bfiles,id;
     int bhits;
 }

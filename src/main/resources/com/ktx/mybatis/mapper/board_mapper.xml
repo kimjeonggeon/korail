@@ -4,6 +4,31 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.example.korail.repository.BoardMapper">
+    <delete id="delete" parameterType="String">
+        delete from KTX_BOARD where bid=#{bid}
+    </delete>
+
+    <update id="update" parameterType="com.example.korail.dto.BoardDto" >
+        update KTX_BOARD set
+            BTITLE=#{btitle},BCONTENT=#{bcontent},BDATE=sysdate
+        where bid=#{bid}
+    </update>
+    <select id="boardupdate" parameterType="String" resultType="com.example.korail.dto.BoardDto">
+        SELECT BID,BTITLE,BCONTENT,BHITS,ID,BDATE,BFILE,BFILES FROM KTX_BOARD
+        WHERE BID=#{bid}
+    </select>
+
+    <select id="content" parameterType="String" resultType="com.example.korail.dto.BoardDto">
+        SELECT BID,BTITLE,BCONTENT,BHITS,ID,BDATE,BFILE,BFILES FROM KTX_BOARD
+        WHERE BID=#{bid}
+    </select>
+
+    <insert id="registration" parameterType="com.example.korail.dto.BoardDto">
+        INSERT INTO KTX_BOARD
+            (BID,BTITLE,BCONTENT,BHITS,BDATE,ID,BFILE,BFILES)
+        VALUES
+            ('B_'||LTRIM(TO_CHAR(SEQU_KTX_BOARD.NEXTVAL,'0000')),#{btitle},#{bcontent},0,SYSDATE,'admin','NULL','NULL')
+    </insert>
 
     <select id="list" parameterType="com.example.korail.dto.PageDto" resultType="com.example.korail.dto.BoardDto">
         SELECT RNO, BID, BTITLE, BCONTENT, BHITS, ID, BDATE

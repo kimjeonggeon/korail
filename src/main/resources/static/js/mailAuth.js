@@ -23,7 +23,13 @@
 			}); // end ajax
 			
 		}else{
-			alert("이메일를 입력해주세요");
+			Swal.fire({
+				text: "이메일를 입력해주세요.",
+				width: 600,
+				padding: '1.5em',
+				confirmButtonColor: '#74b3c7',
+				confirmButtonText: '확인'
+			});
 			
 		}
 		}); // end send eamil
@@ -62,6 +68,7 @@
 	$("#userEmail3").on("change", function(){
 		if($("#userEmail3").val() == "default"){
 			alert("이메일을 선택해주세요");
+			
 			$("#userEmail2").val("");
 			$("#usereEmail3").focus();
 		}else if($("#userEmail3").val() == "self"){
