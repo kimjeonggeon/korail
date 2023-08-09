@@ -43,8 +43,6 @@
       
       </div>            	 
              <div class="box_searchId">
- 	           		<a href="http://localhost:9000/login" onclick="lgnSearchId();"><span class="ico_searchId">아이디찾기</span></a>
-					<a href="#none" onclick="lgnSearchPwd();"><span class="ico_searchPW">비밀번호찾기</span></a>
              </div>
              
                 	

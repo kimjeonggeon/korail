@@ -29,7 +29,7 @@
 				<ul style="margin-left: 250px;">
 					<li>
 						<label>아이디</label>
-						<input type="text" id ="id"  name ="id" placeholder="*8자 이상 영문으로 입력해주세요" class="input1" id="id" >
+						<input type="text" id ="id"  name ="id" placeholder="*아이디를 입력해주세요" class="input1" id="id" >
 						<button type="button" class="btn_style2" id="btnIdCheck">중복체크</button>
 						<span id="idcheck_msg"></span>
 					</li>

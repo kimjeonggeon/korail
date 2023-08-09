@@ -14,7 +14,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class MypageController {
@@ -27,6 +29,46 @@ public class MypageController {
 
     @GetMapping("mypage")
     public String my_page(HttpSession session, Model model) {
+
+        // Session 확인 후 'null'의 경우 로그인 페이지로 이동
+        SessionDto svo = (SessionDto) session.getAttribute("svo");
+        if (svo == null) {
+            return "redirect:/mylogin";
+        }
+
+        // Session의 id로 유저 정보를 변수로 생성
+        List<MemberDto> getUserinfo = mypageService.getInfo(svo.getId());
+
+        // 위 변수를 id, pass, phoneNumber를 변수로 세분화, 이는 mypage에서 사용된다.
+        String memberId = getUserinfo.get(0).getId();
+        String memberPnumber = getUserinfo.get(0).getPnumber();
+        // mypage head의 '나의 예매내역' 건수를 나타내는 변수
+        int countNum = mypageService.getCount(memberId);
+
+        // 해당 페이지에 session으로 생성한 변수 할당
+        session.setAttribute("countNum", countNum);
+        session.setAttribute("memberId", memberId);
+
+        session.setAttribute("memberPnumber", memberPnumber);
+
+        String mileage = mileageService.getMileage(memberId);
+
+        mileage = (mileage == null) ? "0" : mileage;
+        model.addAttribute("mileage", mileage);
+
+        return "my_page/my_page";
+    }
+
+    @GetMapping("mypage_{detail}")
+    public String my_page_with(HttpSession session, Model model, @PathVariable("detail") String detail) {
+
+        if(detail.equals("pass")) {
+            model.addAttribute("detail", "pass");
+        } else if (detail.equals("phone")) {
+            model.addAttribute("detail", "phone");
+        } else if (detail.equals("with")) {
+            model.addAttribute("detail", "with");
+        }
 
         // Session 확인 후 'null'의 경우 로그인 페이지로 이동
         SessionDto svo = (SessionDto) session.getAttribute("svo");
@@ -74,7 +116,6 @@ public class MypageController {
 
         // usrPw4는 현재 비밀번호와 비교, usrPw5는 새롭게 바뀔 비밀번호
 
-        MemberDto memberDto = new MemberDto();
 
         // Session 정보 수집
         SessionDto svo = (SessionDto) session.getAttribute("svo");
@@ -85,7 +126,6 @@ public class MypageController {
         // 현재 로그인한 유저의 Id와 Password를 변수로 생성
         List<MemberDto> getUserinfo = mypageService.getInfo(svo.getId());
         String memberId = getUserinfo.get(0).getId();
-        String pass = getUserinfo.get(0).getPass();
 
         // modal창의 입력란에 현재 비밀번호 입력이 정확한 경우
         if (BCrypt.checkpw(usrPw4, svo.getPass())) {
@@ -109,25 +149,30 @@ public class MypageController {
         return "my_page/my_page";
     }
 
-    @PostMapping("/mypage_wtihProc")
-    public String mypage_wtihProc(HttpSession session, MemberDto memberDto) {
+    @PostMapping("/mypage_withProc")
+        public String mypage_withProc(HttpSession session, @RequestParam String userpass, Model model) {
+        String withProcValue = "";
+
         // Session 정보 수집
+        //pathvarable - post @requestparam - post/get
         SessionDto svo = (SessionDto) session.getAttribute("svo");
-        if (BCrypt.checkpw(memberDto.getPass(), svo.getPass())) {
-            System.out.println("good");
+        if (BCrypt.checkpw(userpass, svo.getPass())) {
             // 탈퇴 시, session의 id로 Mybatis를 활용해 탈퇴 진행
             int result = mypageService.getWithresult(svo.getId());
             if (result == 1) {
+                withProcValue = "ok";
                 session.invalidate();
             }
         } else {
-            System.out.println("fail");
+            model.addAttribute("withProc", "no");
+            return "my_page/my_page";
         }
+        model.addAttribute("withProc", withProcValue);
         return "index";
     }
 
     @PostMapping("/mypage_cpassProc")
-    public String my_page_cpass(HttpSession session, String usrPw1, String usrPw2, Model model) {
+    public String my_page_cpass(HttpSession session, String usrPw1, String usrPw2, String usrPw3, Model model) {
 
         // Session 데이터 수집
         SessionDto svo = (SessionDto) session.getAttribute("svo");
@@ -138,23 +183,56 @@ public class MypageController {
         param.put("memberId", svo.getId());
         param.put("nPass", svo.getPass());
         param.put("cPass", BCrypt.hashpw(usrPw2, BCrypt.gensalt(10)));
-/*        System.out.println("입력된 비밀번호 : " + usrPw1);
-        System.out.println("암호화된 비밀번호 : " + svo.getPass());
-        System.out.println("변경할 비밀번호 : " + usrPw2);
-        System.out.println("변경된 비밀번호 : " + BCrypt.hashpw(usrPw2, BCrypt.gensalt(10)));*/
-        // HashMap으로 비밀번호 변경 업데이트의 매개변수 전달
-        if (BCrypt.checkpw(usrPw1, svo.getPass())) {
-            int result = mypageService.getPassupdate(param);
-            if (result == 1) {
-                // 이후 비밀번호 변경 성공 시, myapgealert창과 함께 mypage로 이동하는 url 생성
-                model.addAttribute("c_pass", "ok");
-            }
-        } else {
+
+        if(usrPw1.length() == 0) {
+            model.addAttribute("c_pass", "nothing");
+        } else if (usrPw1.length() < 8) {
+            model.addAttribute("c_pass", "short");
+        } else if (!BCrypt.checkpw(usrPw1, svo.getPass())) {
             model.addAttribute("c_pass", "noop");
+        } else if(usrPw2.equals("") || usrPw3.equals("")) {
+            model.addAttribute("c_pass", "blank");
+        } else if (!usrPw2.equals(usrPw3)) {
+            model.addAttribute("c_pass", "notsame");
+        } else if (!(usrPw2.length() >= 8 && containsBothLettersAndDigits(usrPw1))) {
+            model.addAttribute("c_pass", "wrong");
+        } else {
+            // HashMap으로 비밀번호 변경 업데이트의 매개변수 전달
+            if (BCrypt.checkpw(usrPw1, svo.getPass())) {
+                int result = mypageService.getPassupdate(param);
+                if (result == 1) {
+                    session.invalidate();
+                    model.addAttribute("passC_result", "done");
+                    return "index";
+                }
+            } else {
+                model.addAttribute("c_pass", "noop");
+                System.out.println(55555);
+            }
         }
 
         return "/my_page/my_page";
     }
+
+    private boolean containsBothLettersAndDigits(String input) {
+        boolean hasLetter = false;
+        boolean hasDigit = false;
+
+        for (char c : input.toCharArray()) {
+            if (Character.isLetter(c)) {
+                hasLetter = true;
+            } else if (Character.isDigit(c)) {
+                hasDigit = true;
+            }
+
+            if (hasLetter && hasDigit) {
+                return true; // 영어와 숫자가 혼합된 조건 충족
+            }
+        }
+
+        return false; // 조건 미충족
+    }
+
 
     @GetMapping("mileage")
     public String mypage_modal(Model model) {
