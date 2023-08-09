@@ -23,25 +23,21 @@ public class StationRestController {
     @GetMapping("/route_info_json_data/{category}/{station}")
     public Map route_info_json(@PathVariable String category, @PathVariable String station) {
         List<Station> slist = stationService.findAll();
-        List<String> hlist = stationService.historyList();
-        //System.out.println(hlist);
-        //System.out.println(slist);
 
         Map map = new HashMap();
-        ArrayList<String> list = new ArrayList<>();
-        for(int i=0; i<hlist.size(); i++) {
-            String historyData = hlist.get(i);
-            StringTokenizer st = new StringTokenizer(historyData, "]");
-            while (st.hasMoreTokens()) {
-                list.add(i, st.nextToken());
+        ArrayList<String> list = new ArrayList<String>();
+        List<String> historyData = stationService.historyListByStationAndCategory(station, category);
+        for (int i = 0; i < historyData.size(); i++) {
+            StringTokenizer st = new StringTokenizer(historyData.get(i), "]");
+            while(st.hasMoreTokens()) {
+                list.add(i, (String) st.nextElement());
             }
         }
-        //System.out.println(list);
-        map.put("list", list);
-        map.put("slist", slist);
 
-       //System.out.println(map);
-        return map;
+            map.put("list", list);
+            map.put("slist", slist);
+
+            return map;
+        }
+
     }
-
-}

@@ -14,7 +14,5 @@ public interface StationService {
 
     void deleteById(int theId);
 
-    List<String> historyList();
-
-    List<String> historyListByStation(String station);
+    List<String> historyListByStationAndCategory(String station, String category);
 }
