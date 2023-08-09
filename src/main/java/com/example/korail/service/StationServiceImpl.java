@@ -5,10 +5,8 @@ import com.example.korail.entity.Station;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Service
 public class StationServiceImpl implements StationService {
@@ -50,14 +48,8 @@ public class StationServiceImpl implements StationService {
         stationRepository.deleteById(theId);
     }
 
-    public List<String> historyList() {
-        List<String> history = stationRepository.findAll().stream().map(Station::getHistory).collect(Collectors.toCollection(ArrayList::new));
-
-        return history;
-    }
-
     @Override
-    public List<String> historyListByStation(String station) {
-        return stationRepository.historyListByStation(station);
+    public List<String> historyListByStationAndCategory(String station, String category) {
+        return stationRepository.historyListByStationAndCategory(station, category);
     }
 }

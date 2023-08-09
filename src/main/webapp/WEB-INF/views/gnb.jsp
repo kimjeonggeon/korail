@@ -81,7 +81,7 @@ $(document).ready(function() {
 				<li><a href="http://localhost:9000/login2" class="">예매확인</a></li>
 				<li><a class="info">운행정보</a>
 					<ul class="info_menu" style="display:none;">
-						<li><a href="http://localhost:9000/train_timetable">시간표 조회</a></li>
+						<li><a href="http://localhost:9000/train_info/timetable">시간표 조회</a></li>
 						<li><a href="http://localhost:9000/train_info/route_info_json">기차역 정보</a></li>
 					</ul>
 				</li>

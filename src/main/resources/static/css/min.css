@@ -43,7 +43,7 @@ body {
 }
 
 .station-map-info {
-	width: 70%;
+	width: 100%;
 	padding: 50px 0 0 0;
 	margin: auto;
 }
@@ -351,8 +351,7 @@ h1 {
 	padding: 10px 0;
 }
 .station-basic-info {
-	width: 100%;
-	padding: 50px 0 0 0;
+	width: 80%;
 	margin: auto;
 }
 
@@ -366,7 +365,7 @@ h1 {
 }
 
 .info-top, .info-bottom {
-	margin: 50px 50px 50px 0;	
+	margin: 50px 50px 50px 0;
 }
 
 .container-bottom table {
