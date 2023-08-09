@@ -1,11 +1,11 @@
 $(document).ready(function(){
 
-/****************************
-아이디 찾기 
-****************************/
+	/****************************
+	 아이디 찾기
+	 ****************************/
 	$(function(){
 		$("#find_id_btn").click(function(){
-			location.href ='../find_id/find_id1';	
+			location.href ='../find_id/find_id1';
 		})
 	})
 
@@ -13,10 +13,10 @@ $(document).ready(function(){
 
 
 	/*******************************************
-	아이디 중복체크
-	********************************************/
+	 아이디 중복체크
+	 ********************************************/
 
-		$("#btnIdCheck").click(function(){
+	$("#btnIdCheck").click(function(){
 		if($("#id").val() == ""){
 			Swal.fire({
 				text: "아이디를 입력해주세요.",
@@ -33,25 +33,25 @@ $(document).ready(function(){
 				success : function(result){
 					if(result == 1){
 						$("#idcheck_msg").text("이미 사용중인 아이디 입니다. 다시 입력해주세요")
-						.css("color","red").css("font-size","11px").css("display","block")
-						.css("padding","8px 0px 8px 160px");
+							.css("color","red").css("font-size","11px").css("display","block")
+							.css("padding","8px 0px 8px 160px");
 						$("#id").val("").focus();
 					}else if(result == 0){
 						$("#idcheck_msg").text("사용 가능한 아이디 입니다")
-						.css("color","blue").css("font-size","11px").css("display","block")
-						.css("padding","8px 0px 8px 160px");
+							.css("color","blue").css("font-size","11px").css("display","block")
+							.css("padding","8px 0px 8px 160px");
 						$("#pass").focus();
 					}
 				}
 			});
 		}
 	});
-		
 
-		/*******************************************
-		회원가입 폼 체크 - 비밀번호 & 비밀번호 확인 
-	********************************************/
-	$("#cpass").on("blur", function(){		
+
+	/*******************************************
+	 회원가입 폼 체크 - 비밀번호 & 비밀번호 확인
+	 ********************************************/
+	$("#cpass").on("blur", function(){
 		if($("#pass").val() != "" && $("#cpass").val() != ""){
 			if($("#pass").val() == $("#cpass").val()){
 				$("#cmsg").text("비밀번호가 동일합니다").css("color","blue")
@@ -59,8 +59,8 @@ $(document).ready(function(){
 				$("#name").focus();
 			}else{
 				$("#cmsg").text("비밀번호가 동일하지 않습니다. 다시  입력해주세요")
-				.css("color","red").css("font-size","11px").css("display","block");
-				
+					.css("color","red").css("font-size","11px").css("display","block");
+
 				$("#pass").val("").focus();
 				$("#cpass").val("");
 			}
@@ -70,8 +70,8 @@ $(document).ready(function(){
 
 
 	/*******************************
-		회원가입 폼 체크 - 유효성체크(값의 유무만 확인)
-	*******************************/
+	 회원가입 폼 체크 - 유효성체크(값의 유무만 확인)
+	 *******************************/
 	$("#btnJoin").click(function(){
 		if($("#id").val() == ""){
 			Swal.fire({
@@ -176,22 +176,22 @@ $(document).ready(function(){
 
 	/******
 
-인증번호 발송 후 나오게 하기
-******/
+	 인증번호 발송 후 나오게 하기
+	 ******/
 	$("#mail-Check-Btn").click(function(){
-			$(".authnum").css('display','block');
-});
+		$(".authnum").css('display','block');
+	});
 
 
 
 
 
-/*******************************************
-	회원가입시 메일 전송
-	********************************************/
+	/*******************************************
+	 회원가입시 메일 전송
+	 ********************************************/
 
-		
-		
+
+
 	$("#userEmail3").on("change", function(){
 		if($("#userEmail3").val() == "default"){
 			Swal.fire({
@@ -207,36 +207,36 @@ $(document).ready(function(){
 			$("#userEmail2").val("").focus();
 		}else{
 			$("#userEmail2").val($("#userEmail3").val());
-		}		
-		
+		}
+
 	});
-		
 
 
 
 
-/*******************************************
-	회원가입시 이메일 중복체크
-	********************************************/
 
-		$("#mail-Val-Btn").click(function(){
+	/*******************************************
+	 회원가입시 이메일 중복체크
+	 ********************************************/
+
+	$("#mail-Val-Btn").click(function(){
 		if($("#userEmail1").val() != "" && $("#userEmail2").val() != "" ){
 			$.ajax({
 				url : "email_check?email="+$("#userEmail1").val() + '@' + $('#userEmail2').val() ,
 				success : function(result){
 					if(result == 1){
 						$("#idcheck_msg").text("이미 등록된 이메일 입니다. ")
-						.css("color","red").css("font-size","11px").css("display","block")
-						.css("text-align","center");
+							.css("color","red").css("font-size","11px").css("display","block")
+							.css("text-align","center");
 					}else if(result == 0){
 						$("#mail-Check-Btn").css("display","inline-block");
 						$("#idcheck_msg").text("인증번호 발송을 눌러주세요")
-						.css("color","blue").css("font-size","11px").css("display","block")
-						.css("text-align","center");
-						
-			
+							.css("color","blue").css("font-size","11px").css("display","block")
+							.css("text-align","center");
+
+
 					}
-				
+
 				}
 			});
 			return false;
@@ -251,10 +251,10 @@ $(document).ready(function(){
 
 		}
 	});
-	
-	
-	
-	
-	
+
+
+
+
+
 });
  

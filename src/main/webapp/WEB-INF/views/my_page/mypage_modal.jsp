@@ -12,7 +12,7 @@
 	<div class="with_modal">
 		<!-- 회원탈퇴 -->
 		<div class="with_modal_contents">
-			<form name="withForm" method="post" action="mypage_wtihProc" id="mypage_wtihProc">
+			<form name="withForm" method="post" action="/mypage_withProc" id="mypage_withProc">
 				<div class="cont">
 					<p class="txt">
 						<span class="accent">알림</span><br> <br>탈퇴하시려면 사이트에 등록된
@@ -23,9 +23,8 @@
 						<div class="inner">
 							<div class="box_inputForm">
 								<strong>비밀번호</strong> <span class="box_label"><input
-									type="password" name="pass" id="pass" class="input"
-									placeholder=" 현재 사이트에 등록된 비밀번호를 입력하세요."> </span><span
-									id="cmsg7"></span>
+									type="password" name="userpass" id="userpass" class="input"
+									placeholder=" 현재 사이트에 등록된 비밀번호를 입력하세요."> </span>
 							</div>
 						</div>
 					</div>
@@ -37,9 +36,8 @@
 			</form>
 		</div>
 
-
 		<div class="pass_modal_cotents">
-			<form name="passForm" method="post" action="mypage_cpassProc" id="mypage_cpassProc">
+			<form name="passForm" method="post" action="/mypage_cpassProc" id="mypage_cpassProc">
 				<div class="cont">
 					<p class="txt">
 						<span class="accent">알림</span><br> <br>안전한 고속버스 홈페이지 사용을
@@ -51,21 +49,20 @@
 								<strong>현재 비밀번호</strong> <span class="box_label"> <input
 									type="password" name="usrPw1" id="usrPw1" class="input"
 									placeholder=" 현재 비밀번호를 입력하세요">
-								</span> <span id="cmsg4"></span>
+								</span>
 							</div>
 							<div class="box_inputForm" id="npwdDiv">
 								<strong>새 비밀번호</strong> <span class="box_label"> <input
 									type="password" name="usrPw2" id="usrPw2" class="input"
 									placeholder=" 영문, 숫자 8자리 이상">
-								</span> <span id="cmsg5"></span>
+								</span>
 							</div>
 							<div class="box_inputForm" id="nnpwdDiv">
 								<strong>새 비밀번호 확인</strong> <span class="box_label"> <input
 									type="password" name="usrPw3" id="usrPw3" class="input"
 									placeholder=" 새 비밀번호를 재입력하세요">
-								</span> <span id="cmsg6"></span>
+								</span>
 							</div>
-							<span id="cmsg"></span>
 						</div>
 					</div>
 				</div>
@@ -77,9 +74,8 @@
 			</form>
 		</div>
 
-
 		<div class="phonenum_modal_cotents">
-			<form name="phonenumForm" method="post" action="mypage_Phoneproc" id="mypage_Phoneproc">
+			<form name="phonenumForm" method="post" action="/mypage_Phoneproc" id="mypage_Phoneproc">
 				<div class="cont">
 					<p class="txt">
 						<span class="accent">현재 사이트에 등록된 비밀번호와 변경하실 새로운 휴대폰 번호를
@@ -90,14 +86,12 @@
 							<div class="box_inputForm" id="phDiv1">
 								<strong>비밀번호</strong> <span class="box_label"><input
 									type="password" name="usrPw4" id="usrPw4" class="input"
-									placeholder=" 현재 사이트에 등록된 비밀번호를 입력하세요"> </span><span
-									id="cmsg2"></span>
+									placeholder=" 현재 사이트에 등록된 비밀번호를 입력하세요"> </span>
 							</div>
 							<div class="box_inputForm" id="phDiv2">
 								<strong>휴대폰번호</strong> <span class="box_label"><input
 									maxlength="11" type="text" name="usrPw5" id="usrPw5"
-									class="input" placeholder=" 휴대폰번호를 입력하세요"> </span><span
-									id="cmsg3"></span> <span id="cmsg8"></span>
+									class="input" placeholder=" 휴대폰번호를 입력하세요"> </span>
 							</div>
 						</div>
 					</div>
