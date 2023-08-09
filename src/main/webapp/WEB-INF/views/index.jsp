@@ -13,7 +13,7 @@
 <script>
  let login_result = "${login_result}";
  let logout_result = "${logout_result}";
- 
+
  if(login_result == 'ok'){
 	 alert("로그인에 성공하셨습니다");
  }
@@ -279,6 +279,24 @@
 					</div>
 				
 			</div>
-	</div>	
+	</div>
+<script>
+	let passC_result = "${passC_result}";
+	if(passC_result == 'done'){
+		Swal.fire({
+			title: '알림',
+			text: '비밀번호 변경 완료',
+			icon: 'success'
+		});
+	}
+	let withProc = "${withProc}"
+	if(withProc == 'ok'){
+		Swal.fire({
+			title: '알림',
+			text: '회원 탈퇴 완료',
+			icon: 'success'
+		});
+	}
+</script>
 	</body>
 </html>

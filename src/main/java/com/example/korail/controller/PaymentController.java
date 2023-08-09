@@ -58,7 +58,6 @@ public class PaymentController {
         param.put("date1", date1Str);
         param.put("date2", date2Str);
         param.put("cancel", checked);
-
         // 결제내역 데이터를 ArrayList 형태로 수령
         ArrayList<OrderDto> Dtlist
                 = pmyhisService.getSelect(param);
