@@ -23,7 +23,7 @@ import java.util.*;
 import static java.lang.Integer.parseInt;
 
 @Controller
-@RequestMapping("/reservation/")
+/*@RequestMapping("/reservation/")*/
 public class ReservationlistController {
     @Autowired
     OrderService orderService;
