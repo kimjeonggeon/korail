@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>ktx 예매 사이트</title>
 <link rel="stylesheet" href="http://localhost:9000/css/main.css">
 <script src="http://localhost:9000/js/jquery-3.6.4.min.js"></script>
 <script src="http://localhost:9000/js/main.js"></script>
@@ -17,9 +17,9 @@
  if(login_result == 'ok'){
 	 alert("로그인에 성공하셨습니다");
  }
- if(logout_result == 'ok'){
+ /*if(logout_result == 'ok'){
 	 alert("로그아웃 되었습니다");
- }
+ }*/
 </script>
 <style>
 	#traintime {

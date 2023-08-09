@@ -44,24 +44,22 @@
 					<ul class="depth2-1" style="padding-left: 2px; display: none;">
 						<li><a href="http://localhost:9000/train_timetable">시간표
 								조회</a></li>
-						<li><a href="http://localhost:9000/train_route_info">기차역
+						<li><a href="http://localhost:9000/train_info/train_route_info">기차역
 								정보</a></li>
 					</ul></li>
 				<li><a class="depth3">이용안내</a>
 					<ul class="depth3-1" style="padding-left: 2px; display: none;">
-						<li><a href="http://localhost:9000/payment_info">결제
-								안내</a></li>
-						<li><a href="http://localhost:9000/refund_info">환불
-								안내</a></li>
-						<li><a href="http://localhost:9000/reservation_info">예매안내</a></li>
+						<li><a href="http://localhost:9000/ticket/payment">결제 안내</a></li>
+						<li><a href="http://localhost:9000/ticket/refund">환불 안내</a></li>
+						<li><a href="http://localhost:9000/ticket/reservation">예매 안내</a></li>
 					</ul>
 
 				<li><a class="depth4">회원정보관리</a>
 					<ul class="depth4-1" style="padding-left: 2px; display: none;">
-						<li><a href="mypage">나의정보수정</a></li>
-						<li><a href="spurchase">맞춤형 우대예약 등록</a></li>
+						<li><a href="/mypage">나의정보수정</a></li>
+						<li><a href="/spurchase">맞춤형 우대예약 등록</a></li>
 						<!-- 다자녀, 임신부, 기초생활수급자 -->
-						<li><a href="mypage">회원탈퇴</a></li>
+						<li><a href="/mypage">회원탈퇴</a></li>
 					</ul>
 				
 				<li><a href="http://localhost:9000/admin_main">공지사항</a></li>

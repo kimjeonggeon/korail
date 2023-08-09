@@ -83,7 +83,7 @@ $(document).ready(function(){
 		    
 		    $("#modal_reservnum_input").val( $("#clickVal_reservnum").val());
 
-			alert("clickVal_price"+$("#clickVal_price").val());
+			//alert("clickVal_price"+$("#clickVal_price").val());
 
 			/******** 예매 취소 수수료 계산하기 *********/
 			function parseDateTime(dateStr, timeStr) {
@@ -350,7 +350,7 @@ $(document).ready(function(){
 	 	if ($("#clickVal_reservnum").val() != "") {
 	        var reservnum = $("#clickVal_reservnum").val();
 	        var cid = $("#clickVal_cid").val();
-			alert("cid1->"+cid);
+			//alert("cid1->"+cid);
 	        var url = "/reservation_update/" + reservnum + "/" + cid;
 	        window.location.href = url;
 	        

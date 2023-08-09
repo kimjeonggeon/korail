@@ -20,16 +20,22 @@ public class SessionAuthInterceptor extends HandlerInterceptorAdapter {
 
 			if (svo == null) {
 				String requestURI = request.getRequestURI();
-				if (requestURI.equals("reservation_main")) {
+
+				if (requestURI.startsWith("/reservation")) {
 					response.sendRedirect("/login2");
-				} else if (requestURI.equals("mypage")) {
-					response.sendRedirect("/mylogin");
-				} else if (requestURI.equals("s_reservation")) {
-					response.sendRedirect("s_reservation");
+					return false;
+				} else if (requestURI.equals("/mypage")) {
+					response.sendRedirect("/login");
+					return false;
+				} else if (requestURI.equals("/admin")) {
+					response.sendRedirect("/login");
+					return false;
 				} else {
-					response.sendRedirect("login");
+					response.sendRedirect("/login");
+					return false;
 				}
 			}
-			return false;
+
+			return true;
 		}
 }

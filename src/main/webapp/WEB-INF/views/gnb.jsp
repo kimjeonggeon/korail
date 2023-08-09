@@ -95,7 +95,7 @@ $(document).ready(function() {
 				<li><a class="depth4">회원정보관리</a>
 					<ul class="depth4-1"  style="display: none;">
 						<li><a href="http://localhost:9000/mypage">나의정보수정</a></li>
-						<li><a href="spurchase">맞춤형 우대예약 등록</a></li>
+						<li><a href="/spurchase">맞춤형 우대예약 등록</a></li>
 						<li><a href="http://localhost:9000/mypage">간편구매 정보 등록</a></li>
 						<li><a href="http://localhost:9000/mypage" onclick="bye(event)">회원탈퇴</a></li>
 					</ul>
