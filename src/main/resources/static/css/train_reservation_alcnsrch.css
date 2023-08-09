@@ -22,6 +22,14 @@ a {
     color: #333;
 }
 
+#testSpan{
+    text-align: center;
+    display: block;
+    font-size: 18px;
+    color: #999;
+    padding-top: 200px;
+}
+
 /* .page {
     width: 960px;
     -moz-box-sizing: border-box;
