@@ -270,15 +270,15 @@ $(document).ready(function() {
 	});
 
 	// category all일 땐 값 입력 불가능하기 처리 이벤트
-	$(function() {
-		$("#category").on('change', function() {
-			if($("#category").val() == "all") {
-				$("#cvalue").attr("disabled", true);
-			} else {
-				$("#cvalue").attr("disabled", false);
-			}
-		});
-	});
+	// $(function() {
+	// 	$("#category").on('change', function() {
+	// 		if($("#category").val() == "all") {
+	// 			$("#cvalue").attr("disabled", true);
+	// 		} else {
+	// 			$("#cvalue").attr("disabled", false);
+	// 		}
+	// 	});
+	// });
 
 	// 공지사항 등록 글자수 세기
 	$("#notice_content").keyup(function (e) {
@@ -485,9 +485,9 @@ $(document).ready(function() {
 				output += "</div>";
 				output += "<div class='col-right'>";
 				output += "<div class='container-top'>";
-				output += "<h2 class='title'>" + obj.station + "</h2>";
 				output += "<div class='container-mover'>";
 				output += "<a class='btn' id='before'><</a>";
+				output += "<h2 class='title'>" + obj.station + "</h2>";
 				output += "<a class='btn' id='next'>></a></div>";
 				output += "<img src='http://localhost:9000/images/" + obj.plink + "'class='station_map'></div>";
 				output += "<div class='container-bottom'>";
@@ -496,9 +496,10 @@ $(document).ready(function() {
 				output += "<tr><td>연락처</td>";
 				output += "<td>" + obj.sphone + "</td></tr>";
 
-				output += "</table><div class='button'><a href='#info' class='btn'>기차역 상세</a></div>";
+				output += "</table><div class='button2'><a href='#info' class='btn'>기차역 상세</a></div>";
 				output += "</div></div></div></div>";
 				output += "<div class='station-basic-info'>";
+				output += "<div class='line' id='line2'></div>";
 				output += "<div class='info-top'>";
 				output += "<h3 id='info'>기본 정보</h3>";
 				output += "<div class='station-info'>" + obj.info + "</div></div>";
@@ -512,7 +513,7 @@ $(document).ready(function() {
 
 				output += "<div class='station-map-info'>";
 				output += "<h3>위치/교통</h3>";
-				output += "<div id='map' style='width:1100px;height:700px;'></div></div>";
+				output += "<div id='map' style='width:800px;height:500px;'></div></div>";
 				output += "<script>";
 
 				output += "var container = document.getElementById('map');";

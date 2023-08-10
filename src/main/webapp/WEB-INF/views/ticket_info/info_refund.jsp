@@ -15,7 +15,7 @@
 	<div id="contentWrap">
 	<div class="title-wrap info">
 		<jsp:include page="../header.jsp"></jsp:include>
-		<h2 class="title">승차권 환불 안내</h2>
+		<h2 class="title_station">승차권 환불 안내</h2>
 	</div>
 	<h2 class="title-refund">카드결제로 예매한 기차 승차권 환불 규정에 대한 안내입니다.</h2>
 	<h3 class="title-refund">승차권 환불 규정</h3>

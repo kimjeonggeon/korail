@@ -26,13 +26,13 @@
 			<tr>
 				<th>제목</th>
 				<td>
-					<input type="text" name="ntitle" id="notice_title" value="${notice.ntitle}">
+					<input style="width:800px" type="text" name="ntitle" id="notice_title" value="${notice.ntitle}">
 				</td>
 			</tr>
 			<tr>
 				<th>내용</th>
 				<td>
-					<textarea rows="5" cols="80" name="ncontent" id="notice_content">${notice.ncontent}</textarea>
+					<textarea style="height:300px; width:1100px; resize: none;" maxlength="200" name="ncontent" id="notice_content">${notice.ncontent}</textarea>
 				</td>
 			</tr>
 			<tr>
@@ -54,6 +54,10 @@
 			<tr>
 				<td colspan="2">
 				<div class="button">
+					<div class="text">
+						<p class="textCount">0</p>
+						<p class="textTotal">/200자</p>
+					</div>
 					<a id="btnSubmit_update" class="btn" >수정완료</a>
 					<a id="btnAgain_update" class="btn" >다시쓰기</a>
 					<a href="/admin/notice_content/${notice.nid}/${page}" class="btn">이전페이지</a>
