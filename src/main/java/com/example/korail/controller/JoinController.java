@@ -42,7 +42,7 @@ public class JoinController {
         memberDto.setPass(BCrypt.hashpw(memberDto.getPass(),BCrypt.gensalt(10)));
         int result = memberService.getJoinResult(memberDto);
         if(result == 1) {
-            mileageService.setMileage(memberDto.getId(), "3000", "회원가입");
+            mileageService.setMileage(memberDto.getId(), 3000, "회원가입");
             model.addAttribute("join_result","ok");
             return "login/login1";
         } else {

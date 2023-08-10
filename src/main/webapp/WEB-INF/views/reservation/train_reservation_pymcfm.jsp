@@ -11,19 +11,19 @@
 <body>
 <div>
 	<jsp:include page="../gnb.jsp"></jsp:include>
-	
+
 	<div id ="contentWrap">
 		<div class="title_wrap in_process ticketingT">
-			
+
 			<jsp:include page="../header.jsp"></jsp:include>
-			
+
 		 	<h2>KTX 예매</h2>
-					
+
 					<ol class="process">
 						<li >예매정보입력</li>
 						<li>결제정보입력</li>
 						<li class="active" id="last">예매완료</li>
-						
+
 					</ol>
 		</div>
 
@@ -40,12 +40,12 @@
 					<div class="routeBody">
 						<div class="routeArea route_wrap">
 							<div class="inner">
-							
+
 								<p class="roundBox_start">출발</p>
 								<span class="roundBox departure">${ sessionScope.rvo.depplacename }</span>
 								<p class="roundBox_end">도착</p>
 								<span class="roundBox arrive">${ sessionScope.rvo.arrplacename }</span>
-								
+
 							</div>
 							<div class="detail_info">
 								<span></span>
@@ -85,14 +85,14 @@
 						</div>
 					</div>
 				</div>
-				
+
 
 				<div class="box_detail_info bgGray">
-					
+
 						<div class="routeArea route_wrap mob_route">
 							<div class="tbl_type3">
 								<table>
-									
+
 									<colgroup>
 										<col style="width:80px;">
 
@@ -111,7 +111,7 @@
 						<div class="routeArea route_wrap mob_route">
 							<div class="tbl_type3">
 								<table class="taR">
-									
+
 									<colgroup>
 										<col style="width:50%;">
 
@@ -120,16 +120,16 @@
 
 											<tr>
 												<th scope="row">결제금액</th>
-												<td><strong><span id="tissuAmtView">${ sessionScope.rvo.adltTotAmt }</span></strong><span id="tissuAmtUntView">원</span></td>
+												<td><strong><span id="tissuAmtView">${totalPrice}</span></strong><span id="tissuAmtUntView">원</span></td>
 											</tr>
-				
+
 									</tbody>
 								</table>
 							</div>
 						</div>
-					
+
 				</div>
-								
+
 						<div class="section">
 							<ul class="desc_list">
 								<li>예매하신 승차권을 역에서 발권 시 <strong class="txt_puple">반드시 예매에 사용하신 신용카드를 지참</strong>하셔야 하며, 해당 역의 매표현장에 제시하신 후 예매된 사항이 있다고 말씀하시면 예매하신 승차권을 발권해 드립니다.</li> <!-- 191118 수정 -->
@@ -139,14 +139,11 @@
 							</ul>
 						</div>
 
-						<p class="btns col1" id="mrsInqrTissu"> 
+						<p class="btns col1" id="mrsInqrTissu">
 							<a href="http://localhost:9000/reservation_main" class="btnL btn_cancel">예매 확인</a>
 						</p>
-					
-					
-				
 			</div>
 		</div>
-</div>			
+</div>
 </body>
 </html>

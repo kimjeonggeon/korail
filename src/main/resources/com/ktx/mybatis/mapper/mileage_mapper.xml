@@ -5,49 +5,71 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.korail.repository.MileageMapper">
 
-    <select id="getMileageInfo" parameterType="map"
-            resultType="com.example.korail.dto.MileageDto">
-        SELECT RNO, MID, ID, AccumulationDate, ChangeAmount, specifics, ExpirationDate, type, SUM(ChangeAmount) OVER (ORDER BY AccumulationDate) AS accumulatedAmount
-        FROM
-            (SELECT ROWNUM RNO, MID, ID, AccumulationDate, ChangeAmount, specifics, ExpirationDate, type
-             FROM
-                 (SELECT MID, ID, AccumulationDate, ChangeAmount, specifics, ExpirationDate, type FROM KTX_MILEAGE_HISTORY ORDER BY AccumulationDate DESC))
-        WHERE ID = #{memberId} AND RNO BETWEEN #{pageDto.startCount} AND #{pageDto.endCount}
+    <select id="getMileageInfo" parameterType="map" resultType="com.example.korail.dto.MileageDto">
+        SELECT RNO,MID,ID,AccumulationDate,ChangeAmount,specifics,ExpirationDate,type,
+               SUM(ChangeAmount) OVER (ORDER BY AccumulationDate) AS accumulatedAmount
+        FROM (SELECT ROWNUM RNO,MID,ID,AccumulationDate,ChangeAmount,specifics,ExpirationDate,type
+              FROM (SELECT MID, ID, AccumulationDate, ChangeAmount, specifics, ExpirationDate, type
+                    FROM KTX_MILEAGE_HISTORY
+                    WHERE ID = #{memberId}
+                    ORDER BY AccumulationDate DESC))
+        WHERE RNO BETWEEN #{pageDto.startCount} AND #{pageDto.endCount}
     </select>
 
-    <select id="getMileage" parameterType="String" resultType="String">
+
+    <select id="getMileage" parameterType="String" resultType="Int">
         SELECT SUM(ChangeAmount) AS TotalChangeAmount
         FROM KTX_MILEAGE_HISTORY
-        WHERE ID= #{memberId}
+        WHERE ID = #{memberId}
     </select>
 
     <insert id="setMileage" parameterType="String">
-        INSERT INTO KTX_MILEAGE_HISTORY (MID, ID, AccumulationDate, ChangeAmount, specifics, ExpirationDate, TYPE)
+        INSERT INTO KTX_MILEAGE_HISTORY (MID, ID, AccumulationDate, ChangeAmount, TYPE, ExpirationDate, specifics)
         VALUES (('M_'||ltrim(to_char(sequ_ktx_mileage.nextval,'0000'))), #{Id}, SYSDATE,
-        <if test="specifics == '회원가입'">
-            #{changeAmount},
-        </if>
-        <if test="specifics != '회원가입'">
-            #{changeAmount} * 0.05,
-        </if>
-        #{specifics}, ADD_MONTHS(SYSDATE, 12 * 5), 0)
+        <choose>
+            <when test="specifics == '회원가입'">
+                #{changeAmount}
+            </when>
+            <when test="specifics == '열차 예매'">
+                #{changeAmount} * 0.05
+            </when>
+            <when test="specifics == '마일리지 사용'">
+                -#{changeAmount}
+            </when>
+        </choose>,
+        <choose>
+            <when test="specifics == '마일리지 사용'">
+                1
+            </when>
+            <otherwise>
+                0
+            </otherwise>
+        </choose>,
+        <choose>
+            <when test="specifics != '마일리지 사용'">
+                ADD_MONTHS(SYSDATE, 12 * 5)
+            </when>
+            <otherwise>
+                null
+            </otherwise>
+        </choose>,
+        #{specifics})
     </insert>
+
+
 
 
     <insert id="setMileage_Reduce" parameterType="String">
         INSERT INTO KTX_MILEAGE_HISTORY (MID, ID, AccumulationDate, ChangeAmount, specifics, ExpirationDate, TYPE)
-        SELECT
-            'M_' || LTRIM(TO_CHAR(sequ_ktx_mileage.nextval, '0000')),
-            (SELECT ID FROM KTX_ORDER WHERE reservnum = #{reservnum}),
-            SYSDATE,
-            (-TO_NUMBER((SELECT PRICE FROM KTX_ORDER WHERE reservnum = #{reservnum})) * 0.05),
-            '예매 취소',
-            null,
-            1
-        FROM
-            KTX_ORDER
-        WHERE
-            reservnum = #{reservnum}
+        SELECT 'M_' || LTRIM(TO_CHAR(sequ_ktx_mileage.nextval, '0000')),
+               (SELECT ID FROM KTX_ORDER WHERE reservnum = #{reservnum}),
+               SYSDATE,
+               (-TO_NUMBER((SELECT PRICE FROM KTX_ORDER WHERE reservnum = #{reservnum})) * 0.05),
+               '예매 취소',
+               null,
+               1
+        FROM KTX_ORDER
+        WHERE reservnum = #{reservnum}
     </insert>
 
 </mapper>

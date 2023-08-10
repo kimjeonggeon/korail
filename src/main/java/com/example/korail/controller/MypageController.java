@@ -51,9 +51,8 @@ public class MypageController {
 
         session.setAttribute("memberPnumber", memberPnumber);
 
-        String mileage = mileageService.getMileage(memberId);
+        int mileage = mileageService.getMileage(memberId);
 
-        mileage = (mileage == null) ? "0" : mileage;
         model.addAttribute("mileage", mileage);
 
         return "my_page/my_page";
@@ -91,9 +90,8 @@ public class MypageController {
 
         session.setAttribute("memberPnumber", memberPnumber);
 
-        String mileage = mileageService.getMileage(memberId);
+        int mileage = mileageService.getMileage(memberId);
 
-        mileage = (mileage == null) ? "0" : mileage;
         model.addAttribute("mileage", mileage);
 
         return "my_page/my_page";
