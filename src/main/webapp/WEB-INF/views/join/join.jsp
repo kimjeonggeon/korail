@@ -12,6 +12,7 @@
 <jsp:include page="../gnb.jsp"></jsp:include>
 <!--header  -->
 
+
 <div id="contentWrap">
 <div class= "title_wrap loginT">
 			 <h2 class="login_ti">회원가입</h2>

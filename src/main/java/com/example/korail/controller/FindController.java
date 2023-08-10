@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpSession;
 import java.util.HashMap;
@@ -46,19 +47,18 @@ public class FindController {
         return "find_pass/find_pass2";
     }
     @PostMapping("change_proc")
-    public String changePass(HttpSession session){
+    public String changePass(HttpSession session, @RequestParam String pass){
         MemberDto memberDto = (MemberDto) session.getAttribute("mvo");
         // 새로운 비밀번호를 해시화하여 memberDto에 설정
-        memberDto.setPass(BCrypt.hashpw(memberDto.getPass(),BCrypt.gensalt(10)));
-
-        HashMap<String, String> param = new HashMap<String, String>();
+        memberDto.setPass(BCrypt.hashpw(pass,BCrypt.gensalt(10)));
+       /* HashMap<String, String> param = new HashMap<String, String>();
         param.put("memberEmail", memberDto.getEmail());
-        param.put("Pass", memberDto.getPass());
+        param.put("Pass", memberDto.getPass());*/
 
 
 
         // 데이터베이스에 새로운 비밀번호를 업데이트
-        memberService.updateMemberPassword(param);
+        memberService.updateMemberPassword(memberDto);
         return "login/login1";
     }
 

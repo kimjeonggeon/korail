@@ -52,7 +52,7 @@
 	<div id="contentWrap">
 	<div class="title-wrap notice">
 		<jsp:include page="../header.jsp"></jsp:include>
-		<h2 class="title">공지사항</h2>
+		<h2 class="title_station">공지사항</h2>
 	</div>
 	<h2 class="title-notice">KTX 홈페이지의 새로운 소식을 확인하세요.</h2>
 	<div class="search">

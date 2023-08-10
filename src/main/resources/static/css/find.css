@@ -97,6 +97,8 @@ list-style:none;
 		display:block;
 		margin:0px;
 		padding:0px;
+        text-align:center;
+
 	}
 .btnJoin{
 	  width: 90px;
@@ -109,7 +111,6 @@ list-style:none;
   margin: 20px;
 }
 .loginBoth:last-child{
-	text-align:center;
 }
 .loginBoth button:hover{
 		cursor:pointer;

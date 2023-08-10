@@ -41,10 +41,14 @@
 						<input type="text" name="userEmail1" id="email1" readonly value="${mvo.id}"> 
       
       
-      </div>            	 
-             <div class="box_searchId">
-             </div>
-             
+      </div>
+		<ul class= "loginBoth">
+			<li>
+				<a href="http://localhost:9000/login">
+				<button type="button"  id="mail-Check-Btn"  class ="btnJoin">  로그인 </button>
+				</a>
+			</li>
+		</ul>
                 	
 		<jsp:include page="../footer.jsp"></jsp:include>
 	</div>

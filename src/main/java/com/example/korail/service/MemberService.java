@@ -51,8 +51,8 @@ public class MemberService {
         return memberMapper.loginCheck(memberDto);
     }
 
-    public  int updateMemberPassword(HashMap<String, String> param){
-        return memberMapper.update(param);
+    public  int updateMemberPassword(MemberDto memberDto){
+        return memberMapper.update(memberDto);
     }
 
 

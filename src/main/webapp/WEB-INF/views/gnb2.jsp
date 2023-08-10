@@ -29,7 +29,7 @@
 <body>
 	<div id="gnb" class="gnb_pc">
 		<h1 class="logo"
-			style="margin-bottom: 0px; height: 133px; margin-top: 16px; padding-top: 28px;">
+			style="margin-bottom: 0px; height: 105px; margin-top: 16px; padding-top: 28px;">
 			<a href="http://localhost:9000">
 			<img class="gnb_logo" src="http://localhost:9000/images/free-icon-train.png">KTX 통합 예매</a>
 		</h1>
@@ -60,9 +60,7 @@
 						<li><a href="http://localhost:9000/mypage_phone">휴대폰번호 변경</a></li>
 						<li><a href="/spurchase">맞춤형 우대예약 등록</a></li>
 						<li><a href="http://localhost:9000/mypage_with">회원탈퇴</a></li>
-
 					</ul>
-				
 				<li><a href="http://localhost:9000/admin_main">공지사항</a></li>
 			</ul>
 		</div>
