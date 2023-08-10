@@ -877,7 +877,8 @@ colgroup {
     position: relative;
     float: right;
     width: 720px;
-    min-height: 907px;
+    height: 748px;
+   /* min-height: 907px;*/
     border: 1px solid #e6e6e6;
 }
 
@@ -989,7 +990,7 @@ colgroup {
 .ticketBox {
     float: left;
     width: 127px;
-    height: 822px;
+    height: 680px;
     border-right: 1px solid #e6e6e6;
 }
 
@@ -1145,7 +1146,7 @@ input[type="checkbox"], input[type="radio"] {
     right: 1px;
     top: 86px;
     width: 239px;
-    height: 822px;
+    height: 650px;
     border-left: 1px solid #e6e6e6;
 }
 

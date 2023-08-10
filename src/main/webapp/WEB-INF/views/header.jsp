@@ -30,7 +30,7 @@
 					<li><a href="http://localhost:9000/pmyhis">결제내역조회</a></li>
 					<li><a href="http://localhost:9000/sitemap">사이트맵</a></li>
 					<c:if test="${sessionScope.svo.id == 'admin'}">
-					<li><a href="http://localhost:9000/admin_main" style="color:#cfa346; font-weight:bold;">admin</a></li>
+					<li><a href="http://localhost:9000/admin/admin_main" style="color:#cfa346; font-weight:bold;">admin</a></li>
 					</c:if>
 				</ul>
 			</c:otherwise>

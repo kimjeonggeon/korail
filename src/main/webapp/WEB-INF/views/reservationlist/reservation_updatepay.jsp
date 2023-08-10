@@ -76,7 +76,7 @@
 										<ol class="terms_list">
 											<li>제1조 (목적)
 												<ol class="sub_list">
-													<li>본 약관은 티머니(이하 ‘회사’라 합니다)가 제공하는 고속버스 티머니/시외버스 티머니 어플리케이션 서비스 및 고속버스통합예매 홈페이지의 이용과 관련하여 회사와 이용자 간의 권리, 의무 및 기타 제반 사항을 정함에 그 목적이 있습니다.</li>
+													<li>본 약관은 KTX 열차 예매 홈페이지의 이용과 관련하여 회사와 이용자 간의 권리, 의무 및 기타 제반 사항을 정함에 그 목적이 있습니다.</li>
 												</ol>
 											</li>
 											<li>제2조 (약관의 적용)
@@ -89,16 +89,13 @@
 												<ol class="sub_list">
 													<li>① 본 약관에서 사용하는 용어의 정의는 다음과 같습니다.
 														<ol class="sub_list">
-															<li>1. “서비스”란 이용자가 모바일 어플리케이션 상에서 고속ㆍ시외버스 승차권의 예매 및 예매 확인, 고속ㆍ시외버스 출발시간 확인과 기타 부가 기능을 이용 할 수 있도록 회사가 제공하는 서비스(고속버스 티머니 및 시외버스 티머니 어플리케이션, 고속버스통합예매 홈페이지)를 말합니다.</li>
-															<li>2. “모바일 기기”란 어플리케이션의 설치가 가능한 운영체재를 탑재하고 있는 스마트 폰, 태블릿 PC 등의 이동 통신 기기를 말합니다.</li>
-															<li>3. “이용자”란 본 약관에 따라 회사가 제공하는 서비스를 이용하는 회원과 비회원을 말합니다.</li>
-															<li>4. “회원”이란 회사가 정한 회원 가입 절차에 따라 계정 등록을 마친 이용자로서 결제 내역 조회, 1:1문의 등의 추가 기능을 사용할 수 있는 자를 말합니다.</li>
-															<li>5. “비회원”이란 회원 가입 절차에 따른 계정 등록을 하지 않고 서비스를 이용하는 자를 말합니다.</li>
-															<li>6. “모바일 승차권”이란 여객운송 사업자가 발행하는 고속ㆍ시외버스 승차권을 모바일 기기 어플리케이션으로 전송 받은 것을 말합니다.</li>
-															<li>7. “결제”란 이용자가 서비스 내에서 제공되는 결제수단으로 고속ㆍ시외버스 승차권의 예매 대금을 지불하는 행위를 말합니다.</li>
-															<li>8. “환불”이란 어플리케이션에서 예매한 승차권을 취소할 때 예매 대금을 이용자와 회사 간에 약정된 방법과 절차에 따라 이용자에게 돌려주는 것을 말합니다.</li>
-															<li>9. “모바일티머니”란 이동전화, 태블릿, 기타 모바일 기기 내에 장착되는 USIM chip 또는 SE(Secure Element, Embedded SE/Secure Memory card 등, 이하 USIM chip 등이라 함) 등에 회사가 발급하는 선불전자지급수단을 말합니다.</li>
-															<li>10. “신용카드”란 서비스 상에서 고속ㆍ시외버스 승차권의 예매 대금을 결제 할 수 있도록 회사와 계약이 체결 된 은행 또는 신용카드사가 발행한 신용카드 및 체크카드를 말합니다.</li>
+															<li>1. “서비스”란 이용자가 홈페이지 상에서 KTX 열차 승차권의 예매 및 예매 확인, KTX 열차 출발시간 확인과 기타 부가 기능을 이용 할 수 있도록 회사가 제공하는 서비스를 말합니다.</li>
+															<li>2. “이용자”란 본 약관에 따라 회사가 제공하는 서비스를 이용하는 회원과 비회원을 말합니다.</li>
+															<li>3. “회원”이란 회사가 정한 회원 가입 절차에 따라 계정 등록을 마친 이용자로서 결제 내역 조회 등의 추가 기능을 사용할 수 있는 자를 말합니다.</li>
+															<li>4. “비회원”이란 회원 가입 절차에 따른 계정 등록을 하지 않고 서비스를 이용하는 자를 말합니다.</li>
+															<li>5. “결제”란 이용자가 서비스 내에서 제공되는 결제수단으로 KTX 열차 승차권의 예매 대금을 지불하는 행위를 말합니다.</li>
+															<li>6. “환불”이란 홈페이지에서 예매한 승차권을 취소할 때 예매 대금을 이용자와 회사 간에 약정된 방법과 절차에 따라 이용자에게 돌려주는 것을 말합니다.</li>
+															<li>7. “신용카드”란 서비스 상에서 KTX 열차 승차권의 예매 대금을 결제 할 수 있도록 회사와 계약이 체결 된 은행 또는 신용카드사가 발행한 신용카드 및 체크카드를 말합니다.</li>
 														</ol>
 													</li>
 													<li>② 본 약관에서 사용하는 용어의 정의는 제1항에서 정하는 것을 제외하고는 여객운송 사업자의 운송약관, 관계 법령 및 서비스 별 안내에서 정하는 바에 의합니다.</li>
@@ -154,7 +151,7 @@
 											</li>
 											<li>제8조 (회원 탈퇴 및 자격 상실 등)
 												<ol class="sub_list">
-													<li>① 회원은 언제든지 어플리케이션 내 ‘설정’ 메뉴를 통해 회원 탈퇴를 신청 할 수 있습니다. 단, 승차권 예매 후 탑승이 이루어지지 않은 모바일 승차권을 보유하고 있을 경우에는 해당 승차권의 예매를 취소한 후 회원 탈퇴가 가능 하며, 본 약관 제3조 1항의 서비스에서 예매한 승차권 조회 및 이용이 불가 합니다.</li>
+													<li>① 회원은 언제든지 홈페이지 내 ‘설정’ 메뉴를 통해 회원 탈퇴를 신청 할 수 있습니다. 단, 승차권 예매 후 탑승이 이루어지지 않은 승차권을 보유하고 있을 경우에는 해당 승차권의 예매를 취소한 후 회원 탈퇴가 가능 하며, 본 약관 제3조 1항의 서비스에서 예매한 승차권 조회 및 이용이 불가 합니다.</li>
 													<li>② 다음 각 호의 사유에 해당하는 경우 회사는 회원의 자격을 정지 또는 상실 시킬 수 있습니다.
 														<ol class="sub_list">
 															<li>1. 가입 신청 시 허위의 내용을 등록 한 경우</li>
@@ -170,13 +167,13 @@
 											</li>
 											<li>제9조 (승차권 예매)
 												<ol class="sub_list">
-													<li>① 서비스내에서 승차권 예매 시 이용자에게 부과되는 예매 수수료는 없으며, 이용자는 신용카드, 모바일티머니 또는 기타 회사가 추가로 정의하는 결제수단을 통해 결제 할 수 있습니다.</li>
+													<li>① 서비스내에서 승차권 예매 시 이용자에게 부과되는 예매 수수료는 없으며, 이용자는 신용카드, 카카오페이 등의 결제수단을 통해 결제 할 수 있습니다.</li>
 													<li>② 결제 수단 또는 예매 수수료와 관련하여 변경 사항이 발생하는 경우 회사는 그 내용을 서비스 내에 사전 고지 합니다.</li>
 												</ol>
 											</li>
 											<li>제10조 (취소 및 환불)
 												<ol class="sub_list">
-													<li>① 서비스를 통한 예매 건의 취소 마감 시간은 서비스 내에 별도로 안내하며 취소 마감 시간은 여객운송 사업자, 터미널 등 관련 기관의 사정에 의해 변경 될 수 있습니다.</li>
+													<li>① 서비스를 통한 예매 건의 취소 마감 시간은 서비스 내에 별도로 안내하며 취소 마감 시간은 여객운송 사업자, 기차역 등 관련 기관의 사정에 의해 변경 될 수 있습니다.</li>
 													<li>② 승차권 예매 취소에 따른 따른 환불 수수료는 여객운송 사업자의 운송약관이 정한 바에 따릅니다.</li>
 												</ol>
 											</li>
@@ -222,13 +219,10 @@
 											<li>제16조 (회사의 연락처)
 												<p>회사의 상호, 주소, 및 전화번호 등은 다음과 같습니다. </p>
 												<ol class="sub_list">
-													<li>① 상호: 주식회사 티머니</li>
-													<li>② 주소: 서울시 중구 후암로 110 서울시티타워 10층(우편번호 100-741)</li>
-													<!-- <li>
-														<p>③ 전화번호: </p>
-														<span>㈜한국스마트카드 고객센터<br>- 고속버스 전용번호 : 1644-9030<br>- 시외버스 전용번호 : 1644-3070</span>
-													</li> -->
-													<li>④ E-mail : webmaster@tmoney.co.kr</li>
+													<li>① 상호: </li>
+													<li>② 주소: </li>
+
+													<li>④ E-mail : </li>
 												</ol>
 											</li>
 											<li>제17조 (양도금지)
@@ -246,86 +240,116 @@
 								<p class="add_rules" style="margin-bottom:20px;"><strong>부칙</strong>제1조 (시행일)<br>본 약관은 2019년 10월 1일부터 시행합니다.</p>
 							</div>
 						</div>
-						<div class="scroll-element scroll-x scroll-scrolly_visible">
-							<div class="scroll-element_outer">
-								<div class="scroll-element_size"></div>
-								<div class="scroll-element_track"></div>
-								<div class="scroll-bar" style="width: 88px;"></div>
+						<div class="scroll-element scroll-x scroll-scrolly_visible"><div class="scroll-element_outer">
+							<div class="scroll-element_size">
 							</div>
+							<div class="scroll-element_track">
+							</div>
+							<div class="scroll-bar" style="width: 88px;">
+							</div>
+						</div>
 						</div>
 						<div class="scroll-element scroll-y scroll-scrolly_visible">
 							<div class="scroll-element_outer">
-								<div class="scroll-element_size"></div>
-								<div class="scroll-element_track"></div>
-								<div class="scroll-bar" style="height: 5px; top: 0px;"></div>
+								<div class="scroll-element_size">
+								</div>
+								<div class="scroll-element_track">
+								</div>
+								<div class="scroll-bar" style="height: 5px; top: 0px;">
+								</div>
 							</div>
 						</div>
 					</div>
 				</div>
 
-					<div class="agreement_wrap">
-						<div class="agreement_tit">
-							<h4>개인정보 수집 및 이용 동의</h4>
-							<span class="custom_check chk_blue">
-								<input type="checkbox" name="agree" id="agree3" onclick="fnChgCfmBtn();">
+				<div class="agreement_wrap">
+					<div class="agreement_tit">
+						<h4>개인정보 수집 및 이용 동의</h4>
+						<span class="custom_check chk_blue">
+								<input type="checkbox" name="agree" id="agree3">
 								<label for="agree3">동의</label>
 							</span>
-						</div>
-						<div class="scroll-wrapper agreement_cont scrollbar-inner" style="position: relative;">
-							<div class="agreement_cont scrollbar-inner scroll-content scroll-scrolly_visible" style="height: auto; margin-bottom: 0px; margin-right: 0px; max-height: 120px;">
-								<div class="terms_wrap">
-									<h1>개인정보 수집 및 이용 동의</h1>
-									<dl>
-										<dt><span class="emphasis">1. 개인정보를 제공받는 자</span></dt>
-										<dd><p>고속버스 승차권 온라인 예매 서비스의 제공</p></dd>
-										<dt>2. 수집하는 항목</dt>
-										<dd><p>신용카드 번호ㆍ유효기간ㆍ신용카드 비밀번호 앞 2자리, 생년월일, 휴대전화번호</p></dd>
-										<dt><span class="emphasis">3. 보유 및 이용 기간</span></dt><!-- 181121 수정 -->
-										<dd><p>5년 (근거: 전자상거래 등에서의 소비자 보호에 관한 법률)</p></dd>
-										<dt>4. 개인정보 수집 및 이용 동의 거부 시 승차권 예매 하실 수 없습니다.</dt><!-- 181121 추가 -->
-									</dl>
-									<p>시행일자 : 2017년 5월 18일 </p>
-								</div>
-							</div><div class="scroll-element scroll-x scroll-scrolly_visible"><div class="scroll-element_outer"><div class="scroll-element_size"></div><div class="scroll-element_track"></div><div class="scroll-bar" style="width: 88px;"></div></div></div><div class="scroll-element scroll-y scroll-scrolly_visible"><div class="scroll-element_outer"><div class="scroll-element_size"></div><div class="scroll-element_track"></div><div class="scroll-bar" style="height: 51px; top: 0px;"></div></div></div>
-						</div>
 					</div>
-
-					<div class="agreement_wrap">
-						<div class="agreement_tit">
-							<h4>개인정보 제3자 제공에 대한 동의</h4>
-							<span class="custom_check chk_blue">
-								<input type="checkbox" name="agree" id="agree4" onclick="fnChgCfmBtn();">
-								<label for="agree4">동의</label>
-							</span>
-						</div>
-						<div class="scroll-wrapper agreement_cont scrollbar-inner" style="position: relative;"><div class="agreement_cont scrollbar-inner scroll-content scroll-scrolly_visible" style="height: auto; margin-bottom: 0px; margin-right: 0px; max-height: 120px;">
+					<div class="scroll-wrapper agreement_cont scrollbar-inner" style="position: relative;">
+						<div class="agreement_cont scrollbar-inner scroll-content scroll-scrolly_visible" style="height: auto; margin-bottom: 0px; margin-right: 0px; max-height: 120px;">
+							<!-- iframe src="/cmn/IndlInfClcnUtlzAgrm" frameborder="0" scrolling="no" width="100%" height="130" title="개인정보 처리방침" onload="resize(this);"></iframe -->
 							<div class="terms_wrap">
-								<h1>개인정보 제3자 제공에 대한 동의</h1>
+								<h1>개인정보 수집 및 이용 동의</h1>
 								<dl>
-									<dt>1. 개인정보를 제공받는자: 고속버스 터미널, 고속버스운수사</dt>
-									<dd>
-										<p>터미널: </p>
+									<!--  <textarea class="textarea" name="comment"  rows="9" style="width:98%" onfocus="blur()" wrap="hard"> -->
+									<dt>[수집하는 개인정보의 항목]</dt>
 
-										<p>고속운수사: 금호고속㈜ ㈜동부고속 ㈜동양고속 ㈜삼화고속 금호속리산고속㈜ ㈜중앙고속 ㈜천일고속 ㈜한일고속 ㈜동양고속운수 ㈜경기고속 경일고속㈜ ㈜금남고속 ㈜대원고속 대한여객자동차㈜ ㈜아진고속 코리아와이드경북 전북고속 충주 호남고속 고려여객㈜-시외 고 여객자동차㈜ 천일여객㈜ 경원여객㈜ ㈜성남고속 ㈜천마고속 ㈜아성고속 경남여객(시외) 경남여객 서울고속㈜ 새서울고속 대한고속 금건 진흥고속 대원공항 코리아와이드대성 금강고속 강원고속㈜ 광신고속 ㈜경남고속 경남버스㈜-시외 ㈜중부고속 ㈜가야강남 ㈜진안고속 경원여객 ㈜충남고속 한양고속 ㈜삼흥고속</p>
-									</dd>
-									<dt>2. 개인정보를 제공받는 자의 개인정보 이용 목적 : 배차정보 변경, 감차, 사고 등 특수한 상황에서 터미널, 고속사가 고객에게 변경 정보를 고지할 필요가 있을 때 이용</dt>
-									<dt>3. 제공하는 개인정보의 항목 : 휴대폰번호</dt>
-									<dt>4. 개인정보를 제공받는 자의 개인정보 보유 및 이용 기간 : 제공목적 달성 후 즉시 파기</dt>
-									<dt>5. 개인정보 제3자 제공 동시 거부 시 승차원 예매 하실 수 없습니다.</dt>
+									가. 우리 공사는 승차권 구입, 원활한 고객상담, 각종 서비스의 제공을 위해 아래와 같은 최소한의 개인정보를 필수항목으로 수집하고 있습니다.
+									<br>
+									- 수집정보(필수) : 이름, 전화번호, 비밀번호
+									<br>
+									- 수집정보(선택) : 이메일
+									<br>
+									나. 서비스 이용과정에서 아래와 같은 정보들이 자동으로 생성되어 수집될 수 있습니다.
+									<br>
+									- IP주소, 쿠키, 서비스 이용기록, 방문기록 등
+									<br>
+									다. 전자상거래 등에서의 소비자 보호에 관한 법률에 의해 승차권 구매 및 서비스 이용 과정에서 아래와 같은 거래정보들이 수집될 수 있습니다.
+									<br>
+									- 승차권 결제시 : 카드번호, 결제승인번호
+									<br><br>
+
+
+									<dt>[개인정보의 수집 및 이용 목적]</dt>
+
+									<span class="text_point">
+										가. 서비스 제공에 관한 계약 이행  :　열차승차권 구입<br>
+										나. 불만처리 등 민원처리, 고지사항 전달, 분쟁조정을 위한 기록보전<br><br>
+									</span>
+
+									<dt>[개인정보의 보유 및 이용기간]</dt>
+
+									가. 운영근거 : 정보주체동의<br>
+									<span class="text_point">나. 보유기간 : 승차 종료일로부터 5년</span> <br>
 								</dl>
 							</div>
-						</div><div class="scroll-element scroll-x scroll-scrolly_visible"><div class="scroll-element_outer"><div class="scroll-element_size"></div><div class="scroll-element_track"></div><div class="scroll-bar" style="width: 88px;"></div></div></div><div class="scroll-element scroll-y scroll-scrolly_visible"><div class="scroll-element_outer"><div class="scroll-element_size"></div><div class="scroll-element_track"></div><div class="scroll-bar" style="height: 24px; top: 0px;"></div></div></div></div>
-					</div>
+						</div><div class="scroll-element scroll-x scroll-scrolly_visible"><div class="scroll-element_outer"><div class="scroll-element_size"></div><div class="scroll-element_track"></div><div class="scroll-bar" style="width: 88px;"></div></div></div><div class="scroll-element scroll-y scroll-scrolly_visible"><div class="scroll-element_outer"><div class="scroll-element_size"></div><div class="scroll-element_track"></div><div class="scroll-bar" style="height: 51px; top: 0px;"></div></div></div></div>
+				</div>
 
-					<p class="agree_all chk_bor">
+				<div class="agreement_wrap">
+					<div class="agreement_tit">
+						<h4>개인정보 제3자 제공에 대한 동의</h4>
+						<span class="custom_check chk_blue">
+								<input type="checkbox" name="agree" id="agree4">
+								<label for="agree4">동의</label>
+							</span>
+					</div>
+					<div class="scroll-wrapper agreement_cont scrollbar-inner" style="position: relative;"><div class="agreement_cont scrollbar-inner scroll-content scroll-scrolly_visible" style="height: auto; margin-bottom: 0px; margin-right: 0px; max-height: 120px;">
+						<!-- iframe src="/cmn/IndlInfClcnUtlzAgrm" frameborder="0" scrolling="no" width="100%" height="130" title="개인정보 처리방침" onload="resize(this);"></iframe -->
+
+						<div class="terms_wrap">
+							<h1>개인정보 제3자 제공에 대한 동의</h1>
+							<dl>
+								<dt>1. 개인정보를 제공받는자: KTX 열차</dt>
+								<dd>
+									<p>기차역: </p>
+
+									<p>KTX 열차</p>
+								</dd>
+								<dt>2. 개인정보를 제공받는 자의 개인정보 이용 목적 : 배차정보 변경, 감차, 사고 등 특수한 상황에서 기차역, 고속사가 고객에게 변경 정보를 고지할 필요가 있을 때 이용</dt>
+								<dt>3. 제공하는 개인정보의 항목 : 휴대폰번호</dt>
+								<dt>4. 개인정보를 제공받는 자의 개인정보 보유 및 이용 기간 : 제공목적 달성 후 즉시 파기</dt>
+								<dt>5. 개인정보 제3자 제공 동시 거부 시 승차원 예매 하실 수 없습니다.</dt>
+							</dl>
+						</div>
+					</div><div class="scroll-element scroll-x scroll-scrolly_visible"><div class="scroll-element_outer"><div class="scroll-element_size"></div><div class="scroll-element_track"></div><div class="scroll-bar" style="width: 88px;"></div></div></div><div class="scroll-element scroll-y scroll-scrolly_visible"><div class="scroll-element_outer"><div class="scroll-element_size"></div><div class="scroll-element_track"></div><div class="scroll-bar" style="height: 24px; top: 0px;"></div></div></div></div>
+				</div>
+
+				<p class="agree_all chk_bor">
 						<span class="custom_check chk_purple">
 							<input type="checkbox" name="agreeAll" id="agreeAll">
 							<label for="agreeAll">전체 약관에 동의합니다.</label>
 						</span>
-					</p>
-				</div>
+				</p>
 
-				<h4 class="mo_page">가는 편 승차권 정보</h4>
+			</div>
+
+			<h4 class="mo_page">가는 편 승차권 정보</h4>
 				<div class="box_detail_info">
 					<div class="routeHead">
 						<p class="date">${ sessionScope.uvo.rtimes }</p>

@@ -4,7 +4,7 @@ $(document).ready(function(){
 
     function initAjax(page){//ajax를 함수로 만들어서 호출해서 사용가능하도록 한다. / page=페이지 번호
         $.ajax({
-            url : "admin_reservationlist_json_data/"+page+"/" ,
+            url : "/admin_reservationlist_json_data/"+page ,
             success : function(result){
                 //alert(result);	//String으로 받았기때문에 문자인 상태
                 //let jdata = JSON.parse(result);	//넘어온 데이터를 JSON으로 파싱하는 작업
@@ -46,7 +46,7 @@ $(document).ready(function(){
                 });*/
 
                 //페이징 처리 함수 호출 - success안에서 해야함!
-                pager(result.page.dbConut, result.page.pageCount, result.page.pageSize, result.page.reqPage);
+                pager(result.page.dbCount, result.page.pageCount, result.page.pageSize, result.page.reqPage);
 
                 //페이지 번호 클릭 이벤트 처리
                 jQuery('#ampaginationsm').on('am.pagination.change',function(e){

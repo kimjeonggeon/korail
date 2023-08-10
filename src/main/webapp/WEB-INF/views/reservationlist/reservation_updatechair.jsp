@@ -94,7 +94,7 @@ $(document).ready(function(){
 			</div>
 
 			<div class="page" id="seatChcPage">
-				<h3>매수 및 좌석선택</h3>
+				<%--<h3>매수 및 좌석선택</h3>--%>
 
 				<div class="selectSeat_wrap">
 					<!-- compareBox -->

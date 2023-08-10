@@ -284,24 +284,25 @@ public class ReservationlistController {
 
 
     /* admin_main */
-    @GetMapping("admin_main")
+    @GetMapping("/admin/admin_main")
     public String admin_main() {
 
         return "/admin/admin_main";
     }
 
     /* admin - trainTime*/
-    @GetMapping("admin_trainlist")
+    @GetMapping("/admin/admin_trainlist")
     public String admin_trainlist() {
 
         return "/admin/admin_trainlist";
     }
 
     /* admin - reservationlist */
-    @GetMapping("admin_reservationlist")
+    @GetMapping("/admin/admin_reservationlist")
     public String admin_reservationlist(){
         return "/admin/admin_reservationlist";
     }
+
 
 
 
