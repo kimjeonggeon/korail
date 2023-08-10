@@ -28,7 +28,6 @@ public class Admin_memberController {
 	public String admin_member_search(PageDto pageDto, Model model) {
 		pageDto.setServiceName("member");
 		if(pageDto.getCategory().equals("total")){
-
 			pageDto=pageService.getPageResult(pageDto);
 			model.addAttribute("list", memberService.list(pageDto));
 			model.addAttribute("page", pageDto);

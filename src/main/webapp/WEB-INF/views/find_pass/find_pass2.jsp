@@ -43,7 +43,7 @@
 		  <ul style="margin-left: 250px;">
 			  <li>
 				  <label style="margin-right: 30px;">비밀번호</label>
-				  <input type="text" id ="pass"  name ="pass" placeholder="*변경하실 비밀번호 8자 이상 영문으로 입력해주세요" class="input1"  >
+				  <input type="password" id ="pass"  name ="pass" placeholder="*변경하실 비밀번호 8자 이상 영문으로 입력해주세요" class="input1"  >
 				  <button type="button" class="btn_style2" id="btnChange" style="
     margin-right: 150px;
 ">변경하기</button>
