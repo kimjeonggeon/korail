@@ -94,7 +94,7 @@ $("#btnLogin").click(function(){
 	}else if($("#pass").val()==""){
 		//alert("패스워드를 입력해주세요");
 		Swal.fire({
-			text: "패스워드를 입력해주세요",
+			text: "비밀번호를 입력해주세요",
 			width: 600,
 			padding: '1.5em',
 			confirmButtonColor: '#74b3c7',

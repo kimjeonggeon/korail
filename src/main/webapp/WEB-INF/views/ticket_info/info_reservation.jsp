@@ -18,7 +18,6 @@
 		<jsp:include page="../header.jsp"></jsp:include>
 		<h2 class="title_station">예매 안내</h2>
 	</div>
-	<h2 class="title-reservation">홈페이지를 통한 예매는 당일 출발하는 기차의 출발시간 30분 이전까지 예매 가능합니다.</h2>
 	<h2 class="title-reservation">승차권 예매 발권</h2>
 		<div class="reservation">
 			<div class="ticket">
@@ -42,27 +41,22 @@
 	<h2 class="title">수수료</h2>
 	<p class="title">승차권 예매를 취소하실 경우 출발일자를 기준으로 취소 수수료가 부과됩니다.</p>
 	<h4 class="title-cancel">취소수수료</h4>
-	<div class="reservation-line"></div>
 	<table class="reservation-info">
 		<tr>
 			<th>취소시기</th>
 			<th>수수료</th>
 		</tr>
 		<tr>
-			<td>예매 당일 또는 승차일 2일전 취소</td>
+			<td>KTX 출발 3시간 전 취소</td>
 			<td>없음</td>
 		</tr>
 		<tr>
-			<td>예매 후 출발일 1일 전일부터 지정차 출발 1시간 전 취소</td>
+			<td>KTX 출발 3시간 전 ~ 출발시간 전 취소</td>
 			<td>승차권 요금의 5%</td>
 		</tr>
 		<tr>
-			<td>예매 후 지정차 출발 1시간 이내 취소</td>
-			<td>승차권 요금의 10%</td>
-		</tr>
-		<tr>
-			<td>예매하신 지정차 출발 후 목적지 도착예정시간 전 취소</td>
-			<td>승차권 요금의 30%</td>
+			<td>출발 후(역 창구에서 발행 신청)</td>
+			<td></td>
 		</tr>
 	</table>
 	<jsp:include page="../footer.jsp"></jsp:include>

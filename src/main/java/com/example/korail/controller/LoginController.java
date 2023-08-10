@@ -5,6 +5,7 @@ import com.example.korail.dto.ReservationDto;
 import com.example.korail.dto.SessionDto;
 import com.example.korail.interceptor.BCrypt;
 import com.example.korail.service.MemberService;
+import com.example.korail.service.MileageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,6 +19,9 @@ import javax.servlet.http.HttpSession;
 public class LoginController {
     @Autowired
     MemberService memberService;
+
+    @Autowired
+    MileageService mileageService;
 
     @GetMapping("logout")
     public String logout(HttpSession session,Model model){
@@ -59,6 +63,8 @@ public class LoginController {
                     rvo.setId(memberDto.getId());
                     rvo.setEmail(sessionDto.getEmail());
                     rvo.setAdltTotAmt(memberDto.getAdltTotAmt());
+                    int mileage = mileageService.getMileage(memberDto.getId());
+                    session.setAttribute("mileage", mileage);
                     loginReturn = "redirect:/train_reservation_stplcfmpym";
                 } else if (memberDto.getPagename().equals("reservationlist")) {
                     session.setAttribute("id", memberDto.getId());

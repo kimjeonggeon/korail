@@ -29,10 +29,9 @@ body {
 
 
 .title {
-	font-size: 24px;
     color: black;
     text-align: center;
-    margin: 0px;
+    margin: 10px 0;
 }
 
 .title_station {
@@ -99,12 +98,12 @@ body {
 .notice_search {
 	margin: 10px auto;
 	width: 1000px;
+	border-collapse: collapse;
 }
 
 .notice_search th {
 	font-size: 16px;
 	text-align: center;
-	border-collapse: collapse;
 	padding: 0;
 }
 
@@ -219,12 +218,22 @@ h1 {
 	padding: 0;
 }
 
-.train-route .route ul {
+.train-route {
 	display: flex;
 	width: 100%;
 	justify-content: space-between;
 	text-transform: uppercase;
-	color: rgb(200, 175, 255);
+	color: rgb(83, 49, 156);
+	margin: 0 0 16px 0;
+	padding: 0;
+}
+
+.route ul {
+	display: flex;
+	width: 100%;
+	justify-content: space-between;
+	text-transform: uppercase;
+	color: rgb(83, 49, 156);
 	font-weight: 700;
 	margin: 0 0 16px 0;
 	padding: 0;
@@ -240,10 +249,12 @@ h1 {
 	list-style-type: none;
 }
 
+.route ol {
+    list-style-type: circle;
+}
+
 .underline:hover {
-	color: rgb(83, 49, 156);
 	cursor: pointer;
-	font-weight: bold;
 }
 
 .route .active {
@@ -253,10 +264,21 @@ h1 {
 
 .underline {
 	padding: 25px 8px;
-	color: rgb(200, 175, 255);
+	color: rgb(83, 49, 156);
 	font-size: 16px;
 	border-bottom: 3px solid rgb(200, 175, 255);
 	border-style: hidden;
+	font-weight: bold;
+}
+
+.info-top {
+	margin-bottom: 50px;
+}
+
+li .info-bottom {
+	display: flex;
+	flex-direction: column;
+    list-style-type: circle;
 }
 
 .line {
@@ -271,6 +293,10 @@ h1 {
     width: 100%;
    	margin: 0;
     background-color: #bdbdbd;
+}
+
+#info {
+	margin-top: 20px;
 }
 
 #kyeongbu {
@@ -364,8 +390,8 @@ h1 {
 	margin: 50px;
 }
 
-.info-top, .info-bottom {
-	margin: 50px 50px 50px 0;
+.info-bottom {
+	display: block;
 }
 
 .container-bottom table {
@@ -389,9 +415,18 @@ h1 {
 
 .button {
 	position: relative;
-	margin: 20px;
+	margin: 20px auto;
 	display: flex;
 	justify-content: flex-end;
+
+}
+
+.button2 {
+	position: relative;
+	margin: 20px auto;
+	display: flex;
+	justify-content: flex-end;
+	width: 70%;
 
 }
 
@@ -407,26 +442,26 @@ h1 {
   transition: color 0.5s ease;
 }
 
-.btn::before {
-  content: "";
-  width: 100%;
-  height: 100%;
-  background-color: gray;
-  position: absolute;
-  top: 0;
-  left: 0;
-  transform: translateX(-100%);
-  transition: transform 0.5s ease;
-  z-index: -1;
-}
+/*.btn::before {*/
+/*  content: "";*/
+/*  width: 100%;*/
+/*  height: 100%;*/
+/*  background-color: gray;*/
+/*  position: absolute;*/
+/*  top: 0;*/
+/*  left: 0;*/
+/*  transform: translateX(-100%);*/
+/*  transition: transform 0.5s ease;*/
+/*  z-index: -1;*/
+/*}*/
 
-.btn:hover {
-  color: white;
-}
+/*.btn:hover {*/
+/*  color: white;*/
+/*}*/
 
-.btn:hover::before {
-  transform: translateX(0);
-}
+/*.btn:hover::before {*/
+/*  transform: translateX(0);*/
+/*}*/
 
 .reservation {
 	display: grid;
@@ -439,11 +474,9 @@ h1 {
 	width: 70%;
 }
 
-.reservation-line {
-	width: 70%;
-	height: 3px;
-   	margin:auto;
-    background-color: rgb(231, 231, 231);
+#next, #before {
+	height: 20px;
+	margin-top: 10px;
 }
 
 .reservation-info {
@@ -454,6 +487,7 @@ h1 {
 	text-align: center;
 	color: black;
 	font-size: 14px;
+	margin-bottom: 60px;
 }
 
 .reservation-info th {
@@ -536,12 +570,14 @@ h1 {
 	width: 70%;
 	margin: 100px auto;
 	text-align: center;
+	border-collapse: collapse;
 }
 
 .admin_notice_content {
 	width: 80%;
 	margin: 100px auto;
 	text-align: center;
+	border-collapse: collapse;
 }
 
 .admin_notice_content th {
@@ -558,8 +594,8 @@ h1 {
 }
 
 .notice_write, .notice_update, .notice_delete {
-	width: 100%;
 	margin: auto;
+	width: 70%;
 	border: none;
 }
 
@@ -655,6 +691,10 @@ table #testTable th {
     color: black;
 }
 
+#form_write {
+	margin: 0 auto;
+}
+
 .notice_search tr:first-child>th {
 	background-color: #8768A1;
 	color: #FFF;
@@ -679,7 +719,7 @@ table #testTable tr:first-child td {
 }
 
 .notice_write {
-	margin: 200px auto;	
+	margin: 200px auto;
 }
 
 .notice_write tr:last-child>td {
@@ -855,11 +895,11 @@ table #testTable tr:first-child td {
 }
 
 .notice_search tr:nth-child(even) {
-  background: #F5F4F4;
+  background: white;
 }
 
 .notice_list tr:nth-child(even) {
-  background: #F5F4F4;
+  background: white;
 }
 
 #before:hover {
@@ -899,9 +939,6 @@ table #testTable tr:first-child td {
 
 .col-left ul>li {
 	text-decoration: none;
-}
-#map {
-	margin: auto;
 }
 
 #station01 a {
@@ -1031,7 +1068,7 @@ table #testTable tr:first-child td {
 }
 
 .col-left li a:hover {
-	background-color: magenta;
+	background-color: #b8becc;
 	color: white;
 }
 
@@ -1093,7 +1130,7 @@ p#content_content {
 .text {
 	display: flex;
 	justify-content: flex-start;
-	margin-right: 1300px;
+	margin-right: 800px;
 }
 
 #textCount {

@@ -193,7 +193,7 @@ public class KorailRestControlloer {
         return map;
     }
 
-    @GetMapping("admin_reservationlist_json_data/{page}/")
+    @GetMapping("admin_reservationlist_json_data/{page}")
     public Map admin_reservationlist_json_data(@PathVariable String page){
         //System.out.println("page-->"+page);
         Map map = new HashMap();

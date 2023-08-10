@@ -10,9 +10,7 @@ import com.example.korail.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
 import java.text.DecimalFormat;
@@ -20,9 +18,9 @@ import java.util.UUID;
 
 @Controller
 public class ReservationController {
-@Autowired
+    @Autowired
     OrderService orderService;
-@Autowired
+    @Autowired
     CardinfoService cardinfoService;
 
     @Autowired
@@ -30,23 +28,21 @@ public class ReservationController {
 
     //결제 완료 페이지
     @PostMapping("train_reservation_pymcfm")
-    public String train_reservation_pymcfm(ReservationDto reservationDto,HttpSession session, OrderDto orderDto, CardinfoDto cardinfoDto,Model model){
-        ReservationDto rvo = (ReservationDto)session.getAttribute("rvo");
+    public String train_reservation_pymcfm(ReservationDto reservationDto, HttpSession session, OrderDto orderDto, CardinfoDto cardinfoDto, String mileage_use, String adltTotAmt1, Model model) {
+        ReservationDto rvo = (ReservationDto) session.getAttribute("rvo");
         UUID uuid = UUID.randomUUID();
         DecimalFormat decimalFormat = new DecimalFormat("#,###");
         //int number = Integer.parseInt(rvo.getAdltTotAmt());
         String price = rvo.getAdltTotAmt();
         //String price = decimalFormat.format(number);
-
         rvo.setEmail(reservationDto.getEmail());
 
-        if(cardinfoDto.getPaymentmethod().equals("card")) {
+        if (cardinfoDto.getPaymentmethod().equals("card")) {
             cardinfoDto.setRecognizenum(uuid.toString().replaceAll("-", "").substring(0, 10));
             cardinfoService.getPayment(cardinfoDto);
-        }else if(cardinfoDto.getPaymentmethod().equals("kakao")){
+        } else if (cardinfoDto.getPaymentmethod().equals("kakao")) {
             cardinfoService.getPayment(cardinfoDto);
         }
-
         orderDto.setSstation(rvo.getDepplacename());
         orderDto.setStime(rvo.getStart_date());
         orderDto.setDtime(rvo.getEnd_date());
@@ -64,22 +60,43 @@ public class ReservationController {
         orderDto.setEmail(rvo.getEmail());
 
         orderService.getPayment(orderDto);
+        //System.out.println("mileage_use : " + mileage_use);
+        try {
+            int result = mileageService.setMileage(rvo.getId(), Integer.parseInt(rvo.getAdltTotAmt()), "열차 예매");
+            if (result >= 1) {
+                if (!mileage_use.equals("")) {
+                    Thread.sleep(1000);
+                    mileageService.setMileage(rvo.getId(), Integer.parseInt(mileage_use), "마일리지 사용");
+                }
+            }
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
-        mileageService.setMileage(rvo.getId(),price, "열차 예매");
 
+        if (adltTotAmt1 == null || adltTotAmt1.equals("")) {
+            adltTotAmt1 = "0";
+            model.addAttribute("totalPrice", adltTotAmt1);
+        } else {
+            model.addAttribute("totalPrice", adltTotAmt1);
+        }
         return "reservation/train_reservation_pymcfm";
     }
 
     //회원 결제 페이지
     @GetMapping("train_reservation_stplcfmpym")
-    public String train_reservation_stplcfmpym(HttpSession session){
+    public String train_reservation_stplcfmpym(HttpSession session) {
         return "reservation/train_reservation_stplcfmpym";
     }
 
     //비회원 결제 페이지
     @PostMapping("train_reservation_stplcfmpym2")
-    public String train_reservation_stplcfmpym2(ReservationDto reservationDto, HttpSession session){
-        ReservationDto rvo = (ReservationDto)session.getAttribute("rvo");
+    public String train_reservation_stplcfmpym2(ReservationDto reservationDto, HttpSession session) {
+        ReservationDto rvo = (ReservationDto) session.getAttribute("rvo");
 
         rvo.setSeatNum(reservationDto.getSeatNum2());
         rvo.setTicketQty(reservationDto.getTicketQty2());
@@ -91,8 +108,11 @@ public class ReservationController {
 
     //로그인 한 상황
     @GetMapping("stplcfmpym")
-    public String stplcfmpym(HttpSession session,String seatNum, String ticketQty, String id, String email,String adltTotAmt){
-        ReservationDto rvo = (ReservationDto)session.getAttribute("rvo");
+    public String stplcfmpym(HttpSession session, String seatNum, String ticketQty, String id, String email, String adltTotAmt, Model model) {
+        ReservationDto rvo = (ReservationDto) session.getAttribute("rvo");
+
+        int mileage = mileageService.getMileage(id);
+        model.addAttribute("mileage", mileage);
 
         rvo.setSeatNum(seatNum);
         rvo.setTicketQty(ticketQty);
@@ -107,9 +127,9 @@ public class ReservationController {
     //예매 좌석 선택 페이지
     @PostMapping("train_reservation_satschc")
     public String train_reservation_satschc(ReservationDto rvo, HttpSession session
-            ,String depplacename, String arrplacename, String start_date, String end_date, String traingradename, String trainno, String adultcharge, String rtimes){
+            , String depplacename, String arrplacename, String start_date, String end_date, String traingradename, String trainno, String adultcharge, String rtimes) {
 
-        rvo = (ReservationDto)session.getAttribute("rvo");
+        rvo = (ReservationDto) session.getAttribute("rvo");
         rvo.setDepplacename(depplacename);
         rvo.setArrplacename(arrplacename);
         rvo.setStart_date(start_date);
@@ -124,7 +144,7 @@ public class ReservationController {
 
     //시간 선택 페이지
     @GetMapping("train_reservation_alcnsrch/{startId}/{endId}/{rtime}/{start_add}/{end_add}")
-    public String train_reservation_alcnsech(ReservationDto rvo, HttpSession session,@PathVariable String startId,@PathVariable String endId,@PathVariable String rtime,@PathVariable String start_add,@PathVariable String end_add){
+    public String train_reservation_alcnsech(ReservationDto rvo, HttpSession session, @PathVariable String startId, @PathVariable String endId, @PathVariable String rtime, @PathVariable String start_add, @PathVariable String end_add) {
 
         rvo.setStartId(startId);
         rvo.setEndId(endId);
@@ -136,9 +156,10 @@ public class ReservationController {
 
         return "reservation/train_reservation_alcnsrch";
     }
+
     //예매 메인 페이지
     @GetMapping("train_reservation_rotinf")
-    public String train_reservation_rotinf(){
+    public String train_reservation_rotinf() {
         return "reservation/train_reservation_rotinf";
     }
     //메인 페이지

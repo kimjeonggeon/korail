@@ -43,6 +43,9 @@
         from (select rownum rno, id, pass, name, email, pnumber, birth, gender , to_char(mdate,'yyyy-mm-dd') mdate
         from (select id, pass, name, email, pnumber, birth, gender, mdate from ktx_member
         order by mdate desc)
+        <if test='category =="total"'>
+            where * LIKE '%'||#{cvalue}||'%'
+        </if>
         <if test='category =="custname"'>
             where name LIKE '%'||#{cvalue}||'%'
         </if>
@@ -116,10 +119,10 @@
 
 
 
-    <update id="update" parameterType="HashMap">
+    <update id="update" parameterType="com.example.korail.dto.MemberDto">
         UPDATE KTX_MEMBER
-        SET PASS= #{Pass}
-        WHERE email = #{memberEmail}
+        SET PASS= #{pass}
+        WHERE email = #{email}
     </update>
 
 

@@ -31,13 +31,13 @@
 			<tr>
 				<th>제목</th>
 				<td>
-					<input type="text" name="ntitle" id="notice_title">
+					<input style="width:800px" type="text" name="ntitle" id="notice_title">
 				</td>
 			</tr>
 			<tr>
 				<th>내용</th>
 				<td>
-					<textarea style="height:300px; width:1300px; resize: none;" maxlength="200" name="ncontent" id="notice_content" placeholder="텍스트를 입력하세요"></textarea>
+					<textarea style="height:300px; width:1100px; resize: none;" maxlength="200" name="ncontent" id="notice_content" placeholder="텍스트를 입력하세요"></textarea>
 				</td>
 			</tr>
 			<tr>

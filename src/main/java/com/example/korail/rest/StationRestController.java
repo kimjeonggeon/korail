@@ -19,6 +19,22 @@ public class StationRestController {
         stationService = theStationService;
     }
 
+    @GetMapping("/stations")
+    public List<Station> findAll() {
+        return stationService.findAll();
+    }
+
+    @GetMapping("/stations/{stationId}")
+    public Station getStation(@PathVariable int stationId) {
+
+        Station theStation = stationService.findById(stationId);
+
+        if(theStation == null) {
+            throw new RuntimeException("Station id not found - " + stationId);
+        }
+
+        return theStation;
+    }
 
     @GetMapping("/route_info_json_data/{category}/{station}")
     public Map route_info_json(@PathVariable String category, @PathVariable String station) {

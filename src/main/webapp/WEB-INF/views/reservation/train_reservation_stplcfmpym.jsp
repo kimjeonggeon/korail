@@ -1,53 +1,54 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+         pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-<link rel="stylesheet" href="http://localhost:9000/css/train_reservation_stplcfmpym.css">
-<script src="http://localhost:9000/js/jquery-3.6.4.min.js"></script>
-<script src="http://localhost:9000/js/nomember_stplcfmpym.js"></script>
-<script src="http://localhost:9000/js/mailAuth.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<script src="https://cdn.iamport.kr/v1/iamport.js"></script>
-<!-- jQuery -->
-<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
-<!-- iamport.payment.js -->
-<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
+    <meta charset="UTF-8">
+    <title>Insert title here</title>
+    <link rel="stylesheet" href="http://localhost:9000/css/train_reservation_stplcfmpym.css">
+    <script src="http://localhost:9000/js/jquery-3.6.4.min.js"></script>
+    <script src="http://localhost:9000/js/nomember_stplcfmpym.js"></script>
+    <script src="http://localhost:9000/js/mailAuth.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.iamport.kr/v1/iamport.js"></script>
+    <!-- jQuery -->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <!-- iamport.payment.js -->
+    <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
 
-<style>
-	input:focus {
-  		outline: none;
-	}
-</style>
-<script>
-	$(document).ready(function(){
-		let id = "${sessionScope.rvo.id}";
-		let email = "${sessionScope.rvo.email}";
+    <style>
+        input:focus {
+            outline: none;
+        }
+    </style>
+    <script>
+        $(document).ready(function () {
+            let id = "${sessionScope.rvo.id}";
+            let email = "${sessionScope.rvo.email}";
 
 
-		if(id != "GUEST"){
-			$(".pass_user").css("display","none");
-			$("#email").val(email);
-			//alert(email);
-		}
+            if (id != "GUEST") {
+                $(".pass_user").css("display", "none");
+                $("#email").val(email);
+                //alert(email);
+            }
 
-		$("#kakaoradio label").click(function (){
-			$("#kakaopayment").css("display","block");
-			$("#cardpayment").css("display", "none");
-		});
+            $("#kakaoradio label").click(function () {
+                $("#kakaopayment").css("display", "block");
+                $("#cardpayment").css("display", "none");
+            });
 
-		$("#cardradio label").click(function (){
-			$("#kakaopayment").css("display","none");
-			$("#cardpayment").css("display", "block");
-		});
+            $("#cardradio label").click(function () {
+                $("#kakaopayment").css("display", "none");
+                $("#cardpayment").css("display", "block");
+            });
 
-	});
-</script>
+        });
+    </script>
 </head>
 <body>
 <div>
+
 <jsp:include page="../gnb.jsp"></jsp:include>
 	<div id ="contentWrap">
 	<div class="title_wrap in_process route_chk ticketingT">
@@ -325,160 +326,228 @@
 						<div class="agreement_tit">
 							<h4>개인정보 제3자 제공에 대한 동의</h4>
 							<span class="custom_check chk_blue">
+								<input type="checkbox" name="agree" id="agree3">
+								<label for="agree3">동의</label>
+							</span>
+                    </div>
+                    <div class="scroll-wrapper agreement_cont scrollbar-inner" style="position: relative;">
+                        <div class="agreement_cont scrollbar-inner scroll-content scroll-scrolly_visible"
+                             style="height: auto; margin-bottom: 0px; margin-right: 0px; max-height: 120px;">
+                            <!-- iframe src="/cmn/IndlInfClcnUtlzAgrm" frameborder="0" scrolling="no" width="100%" height="130" title="개인정보 처리방침" onload="resize(this);"></iframe -->
+                            <div class="terms_wrap">
+                                <h1>개인정보 수집 및 이용 동의</h1>
+                                <dl>
+                                    <dt><span class="emphasis">1. 개인정보를 제공받는 자</span></dt>
+                                    <dd>
+                                        <p>고속버스 승차권 온라인 예매 서비스의 제공</p>
+                                    </dd>
+                                    <dt>2. 수집하는 항목</dt>
+                                    <dd>
+                                        <p>신용카드 번호ㆍ유효기간ㆍ신용카드 비밀번호 앞 2자리, 생년월일, 휴대전화번호</p>
+                                    </dd>
+                                    <dt><span class="emphasis">3. 보유 및 이용 기간</span></dt><!-- 181121 수정 -->
+                                    <dd>
+                                        <p>5년 (근거: 전자상거래 등에서의 소비자 보호에 관한 법률)</p>
+                                    </dd>
+                                    <dt>4. 개인정보 수집 및 이용 동의 거부 시 승차권 예매 하실 수 없습니다.</dt><!-- 181121 추가 -->
+                                </dl>
+                                <p>시행일자 : 2017년 5월 18일 </p>
+                            </div>
+                        </div>
+                        <div class="scroll-element scroll-x scroll-scrolly_visible">
+                            <div class="scroll-element_outer">
+                                <div class="scroll-element_size"></div>
+                                <div class="scroll-element_track"></div>
+                                <div class="scroll-bar" style="width: 88px;"></div>
+                            </div>
+                        </div>
+                        <div class="scroll-element scroll-y scroll-scrolly_visible">
+                            <div class="scroll-element_outer">
+                                <div class="scroll-element_size"></div>
+                                <div class="scroll-element_track"></div>
+                                <div class="scroll-bar" style="height: 51px; top: 0px;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="agreement_wrap">
+                    <div class="agreement_tit">
+                        <h4>개인정보 제3자 제공에 대한 동의</h4>
+                        <span class="custom_check chk_blue">
+
 								<input type="checkbox" name="agree" id="agree4">
 								<label for="agree4">동의</label>
 							</span>
-						</div>
-						<div class="scroll-wrapper agreement_cont scrollbar-inner" style="position: relative;"><div class="agreement_cont scrollbar-inner scroll-content scroll-scrolly_visible" style="height: auto; margin-bottom: 0px; margin-right: 0px; max-height: 120px;">
-							<!-- iframe src="/cmn/IndlInfClcnUtlzAgrm" frameborder="0" scrolling="no" width="100%" height="130" title="개인정보 처리방침" onload="resize(this);"></iframe -->
-							
+                    </div>
+                    <div class="scroll-wrapper agreement_cont scrollbar-inner" style="position: relative;">
+                        <div class="agreement_cont scrollbar-inner scroll-content scroll-scrolly_visible"
+                             style="height: auto; margin-bottom: 0px; margin-right: 0px; max-height: 120px;">
+                            <!-- iframe src="/cmn/IndlInfClcnUtlzAgrm" frameborder="0" scrolling="no" width="100%" height="130" title="개인정보 처리방침" onload="resize(this);"></iframe -->
+
                             <div class="terms_wrap">
                                 <h1>개인정보 제3자 제공에 대한 동의</h1>
                                 <dl>
                                     <dt>1. 개인정보를 제공받는자: KTX 열차</dt>
                                     <dd>
+
                                         <p>기차역: </p>
                                        
                                         <p>KTX 열차</p>
                                     </dd>
                                     <dt>2. 개인정보를 제공받는 자의 개인정보 이용 목적 : 배차정보 변경, 감차, 사고 등 특수한 상황에서 기차역, 고속사가 고객에게 변경 정보를 고지할 필요가 있을 때 이용</dt>
+
                                     <dt>3. 제공하는 개인정보의 항목 : 휴대폰번호</dt>
-                               		<dt>4. 개인정보를 제공받는 자의 개인정보 보유 및 이용 기간 : 제공목적 달성 후 즉시 파기</dt>
+                                    <dt>4. 개인정보를 제공받는 자의 개인정보 보유 및 이용 기간 : 제공목적 달성 후 즉시 파기</dt>
                                     <dt>5. 개인정보 제3자 제공 동시 거부 시 승차원 예매 하실 수 없습니다.</dt>
                                 </dl>
-                            </div>    
-						</div><div class="scroll-element scroll-x scroll-scrolly_visible"><div class="scroll-element_outer"><div class="scroll-element_size"></div><div class="scroll-element_track"></div><div class="scroll-bar" style="width: 88px;"></div></div></div><div class="scroll-element scroll-y scroll-scrolly_visible"><div class="scroll-element_outer"><div class="scroll-element_size"></div><div class="scroll-element_track"></div><div class="scroll-bar" style="height: 24px; top: 0px;"></div></div></div></div>
-					</div>
-					
-					<p class="agree_all chk_bor">
+                            </div>
+                        </div>
+                        <div class="scroll-element scroll-x scroll-scrolly_visible">
+                            <div class="scroll-element_outer">
+                                <div class="scroll-element_size"></div>
+                                <div class="scroll-element_track"></div>
+                                <div class="scroll-bar" style="width: 88px;"></div>
+                            </div>
+                        </div>
+                        <div class="scroll-element scroll-y scroll-scrolly_visible">
+                            <div class="scroll-element_outer">
+                                <div class="scroll-element_size"></div>
+                                <div class="scroll-element_track"></div>
+                                <div class="scroll-bar" style="height: 24px; top: 0px;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <p class="agree_all chk_bor">
 						<span class="custom_check chk_purple">
 							<input type="checkbox" name="agreeAll" id="agreeAll">
 							<label for="agreeAll">전체 약관에 동의합니다.</label>
 						</span>
-					</p>
-					
-				</div>	
-			
-			
+                </p>
 
-			
-			
-			
-					<div class="section pass_user">
-						<h4>예매 조회정보 입력</h4>
-						<p class="desc">예매사항을 조회하기 위한 필수항목 입니다. </p>				
-						<div class="boxinput_wrap01 clfix">
-							
-							<form name = "verti" action ="train_reservation_pymcfm" method ="get">
-								<div class= "v_noti">
-								<p class="join2_p"> 본인 인증을 위한 이메일을 입력해 주세요.</p>
-								</div>
-								
-								<div class="login_id">
-		                		 <div class="input-group">
-									<input type="text" class="form-control" name="useremail1" id="userEmail1" placeholder="이메일" >  @ 
-									<input type="text"  class="email_input"name ="userEmail2" id="userEmail2"  placeholder ="이메일 주소를 입력해주세요"> 
-									<select  id ="userEmail3" name="userEmail3">
-									<option value="default">선택</option>
-									<option value="naver.com">네이버</option>
-									<option value="gmail.com">구글</option>
-									<option value="daum.net">다음</option>
-									<option value="korea.com">코리아</option>
-									<option value="self">직접입력</option>		
-										</select>
-									 
-										<ul class= "loginBoth">
-											<li>		
-													<button type="button"  id="mail-Check-Btn"  class ="btnJoin" >  인증번호 발송 </button>
-											</li>	
-										
-										</ul>	
-									</div> 
-								</div>	
-								
-									<div class="mail-check-box">
-										<p>인증번호를 입력해주세요<p>
-										<input class="form-control mail-check-input" placeholder="인증번호 6자리를 입력해주세요!" disabled="disabled" maxlength="6">
-										<span id="mail-check-warn"></span>
-									</div>
-										
-							</form>
+            </div>
 
-						</div>
-					</div>
-						
-						
-				
-				
-				<h4 class="mo_page">가는 편 승차권 정보</h4>
-				<div class="box_detail_info">
-					<div class="routeHead">
-						<p class="date">${ sessionScope.rvo.rtimes }</p>
-					</div>
-					<div class="routeBody">
-						<div class="routeArea route_wrap">
-							<div class="inner">
-								
-									
-										<p class="roundBox_start">출발</p>
-										<span class="roundBox departure">${ sessionScope.rvo.depplacename }</span>
-										<p class="roundBox_end">도착</p>
-										<span class="roundBox arrive">${ sessionScope.rvo.arrplacename }</span>
-									
-								
-							</div>
-							<div class="detail_info">
-								<span id="takeDrtm"></span>
-							</div>
-						</div>
-						<div class="routeArea route_wrap mob_route">
-							<div class="tbl_type2">
-								<table class="tbl_info">
-									<caption>
-										<strong>역 정보</strong>
-										<p>고속사, 등급, 출발</p>
-									</caption>
-									<colgroup>
-										<col style="width:68px;">
 
-									</colgroup>
-									<tbody>
-										<tr>
-											<th scope="row">열차명</th>
-											<td>
-												<span>${ sessionScope.rvo.traingradename }</span>
-											</td>
-										</tr>
-										<tr>
-											<th scope="row">열차번호</th>
-											<td>${ sessionScope.rvo.trainno }</td>
-										</tr>
-										<tr>
-											<th scope="row">매수</th>
-											<td><span id="totSelCntView">${ sessionScope.rvo.ticketQty }</span></td>
-										</tr>
-										<tr>
-											<th scope="row">좌석</th>
-											<td>${ sessionScope.rvo.seatNum }</td>
-										</tr>
-									</tbody>
-								</table>
-							</div>
-						</div>
-					</div>
-				</div>
-				
-				
-				<h4 class="mo_page">결제정보 입력</h4>
-				<div class="custom_input clfix">
-					<form name="purchaseForm" id="purchaseForm" action="train_reservation_pymcfm" method="post">
-					
-					<div class="tab_wrap inradio tab_type2" data-desc-id="tab-desc1"> <!-- 190109 수정 : data-desc-id 속성 추가 (값은 하단 설명 영역인 .tab_desc_wrap의 id와 매칭) -->					
-						
-						<div class="tab_conts" id="tab1" style="display: block;">
-							<div class="box_inputForm">
-								<strong>결제 방법</strong>
-								<span class="radio_wrap">
+            <div class="section pass_user">
+                <h4>예매 조회정보 입력</h4>
+                <p class="desc">예매사항을 조회하기 위한 필수항목 입니다. </p>
+                <div class="boxinput_wrap01 clfix">
+
+                    <form name="verti" action="train_reservation_pymcfm" method="get">
+                        <div class="v_noti">
+                            <p class="join2_p"> 본인 인증을 위한 이메일을 입력해 주세요.</p>
+                        </div>
+
+                        <div class="login_id">
+                            <div class="input-group">
+                                <input type="text" class="form-control" name="useremail1" id="userEmail1"
+                                       placeholder="이메일"> @
+                                <input type="text" class="email_input" name="userEmail2" id="userEmail2"
+                                       placeholder="이메일 주소를 입력해주세요">
+                                <select id="userEmail3" name="userEmail3">
+                                    <option value="default">선택</option>
+                                    <option value="naver.com">네이버</option>
+                                    <option value="gmail.com">구글</option>
+                                    <option value="daum.net">다음</option>
+                                    <option value="korea.com">코리아</option>
+                                    <option value="self">직접입력</option>
+                                </select>
+
+                                <ul class="loginBoth">
+                                    <li>
+                                        <button type="button" id="mail-Check-Btn" class="btnJoin"> 인증번호 발송</button>
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="mail-check-box">
+                            <p>인증번호를 입력해주세요
+                            <p>
+                                <input class="form-control mail-check-input" placeholder="인증번호 6자리를 입력해주세요!"
+                                       disabled="disabled" maxlength="6">
+                                <span id="mail-check-warn"></span>
+                        </div>
+
+                    </form>
+
+                </div>
+            </div>
+
+
+            <h4 class="mo_page">가는 편 승차권 정보</h4>
+            <div class="box_detail_info">
+                <div class="routeHead">
+                    <p class="date">${ sessionScope.rvo.rtimes }</p>
+                </div>
+                <div class="routeBody">
+                    <div class="routeArea route_wrap">
+                        <div class="inner">
+
+
+                            <p class="roundBox_start">출발</p>
+                            <span class="roundBox departure">${ sessionScope.rvo.depplacename }</span>
+                            <p class="roundBox_end">도착</p>
+                            <span class="roundBox arrive">${ sessionScope.rvo.arrplacename }</span>
+
+
+                        </div>
+                        <div class="detail_info">
+                            <span id="takeDrtm"></span>
+                        </div>
+                    </div>
+                    <div class="routeArea route_wrap mob_route">
+                        <div class="tbl_type2">
+                            <table class="tbl_info">
+                                <caption>
+                                    <strong>역 정보</strong>
+                                    <p>고속사, 등급, 출발</p>
+                                </caption>
+                                <colgroup>
+                                    <col style="width:68px;">
+
+                                </colgroup>
+                                <tbody>
+                                <tr>
+                                    <th scope="row">열차명</th>
+                                    <td>
+                                        <span>${ sessionScope.rvo.traingradename }</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">열차번호</th>
+                                    <td>${ sessionScope.rvo.trainno }</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">매수</th>
+                                    <td><span id="totSelCntView">${ sessionScope.rvo.ticketQty }</span></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">좌석</th>
+                                    <td>${ sessionScope.rvo.seatNum }</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <h4 class="mo_page">결제정보 입력</h4>
+            <div class="custom_input clfix">
+                <form name="purchaseForm" id="purchaseForm" action="train_reservation_pymcfm" method="post">
+
+                    <div class="tab_wrap inradio tab_type2" data-desc-id="tab-desc1">
+                        <!-- 190109 수정 : data-desc-id 속성 추가 (값은 하단 설명 영역인 .tab_desc_wrap의 id와 매칭) -->
+
+                        <div class="tab_conts" id="tab1" style="display: block;">
+                            <div class="box_inputForm">
+                                <strong>결제 방법</strong>
+                                <span class="radio_wrap">
 									<span class="custom_radio" id="cardradio">
 										<input type="radio" id="caPerson" name="paymentmethodlist" value="card">
 										<label for="caPerson">카드</label>
@@ -489,174 +558,195 @@
 									</span>
 									<input type="hidden" id="paymentmethod" name="paymentmethod">
 								</span>
-							</div>
+                            </div>
 
-							<div id="cardpayment">
-								<div class="box_inputForm click_box inselect" style="margin-top: 10px;">
-									<strong>카드 선택</strong>
-									<div class="payment select-box default_txt" id="cardKindList">
-										<div class="selectricWrapper selectricOpen">
-										<div class="selectricHideSelect">
-										<select name="cardKndCd" id="cardKndCd">
-											<option value="0">카드를 선택하세요</option>
-											<option value="09">롯데</option>
-											<option value="24">하나</option>
-											<option value="02">국민</option>
-											<option value="01">BC</option>
-											<option value="05">신한</option>
-											<option value="04">삼성</option>
-											<option value="15">농협</option>
-											<option value="08">현대</option>
-											<option value="18">전북</option>
-											<option value="12">수협</option>
-											<option value="14">우리</option>
-											<option value="17">광주</option>
-											<option value="26">씨티</option>
-										</select>
-										</div>
+                            <div id="cardpayment">
+                                <div class="box_inputForm click_box inselect" style="margin-top: 10px;">
+                                    <strong>카드 선택</strong>
+                                    <div class="payment select-box default_txt" id="cardKindList">
+                                        <div class="selectricWrapper selectricOpen">
+                                            <div class="selectricHideSelect">
+                                                <select name="cardKndCd" id="cardKndCd">
+                                                    <option value="0">카드를 선택하세요</option>
+                                                    <option value="09">롯데</option>
+                                                    <option value="24">하나</option>
+                                                    <option value="02">국민</option>
+                                                    <option value="01">BC</option>
+                                                    <option value="05">신한</option>
+                                                    <option value="04">삼성</option>
+                                                    <option value="15">농협</option>
+                                                    <option value="08">현대</option>
+                                                    <option value="18">전북</option>
+                                                    <option value="12">수협</option>
+                                                    <option value="14">우리</option>
+                                                    <option value="17">광주</option>
+                                                    <option value="26">씨티</option>
+                                                </select>
+                                            </div>
 
-									<div class="selectric" id="selectric">
-											<p class="label">카드를 선택하세요</p>
-											<b class="button">▾</b>
-									</div>
+                                            <div class="selectric" id="selectric">
+                                                <p class="label">카드를 선택하세요</p>
+                                                <b class="button">▾</b>
+                                            </div>
 
-										<div class="selectricItems" tabindex="-1" style="width: 636.667px; height: 500px;">
-											<div class="selectricScroll">
-												<ul>
-													<li class="selected">카드를 선택하세요</li>
-													<li class="">롯데</li>
-													<li class="">하나</li>
-													<li class="">국민</li>
-													<li class="">BC</li>
-													<li class="">신한</li>
-													<li class="">삼성</li>
-													<li class="">농협</li>
-													<li class="">현대</li>
-													<li class="">전북</li>
-													<li class="">수협</li>
-													<li class="">우리</li>
-													<li class="">광주</li>
-													<li class="last">씨티</li>
-												</ul>
-											</div>
-										</div>
-										</div>
-										<input type="text" class="selectricInput" name="cardcomp">
-									</div>
-								</div>
-								<div class="box_inputForm card_num clfix">
-									<strong>카드번호</strong>
-									<span class="box_label">
+                                            <div class="selectricItems" tabindex="-1"
+                                                 style="width: 636.667px; height: 500px;">
+                                                <div class="selectricScroll">
+                                                    <ul>
+                                                        <li class="selected">카드를 선택하세요</li>
+                                                        <li class="">롯데</li>
+                                                        <li class="">하나</li>
+                                                        <li class="">국민</li>
+                                                        <li class="">BC</li>
+                                                        <li class="">신한</li>
+                                                        <li class="">삼성</li>
+                                                        <li class="">농협</li>
+                                                        <li class="">현대</li>
+                                                        <li class="">전북</li>
+                                                        <li class="">수협</li>
+                                                        <li class="">우리</li>
+                                                        <li class="">광주</li>
+                                                        <li class="last">씨티</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <input type="text" class="selectricInput" name="cardcomp">
+                                    </div>
+                                </div>
+                                <div class="box_inputForm card_num clfix">
+                                    <strong>카드번호</strong>
+                                    <span class="box_label">
 										<!-- <label for="cardNum1">입력</label> -->
-										<input type="text" name="cardNum1" id="cardNum1" class="input" maxlength="4" placeholder="입력">
+										<input type="text" name="cardNum1" id="cardNum1" class="input" maxlength="4"
+                                               placeholder="입력">
 									</span>
-									<span class="box_label">
+                                    <span class="box_label">
 										<!-- <label for="cardNum2">입력</label> -->
-										<input type="text" name="cardNum2" id="cardNum2" class="input" maxlength="4"  placeholder="입력">
+										<input type="text" name="cardNum2" id="cardNum2" class="input" maxlength="4"
+                                               placeholder="입력">
 									</span>
-									<span class="box_label">
+                                    <span class="box_label">
 										<!-- <label for="cardNum3">입력</label> -->
-										<input type="password" name="cardNum3" id="cardNum3" class="input" maxlength="4"  placeholder="입력">
+										<input type="password" name="cardNum3" id="cardNum3" class="input" maxlength="4"
+                                               placeholder="입력">
 									</span>
-									<span class="box_label">
+                                    <span class="box_label">
 										<!-- <label for="cardNum4">입력</label> -->
-										<input type="password" name="cardNum4" id="cardNum4" class="input" maxlength="4"  placeholder="입력">
+										<input type="password" name="cardNum4" id="cardNum4" class="input" maxlength="4"
+                                               placeholder="입력">
 									</span>
-								</div>
+                                </div>
 
 
-
-
-								<div class="boxinput_wrap col2 clfix">
-									<div class="box_inputForm">
-										<strong>유효기간 월(MONTH)</strong>
-										<span class="box_label">
+                                <div class="boxinput_wrap col2 clfix">
+                                    <div class="box_inputForm">
+                                        <strong>유효기간 월(MONTH)</strong>
+                                        <span class="box_label">
 											<!-- <label for="cardMonth">2자리 입력(MM)</label> -->
-											<input type="text" name="cardMonth" id="cardMonth" class="input" maxlength="2"  placeholder="2자리 입력(MM)">
+											<input type="text" name="cardMonth" id="cardMonth" class="input"
+                                                   maxlength="2" placeholder="2자리 입력(MM)">
 										</span>
-									</div>
-									<div class="box_inputForm">
-										<strong>유효기간 년(YEAR)</strong>
-										<span class="box_label">
+                                    </div>
+                                    <div class="box_inputForm">
+                                        <strong>유효기간 년(YEAR)</strong>
+                                        <span class="box_label">
 											<!-- <label for="cardYear">2자리 입력(YY)</label> -->
-											<input type="text" name="cardYear" id="cardYear" class="input" maxlength="2" placeholder="2자리 입력(YY)">
+											<input type="text" name="cardYear" id="cardYear" class="input" maxlength="2"
+                                                   placeholder="2자리 입력(YY)">
 										</span>
-									</div>
-								</div>
-								<div class="boxinput_wrap col2 clfix">
-									<div class="box_inputForm">
-										<strong>카드 비밀번호</strong>
-										<span class="box_label">
+                                    </div>
+                                </div>
+                                <div class="boxinput_wrap col2 clfix">
+                                    <div class="box_inputForm">
+                                        <strong>카드 비밀번호</strong>
+                                        <span class="box_label">
 											<!-- <label for="cardPw">**** 비밀번호 앞 2자리 입력</label> 170118 텍스트 수정 -->
-											<input type="password" name="cardPw" id="cardPw" class="input" maxlength="2" placeholder="**** 비밀번호 앞 2자리 입력">
+											<input type="password" name="cardPw" id="cardPw" class="input" maxlength="2"
+                                                   placeholder="**** 비밀번호 앞 2자리 입력">
 										</span>
-									</div>
-								</div>
+                                    </div>
+                                </div>
 
-								<!-- 카드결제 : 개인 -->
-								<div class="box_inputForm" id="indlBrdtCard">
-									<strong>생년월일 6자리(YYMMDD)</strong>
-									<span class="box_label">
+                                <!-- 카드결제 : 개인 -->
+                                <div class="box_inputForm" id="indlBrdtCard">
+                                    <strong>생년월일 6자리(YYMMDD)</strong>
+                                    <span class="box_label">
 										<!-- <label for="caBirth">예)1980년11월11일 → 801111</label> -->
-										<input type="text" name="birthday" id="birthday" class="input" maxlength="6" placeholder="예)1980년11월11일 → 801111">
+										<input type="text" name="birthday" id="birthday" class="input" maxlength="6"
+                                               placeholder="예)1980년11월11일 → 801111">
 									</span>
-								</div>
-						
-							
-							</div>
-						</div>
-						<sapn id="kakaopayment" style="display: none;">
-							카카오페이로 결제시 예매 조회는 인증하신 이메일로만 조회가 가능합니다
-						</sapn>
-							<input type="hidden" name="email" id="email" class="email">
 
-							
-								<div class="tab_conts" id="tab2" style="display: none;"></div>
-
-				</div>
-			</form>
-				
-					<div class="payment_sum" style="height: 385.481px;">
-						<div class="tbl_type3">
-							<table class="taR">
-								<caption>결제금액 정보</caption>
-								<colgroup>
-									<col style="width:50%;">
-
-								</colgroup>
-								<tbody>
-									<tr>
-										<th scope="row" class="txt_black">예매금액</th>
-										<td><strong id="estmAmtView">${ sessionScope.rvo.adltTotAmt }</strong></td>
-									</tr>
-									
-									<tr>
-										<th scope="row"><span id="adtnPrdNm">&nbsp;</span></th>
-										<td><span id="adtnPrdCnt">&nbsp;</span></td>
-									</tr>
-									<tr class="total">
-										<th scope="row" class="txt_black">총 결제금액</th>
-										<td class="totalPrice"><span id="tissuAmtView">${ sessionScope.rvo.adltTotAmt }</span></td>
-									</tr>
-								</tbody>
-							</table>
-						</div>
-						<p class="btn bottom">
-							<button type="button" id="stplCfmBtn" class="btnL btn_confirm ready" >결제하기</button>
-						</p>
-					</div>
-				</div>
+                                </div>
 
 
+                            </div>
+                        </div>
+                        <sapn id="kakaopayment" style="display: none;">
+                            카카오페이로 결제시 예매 조회는 인증하신 이메일로만 조회가 가능합니다
+                        </sapn>
+                        <input type="hidden" name="email" id="email" class="email">
 
 
-				<div id="tab-desc1" class="section tab_desc_wrap"> <!-- 190109 수정 : tab_desc_wrap 클래스 및 id 추가 -->
-					<!-- 카드결제 -->
-					
-						
-						
-						
-							<div class="tab_desc active"> <!-- 190109 추가 : wrapper 추가 - tab_desc -->						
+                        <div class="tab_conts" id="tab2" style="display: none;"></div>
+
+                    </div>
+
+
+                    <div class="payment_sum" style="height: 385.481px;">
+                        <div class="tbl_type3">
+                            <table class="taR">
+                                <caption>결제금액 정보</caption>
+                                <colgroup>
+                                    <col style="width:50%;">
+
+                                </colgroup>
+                                <tbody>
+                                <tr>
+                                    <th scope="row" class="txt_black">예매금액</th>
+                                    <td><strong id="estmAmtView">${ sessionScope.rvo.adltTotAmt }원</strong></td>
+                                </tr>
+
+                                <tr>
+                                    <th scope="row"><span id="adtnPrdNm">&nbsp;</span></th>
+                                    <td><span id="adtnPrdCnt">&nbsp;</span></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row" class="txt_black">총 마일리지</th>
+                                    <td><strong id="mileage_use">${mileage}원</strong></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row"><span id="mileage_1">사용</span></th>
+                                    <td id="input_area"><input id="mileage_2" name="mileage_use"></td>
+                                </tr>
+
+
+                                <tr class="total">
+                                    <th scope="row" class="txt_black">총 결제금액</th>
+                                    <td class="totalPrice"><span id="tissuAmtView" name="adltTotAmt1">${ sessionScope.rvo.adltTotAmt }원</span>
+                                    </td>
+                                </tr>
+
+                                <tr class="total_discount">
+                                    <th scope="row" class="txt_black"></th>
+                                    <td class="totalPrice"><span id="discount"></span></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <p class="btn bottom">
+                            <button type="button" id="stplCfmBtn" class="btnL btn_confirm ready">결제하기</button>
+                        </p>
+                    </div>
+                </form>
+            </div>
+
+
+            <div id="tab-desc1" class="section tab_desc_wrap"> <!-- 190109 수정 : tab_desc_wrap 클래스 및 id 추가 -->
+                <!-- 카드결제 -->
+
+
+                <div class="tab_desc active"> <!-- 190109 추가 : wrapper 추가 - tab_desc -->						
 								<ul class="desc_list" id="cardNotice"> 
 									<li class="txt_puple">열차 탑승 시 결제에 사용된 카드(창구, 무인기 발권 시), 홈티켓 중 하나를 가져오셔야 됩니다.</li>
 									<li>예매가 완료된 후 예매확인/취소/변경 메뉴를 통해 예매내역을 확인 하시기 바랍니다.</li>
@@ -666,13 +756,55 @@
 								</ul>						
 							</div>
 
-					<!-- // 카드결제 -->
-	
-				</div>
-			
-		</div>
-	<jsp:include page="../footer.jsp"></jsp:include>	
-	</div>
-</div>			
+                <!-- // 카드결제 -->
+
+            </div>
+
+        </div>
+        <jsp:include page="../footer.jsp"></jsp:include>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        const mileage = parseInt("${mileage}", 10);
+        const mileageInput = document.getElementById("mileage_2");
+        const discount = document.getElementById("discount");
+        const tissuAmtView = document.getElementById("tissuAmtView");
+        const totalprice = ${sessionScope.rvo.adltTotAmt};
+        const initialTissuAmt = parseInt(tissuAmtView.textContent, 10);
+
+        document.addEventListener("click", function (event) {
+            if (event.target !== mileageInput) {
+                if (mileageInput.value === "") {
+                    discount.textContent = "";
+                } else {
+                    const mileageInputNum = parseInt(mileageInput.value, 10);
+                    if (mileageInputNum > totalprice) {
+                        Swal.fire({
+                            title: '마일리지 입력 오류',
+                            text: '마일리지 사용 금액이 예매금액을 초과하였습니다.',
+                            icon: 'error',
+                        }).then(() => {
+                            mileageInput.value = mileage;
+                        });
+                    } else if (mileageInputNum > mileage) {
+                        Swal.fire({
+                            title: '마일리지 입력 오류',
+                            text: '마일리지 보유 금액을 초과하여 사용할 수는 없습니다.',
+                            icon: 'error',
+                        }).then(() => {
+                            mileageInput.value = mileage;
+                        });
+                    } else {
+                        discount.textContent = "-" + mileageInput.value + '원';
+                        const newTissuAmt = initialTissuAmt - mileageInputNum + '원';
+                        tissuAmtView.textContent = newTissuAmt;
+                    }
+                }
+            }
+        });
+    });
+</script>
+
 </body>
 </html>

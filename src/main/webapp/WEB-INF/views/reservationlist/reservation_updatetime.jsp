@@ -169,7 +169,6 @@
 			</div>
 
 			<div class="page">
-				<h3>배차조회</h3>
 				<div class="buscheck_wrap clfix " style="width: 960px;">
 					<!-- 좌측 infoBox -->
 					<div class="infoBox">
@@ -257,19 +256,6 @@
 						</div>
 					</div>
 					<!-- //우측 detailBox -->
-				</div>
-				<div class="section">
-					<ul class="desc_list">
-						<li>심야고속 및 심야우등의 할증 요금은 당일 02:00부터 04:00 사이 출발차량</li>
-						<li>노선에 따라 심야요금과 심야할증요금이 동일할 수도 있음</li>
-						<li>마일리지 구매 승차권은 프리미엄/편도 노선(일부노선 제외)에 한정하며 각 1매씩 예매 가능(*회원대상)</li>
-						<li>유아 카시트 가능( <img src="/images/page/ico_child_on.png" alt="" style="width:13px"> ) 표시된 차량에만 유아 카시트 장착 가능 (본인 소유의 유아 카시트 준비)</li>
-						<li>소요(도착)시간은 도로 사정에 따라 지연될 수 있음</li>
-						<!-- 190925 추가 -->
-						<li>휠체어 탑승 가능( <img src="/images/page/ico_wheel_on.png" alt="" style="width:13px"> ) 표시된 차량에만 휠체어 동반 탑승 가능 (전동식 휠체어만 탑승 가능)</li>
-						<li>휠체어 좌석 예매는 wkobus 사이트에서 예매 가능하며, 휠체어 좌석 예매는 출발일로 부터 3일 전까지만 가능<br>(*휠체어 좌석 예매가 없을 시 출발일 이틀 전부터 일반석 예매 가능)</li>
-						<!-- // 190925 추가 -->
-					</ul>
 				</div>
 			</div>
 			<jsp:include page="../footer.jsp"></jsp:include>
