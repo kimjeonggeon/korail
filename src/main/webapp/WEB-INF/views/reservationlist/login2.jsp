@@ -18,7 +18,7 @@
 		if (loginResult === "failure") {
 			window.onload = function() {
 				Swal.fire({
-					text: "인증에 실패했습니다. 다시 입력해 주세요.",
+					text: "로그인에 실패했습니다. 다시 입력해 주세요.",
 					width: 600,
 					padding: '1.5em',
 					confirmButtonColor: '#74b3c7',
@@ -36,6 +36,10 @@
 	.phone_wrap{
 		width:430px;
 	}
+	#userEmail1::placeholder {
+		background-image: none !important;
+		background-color: transparent !important;
+	}
 </style>
 </head>
 <body>
@@ -46,7 +50,7 @@
 	<div class="title_wrap_checkTicketingT">
 		<div class="title_wrap">
 			<jsp:include page="../header.jsp"></jsp:include>
-			<h2>예매확인/취소/변경</h2>
+			<h2>로그인</h2>
 		</div>
 	</div>
 	
@@ -131,7 +135,7 @@
 												<div style="width:20px;"><strong style="color:#f3f4f6;">이</strong>
 												<input type="text" readonly placeholder="@" style="::placeholder { color: black; }"></div>
 												<div style="width:190px;"><strong style="color:#f3f4f6;">이</strong>
-												<input type="text"  class="email_input"name ="userEmail2" id="userEmail2" style="margin-left:60px;" ></div>
+												<input type="text"  class="email_input"name ="userEmail2" id="userEmail2" style="margin-left:60px;" disabled ></div>
 
 												<select  id ="userEmail3" name="userEmail3" style="display:inline-block;">
 													<option value="default">선택</option>

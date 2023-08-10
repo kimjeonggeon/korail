@@ -32,7 +32,7 @@
 		<div class="title_wrap_checkTicketingT">
 			<div class="title_wrap">
 				<jsp:include page="../header.jsp"></jsp:include>
-				<h2>예매확인/취소/변경</h2>
+				<h2>예매확인</h2>
 			</div>
 		</div>
 
