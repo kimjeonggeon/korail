@@ -139,8 +139,8 @@
 							</ul>
 						</div>
 
-						<p class="btns col1" id="mrsInqrTissu"> 
-							<a href="http://localhost:9000/reservation_main" class="btnL btn_cancel">예매 확인</a>
+						<p class="btns col1" id="mrsInqrTissu">
+							<a href="http://localhost:9000/reservation_main" class="btnL btn_cancel" style="text-decoration: none;">예매 확인</a>
 						</p>
 					
 					

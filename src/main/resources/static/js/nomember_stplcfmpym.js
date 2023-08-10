@@ -232,6 +232,16 @@ $(document).ready(function(){
 				requestPay();
 			}
 
+		}else if($("input[name='paymentmethodlist']:checked").length == 0){
+
+			Swal.fire({
+				text: "결제 방식을 선택해주세요.",
+				width: 600,
+				padding: '1.5em',
+				confirmButtonColor: '#74b3c7',
+				confirmButtonText: '확인'
+			});
+			return false;
 		}
 	});
 
@@ -339,6 +349,16 @@ $(document).ready(function(){
 			}else{
 				requestPay();
 			}
+		}else if($("input[name='paymentmethodlist']:checked").length == 0){
+
+			Swal.fire({
+				text: "결제 방식을 선택해주세요.",
+				width: 600,
+				padding: '1.5em',
+				confirmButtonColor: '#74b3c7',
+				confirmButtonText: '확인'
+			});
+			return false;
 		}
 	});
 	

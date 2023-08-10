@@ -223,34 +223,9 @@
 									</ul>
 									<p class="btn_change">출,도착지 교체</p>
 								</div>
-								<!-- <div class="search_wrap">
-									<div class="line">
-										<div class="easy-autocomplete" style="width: 620px;">
-										<input type="text" id="terminalSearch" title="터미널/지역 이름 검색" placeholder="터미널/지역 이름을 검색하세요" autocomplete="off">
-											<div class="easy-autocomplete-container" id="eac-container-terminalSearch">
-												<ul>
-												</ul>
-											</div>
-										</div>
-										<span class="btn">검색</span>
-									</div>
-								</div> -->
+
 								<div class="start_wrap" id="imptDepr" style="display: block;">
-									<!-- <p class="stit">주요출발지</p>
-									<p class="tags">
-										<span onclick="fnDeprChc('010','서울경부')" name="imptDeprNm" value="010" style="display: inline-block;">서울경부</span>
-										<span onclick="fnDeprChc('020','센트럴시티(서울)')" name="imptDeprNm" value="020" class="over" style="display: inline-block;">센트럴시티(서울)</span>
-										<span onclick="fnDeprChc('500','광주(유·스퀘어)')" name="imptDeprNm" value="500" style="display: inline-block;">광주(유·스퀘어)</span>  class="active"
-										<span onclick="fnDeprChc('700','부산')" name="imptDeprNm" value="700" style="display: inline-block;">부산</span>
-										<span onclRick="fnDeprChc('703','부산사상')" name="imptDeprNm" value="703" style="display: inline-block;">부산사상</span>
-										<span onclick="fnDeprChc('032','동서울')" name="imptDeprNm" value="032" style="display: inline-block;">동서울</span>
-										<span onclick="fnDeprChc('300','대전복합')" name="imptDeprNm" value="300" style="display: inline-block;">대전복합</span>
-										<span onclick="fnDeprChc('602','전주')" name="imptDeprNm" value="602" style="display: inline-block;">전주</span>
-										<span onclick="fnDeprChc('360','유성')" name="imptDeprNm" value="360" style="display: inline-block;">유성</span>
-										<span onclick="fnDeprChc('310','천안')" name="imptDeprNm" value="310" style="display: inline-block;">천안</span>
-										<span onclick="fnDeprChc('801','동대구')" name="imptDeprNm" value="801" style="display: inline-block;">동대구</span>
-										<span onclick="fnDeprChc('120','성남(분당)')" name="imptDeprNm" value="120" style="display: inline-block;">성남(분당)</span>
-									</p> -->
+
 								</div>
 								<div class="terminal_wrap">
 									<p class="stit">지역별 역</p>

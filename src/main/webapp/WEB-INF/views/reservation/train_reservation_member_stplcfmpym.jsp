@@ -37,7 +37,7 @@
 	<!-- <a href="#" class="back">back</a>
 	<a href="#" class="mo_toggle">메뉴</a>
 	 -->
-	 <h2>고속버스예매</h2>
+	 <h2>KTX 예매</h2>
 				
 				<ol class="process">
 					<li>예매정보입력</li>
@@ -283,25 +283,29 @@
 						<div class="scroll-wrapper agreement_cont scrollbar-inner" style="position: relative;">
 						<div class="agreement_cont scrollbar-inner scroll-content scroll-scrolly_visible" style="height: auto; margin-bottom: 0px; margin-right: 0px; max-height: 120px;">
 							<!-- iframe src="/cmn/IndlInfClcnUtlzAgrm.do" frameborder="0" scrolling="no" width="100%" height="130" title="개인정보 처리방침" onload="resize(this);"></iframe -->
-							<div class="terms_wrap">
-                                <h1>개인정보 수집 및 이용 동의</h1>
-                                <dl>
-                                    <dt><span class="emphasis">1. 개인정보를 제공받는 자</span></dt>
-                                    <dd>
-                                        <p>고속버스 승차권 온라인 예매 서비스의 제공</p>		
-                                    </dd>
-                                    <dt>2. 수집하는 항목</dt>
-                                    <dd>
-                                        <p>신용카드 번호ㆍ유효기간ㆍ신용카드 비밀번호 앞 2자리, 생년월일, 휴대전화번호</p>			
-                                    </dd>
-                                    <dt><span class="emphasis">3. 보유 및 이용 기간</span></dt><!-- 181121 수정 -->
-                                    <dd>
-                                        <p>5년 (근거: 전자상거래 등에서의 소비자 보호에 관한 법률)</p>			
-                                    </dd>
-                                    <dt>4. 개인정보 수집 및 이용 동의 거부 시 승차권 예매 하실 수 없습니다.</dt><!-- 181121 추가 -->
-                                </dl>
-                                <p>시행일자 : 2017년 5월 18일 </p>
-                            </div>  
+							<div class="type_box_lin1">
+								<!--  <textarea class="textarea" name="comment"  rows="9" style="width:98%" onfocus="blur()" wrap="hard"> -->
+								[수집하는 개인정보의 항목]<br>
+								가. 우리 공사는 승차권 구입, 원활한 고객상담, 각종 서비스의 제공을 위해 아래와 같은 최소한의 개인정보를 필수항목으로 수집하고 있습니다.<br>
+								- 수집정보(필수) : 이름, 전화번호, 비밀번호<br>
+								- 수집정보(선택) : 이메일<br>
+								나. 서비스 이용과정에서 아래와 같은 정보들이 자동으로 생성되어 수집될 수 있습니다. <br>
+								- IP주소, 쿠키, 서비스 이용기록, 방문기록 등<br>
+								다. 전자상거래 등에서의 소비자 보호에 관한 법률에 의해 승차권 구매 및 서비스 이용 과정에서 아래와 같은 거래정보들이 수집될 수 있습니다.<br>
+								- 승차권 결제시 : 카드번호, 결제승인번호<br><br>
+
+
+								[개인정보의 수집 및 이용 목적]<br>
+								<span class="text_point">
+									가. 서비스 제공에 관한 계약 이행  :　열차승차권 구입<br>
+									나. 불만처리 등 민원처리, 고지사항 전달, 분쟁조정을 위한 기록보전<br><br>
+								</span>
+
+								[개인정보의 보유 및 이용기간]<br>
+								가. 운영근거 : 정보주체동의<br>
+								<span class="text_point">나. 보유기간 : 승차 종료일로부터 5년</span> <br>
+
+							</div>
 						</div><div class="scroll-element scroll-x scroll-scrolly_visible"><div class="scroll-element_outer"><div class="scroll-element_size"></div><div class="scroll-element_track"></div><div class="scroll-bar" style="width: 88px;"></div></div></div><div class="scroll-element scroll-y scroll-scrolly_visible"><div class="scroll-element_outer"><div class="scroll-element_size"></div><div class="scroll-element_track"></div><div class="scroll-bar" style="height: 51px; top: 0px;"></div></div></div></div>
 					</div>
 					
@@ -615,9 +619,9 @@
 						
 							<div class="tab_desc active"> <!-- 190109 추가 : wrapper 추가 - tab_desc -->						
 								<ul class="desc_list" id="cardNotice"> 
-									<li class="txt_puple">고속버스 탑승 시 결제에 사용된 카드(창구, 무인기 발권 시), 모바일티켓, 홈티켓 중 하나를 가져오셔야 됩니다.</li>
+									<li class="txt_puple">열차 탑승 시 결제에 사용된 카드(창구, 무인기 발권 시), 홈티켓 중 하나를 가져오셔야 됩니다.</li>
 									<li>예매가 완료된 후 예매확인/취소/변경 메뉴를 통해 예매내역을 확인 하시기 바랍니다.</li>
-									<li>고속버스에 설치된 통합단말기에 기 결제한 카드(교통카드 기능이 있는 신용카드만 해당)를 태그하시면 영수증과 승차권을 한번에 발권하실 수 있습니다.</li>
+
 									<li>모든 결제정보는 암호화 처리 후 안전하게 전송됩니다.</li>
 									<li>비밀번호 입력 오류가 3회 이상 발생할 경우 홈페이지에서 결제가 불가하니 카드사/은행을 방문하셔서 처리 후 다시 시도 바랍니다.</li>
 								

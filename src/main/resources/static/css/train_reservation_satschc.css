@@ -652,7 +652,7 @@ strong {
 	text-align: center;
 	position: relative;
     padding-top: 75px;
-    
+
 }
 
 .title_wrap h2 {
@@ -754,7 +754,7 @@ strong {
     position: relative;
 }
 
-.compare_wrap .route_wrap .roundBox:first-child, 
+.compare_wrap .route_wrap .roundBox:first-child,
 .buscheck_wrap .route_wrap .roundBox:first-child {
     padding-bottom: 10px;
 }
@@ -988,7 +988,7 @@ colgroup {
 
 .ticketBox {
     float: left;
-    width: 127px;
+    width: 128px;
     height: 822px;
     border-right: 1px solid #e6e6e6;
 }
@@ -1069,7 +1069,7 @@ ul.sel_list > li .btn_wrap ul li .btn span.ico_minus {
 
 .selectSeat_box {
     float: left;
-    width: 353px;
+    width: 370px;
     height: 822px;
 }
 
@@ -1092,7 +1092,7 @@ ul.sel_list > li .btn_wrap ul li .btn span.ico_minus {
 
 .box:nth-child(2){
 	margin-right: 20px;
-	
+
 }
 
 .seatList span {
@@ -1144,7 +1144,7 @@ input[type="checkbox"], input[type="radio"] {
     position: absolute;
     right: 1px;
     top: 86px;
-    width: 239px;
+    width: 220px;
     height: 822px;
     border-left: 1px solid #e6e6e6;
 }
@@ -1264,7 +1264,14 @@ input[type="checkbox"], input[type="radio"] {
     text-indent: -8px;
 }
 
-
+.count_num{
+    height: 58px;
+    display: block;
+    width: 200px;
+    margin: 0 215px;
+    text-align: center;
+    padding-top: 8px;
+}
 
 
 

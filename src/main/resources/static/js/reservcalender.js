@@ -19,9 +19,6 @@ $(document).ready(function(){
 
 
 
-
-
-
 	const makeCalendar = (date) => {
 		  window.currentYear = new Date(date).getFullYear();
 		  window.currentMonth = new Date(date).getMonth() + 1;

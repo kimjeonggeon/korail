@@ -62,7 +62,6 @@ public class ReservationController {
         orderDto.setTrainnum(Integer.parseInt(rvo.getTrainno()));
         orderDto.setTicketqty(Integer.parseInt(rvo.getTicketQty()));
         orderDto.setEmail(rvo.getEmail());
-        System.out.println("Price : " + price);
 
         orderService.getPayment(orderDto);
 
