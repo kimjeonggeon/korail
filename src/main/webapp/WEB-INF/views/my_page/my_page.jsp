@@ -93,137 +93,71 @@
         window.location.href = url;
     });
 
+    function navigateToMypage() {
+        var url = "http://localhost:9000/mypage";
+        $(location).attr('href', url);
+    }
+
+    function handleModalClose() {
+        navigateToMypage();
+    }
 
     if(c_pass == "nothing") {
         Swal.fire({
             title: '경고',
             text: '비밀번호를 입력해주세요',
             icon: 'error',
-            customClass: {
-                popup: 'swal2-popup-margin-auto',
-            }
-        }).then((result) => {
-            if (result.isConfirmed) {
-                var url = "http://localhost:9000/mypage";
-                $(location).attr('href', url);
-            }
-        });
+        }).then(handleModalClose);
     } else if (c_pass == "short") {
         Swal.fire({
             title: '경고',
             text: '잘못된 비밀번호',
             icon: 'error',
-            customClass: {
-                popup: 'swal2-popup-margin-auto',
-            }
-        }).then((result) => {
-            if (result.isConfirmed) {
-                var url = "http://localhost:9000/mypage";
-                $(location).attr('href', url);
-            }
-        });
+        }).then(handleModalClose);
     } else if (c_pass == "blank") {
         Swal.fire({
             title: '경고',
             text: '새 비밀번호를 입력해주세요',
             icon: 'error',
-            customClass: {
-                popup: 'swal2-popup-margin-auto',
-            }
-        }).then((result) => {
-            if (result.isConfirmed) {
-                var url = "http://localhost:9000/mypage";
-                $(location).attr('href', url);
-            }
-        });
+        }).then(handleModalClose);
     } else if (c_pass == "noop") {
         Swal.fire({
             title: '경고',
             text: '기존 비밀번호가 일치하지 않습니다.',
             icon: 'error',
-            customClass: {
-                popup: 'swal2-popup-margin-auto',
-            }
-        }).then((result) => {
-            if (result.isConfirmed) {
-                var url = "http://localhost:9000/mypage";
-                $(location).attr('href', url);
-            }
-        });
+        }).then(handleModalClose);
     } else if (c_pass == "notsame") {
         Swal.fire({
             title: '경고',
             text: '새 비밀번호가 일치하지 않습니다.',
             icon: 'error',
-            customClass: {
-                popup: 'swal2-popup-margin-auto',
-            }
-        }).then((result) => {
-            if (result.isConfirmed) {
-                var url = "http://localhost:9000/mypage";
-                $(location).attr('href', url);
-            }
-        });
+        }).then(handleModalClose);
     } else if (c_pass == "wrong") {
         Swal.fire({
             title: '경고',
             text: '비밀번호 형식이 올바르지 않습니다.',
             icon: 'error',
-            customClass: {
-                popup: 'swal2-popup-margin-auto',
-            }
-        }).then((result) => {
-            if (result.isConfirmed) {
-                var url = "http://localhost:9000/mypage";
-                $(location).attr('href', url);
-            }
-        });
+        }).then(handleModalClose);
     }
-
     if (c_pnum == "ok") {
         Swal.fire({
             title: '알림',
             text: '휴대폰번호 변경 완료',
             icon: 'success',
-            customClass: {
-                popup: 'swal2-popup-margin-auto',
-            }
-        }).then((result) => {
-            if (result.isConfirmed) {
-                var url = "http://localhost:9000/mypage";
-                $(location).attr('href', url);
-            }
-        });
+        }).then(handleModalClose);
     } else if (c_pnum == "noop") {
         Swal.fire({
             title: '경고',
             text: '휴대폰번호 변경 실패',
             icon: 'error',
-            customClass: {
-                popup: 'swal2-popup-margin-auto',
-            }
-        }).then((result) => {
-            if (result.isConfirmed) {
-                var url = "http://localhost:9000/mypage";
-                $(location).attr('href', url);
-            }
-        });
+        }).then(handleModalClose);
     }
-
     if (withProc == "no") {
         Swal.fire({
             title: '경고',
             text: '옳바르지 않은 비밀번호',
             icon: 'error',
-            customClass: {
-                popup: 'swal2-popup-margin-auto',
-            }
-        }).then((result) => {
-            if (result.isConfirmed) {
-                var url = "http://localhost:9000/mypage";
-                $(location).attr('href', url);
-            }
-        });
+        }).then(handleModalClose);
     }
 </script>
 </body>

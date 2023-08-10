@@ -18,13 +18,13 @@ public class MileageService {
 
     public int setMileage_Reduce(String reservnum) { return mileageMapper.setMileage_Reduce(reservnum);}
 
-    public int setMileage(String Id, String changeAmount, String specifics) { return mileageMapper.setMileage(Id, changeAmount, specifics);}
+    public int setMileage(String Id, int changeAmount, String specifics) { return mileageMapper.setMileage(Id, changeAmount, specifics);}
 
     public List<MileageDto> getMileageInfo(Map tempMap) {
         return mileageMapper.getMileageInfo((HashMap) tempMap);
     }
 
-    public String getMileage(String memberId) {
+    public int getMileage(String memberId) {
         return mileageMapper.getMileage(memberId);
     }
 }

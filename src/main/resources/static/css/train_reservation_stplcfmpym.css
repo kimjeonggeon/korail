@@ -1376,56 +1376,21 @@ html:first-child select {
     line-height: 323px;
 }
 
+/*********************
 
+Mileage update(23.08.10)
 
+ *********************/
 
+#input_area {
+    border-bottom: 1px solid #c8cacc;
+}
 
+#mileage_2 {
+    border: none;
+    text-align: right;
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+#discount {
+    color: #acacac;
+}

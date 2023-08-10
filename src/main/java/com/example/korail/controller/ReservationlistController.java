@@ -91,7 +91,7 @@ public class ReservationlistController {
                 if (serverDate <= rdate2) {
                     cancelList.add(order);
                 }
-                
+
             }
 
             model.addAttribute("reservList", reservList);
@@ -103,7 +103,7 @@ public class ReservationlistController {
 
         return orderReturn;
     }
-    
+
 
 
 
