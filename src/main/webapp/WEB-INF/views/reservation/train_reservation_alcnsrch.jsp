@@ -28,9 +28,16 @@ let url ="https://apis.data.go.kr/1613000/TrainInfoService/getStrtpntAlocFndTrai
 $.getJSON(url, function(citys){
 	//현제 날짜를 저장
 	let date = new Date();
+	let hours = date.getHours();
+	let minutes = date.getMinutes();
+	let seconds = date.getSeconds();
+	let makeMerchantUid = hours +  minutes + seconds;
+
 	let code = "<div>";
 	if (citys.response.body.items == ""){
 		code += "<span id='testSpan'>조회가능한 정보가 없습니다. 경로와 날짜를 확인해주세요.</span></div>";
+	}else if(rtime < makeMerchantUid){
+		code += "<span id='testSpan'>이미 지난 날짜이므로 조회할 정보가 없습니다.경로와 날짜를 확인해주세요.</span></div>";
 	}else {
 		code +="<p class='bustime_head' id='d2'>";
 		code += "<span style='width: 60px'>출발역</span><span style='width:75px'>도착역</span><span class='start_time' style='width: 75px'>출발시간</span><span class='end_time' style='width: 85px'>도착시간</span>";
@@ -167,7 +174,6 @@ $.getJSON(url, function(citys){
 	
 	
 		<div class="page">
-			<h3>배차 조회</h3>
 			<div class="buscheck_wrap clfix " style="width: 960px;">
 				<!-- 좌측 infoBox -->
 				<div class="infoBox">
@@ -262,13 +268,7 @@ $.getJSON(url, function(citys){
 				</div>
 						<!-- //우측 detailBox -->
 					</div>
-					<div class="section">
-						<ul class="desc_list">
-							<li>소요(도착)시간은 철도 사정에 따라 지연될 수 있음</li>
-	                        <li>휠체어 탑승 가능( <img src="/images/page/ico_wheel_on.png" alt="" style="width:13px"> ) 표시된 차량에만 휠체어 동반 탑승 가능 (전동식 휠체어만 탑승 가능)</li>
-	                        <li>휠체어 좌석 예매는 wkobus 사이트에서 예매 가능하며, 휠체어 좌석 예매는 출발일로 부터 3일 전까지만 가능<br>(*휠체어 좌석 예매가 없을 시 출발일 이틀 전부터 일반석 예매 가능)</li>
-						</ul>
-					</div>
+
 				</div>
 			<jsp:include page="../footer.jsp"></jsp:include>
 	</div>

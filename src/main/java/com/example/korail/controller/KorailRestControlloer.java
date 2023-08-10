@@ -100,7 +100,7 @@ public class KorailRestControlloer {
             String[] chairNumArray = chairNum.split(",");
 
             for(String chair : chairNumArray){
-                String seatNum = chair.substring(3,5);
+                String seatNum = chair.substring(4,6);
                 JsonObject jobj = new JsonObject();
                 jobj.addProperty("seat", seatNum);
                 seatList.add(jobj);

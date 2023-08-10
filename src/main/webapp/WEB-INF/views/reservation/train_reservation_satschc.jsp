@@ -101,7 +101,6 @@ $(document).ready(function(){
 
 
 	<div class="page" id="seatChcPage">
-		<h3> 좌석 선택 </h3>
 				
 		<div class="selectSeat_wrap">
 					<!-- compareBox -->
@@ -128,7 +127,7 @@ $(document).ready(function(){
 							<div class="tbl_type2">
 								<table>
 									<caption>
-										<strong>버스 정보</strong>
+										<strong>열차 정보</strong>
 										<p>고속사, 등급, 출발</p>
 									</caption>
 
@@ -157,24 +156,15 @@ $(document).ready(function(){
 											
 				<!-- 우측 detailBox -->
 				<div class="detailBox">
-					<span class="dimm" style="display: none;">
-						<span class="txt_check">예매하실 매수를 먼저 선택하신 후<br>좌석을 선택해 주세요.</span>
-						<a href="" class="btnS btn_normal">확인</a>
-					</span>
+
 					
-					<div class="detailBox_head" style="height: 66px;">
+					<div class="detailBox_head" style="height: 66px;font-size: 28px;color: #000;">
 						<div class="box_refresh">
 							<button type="button" class="btn btn_refresh" onclick="fnReload();">
 								<span class="ico_refresh">새로고침</span>
 							</button>
-						</div>							
-						<div class="count_seat">
-							<div class="inner">
-								<div class="box_count">
-									<span class="count_num"></span>
-								</div>
-							</div>
 						</div>
+						<span class="count_num">좌석 선택</span>
 					</div>
 							
 						
@@ -311,7 +301,7 @@ $(document).ready(function(){
 					<li>일부 좌석의 경우 실제 배치와 다를 수 있습니다.</li>
 				</ul>
 					<!-- //상세설명 -->
-			
+
 			
 			</div>
 				<jsp:include page="../footer.jsp"></jsp:include>	

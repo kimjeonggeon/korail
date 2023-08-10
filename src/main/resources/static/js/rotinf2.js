@@ -98,15 +98,6 @@ $(document).ready(function(){
 					confirmButtonText: '확인'
 				});
 				return false;
-			}else if($("#traintime").text() == ""){
-				Swal.fire({
-					text: "출발일를 선택해주세요.",
-					width: 600,
-					padding: '1.5em',
-					confirmButtonColor: '#74b3c7',
-					confirmButtonText: '확인'
-				});
-				return false;
 			}else{
 				
 				var result = Swal.fire({
@@ -118,10 +109,21 @@ $(document).ready(function(){
 				});
 				let startId = $("#start_id").text();
 			    let endId = $("#end_id").text();
-			    let rtime =$("#traintime").text();
+				let rtime = "";
 			    let start_add =$("#start_add").text();
 			    let end_add =$("#end_add").text();
+				let date = new Date();
+				let year = date.getFullYear();
+				let month = (date.getMonth() + 1).toString().padStart(2, '0');
+				let day = date.getDate().toString().padStart(2, '0');
+				let formattedDate = year + month + day;
 
+				if($("#traintime").text() == ""){
+					$("#traintime").text(formattedDate);
+					rtime =$("#traintime").text();
+				}else{
+					rtime =$("#traintime").text();
+				}
 
 				result.then((result) => {
 					if (result.isConfirmed) {

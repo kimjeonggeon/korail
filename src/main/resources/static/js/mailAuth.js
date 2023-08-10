@@ -16,7 +16,14 @@
 					/*console.log("data : " +  data);*/
 					checkInput.attr('disabled',false);
 					code =data;
-					alert('인증번호가 전송되었습니다.')
+
+					Swal.fire({
+						text: "인증번호가 전송되었습니다.",
+						width: 600,
+						padding: '1.5em',
+						confirmButtonColor: '#74b3c7',
+						confirmButtonText: '확인'
+					});
 				}	
 				
 					
@@ -67,7 +74,13 @@
 		
 	$("#userEmail3").on("change", function(){
 		if($("#userEmail3").val() == "default"){
-			alert("이메일을 선택해주세요");
+			Swal.fire({
+				text: "이메일을 선택해주세요.",
+				width: 600,
+				padding: '1.5em',
+				confirmButtonColor: '#74b3c7',
+				confirmButtonText: '확인'
+			});
 			
 			$("#userEmail2").val("");
 			$("#usereEmail3").focus();

@@ -58,6 +58,7 @@ public class ReservationController {
         orderDto.setTrainnum(Integer.parseInt(rvo.getTrainno()));
         orderDto.setTicketqty(Integer.parseInt(rvo.getTicketQty()));
         orderDto.setEmail(rvo.getEmail());
+
         orderService.getPayment(orderDto);
         //System.out.println("mileage_use : " + mileage_use);
         try {
