@@ -73,7 +73,7 @@ $(document).ready(function(){
 	 회원가입 폼 체크 - 유효성체크(값의 유무만 확인)
 	 *******************************/
 	$("#btnJoin").click(function(){
-		var passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
+		var passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[a-zA-Z\d!@#$%^&*]{8,}$/;
 		var password = $("#pass").val();
 		if($("#id").val() == ""){
 			$("#id").focus();
@@ -97,7 +97,7 @@ $(document).ready(function(){
 			});
 			return false;
 		}else if($("#pass").val() == "" ||
-			passwordRegex.test(password)){
+			!passwordRegex.test(password)){
 			$("#pass").focus();
 
 			Swal.fire({

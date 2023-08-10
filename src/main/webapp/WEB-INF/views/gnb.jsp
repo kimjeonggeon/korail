@@ -78,7 +78,7 @@ $(document).ready(function() {
 		<div id="menu">
 			<ul class="depth1" style="padding-left:30px; ">
 				<li><a href="http://localhost:9000/train_reservation_rotinf">예매</a></li>
-				<li><a href="http://localhost:9000/login2" class="">예매확인</a></li>
+				<li><a href="http://localhost:9000/reservation_main" class="">예매확인</a></li>
 				<li><a class="info">운행정보</a>
 					<ul class="info_menu" style="display:none;">
 						<li><a href="http://localhost:9000/train_info/timetable">시간표 조회</a></li>
@@ -96,7 +96,7 @@ $(document).ready(function() {
 					<ul class="depth4-1"  style="display: none;">
 						<li><a href="http://localhost:9000/mypage_pass">비밀번호 변경</a></li>
 						<li><a href="http://localhost:9000/mypage_phone">휴대폰번호 변경</a></li>
-						<li><a href="spurchase">맞춤형 우대예약 등록</a></li>
+						<li><a href="/spurchase">맞춤형 우대예약 등록</a></li>
 						<li><a href="http://localhost:9000/mypage_with">회원탈퇴</a></li>
 					</ul>
 				</li>

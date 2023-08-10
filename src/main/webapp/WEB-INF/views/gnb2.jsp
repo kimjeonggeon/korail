@@ -58,7 +58,7 @@
 					<ul class="depth4-1" style="padding-left: 2px; display: none;">
 						<li><a href="http://localhost:9000/mypage_pass">비밀번호 변경</a></li>
 						<li><a href="http://localhost:9000/mypage_phone">휴대폰번호 변경</a></li>
-						<li><a href="spurchase">맞춤형 우대예약 등록</a></li>
+						<li><a href="/spurchase">맞춤형 우대예약 등록</a></li>
 						<li><a href="http://localhost:9000/mypage_with">회원탈퇴</a></li>
 					</ul>
 				<li><a href="http://localhost:9000/admin_main">공지사항</a></li>
