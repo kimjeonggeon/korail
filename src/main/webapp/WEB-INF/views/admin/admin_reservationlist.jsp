@@ -81,7 +81,7 @@
 
 		<div id="admin_reservationlist">
 			<section class="adminReserv">
-				<h1 class="reservatonTable">전체예매내역</h1>
+				<h1 class="reservatonTable"></h1>
 
 			</section>
 			<%--<section class="adminReserv">

@@ -53,7 +53,7 @@
 				<tfoot>
 				
 				<tr>		
-				<p class ="j_table1.p" style ="color:red;" >동의를 거부할 경우 회원가입이 불가합니다.</p>
+				<p class ="j_table1.p" style ="color:red;" ></p>
 				</tr>
 				</tfoot>
 				</table>

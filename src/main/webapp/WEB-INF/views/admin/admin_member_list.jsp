@@ -10,6 +10,7 @@
 <link rel="stylesheet" href="http://localhost:9000/css/am-pagination.css">
 <script src="http://localhost:9000/js/jquery-3.6.4.min.js"></script>
 <script src="http://localhost:9000/js/am-pagination.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
 	$(document).ready(function(){
 		var pager = jQuery('#ampaginationsm').pagination({
@@ -36,13 +37,25 @@
 		$("#member_search").click(function(){
 			if ( $("#category").val() == "custname"){
 					if($("#cvalue").val() == ""){
-						alert("이름을 입력해주세요");
+						Swal.fire({
+							text: "이름을 입력해주세요.",
+							width: 600,
+							padding: '1.5em',
+							confirmButtonColor: '#74b3c7',
+							confirmButtonText: '확인'
+						});
 						$("#cvalue").focus(); 
 						return false;
 					}
 			}else if($("#category").val() =="id"){
 					if($("#cvalue").val() == ""  ){
-						alert("아이디를 입력해주세요");
+						Swal.fire({
+							text: "아이디를 입력해주세요.",
+							width: 600,
+							padding: '1.5em',
+							confirmButtonColor: '#74b3c7',
+							confirmButtonText: '확인'
+						});
 						 $("#cvalue").focus(); 
 						 return false;
 					}
@@ -67,9 +80,9 @@
 <!--contents  -->
 <div class="admin_member">
 		<section class="notice">
-			<h1 class="title_am"></h1>			
+			<h1 class="title_am"></h1>
 			<table class = "amem_table">
-			<thead>
+			<tbody>
 				<tr>
 					<th>번호</th>
 					<th>아이디</th>
@@ -81,7 +94,7 @@
 					<th>성별</th>
 					<th>가입일자</th>
 				</tr>
-			</thead>
+			</tbody>
 				<c:forEach var="member" items="${list}">
 				<tr>
 					<td>${member.rno}</td>
@@ -96,7 +109,7 @@
 				</tr>	
 				</c:forEach>
 				<tr>
-					<td colspan="9" class="paging"><div id="ampaginationsm" class="paging" style="border:none" style ="border-top:1px solid black"></div></td>
+					<td colspan="9" class="paging"><div id="ampaginationsm" class="paging" style="border:none;text-align: center;" style ="border-top:1px solid black"></div></td>
 				</tr>	
 			</table>
 			
