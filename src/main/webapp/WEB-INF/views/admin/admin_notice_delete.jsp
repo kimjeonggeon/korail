@@ -16,28 +16,30 @@
 	<div id="contentWrap">
 	<div class="title-wrap">
 		<jsp:include page="../header.jsp"></jsp:include>
-	<h2 class="title">관리자 - 공지사항</h2>
+	<h2 class="title_station">관리자 - 공지사항</h2>
 	</div>
 	<form id="form_delete" name="deleteForm" action="/admin/notice_delete" method="post">
 		<input type="hidden" name="nid" value="${nid}">
 		<input type="hidden" name="page" value="${page}">
-		<table class="notice_delete">
+		<form class="notice_delete">
+            <div class="board">
 			<tr>
 				<td><img src="http://localhost:9000/images/trash.jpg" id="trash"></td>
 			</tr>
 			<tr>					
-				<td>정말로 삭제 하시겠습니까?</td>
+				<p id="really">정말로 삭제 하시겠습니까?</p>
 			</tr>
 			<tr>
+            </div>
 				<td colspan="2">
-				<div class="button">
+				<div class="button3">
 					<a id="btnSubmit_delete" class="btn" >삭제완료</a>
-					<a href="/admin/notice_content/${nid}/${page}" class="btn">이전페이지</a>
-					<a href="/admin/notice_list/1/" class="btn">리스트</a>
+					<a id="btnSubmit_before" href="/admin/notice_content/${nid}/${page}" class="btn">이전페이지</a>
+					<a id="btnSubmit_list" href="/admin/notice_list/1/" class="btn">리스트</a>
 						</div>					
 				</td>				
 			</tr>				
-		</table>
+		</form>
 	</form>
 	<jsp:include page="../footer.jsp"></jsp:include>
 	</div>

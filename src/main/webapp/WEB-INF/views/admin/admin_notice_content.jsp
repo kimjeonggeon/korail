@@ -16,7 +16,7 @@
 	<div id="contentWrap">
 	<div class="title-wrap">
 		<jsp:include page="../header.jsp"></jsp:include>
-	<h2 class="title">관리자 - 공지사항</h2>
+	<h2 class="title_station">관리자 - 공지사항</h2>
 	</div>
 	<table class="admin_notice_content">
 		<tr>
@@ -42,7 +42,7 @@
 				<a href="/admin/notice_update/${notice.nid}/${page}" class="btn">수정하기</a>
 				<a href="/admin/notice_delete/${notice.nid}/${page}" class="btn">삭제하기</a>
 				<a href="/admin/notice_list/1/" class="btn">리스트</a>
-				<a href="/admin_main" class="btn">관리자홈</a>
+				<a href="/admin/admin_main" class="btn">관리자홈</a>
 					</div>
 			</td>
 		</tr>

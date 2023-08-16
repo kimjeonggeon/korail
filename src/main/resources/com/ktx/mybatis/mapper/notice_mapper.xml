@@ -32,9 +32,6 @@
 			from (select rownum rno, nid, ntitle, ncontent, nhits, ndate
 				from (select nid, ntitle, ncontent, nhits, to_char(ndate, 'yyyy-mm-dd') ndate
 	  				from (select nid, ntitle, ncontent, nhits, ndate from ktx_notice order by nid desc))
-			<if test= 'category == "all"'>
-				where ntitle like '%'||#{cvalue}||'%' or ncontent like '%'||#{cvalue}||'%' or ndate like '%'||#{ndate}||'%'
-			</if>
 			<if test= 'category == "title"'>
 				where ntitle like '%'||#{cvalue}||'%'
 			</if>

@@ -101,16 +101,36 @@ body {
 	border-collapse: collapse;
 }
 
+.table_content {
+	margin: 10px auto;
+	width: 1000px;
+	border-collapse: collapse;
+}
+
 .notice_search th {
 	font-size: 16px;
 	text-align: center;
 	padding: 0;
 }
 
+.notice_search tbody tr {
+	border-bottom: 1px solid #dddddd;
+}
+
+.notice_search tbody tr:nth-of-type(even) {
+	background-color: #f3f3f3;
+}
+
+.notice_search tbody tr.active-row {
+	font-weight: bold;
+	color: #b8becc;
+}
+
 .notice_search tr:last-child td {
 	border: none;
 	margin: auto;
 }
+
 .payment-content {
 	text-align: center;
 	color: black;
@@ -421,6 +441,20 @@ li .info-bottom {
 
 }
 
+.button3 {
+	position: relative;
+	margin: 20px auto;
+	display: flex;
+	justify-content: center;
+
+}
+
+.board {
+	border: 3px solid #777;
+	width: 30%;
+	margin: 30px auto;
+}
+
 .button2 {
 	position: relative;
 	margin: 20px auto;
@@ -573,6 +607,11 @@ li .info-bottom {
 	border-collapse: collapse;
 }
 
+.notice_content tr:first-child>th {
+	background-color: #b8becc;
+	color: #FFF;
+}
+
 .admin_notice_content {
 	width: 80%;
 	margin: 100px auto;
@@ -650,9 +689,41 @@ table #testTable th {
 	border: 1px solid black;
 }
 
-.notice_list tr>td {
+.notice_list tr>td:first-child {
 	text-align: center;
-	width: 25%;
+	width: 15%;
+}
+
+.notice_list tr>td:nth-child(2) {
+	text-align: center;
+	width: 35%;
+}
+
+.notice_list tr>td:nth-child(3) {
+	text-align: center;
+	width: 15%;
+}
+
+.notice_list tr>td:last-child {
+	 text-align: center;
+	 width: 35%;
+ }
+
+.notice_content tr:first-child>th {
+	background-color: #b8becc;
+	color: #FFF;
+	height: 40px;
+	font-size: 16px;
+	border: 1px solid black;
+}
+
+.notice_content tr:last-child>td {
+	height: 30px;
+}
+
+#img {
+	display: flex;
+	margin: auto;
 }
 
 .notice_search tr>td:first-child {
@@ -676,7 +747,7 @@ table #testTable th {
 }
 
 .notice_list tr:first-child>th {
-	background-color: gray;
+	background-color: #004282;
 	color: #FFF;
 }
 
@@ -696,7 +767,7 @@ table #testTable th {
 }
 
 .notice_search tr:first-child>th {
-	background-color: #8768A1;
+	background-color: #b8becc;
 	color: #FFF;
 	height: 40px;
     font-size: 16px;
@@ -749,7 +820,14 @@ table #testTable tr:first-child td {
 }
 
 #trash {
-	width: 30%;
+	width: 70%;
+	margin: 50px auto;
+	display: block;
+}
+
+#really {
+	margin: 30px auto;
+	text-align: center;
 }
 
 .notice_delete tr:first-child {
@@ -761,7 +839,6 @@ table #testTable tr:first-child td {
 	text-align: center;
 	padding: 10px 0;
 }
-
 #trainList {
 	margin: auto;
 	padding: 8px;
@@ -1121,6 +1198,10 @@ p#content_content {
 
 .ntitle:hover {
 	cursor: pointer;
+}
+
+#list {
+	width: 70%;
 }
 
 #list:hover {

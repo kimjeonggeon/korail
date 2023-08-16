@@ -339,6 +339,11 @@ $(document).ready(function() {
 
 				pager(result.page.dbCount, result.page.pageCount, result.page.pageSize, result.page.reqPage);
 
+				$(".ntitle").click(function () {
+					contentAjax($(this).attr("nid"), page);
+					$(".search-form").css("display", "none");
+				});
+
 				jQuery('#ampaginationsm').on('am.pagination.change',function(e){
 					jQuery('.showlabelsm').text('The selected page no: '+e.page);
 
@@ -354,24 +359,18 @@ $(document).ready(function() {
 		$.ajax({
 			url: "notice_content_json_data/" + nid + "/",
 			success: function (notice) {
-				let output = "<div class='notice_content'>";
-				output += "<div class='line2'></div>";
-				output += "<div class='table_content'><p id='notice_table1'>" + notice.ntitle + "</p><p id='notice_table2'>" + notice.ndate + "</p></div>";
-				output += "<div class='line2'></div>";
-				output += "<p id='content_title'>" + notice.ntitle + "</p>";
-				output += "<p id='content_content'>" + notice.ncontent + "<br>";
+				let output = "<table class='notice_content'>";
+
 				if(notice.nsfile != null) {
-					output += "<img src='http://localhost:9000/upload/" + notice.nsfile + "'>";
+					output += "<img id='img' src='http://localhost:9000/upload/" + notice.nsfile + "'>";
 				}
-				output += "</p><div>";
-				output += "<div class='line2'></div>";
-				output += "<div class='button'>";
-				output += "<a class='btn' id='list'>리스트</a>";
-				output += "<input type='hidden' id='before_hidden' value='" + notice.nprev + "'>";
-				output += "<input type='hidden' id='next_hidden' value='" + notice.nnext + "'>";
-				output += "</div>";
-				output += "</div>";
-				output += "</div>";
+
+				output += "<tr><th>상세 내용</th>";
+				output += "<th>등록 일자</th></tr>";
+				output += "<tr><td>" + notice.ntitle + "</td>";
+				output += "<td>" + notice.ndate + "</td></tr></table>";
+
+				output += "<div class='button' id='list'><a href = '/notice_list_json' class = 'btn'> 리스트 </a>";
 
 				$("table.notice_search").remove();
 				$("h3").after(output);
