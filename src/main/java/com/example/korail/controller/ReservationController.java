@@ -32,9 +32,9 @@ public class ReservationController {
         ReservationDto rvo = (ReservationDto) session.getAttribute("rvo");
         UUID uuid = UUID.randomUUID();
         DecimalFormat decimalFormat = new DecimalFormat("#,###");
-        //int number = Integer.parseInt(rvo.getAdltTotAmt());
+
         String price = rvo.getAdltTotAmt();
-        //String price = decimalFormat.format(number);
+
         rvo.setEmail(reservationDto.getEmail());
 
         if (cardinfoDto.getPaymentmethod().equals("card")) {
@@ -43,6 +43,12 @@ public class ReservationController {
         } else if (cardinfoDto.getPaymentmethod().equals("kakao")) {
             cardinfoService.getPayment(cardinfoDto);
         }
+
+        rvo.setPaymentmethodlist(reservationDto.getPaymentmethodlist());
+        rvo.setPrice(price);
+        System.out.println("getPaymentmethod -->"+reservationDto.getPaymentmethodlist());
+        System.out.println("getPrice -->"+reservationDto.getPrice());
+
         orderDto.setSstation(rvo.getDepplacename());
         orderDto.setStime(rvo.getStart_date());
         orderDto.setDtime(rvo.getEnd_date());

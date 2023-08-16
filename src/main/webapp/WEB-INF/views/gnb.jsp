@@ -73,7 +73,7 @@ $(document).ready(function() {
 		<h1 class="logo" style="margin-bottom: 0px; height:105px;" >
 		
 			<a href="http://localhost:9000">
-			<img class="gnb_logo" src="http://localhost:9000/images/free-icon-train.png">KTX 통합 예매</a>
+			<img class="gnb_logo" src="http://localhost:9000/images/free-icon-train.png">KTX 열차 예매</a>
 		</h1>
 		<div id="menu">
 			<ul class="depth1" style="padding-left:30px; ">

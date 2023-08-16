@@ -8,6 +8,7 @@ $(document).ready(function(){
 			  $("#popArvlChc").css("background", "#f3f4f6");
 			  $("#popArvlChc").css("border","none").css("box-shadow","none");
 			  $(".pop_place .place .focuson").css("border","2px solid #76c6e1").css("box-shadow","0 0 7px 0 rgba(118,198,225,1)").css("background","none");
+			  $("#btnsearch").css("background", "#b8becc");
 		  });
 		  
 		  $(".modalclose").click(function() {
@@ -18,8 +19,11 @@ $(document).ready(function(){
 		      if (event.target == $("#myModal")[0]) {
 		        $("#myModal").fadeOut();
 		      }
-		    });
-		    
+		  });
+
+
+
+
 		  		  
 		  
 		 //편도,왕복 클릭시 변화 이벤트

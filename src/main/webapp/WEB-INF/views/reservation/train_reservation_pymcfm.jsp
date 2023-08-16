@@ -101,7 +101,7 @@
 										<tr>
 											<th scope="row">결제수단</th>
 											<td>
-												신용카드
+												${sessionScope.rvo.paymentmethodlist}
 											</td>
 										</tr>
 									</tbody>
@@ -120,7 +120,7 @@
 
 											<tr>
 												<th scope="row">결제금액</th>
-												<td><strong><span id="tissuAmtView">${totalPrice}</span></strong><span id="tissuAmtUntView">원</span></td>
+												<td><strong><span id="tissuAmtView">${sessionScope.rvo.price}</span></strong><span id="tissuAmtUntView">원</span></td>
 											</tr>
 
 									</tbody>

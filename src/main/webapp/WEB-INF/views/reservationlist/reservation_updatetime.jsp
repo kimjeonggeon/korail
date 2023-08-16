@@ -28,10 +28,17 @@
 		$.getJSON(url, function(citys){
 			//현제 날짜를 저장
 			let date = new Date();
+			let year = date.getFullYear();
+			let month = date.getMonth() + 1;
+			let day = date.getDate();
+			let makeMerchantUid = year + (month < 10 ? "0" + month : month) + (day < 10 ? "0" + day : day);
+
 			let code = "<div>";
 			if (citys.response.body.items == ""){
 				code += "<span id='testSpan'>조회가능한 정보가 없습니다. 경로와 날짜를 확인해주세요.</span></div>";
-			}else {
+			}else if(rtime < makeMerchantUid){
+				code += "<span id='testSpan'>이미 지난 날짜이므로 조회할 정보가 없습니다.경로와 날짜를 확인해주세요.</span></div>";
+			}else{
 				code += "<p class='bustime_head' id='d2'>";
 				code += "<span style='width: 60px'>출발역</span><span style='width:75px'>도착역</span><span class='start_time' style='width: 75px'>출발시간</span><span class='end_time' style='width: 95px'>도착시간</span>"
 				code += "<span class='bus_com' style='width:50px'>열차명</span><span class='grade' style='width: 101px'>열차번호</span><span class='fare'>운임</span><span class='status' style='width: 70px'></span></p>";

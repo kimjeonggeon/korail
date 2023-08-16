@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>ktx 예매 사이트</title>
+<title>KTX 예매 사이트</title>
 <link rel="stylesheet" href="http://localhost:9000/css/main.css">
 <script src="http://localhost:9000/js/jquery-3.6.4.min.js"></script>
 <script src="http://localhost:9000/js/main.js"></script>
