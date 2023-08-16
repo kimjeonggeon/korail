@@ -17,7 +17,7 @@
 	<div id="contentWrap">
 	<div class="title-wrap">
 		<jsp:include page="../header.jsp"></jsp:include>
-	<h2 class="title">관리자 - 공지사항</h2>
+	<h2 class="title_station">관리자 - 공지사항</h2>
 	</div>
 	<form id="form_update" name="updateForm" action="/admin/notice_update" method="post" enctype="multipart/form-data">
 		<input type="hidden" name="nid" value="${notice.nid}">
@@ -41,14 +41,14 @@
 					<input type="hidden" name="nfile" value="${notice.nfile}">
 					<input type="hidden" name="nsfile" value="${notice.nsfile}">
 					<input type="file" name="file1" id="file1">
-					<c:choose>
-						<c:when test="${notice.nfile != null}">
-							<span id="update_file">${notice.nfile}</span>
-						</c:when>
-						<c:otherwise>
-							<span id="update_file">선택된 파일 없음</span>
-						</c:otherwise>
-					</c:choose>
+<%--					<c:choose>--%>
+<%--						<c:when test="${notice.nfile != null}">--%>
+<%--							<span id="update_file">${notice.nfile}</span>--%>
+<%--						</c:when>--%>
+<%--						<c:otherwise>--%>
+<%--							<span id="update_file">선택된 파일 없음</span>--%>
+<%--						</c:otherwise>--%>
+<%--					</c:choose>--%>
 				</td>
 			</tr>
 			<tr>
