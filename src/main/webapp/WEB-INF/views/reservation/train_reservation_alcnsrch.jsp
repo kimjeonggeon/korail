@@ -28,10 +28,11 @@ let url ="https://apis.data.go.kr/1613000/TrainInfoService/getStrtpntAlocFndTrai
 $.getJSON(url, function(citys){
 	//현제 날짜를 저장
 	let date = new Date();
-	let hours = date.getHours();
-	let minutes = date.getMinutes();
-	let seconds = date.getSeconds();
-	let makeMerchantUid = hours +  minutes + seconds;
+	let year = date.getFullYear();
+	let month = date.getMonth() + 1;
+	let day = date.getDate();
+	let makeMerchantUid = year + (month < 10 ? "0" + month : month) + (day < 10 ? "0" + day : day);
+
 
 	let code = "<div>";
 	if (citys.response.body.items == ""){

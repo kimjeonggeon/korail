@@ -62,20 +62,18 @@ $(document).ready(function(){
 				}
 				$("#start_add").text($("#start").text());
 				$("#end_add").text($("#end").text());
-				
-				
+
+				if ($("#start_add").text() != "선택" && $("#end_add").text() != "선택") {
+					$("#btnsearch").css("background", "#5754b5");
+				}
 			});
 			
 		})
 	}//test
 	//});
-	
-		
-		$(".ui-datepicker-trigger").click(function() {
-			  if ($("#start_add").text() != "선택" && $("#end_add").text() != "선택") {
-			    $("#btnsearch").css("background", "#5754b5");
-			  }
-		});
+
+
+
 		
 		
 			

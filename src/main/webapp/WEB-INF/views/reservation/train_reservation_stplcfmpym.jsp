@@ -321,55 +321,6 @@
 							</div>
 						</div><div class="scroll-element scroll-x scroll-scrolly_visible"><div class="scroll-element_outer"><div class="scroll-element_size"></div><div class="scroll-element_track"></div><div class="scroll-bar" style="width: 88px;"></div></div></div><div class="scroll-element scroll-y scroll-scrolly_visible"><div class="scroll-element_outer"><div class="scroll-element_size"></div><div class="scroll-element_track"></div><div class="scroll-bar" style="height: 51px; top: 0px;"></div></div></div></div>
 					</div>
-					
-					<div class="agreement_wrap">
-						<div class="agreement_tit">
-							<h4>개인정보 제3자 제공에 대한 동의</h4>
-							<span class="custom_check chk_blue">
-								<input type="checkbox" name="agree" id="agree3">
-								<label for="agree3">동의</label>
-							</span>
-                    </div>
-                    <div class="scroll-wrapper agreement_cont scrollbar-inner" style="position: relative;">
-                        <div class="agreement_cont scrollbar-inner scroll-content scroll-scrolly_visible"
-                             style="height: auto; margin-bottom: 0px; margin-right: 0px; max-height: 120px;">
-                            <!-- iframe src="/cmn/IndlInfClcnUtlzAgrm" frameborder="0" scrolling="no" width="100%" height="130" title="개인정보 처리방침" onload="resize(this);"></iframe -->
-                            <div class="terms_wrap">
-                                <h1>개인정보 수집 및 이용 동의</h1>
-                                <dl>
-                                    <dt><span class="emphasis">1. 개인정보를 제공받는 자</span></dt>
-                                    <dd>
-                                        <p>고속버스 승차권 온라인 예매 서비스의 제공</p>
-                                    </dd>
-                                    <dt>2. 수집하는 항목</dt>
-                                    <dd>
-                                        <p>신용카드 번호ㆍ유효기간ㆍ신용카드 비밀번호 앞 2자리, 생년월일, 휴대전화번호</p>
-                                    </dd>
-                                    <dt><span class="emphasis">3. 보유 및 이용 기간</span></dt><!-- 181121 수정 -->
-                                    <dd>
-                                        <p>5년 (근거: 전자상거래 등에서의 소비자 보호에 관한 법률)</p>
-                                    </dd>
-                                    <dt>4. 개인정보 수집 및 이용 동의 거부 시 승차권 예매 하실 수 없습니다.</dt><!-- 181121 추가 -->
-                                </dl>
-                                <p>시행일자 : 2017년 5월 18일 </p>
-                            </div>
-                        </div>
-                        <div class="scroll-element scroll-x scroll-scrolly_visible">
-                            <div class="scroll-element_outer">
-                                <div class="scroll-element_size"></div>
-                                <div class="scroll-element_track"></div>
-                                <div class="scroll-bar" style="width: 88px;"></div>
-                            </div>
-                        </div>
-                        <div class="scroll-element scroll-y scroll-scrolly_visible">
-                            <div class="scroll-element_outer">
-                                <div class="scroll-element_size"></div>
-                                <div class="scroll-element_track"></div>
-                                <div class="scroll-bar" style="height: 51px; top: 0px;"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
 
                 <div class="agreement_wrap">
                     <div class="agreement_tit">
@@ -747,14 +698,13 @@
 
 
                 <div class="tab_desc active"> <!-- 190109 추가 : wrapper 추가 - tab_desc -->						
-								<ul class="desc_list" id="cardNotice"> 
-									<li class="txt_puple">열차 탑승 시 결제에 사용된 카드(창구, 무인기 발권 시), 홈티켓 중 하나를 가져오셔야 됩니다.</li>
-									<li>예매가 완료된 후 예매확인/취소/변경 메뉴를 통해 예매내역을 확인 하시기 바랍니다.</li>
-									<li>모든 결제정보는 암호화 처리 후 안전하게 전송됩니다.</li>
-									<li>비밀번호 입력 오류가 3회 이상 발생할 경우 홈페이지에서 결제가 불가하니 카드사/은행을 방문하셔서 처리 후 다시 시도 바랍니다.</li>
-								
-								</ul>						
-							</div>
+					<ul class="desc_list" id="cardNotice">
+						<li class="txt_puple">열차 탑승 시 결제에 사용된 카드(창구, 무인기 발권 시), 홈티켓 중 하나를 가져오셔야 됩니다.</li>
+						<li>예매가 완료된 후 예매확인/취소/변경 메뉴를 통해 예매내역을 확인 하시기 바랍니다.</li>
+						<li>모든 결제정보는 암호화 처리 후 안전하게 전송됩니다.</li>
+						<li>비밀번호 입력 오류가 3회 이상 발생할 경우 홈페이지에서 결제가 불가하니 카드사/은행을 방문하셔서 처리 후 다시 시도 바랍니다.</li>
+					</ul>
+				</div>
 
                 <!-- // 카드결제 -->
 

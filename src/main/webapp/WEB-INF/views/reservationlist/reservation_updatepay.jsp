@@ -410,10 +410,10 @@
 						<div class="tab_wrap inradio tab_type2" data-desc-id="tab-desc1"> <!-- 190109 수정 : data-desc-id 속성 추가 (값은 하단 설명 영역인 .tab_desc_wrap의 id와 매칭) -->
 							<div class="tab_conts" id="tab1" style="display: block;">
 								<div class="box_inputForm">
-									<strong>카드종류</strong>
+									<strong>결제 방법</strong>
 									<span class="radio_wrap">
 									<span class="custom_radio" id="cardradio">
-										<input type="radio" id="caPerson" name="paymentmethodlist" checked="true" value="card">
+										<input type="radio" id="caPerson" name="paymentmethodlist" value="card">
 										<label for="caPerson">카드</label>
 									</span>
 									<span class="custom_radio" id="kakaoradio">
@@ -580,12 +580,10 @@
 
 					<div class="tab_desc active"> <!-- 190109 추가 : wrapper 추가 - tab_desc -->
 						<ul class="desc_list" id="cardNotice">
-							<li class="txt_puple">고속버스 탑승 시 결제에 사용된 카드(창구, 무인기 발권 시), 모바일티켓, 홈티켓 중 하나를 가져오셔야 됩니다.</li>
+							<li class="txt_puple">열차 탑승 시 결제에 사용된 카드(창구, 무인기 발권 시), 홈티켓 중 하나를 가져오셔야 됩니다.</li>
 							<li>예매가 완료된 후 예매확인/취소/변경 메뉴를 통해 예매내역을 확인 하시기 바랍니다.</li>
-							<li>고속버스에 설치된 통합단말기에 기 결제한 카드(교통카드 기능이 있는 신용카드만 해당)를 태그하시면 영수증과 승차권을 한번에 발권하실 수 있습니다.</li>
 							<li>모든 결제정보는 암호화 처리 후 안전하게 전송됩니다.</li>
 							<li>비밀번호 입력 오류가 3회 이상 발생할 경우 홈페이지에서 결제가 불가하니 카드사/은행을 방문하셔서 처리 후 다시 시도 바랍니다.</li>
-
 						</ul>
 					</div>
 				</div>
