@@ -7,7 +7,7 @@
 <title>회원가입2</title>
 <link rel="stylesheet" href="http://localhost:9000/css/join2.css">
 <script src="http://localhost:9000/js/jquery-3.6.4.min.js"></script>
-
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="http://localhost:9000/js/join.js"></script>
 <script src="http://localhost:9000/js/mailAuth.js"></script>
 

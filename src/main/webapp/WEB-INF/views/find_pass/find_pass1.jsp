@@ -9,6 +9,7 @@
  	 <script src="http://localhost:9000/js/jquery-3.6.4.min.js"></script>
 	 <script src="http://localhost:9000/js/mailAuth.js"></script>
 	 <script src="http://localhost:9000/js/find.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
 <div>
@@ -35,7 +36,7 @@
 	
 	<form name = "verti" action ="find_pass2" method ="POST">
 	<div class= "v_noti">
-	<p class="join2_p"> 비밀번호 찾고자 하는 이메일을 입력해 주세요.</p>
+	<p class="join2_p"> 비밀번호 변경하`	u고자 하는 이메일을 입력해 주세요.</p>
 	</div>
                 	 
 						<div class="login_id" id="authsend">

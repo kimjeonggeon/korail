@@ -194,10 +194,14 @@ $(document).ready(function(){
 				padding: '1.5em',
 				confirmButtonColor: '#74b3c7',
 				confirmButtonText: '확인'
+			}).then((result) => {
+				if (result.isConfirmed) {
+					// 확인 버튼을 누르면 폼 제출
+					joinForm.submit();
+				}
 			});
-			joinForm.submit();
 		}
-	});	//btnJoin
+	});
 	/******
 
 	/******

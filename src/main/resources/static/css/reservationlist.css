@@ -1867,7 +1867,9 @@ fieldset{
 }
 
 
-
+#admin_reservationlist table .paging{
+    border-bottom: none;
+}
 
 
 
