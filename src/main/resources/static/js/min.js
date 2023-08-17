@@ -339,11 +339,6 @@ $(document).ready(function() {
 
 				pager(result.page.dbCount, result.page.pageCount, result.page.pageSize, result.page.reqPage);
 
-				$(".ntitle").click(function () {
-					contentAjax($(this).attr("nid"), page);
-					$(".search-form").css("display", "none");
-				});
-
 				jQuery('#ampaginationsm').on('am.pagination.change',function(e){
 					jQuery('.showlabelsm').text('The selected page no: '+e.page);
 
@@ -359,12 +354,14 @@ $(document).ready(function() {
 		$.ajax({
 			url: "notice_content_json_data/" + nid + "/",
 			success: function (notice) {
-				let output = "<table class='notice_content'>";
-
+				let output = "<div class='notice_content'>";
+				output += "<div class='line2'></div>";
+				output += "<div class='table_content'><p id='notice_table1'>" + notice.ntitle + "</p><p id='notice_table2'>" + notice.ndate + "</p></div>";
+				output += "<p id='content_title'>" + notice.ntitle + "</p>";
+				output += "<p id='content_content'>" + notice.ncontent + "</p><br>";
 				if(notice.nsfile != null) {
-					output += "<img id='img' src='http://localhost:9000/upload/" + notice.nsfile + "'>";
+					output += "<img src='http://localhost:9000/upload/" + notice.nsfile + "' style='max-width: 500px; max-height: 300px;'>";
 				}
-
 				output += "<tr><th>상세 내용</th>";
 				output += "<th>등록 일자</th></tr>";
 				output += "<tr><td>" + notice.ncontent + "</td>";
@@ -372,12 +369,12 @@ $(document).ready(function() {
 
 				output += "<div class='button'><a href = '/notice_list_json' class = 'btn' id='list'> 리스트 </a>";
 
+
 				$("table.notice_search").remove();
 				$("h3").after(output);
 
 				$("#list").click(function() {
 					$(".notice_content").remove();
-					$(".search-form").css("display", "flex");
 					initAjax(page);
 				});
 
