@@ -48,6 +48,10 @@
 	<h2 class="title_station">관리자 - 공지사항</h2>
 	</div>
 	<table class="notice_list">
+
+		<div class="button" id="button">
+			<a href="/admin/notice_write" class="btn">등록하기</a>
+		</div>
 		
 		<tr>
 			<th>번호</th>
@@ -67,9 +71,7 @@
 			<td colspan="4"><div id="ampaginationsm"></div></td>
 		</tr>
 	</table>
-		<div class="button" id="button">
-			<a href="/admin/notice_write" class="btn">등록하기</a>
-		</div>
+
 	<jsp:include page="../footer.jsp"></jsp:include>
 	</div>
 </body>

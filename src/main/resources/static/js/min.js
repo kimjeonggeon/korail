@@ -291,8 +291,8 @@ $(document).ready(function() {
 		}
 
 		// 글자수 제한
-		if(content.length > 200) {
-			$(this).val($(this).val().substring(0, 200));
+		if(content.length > 1000) {
+			$(this).val($(this).val().substring(0, 1000));
 		}
 	});
 
@@ -367,10 +367,10 @@ $(document).ready(function() {
 
 				output += "<tr><th>상세 내용</th>";
 				output += "<th>등록 일자</th></tr>";
-				output += "<tr><td>" + notice.ntitle + "</td>";
+				output += "<tr><td>" + notice.ncontent + "</td>";
 				output += "<td>" + notice.ndate + "</td></tr></table>";
 
-				output += "<div class='button' id='list'><a href = '/notice_list_json' class = 'btn'> 리스트 </a>";
+				output += "<div class='button'><a href = '/notice_list_json' class = 'btn' id='list'> 리스트 </a>";
 
 				$("table.notice_search").remove();
 				$("h3").after(output);
