@@ -35,7 +35,7 @@
 					</li>
 					<li>
 						<label>비밀번호</label>
-						<input type="password" name="pass" class="input1" id="pass" placeholder ="비밀번호 입력(소문자,대문자,숫자 포함 8~20자)">
+						<input type="password" name="pass" class="input1" id="pass" placeholder ="비밀번호 입력(소문자,대문자,숫자,특수문자 포함 8~20자)">
 					</li>
 					<li>
 						<label>비밀번호 확인</label>
