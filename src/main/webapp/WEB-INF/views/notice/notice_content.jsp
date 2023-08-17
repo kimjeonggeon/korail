@@ -38,10 +38,6 @@
 			
 			<div class="button">
 				<a href="/notice_list_json" class="btn" id="list">리스트</a>
-				<a href="http://localhost:9000/notice_content.do?nid=${nprev}" class="btn" id="click_before"><</a>
-				<a href="http://localhost:9000/notice_content.do?nid=${nnext}" class="btn" id="click_after">></a>
-				<input type="hidden" id="before_hidden" value="${nprev}">
-				<input type="hidden" id="next_hidden" value="${nnext}">
 			</div>
 	</div>
 	</div>

@@ -416,8 +416,22 @@ li .info-bottom {
 	position: relative;
 	margin: 20px auto;
 	display: flex;
+	width: 100%;
 	justify-content: flex-end;
 
+}
+
+.button3 {
+	position: relative;
+	margin: 20px auto;
+	display: flex;
+	justify-content: center;
+
+}
+
+.board {
+	width: 30%;
+	margin: 30px auto;
 }
 
 .button2 {
@@ -578,6 +592,7 @@ li .info-bottom {
 	margin: 100px auto;
 	text-align: center;
 	border-collapse: collapse;
+	padding: 10px;
 }
 
 .admin_notice_content th {
@@ -619,12 +634,6 @@ li .info-bottom {
 	padding: 10px 0;
 }
 
-.notice_list {
-	width: 1000px;
-	margin: auto;
-	border-collapse: collapse;
-}
-
 #testTable {
 	text-align: center;
 }
@@ -652,6 +661,33 @@ table #testTable th {
 
 .notice_list tr>td {
 	text-align: center;
+}
+
+.notice_list tr>td:nth-child(3) {
+	text-align: center;
+	padding: 8px;
+}
+
+.notice_list tr>td:last-child {
+	 text-align: center;
+	 width: 35%;
+ }
+
+.notice_content tr:first-child>th {
+	background-color: #b8becc;
+	color: #FFF;
+	height: 40px;
+	font-size: 16px;
+	border: 1px solid black;
+}
+
+.notice_content tr:last-child>td {
+	height: 30px;
+}
+
+#img {
+	display: flex;
+	margin: auto;
 	width: 25%;
 }
 
@@ -675,6 +711,21 @@ table #testTable th {
 }
 
 .notice_list tr:first-child>th {
+	background-color: #f2f2f2;
+	padding: 8px;
+	font-weight: bold;
+}
+
+.notice_list tr:nth-child(2)>th {
+	padding: 8px;
+}
+
+.notice_list tr {
+
+}
+
+.notice_list {
+	border-collapse: collapse;
 	background-color: gray;
 	color: #FFF;
 }
@@ -683,6 +734,7 @@ table #testTable th {
 	background:#465481;
 	color: #FFF;
 }
+
 .notice_search tr>td {
 	text-align: center;
 	height: 30px;
@@ -705,8 +757,8 @@ table #testTable th {
 
 #testTable th, td {
 	border-collapse: collapse;
-	border: 1px solid black;
-	padding: 20px 0;
+	padding: 8px;
+	border-bottom: 1px solid #ddd;
 }
 
 #testTable tr:last-child td {
@@ -721,7 +773,33 @@ table #testTable tr:first-child td {
 	margin: 200px auto;
 }
 
+.notice_write tr>td {
+	border: 1px solid gray;
+	padding: 8px;
+}
+
 .notice_write tr:last-child>td {
+	border: none;
+}
+
+.admin_notice_content tr>td {
+	border: 1px solid gray;
+	padding: 20px;
+}
+
+.admin_notice_content tr {
+	padding: 10px;
+}
+
+.admin_notice_content tr:last-child>td {
+	border: none;
+}
+
+.notice_update tr>td {
+	border: 1px solid gray;
+}
+
+.notice_update tr:last-child>td {
 	border: none;
 }
 
@@ -873,7 +951,7 @@ table #testTable tr:first-child td {
 
 #button {
 	width: 50%;
-	margin: 0 auto 200px auto;
+	margin: 30px auto;
 }
 
 #ampaginationsm {
@@ -883,7 +961,8 @@ table #testTable tr:first-child td {
 }
 
 .notice_list {
-	margin: 200px auto;
+	width: 900px;
+	margin: 20px auto 0 auto;
 }
 
 #testTable {

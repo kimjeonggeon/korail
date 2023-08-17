@@ -37,7 +37,7 @@
 			<tr>
 				<th>내용</th>
 				<td>
-					<textarea style="height:300px; width:1100px; resize: none;" maxlength="200" name="ncontent" id="notice_content" placeholder="텍스트를 입력하세요"></textarea>
+					<textarea style="height:300px; width:1100px; resize: none;" maxlength="1000" name="ncontent" id="notice_content" placeholder="텍스트를 입력하세요"></textarea>
 				</td>
 			</tr>
 			<tr>
@@ -51,7 +51,7 @@
 				<div class="button">
 					<div class="text">
 						<p class="textCount">0</p>
-						<p class="textTotal">/200자</p>
+						<p class="textTotal">/1000자</p>
 					</div>
 					<a id="btnSubmit" class="btn" >등록완료</a>
 					<a id="btnAgain" class="btn" >다시쓰기</a>
