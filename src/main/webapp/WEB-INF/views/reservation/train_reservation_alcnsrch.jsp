@@ -75,13 +75,11 @@ $.getJSON(url, function(citys){
 				code += "<span style='text-align: center' id='input5'>" + kobi.traingradename + "</span>";
 				code += "<span id='input6' style='text-indent: 10px'>" + kobi.trainno + "</span>";
 				code += "<span id='input7'>" + kobi.adultcharge + "</span>";
-				code += "<span class='accent btn_arrow' id='input_add'>선택</span>";
+				code += "<span class='accent btn_arrow' id='input_add' style='cursor: pointer;'>선택</span>";
 				code += "</p>"
 			}
 
-
 		}
-
 
 		code += "</div></div>";
 	}

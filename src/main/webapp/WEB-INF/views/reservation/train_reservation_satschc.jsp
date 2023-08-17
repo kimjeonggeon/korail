@@ -292,7 +292,7 @@ $(document).ready(function(){
 					
 					<!-- //선택좌석 상세보기 -->
 					<div class=" btns btn_selectSeat">
-						<span id="satsChcCfmBtn" class="btnL btn_confirm ready">선택완료</span>
+						<span id="satsChcCfmBtn" class="btnL btn_confirm ready" style='cursor: pointer;'>선택완료</span>
 					</div>
 				
 				</div>

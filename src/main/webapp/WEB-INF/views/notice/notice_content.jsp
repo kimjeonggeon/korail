@@ -22,28 +22,15 @@
 	
 		<p id="content_define">KTX 홈페이지의 새로운 소식을 확인하세요.</p>
 		
-
-		<table class="table_content">
-			<tr>
-				<th>상세 내용</th>
-				<th>이미지</th>
-				<th>등록 일자</th>
-			</tr>
-			<tr>
-				<td>${notice.ntitle}</td>
-				<td>${notice.nsfile}</td>
-				<td>${notice.ndate}<td>
-				<td></td>
-			</tr>
-
-		</table>
+		<div class="line2"></div>
+		<div class="table_content"><p id="notice_table1">${notice.ntitle}</p><p id="notice_table2">${notice.ndate}</p></div>
 
 		
 		<p id="content_title">${notice.ntitle}</p>
 		
 		<p id="content_content">${notice.ncontent}<br>
 			<c:if test="${notice.nsfile != null}">
-				<img src="http://localhost:9000/upload/${notice.nsfile}">
+				<img src="http://localhost:9000/upload/${notice.nsfile}" style="max-width: 500px; max-height: 300px;">
 			</c:if></p>
 		
 		<div>
