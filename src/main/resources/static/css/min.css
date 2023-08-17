@@ -84,9 +84,7 @@ body {
 }
 
 .search-form {
-	display: flex;
-	justify-content: center;
-	align-items: center;
+	text-align: center;
 	margin: 30px auto;
 }
 
@@ -96,13 +94,8 @@ body {
 }
 
 .notice_search {
-	margin: 10px auto;
-	width: 1000px;
-	border-collapse: collapse;
-}
-
-.table_content {
-	margin: 10px auto;
+	margin: auto;
+	margin-bottom: 100px;
 	width: 1000px;
 	border-collapse: collapse;
 }
@@ -113,24 +106,10 @@ body {
 	padding: 0;
 }
 
-.notice_search tbody tr {
-	border-bottom: 1px solid #dddddd;
-}
-
-.notice_search tbody tr:nth-of-type(even) {
-	background-color: #f3f3f3;
-}
-
-.notice_search tbody tr.active-row {
-	font-weight: bold;
-	color: #b8becc;
-}
-
 .notice_search tr:last-child td {
 	border: none;
 	margin: auto;
 }
-
 .payment-content {
 	text-align: center;
 	color: black;
@@ -441,20 +420,6 @@ li .info-bottom {
 
 }
 
-.button3 {
-	position: relative;
-	margin: 20px auto;
-	display: flex;
-	justify-content: center;
-
-}
-
-.board {
-	border: 3px solid #777;
-	width: 30%;
-	margin: 30px auto;
-}
-
 .button2 {
 	position: relative;
 	margin: 20px auto;
@@ -602,14 +567,10 @@ li .info-bottom {
 
 .notice_content {
 	width: 70%;
-	margin: 100px auto;
+	margin: auto;
+	margin-bottom: 100px;
 	text-align: center;
 	border-collapse: collapse;
-}
-
-.notice_content tr:first-child>th {
-	background-color: #b8becc;
-	color: #FFF;
 }
 
 .admin_notice_content {
@@ -689,65 +650,32 @@ table #testTable th {
 	border: 1px solid black;
 }
 
-.notice_list tr>td:first-child {
+.notice_list tr>td {
 	text-align: center;
-	width: 15%;
-}
-
-.notice_list tr>td:nth-child(2) {
-	text-align: center;
-	width: 35%;
-}
-
-.notice_list tr>td:nth-child(3) {
-	text-align: center;
-	width: 15%;
-}
-
-.notice_list tr>td:last-child {
-	 text-align: center;
-	 width: 35%;
- }
-
-.notice_content tr:first-child>th {
-	background-color: #b8becc;
-	color: #FFF;
-	height: 40px;
-	font-size: 16px;
-	border: 1px solid black;
-}
-
-.notice_content tr:last-child>td {
-	height: 30px;
-}
-
-#img {
-	display: flex;
-	margin: auto;
+	width: 25%;
 }
 
 .notice_search tr>td:first-child {
 	text-align: center;
-	width: 15%;
+	width: 10%;
 }
 
 .notice_search tr>td:nth-child(2) {
 	text-align: center;
-	width: 35%;
 }
 
 .notice_search tr>td:nth-child(3) {
 	text-align: center;
-	width: 15%;
+	width: 10%;
 }
 
 .notice_search tr>td:last-child {
 	text-align: center;
-	width: 35%;
+	width: 15%;
 }
 
 .notice_list tr:first-child>th {
-	background-color: #004282;
+	background-color: gray;
 	color: #FFF;
 }
 
@@ -767,7 +695,7 @@ table #testTable th {
 }
 
 .notice_search tr:first-child>th {
-	background-color: #b8becc;
+	background-color: #8768A1;
 	color: #FFF;
 	height: 40px;
     font-size: 16px;
@@ -820,14 +748,7 @@ table #testTable tr:first-child td {
 }
 
 #trash {
-	width: 70%;
-	margin: 50px auto;
-	display: block;
-}
-
-#really {
-	margin: 30px auto;
-	text-align: center;
+	width: 30%;
 }
 
 .notice_delete tr:first-child {
@@ -839,6 +760,7 @@ table #testTable tr:first-child td {
 	text-align: center;
 	padding: 10px 0;
 }
+
 #trainList {
 	margin: auto;
 	padding: 8px;
@@ -1150,16 +1072,16 @@ table #testTable tr:first-child td {
 }
 
 #content_title {
-	font-size: 25px;
+	font-size: 14pt;
 	margin: 20px 0;
 	
 }
 
 #content_content {
-	font-size: 15pt;
+	font-size: 10pt;
 	text-align: left;
 	width: 80%;
-	margin: 0 0 40px 50px;
+	margin: auto;
 }
 
 #content_define {
@@ -1169,14 +1091,16 @@ table #testTable tr:first-child td {
 
 #notice_table1 {
 	display: flex;
-	font-size: 17pt;
+	font-size: 18px;
+	color: #000;
 	width: 100%;
 	justify-content: flex-start;
 	margin: 0 0 0 10px;
 }
 #notice_table2 {
 	display: flex;
-	font-size: 17pt;
+	font-size: 18px;
+	color: #000;
 	width: 100%;
 	justify-content: flex-end;
 	margin: 0 10px 0 0;
@@ -1188,20 +1112,16 @@ table #testTable tr:first-child td {
 	justify-content: space-between;
 	margin: 0;
 	padding: 10px 0;
-	background-color: #f3f4f6;
+	border-bottom: 1px solid #999;
 }
 
-p#content_content {
+/*p#content_content {
 	display: flex;
 	justify-content: space-between;
-}
+}*/
 
 .ntitle:hover {
 	cursor: pointer;
-}
-
-#list {
-	width: 70%;
 }
 
 #list:hover {
