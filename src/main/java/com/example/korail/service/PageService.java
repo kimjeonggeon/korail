@@ -26,7 +26,7 @@ public class PageService {
         dbCount = pageMapper.totalRowCount(pageDto);
 
         if (pageDto.getServiceName().equals("notice")) {
-            pageSize = 3;
+            pageSize = 5;
         } else if (pageDto.getServiceName().equals("member")) {
             pageSize = 5;
         } else if (pageDto.getServiceName().equals("adminReserv")) {

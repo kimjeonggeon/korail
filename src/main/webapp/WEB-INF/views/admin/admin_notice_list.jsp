@@ -62,7 +62,7 @@
 		<c:forEach var="notice" items="${list}">
 		<tr>
 			<td>${notice.rno}</td>
-			<td><a href="/admin/notice_content/${notice.nid}/${page.reqPage}">${notice.ntitle}</a></td>
+			<td><a href="/admin/notice_content/${notice.nid}/${page.reqPage}" style="text-decoration: none;">${notice.ntitle} </a></td>
 			<td>${notice.nhits}</td>
 			<td>${notice.ndate}</td>
 		</tr>

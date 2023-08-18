@@ -362,12 +362,15 @@ $(document).ready(function() {
 				if(notice.nsfile != null) {
 					output += "<img src='http://localhost:9000/upload/" + notice.nsfile + "' style='max-width: 500px; max-height: 300px;'>";
 				}
-				output += "<tr><th>상세 내용</th>";
-				output += "<th>등록 일자</th></tr>";
-				output += "<tr><td>" + notice.ncontent + "</td>";
-				output += "<td>" + notice.ndate + "</td></tr></table>";
-
-				output += "<div class='button'><a href = '/notice_list_json' class = 'btn' id='list'> 리스트 </a>";
+				output += "<div style='margin-top: 50px;'>";
+				output += "<div class='line2'></div>";
+				output += "<div class='button'>";
+				output += "<a class='btn' id='list'>리스트</a>";
+				output += "<input type='hidden' id='before_hidden' value='" + notice.nprev + "'>";
+				output += "<input type='hidden' id='next_hidden' value='" + notice.nnext + "'>";
+				output += "</div>";
+				output += "</div>";
+				output += "</div>";
 
 
 				$("table.notice_search").remove();

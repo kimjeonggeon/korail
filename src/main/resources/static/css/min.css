@@ -431,6 +431,7 @@ li .info-bottom {
 
 .board {
 	width: 30%;
+	text-align: center;
 	margin: 30px auto;
 }
 
@@ -609,8 +610,6 @@ li .info-bottom {
 }
 
 .notice_write, .notice_update, .notice_delete {
-	margin: auto;
-	width: 70%;
 	border: none;
 }
 
@@ -720,13 +719,8 @@ table #testTable th {
 	padding: 8px;
 }
 
-.notice_list tr {
-
-}
-
 .notice_list {
 	border-collapse: collapse;
-	background-color: gray;
 	color: #FFF;
 }
 
@@ -737,7 +731,7 @@ table #testTable th {
 
 .notice_search tr>td {
 	text-align: center;
-	height: 30px;
+	height: 40px;
     font-size: 16px;
     color: black;
 }
@@ -751,7 +745,6 @@ table #testTable th {
 	color: #FFF;
 	height: 40px;
     font-size: 16px;
-    border: 1px solid black;
 }
 
 
@@ -770,7 +763,7 @@ table #testTable tr:first-child td {
 }
 
 .notice_write {
-	margin: 200px auto;
+	margin: 100px auto;
 }
 
 .notice_write tr>td {
@@ -797,6 +790,7 @@ table #testTable tr:first-child td {
 
 .notice_update tr>td {
 	border: 1px solid gray;
+	padding: 8px;
 }
 
 .notice_update tr:last-child>td {
@@ -809,7 +803,7 @@ table #testTable tr:first-child td {
 }
 
 .notice_update, .notice_delete {
-	margin: 200px auto;
+	margin: 100px auto;
 }
 
 .notice_update tr:last-child>td {
@@ -817,11 +811,7 @@ table #testTable tr:first-child td {
 }
 
 .notice_update tr>th {
-	background-color: #ddd;
 	width: 30px;
-}
-
-.notice_update tr>th {
 	background-color: #ddd;
 }
 
