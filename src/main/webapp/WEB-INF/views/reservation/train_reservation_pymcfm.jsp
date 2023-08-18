@@ -6,7 +6,9 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="http://localhost:9000/css/train_reservation_pymcfm.css">
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 </head>
 <body>
 <div>
@@ -92,10 +94,8 @@
 						<div class="routeArea route_wrap mob_route">
 							<div class="tbl_type3">
 								<table>
-
 									<colgroup>
 										<col style="width:80px;">
-
 									</colgroup>
 									<tbody>
 										<tr>
@@ -117,12 +117,16 @@
 
 									</colgroup>
 									<tbody>
-
 											<tr>
 												<th scope="row">결제금액</th>
 												<td><strong><span id="tissuAmtView">${sessionScope.rvo.price}</span></strong><span id="tissuAmtUntView">원</span></td>
 											</tr>
-
+											<c:if test="${not empty mileage_use && mileage_use != null && mileage_use != 0}">
+												<tr>
+													<th>마일리지</th>
+													<td><strong><span id="use_mileage">-${mileage_use}</span></strong><span id="use_mileages">원</span></td>
+												</tr>
+											</c:if>
 									</tbody>
 								</table>
 							</div>

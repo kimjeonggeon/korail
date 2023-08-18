@@ -2,6 +2,7 @@ package com.example.korail.controller;
 
 import com.example.korail.dto.*;
 import com.example.korail.service.CardinfoService;
+import com.example.korail.service.MileageService;
 import com.example.korail.service.OrderService;
 import com.example.korail.service.PageService;
 import com.google.gson.internal.Streams;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpSession;
+import java.sql.Timestamp;
 import java.text.DecimalFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -30,10 +32,12 @@ public class ReservationlistController {
     @Autowired
     CardinfoService cardinfoService;
 
+    @Autowired
+    MileageService mileageService;
+
     @GetMapping("reservation_main")
     public String reservation_main(OrderDto orderDto, HttpSession session, Model model) throws ParseException {
         SessionDto svo = (SessionDto)session.getAttribute("svo");
-
         String id = svo.getId();
         String cardnum = svo.getCardnum();
         String email = svo.getEmail();
@@ -65,21 +69,21 @@ public class ReservationlistController {
                 int depPlandDate = parseInt(depPlandTime); //출발일
 
                 String rdate = order.getRdate(); //예매일
-                System.out.println("rdate-->"+rdate);
+                //System.out.println("rdate-->"+rdate);
 
                 SimpleDateFormat transFormat = new SimpleDateFormat("yyyy-MM-dd");
                 Date date = transFormat.parse(rdate);
 
                 SimpleDateFormat formatRDate = new SimpleDateFormat("yyyyMMdd");
                 int rdate1 = Integer.parseInt(formatRDate.format(date));
-                System.out.println("rdate1-->" + rdate1);
+                //System.out.println("rdate1-->" + rdate1);
 
                 Calendar cal1 = Calendar.getInstance();
                 cal1.setTime(date);
                 cal1.add(Calendar.MONTH, 3); // 월 연산
 
                 int rdate2 = Integer.parseInt(formatDate.format(cal1.getTime()));
-                System.out.println("rdate2-->" + rdate2);
+                //System.out.println("rdate2-->" + rdate2);
 
 
                 /* 예매내역 확인 : 출발날짜가 서버날짜 당일이거나 이후인 경우만 담기 */
@@ -162,7 +166,7 @@ public class ReservationlistController {
     @GetMapping("reservation_update/{reservnum}/{cid}")
     public String reservation_update(HttpSession session, @PathVariable String reservnum, @PathVariable String cid, Model model) {
         OrderDto orderDto = orderService.getSelected(reservnum);
-        System.out.println("cid2-->"+cid);
+        //System.out.println("cid2-->"+cid);
         UpdateDto uvo = new UpdateDto();
         uvo.setReservnum(reservnum);
         uvo.setCid(cid);
@@ -211,12 +215,9 @@ public class ReservationlistController {
 
     /* update 3.5 */
     @GetMapping("reservation_updateselect/{seatNum}/{ticketQty}/{id}/{adltTotAmt}")
-    public String reservation_updateselect(@PathVariable String seatNum, @PathVariable String ticketQty, @PathVariable String id , @PathVariable String adltTotAmt, HttpSession session) {
-
-        /*System.out.println("seatNum-->"+seatNum);
-        System.out.println("ticketQty-->"+ticketQty);
-        System.out.println("adltTotAmt-->"+adltTotAmt);
-        System.out.println("id-->"+id);*/
+    public String reservation_updateselect(@PathVariable String seatNum, @PathVariable String ticketQty, @PathVariable String id , @PathVariable String adltTotAmt, HttpSession session, Model model) {
+        int mileage = mileageService.getMileage(id);
+        model.addAttribute("mileage", mileage);
 
         UpdateDto uvo = (UpdateDto)session.getAttribute("uvo");
 
@@ -224,6 +225,7 @@ public class ReservationlistController {
         uvo.setTicketQty(ticketQty);
         uvo.setId(id);
         uvo.setAdltTotAmt(adltTotAmt);
+
         //"redirect:/train_reservation_stplcfmpym1.do"
         return "/reservationlist/reservation_updatepay";
     }
@@ -237,7 +239,7 @@ public class ReservationlistController {
 
     /* update 5 - last */
     @PostMapping("reservation_updatepay")
-    public String reservation_updatepay_proc(HttpSession session, OrderDto orderDto, CardinfoDto cardinfoDto) {
+    public String reservation_updatepay_proc(HttpSession session, OrderDto orderDto, CardinfoDto cardinfoDto, String mileage_use) {
         String resultPay = "";
         UUID uuid = UUID.randomUUID();
         UpdateDto uvo = (UpdateDto) session.getAttribute("uvo");
@@ -245,9 +247,9 @@ public class ReservationlistController {
         int number = parseInt(uvo.getAdltTotAmt());
         String price = decimalFormat.format(number);
 
-        System.out.println("cid=>"+uvo.getCid());
+        //System.out.println("cid=>"+uvo.getCid());
         cardinfoDto.setCid(uvo.getCid());
-        System.out.println("cid마지막->"+cardinfoDto.getCid());
+        //System.out.println("cid마지막->"+cardinfoDto.getCid());
 
         if(cardinfoDto.getPaymentmethod().equals("card")) {
             cardinfoDto.setRecognizenum(uuid.toString().replaceAll("-", "").substring(0, 10));
@@ -271,9 +273,31 @@ public class ReservationlistController {
         orderDto.setTrainnum(parseInt(uvo.getTrainno()));
         orderDto.setTicketqty(parseInt(uvo.getTicketQty()));
 
+        // 이전 예매의 마일리지 사용 이력 삭제
+        mileageService.prepareUpdateProc(uvo.getId(), uvo.getReservnum());
+        if(mileage_use.equals("")) mileage_use = "0";
+        String combinedDateTimeString = uvo.getRtimes() + " " + uvo.getStart_date();
+        try {
+            SimpleDateFormat inputDateTimeFormat = new SimpleDateFormat("yyyyMMdd HH시mm분");
+            Date combinedDateTime = inputDateTimeFormat.parse(combinedDateTimeString);
+            Timestamp depPlandTime = new Timestamp(combinedDateTime.getTime());
+            if(!mileage_use.equals("0")) {
+                mileageService.setMileage(uvo.getId(), Integer.parseInt(mileage_use), "마일리지 사용", null, orderDto.getReservnum());
+            }
+            Thread.sleep(1000);
+            if (!mileage_use.equals("")) {
+                // 마일리지 취소 시 내역 업데이트
+                mileageService.cancleMileage(uvo.getAdltTotAmt(), uvo.getId(), uvo.getReservnum());
+            }
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         int result = orderService.getPaymentUpdate(orderDto);
-
         if(result == 1) {
             resultPay = "redirect:/reservation_main";
         }else {

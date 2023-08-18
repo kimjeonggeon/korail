@@ -12,7 +12,9 @@
 <body>
 <div class="content">
     <section class="board">
-        <h1 class="title">마일리지 내역</h1>
+        <h1 class="title">마일리지 내역
+            <p class="p_text">마일리지는 적립일로부터 5년 후 만료됩니다.</p>
+        </h1>
     </section>
 </div>
 <script>
@@ -24,21 +26,32 @@
             $.ajax({
                 url: "mileage_list_json_data/" + page + "/" + memberId + "/", success: function (result) {
                     let output = "<table class='board_list'>";
-                    output += "<tr class='tr'><th>적립일</th><th>적립금</th><th>내역</th><th>만료일</th><th>누적 마일리지</th></tr>";
+                    output += "<tr class='tr'><th>날짜</th><th>차감액</th><th>내역</th><th>적용 시작일</th></tr>";
+
+                    let changeAmount = 0;
 
                     for (let i = result.list.length - 1; i >= 0; i--) {
                         const obj = result.list[i];
                         output += "<tr class='tr'>";
                         output += "<td>" + obj.accumulationDate + "</td>";
 
-                        output += "<td class='changeAmount'" + (obj.changeAmount <= 0 ? " style='color:red;'" : "") + ">" + obj.changeAmount + "</td>";
+                        let fontColor = ""
+                        if(obj.type == 2) {
+                            fontColor = "style='color:#5dbd5d;'";
+                            changeAmount -= obj.changeAmount;
+                        } else if (obj.type == 1) {
+                            fontColor = "style='color:red'";
+                            changeAmount += obj.changeAmount;
+                        }
+
+                        output += "<td class='changeAmount'" + fontColor + ">" +
+                            (obj.type ===2 ? "(" + obj.changeAmount + ")" : obj.changeAmount) + "</td>";
 
                         output += "<td>" + obj.specifics + "</td>";
-
-                        if (obj.expirationDate == null) obj.expirationDate = "";
-                        output += "<td>" + obj.expirationDate + "</td>";
-
-                        output += "<td>" + obj.accumulatedAmount + "</td>";
+                        if (obj.depplandTime == null) {
+                            obj.depplandTime = "";
+                        }
+                        output += "<td>" + obj.depplandTime + "</td>";
                         output += "</tr>";
                     }
 

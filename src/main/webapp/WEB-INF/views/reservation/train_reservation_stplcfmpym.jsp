@@ -650,7 +650,6 @@
                                 <caption>결제금액 정보</caption>
                                 <colgroup>
                                     <col style="width:50%;">
-
                                 </colgroup>
                                 <tbody>
                                 <tr>
@@ -670,14 +669,11 @@
                                     <th scope="row"><span id="mileage_1">사용</span></th>
                                     <td id="input_area"><input id="mileage_2" name="mileage_use"></td>
                                 </tr>
-
-
                                 <tr class="total">
                                     <th scope="row" class="txt_black">총 결제금액</th>
                                     <td class="totalPrice"><span id="tissuAmtView" name="adltTotAmt1">${ sessionScope.rvo.adltTotAmt }원</span>
                                     </td>
                                 </tr>
-
                                 <tr class="total_discount">
                                     <th scope="row" class="txt_black"></th>
                                     <td class="totalPrice"><span id="discount"></span></td>
@@ -728,27 +724,27 @@
                 if (mileageInput.value === "") {
                     discount.textContent = "";
                 } else {
-                    const mileageInputNum = parseInt(mileageInput.value, 10);
-                    if (mileageInputNum > totalprice) {
-                        Swal.fire({
-                            title: '마일리지 입력 오류',
-                            text: '마일리지 사용 금액이 예매금액을 초과하였습니다.',
-                            icon: 'error',
-                        }).then(() => {
-                            mileageInput.value = mileage;
-                        });
-                    } else if (mileageInputNum > mileage) {
-                        Swal.fire({
-                            title: '마일리지 입력 오류',
-                            text: '마일리지 보유 금액을 초과하여 사용할 수는 없습니다.',
-                            icon: 'error',
-                        }).then(() => {
-                            mileageInput.value = mileage;
-                        });
-                    } else {
+					const mileageInputNum = parseInt(mileageInput.value, 10);
+					if (mileageInputNum > totalprice) {
+						Swal.fire({
+							title: '마일리지 입력 오류',
+							text: '마일리지 사용 금액이 예매금액을 초과하였습니다.',
+							icon: 'error',
+						}).then(() => {
+							mileageInput.value = mileage;
+						});
+					} else if (mileageInputNum > mileage) {
+						Swal.fire({
+							title: '마일리지 입력 오류',
+							text: '마일리지 보유 금액을 초과하여 사용할 수는 없습니다.',
+							icon: 'error',
+						}).then(() => {
+							mileageInput.value = mileage;
+						});
+					} else {
                         discount.textContent = "-" + mileageInput.value + '원';
-                        const newTissuAmt = initialTissuAmt - mileageInputNum + '원';
-                        tissuAmtView.textContent = newTissuAmt;
+						const newTissuAmt = (initialTissuAmt - mileageInputNum) + '원';
+						tissuAmtView.textContent = newTissuAmt;
                     }
                 }
             }

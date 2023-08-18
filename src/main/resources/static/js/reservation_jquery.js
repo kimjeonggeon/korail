@@ -269,7 +269,7 @@ $(document).ready(function(){
 		  if (result.isConfirmed) {
 			  
 		    $.ajax({
-   				url : "/reservCancel_check/"+$("#modal_reservnum_input").val(),  //페이지이동이 아님. 웹에서는 안보이고 백단에서 이동하는 방식 = 비동기식 방식!
+   				url : "/reservCancel_check/"+$("#modal_reservnum_input").val() + "/"+ $("#userId").val(),  //페이지이동이 아님. 웹에서는 안보이고 백단에서 이동하는 방식 = 비동기식 방식!
 				success : function(result){//문자타입으로 보냈지만 script에서는 타입 정해진거 없음 따라서 숫자타입임
 					if(result == 1){
 						Swal.fire({
