@@ -148,10 +148,18 @@ public class KorailRestControlloer {
     }
 
 
-    @GetMapping("reservCancel_check/{reservnum}")
-    public String reservCancel_check(@PathVariable String reservnum){
-        System.out.println("Reservnum : " + reservnum);
-        mileageService.setMileage_Reduce(reservnum);
+    @GetMapping("reservCancel_check/{reservnum}/{userId}")
+    public String reservCancel_check(@PathVariable String reservnum, @PathVariable String userId){
+        // 사용자 식별을 위한 변수를 List로 수령
+        List<OrderDto> stationInfo = mileageService.getStation(userId, reservnum);
+            if (mileageService.getStation(userId, reservnum).size() > 0) {
+                // 마일리지 조회 내력에 등록할 문구 생성
+                String specifics = "예매 취소  " + stationInfo.get(0).getSstation() + "↔" + stationInfo.get(0).getDstation() + " " + stationInfo.get(0).getStime();
+                // 예상 누적 금액 삭제 및 마일리지 사용 db 수정
+                mileageService.prepareUpdateProc(userId, reservnum);
+                mileageService.updateProc(specifics, userId, reservnum);
+            }
+
         return orderService.getCancelResult(reservnum);
     }
 

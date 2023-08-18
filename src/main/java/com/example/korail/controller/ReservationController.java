@@ -13,7 +13,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
+import java.sql.Timestamp;
 import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.UUID;
 
 @Controller
@@ -22,7 +25,6 @@ public class ReservationController {
     OrderService orderService;
     @Autowired
     CardinfoService cardinfoService;
-
     @Autowired
     MileageService mileageService;
 
@@ -32,6 +34,7 @@ public class ReservationController {
         ReservationDto rvo = (ReservationDto) session.getAttribute("rvo");
         UUID uuid = UUID.randomUUID();
         DecimalFormat decimalFormat = new DecimalFormat("#,###");
+        model.addAttribute("mileage_use", mileage_use);
 
         String price = rvo.getAdltTotAmt();
 
@@ -46,8 +49,8 @@ public class ReservationController {
 
         rvo.setPaymentmethodlist(reservationDto.getPaymentmethodlist());
         rvo.setPrice(price);
-        System.out.println("getPaymentmethod -->"+reservationDto.getPaymentmethodlist());
-        System.out.println("getPrice -->"+reservationDto.getPrice());
+        //System.out.println("getPaymentmethod -->"+reservationDto.getPaymentmethodlist());
+        //System.out.println("getPrice -->"+reservationDto.getPrice());
 
         orderDto.setSstation(rvo.getDepplacename());
         orderDto.setStime(rvo.getStart_date());
@@ -66,14 +69,20 @@ public class ReservationController {
         orderDto.setEmail(rvo.getEmail());
 
         orderService.getPayment(orderDto);
-        //System.out.println("mileage_use : " + mileage_use);
+
+
+        if(mileage_use.equals("")) mileage_use = "0";
+        String combinedDateTimeString = rvo.getRtimes() + " " + rvo.getStart_date();
         try {
-            int result = mileageService.setMileage(rvo.getId(), Integer.parseInt(rvo.getAdltTotAmt()), "열차 예매");
-            if (result >= 1) {
-                if (!mileage_use.equals("")) {
-                    Thread.sleep(1000);
-                    mileageService.setMileage(rvo.getId(), Integer.parseInt(mileage_use), "마일리지 사용");
-                }
+            SimpleDateFormat inputDateTimeFormat = new SimpleDateFormat("yyyyMMdd HH시mm분");
+            Date combinedDateTime = inputDateTimeFormat.parse(combinedDateTimeString);
+            Timestamp depPlandTime = new Timestamp(combinedDateTime.getTime());
+            if(!mileage_use.equals("0")) {
+                mileageService.setMileage(rvo.getId(), Integer.parseInt(mileage_use), "마일리지 사용", null, orderDto.getReservnum());
+            }
+            Thread.sleep(1000);
+            if (!mileage_use.equals("")) {
+                mileageService.setMileage(rvo.getId(), Integer.parseInt(rvo.getAdltTotAmt()), "열차 예매", depPlandTime, orderDto.getReservnum());
             }
         } catch (InterruptedException e) {
             e.printStackTrace();

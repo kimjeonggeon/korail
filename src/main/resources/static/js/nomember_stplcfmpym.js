@@ -96,6 +96,14 @@ $(document).ready(function(){
 	//결제하기 클릭시 서브밋
 	$("#stplCfmBtn").click(function(){
 
+		var $button = $(this);
+
+		if ($button.hasClass("disabled")) {
+			return;
+		}
+
+		$button.addClass("disabled");
+
 		var paymentMethod = $("input[name='paymentmethodlist']:checked").val();
 
 		if(paymentMethod === "card") {
@@ -196,6 +204,7 @@ $(document).ready(function(){
 					confirmButtonText: '확인'
 				});
 				return false;
+				$button.removeClass("disabled");
 			} else {
 				purchaseForm.submit();
 			}

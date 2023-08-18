@@ -424,7 +424,7 @@
 											<td style="padding-left: 15px;">출발 후(역 창구에서 환불 신청)</td>
 										</tr>
 									</tbody>
-								</table>
+									</table>
 							</div>
 							<ul class="desc_list">
 								<li>취소수수료 산정은 출발시간을 기준으로 합니다.</li>
@@ -435,6 +435,7 @@
 						</div>
 					</div>
 						<input type="hidden" id="modal_reservnum_input" name="modal_reservnum_input">
+						<input type="hidden" id="userId" value="${sessionScope.svo.id}">
 					<!-- 팝업 footer -->
 					<div class="btns col1"><button type="button" class="btnL btn_orange" id="reservCancel">예매취소</button></div>
 				</div>

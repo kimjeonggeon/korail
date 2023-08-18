@@ -17,6 +17,12 @@ h1.title {
     text-align: center;
 }
 
+.p_text {
+    margin: 0;
+    text-align: -webkit-right;
+    font-size: small;
+}
+
 .board_list {
     width: 100%;
     border-collapse: collapse;
