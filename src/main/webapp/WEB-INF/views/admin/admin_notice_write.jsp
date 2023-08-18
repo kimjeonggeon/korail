@@ -31,13 +31,13 @@
 			<tr>
 				<th>제목</th>
 				<td>
-					<input style="width:800px" type="text" name="ntitle" id="notice_title">
+					<input style="width:100%;" type="text" name="ntitle" id="notice_title">
 				</td>
 			</tr>
 			<tr>
 				<th>내용</th>
 				<td>
-					<textarea style="height:300px; width:1100px; resize: none;" maxlength="1000" name="ncontent" id="notice_content" placeholder="텍스트를 입력하세요"></textarea>
+					<textarea style="height:300px; width:100%; resize: none;" maxlength="1000" name="ncontent" id="notice_content" placeholder="텍스트를 입력하세요"></textarea>
 				</td>
 			</tr>
 			<tr>
@@ -50,7 +50,7 @@
 				<td colspan="2">
 				<div class="button">
 					<div class="text">
-						<p class="textCount">0</p>
+						<p class="textCount" style="width: 40px; text-align: right;">0</p>
 						<p class="textTotal">/1000자</p>
 					</div>
 					<a id="btnSubmit" class="btn" >등록완료</a>
