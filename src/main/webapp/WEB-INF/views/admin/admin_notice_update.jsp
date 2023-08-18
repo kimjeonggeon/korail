@@ -32,7 +32,7 @@
 			<tr>
 				<th>내용</th>
 				<td>
-					<textarea style="height:300px; width:100%; resize: none;" maxlength="200" name="ncontent" id="notice_content">${notice.ncontent}</textarea>
+					<textarea style="height:300px; width:100%; resize: none;" maxlength="1000" name="ncontent" id="notice_content">${notice.ncontent}</textarea>
 				</td>
 			</tr>
 			<tr>
