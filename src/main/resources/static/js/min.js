@@ -339,6 +339,11 @@ $(document).ready(function() {
 
 				pager(result.page.dbCount, result.page.pageCount, result.page.pageSize, result.page.reqPage);
 
+				$(".ntitle").click(function () {
+					contentAjax($(this).attr("nid"), page);
+					$(".search-form").css("display", "none");
+				});
+
 				jQuery('#ampaginationsm').on('am.pagination.change',function(e){
 					jQuery('.showlabelsm').text('The selected page no: '+e.page);
 
