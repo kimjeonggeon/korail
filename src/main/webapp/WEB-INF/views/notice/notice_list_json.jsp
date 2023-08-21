@@ -29,28 +29,24 @@
 				<c:when test="${category !=null }">
 					<select name="category" id="category">
 						<c:if test="${category == 'all'}">
-							<option value="all" selected>전체</option>
 							<option value="title">제목</option>
 							<option value="content">내용</option>
 							<option value="title_content">제목+내용</option>
 							<input type="text" name="cvalue" id="cvalue" maxlength=100 autocomplete="off" value="${cvalue}">
 						</c:if>
 						<c:if test="${category == 'title'}">
-							<option value="all" >전체</option>
 							<option value="title" selected>제목</option>
 							<option value="content">내용</option>
 							<option value="title_content">제목+내용</option>
 							<input type="text" name="cvalue" id="cvalue" maxlength=100 autocomplete="off" value="${cvalue}" required>
 						</c:if>
 						<c:if test="${category == 'content'}">
-							<option value="all" >전체</option>
 							<option value="title" >제목</option>
 							<option value="content" selected>내용</option>
 							<option value="title_content">제목+내용</option>
 							<input type="text" name="cvalue" id="cvalue" maxlength=100 autocomplete="off" value="${cvalue}" required>
 						</c:if>
 						<c:if test="${category == 'title_content'}">
-							<option value="all" >전체</option>
 							<option value="title" >제목</option>
 							<option value="content" >내용</option>
 							<option value="title_content" selected>제목+내용</option>
@@ -60,7 +56,6 @@
 				</c:when>
 				<c:otherwise>
 					<select name="category" id="category" class="notice_search">
-						<option value="all">전체</option>
 						<option value="title">제목</option>
 						<option value="content">내용</option>
 						<option value="title_content">제목+내용</option>
