@@ -1,7 +1,6 @@
 package com.example.korail.controller;
 
 import com.example.korail.dto.MemberDto;
-import com.example.korail.dto.MileageDto;
 import com.example.korail.interceptor.BCrypt;
 import com.example.korail.service.MailSendService;
 import com.example.korail.service.MemberService;

@@ -148,11 +148,8 @@ public class MypageController {
     }
 
     @PostMapping("/mypage_withProc")
-        public String mypage_withProc(HttpSession session, @RequestParam String userpass, Model model) {
+        public String mypage_withProc(HttpSession session, String userpass, Model model) {
         String withProcValue = "";
-
-        // Session 정보 수집
-        //pathvarable - post @requestparam - post/get
         SessionDto svo = (SessionDto) session.getAttribute("svo");
         if (BCrypt.checkpw(userpass, svo.getPass())) {
             // 탈퇴 시, session의 id로 Mybatis를 활용해 탈퇴 진행

@@ -44,6 +44,11 @@ public class LoginController {
         return "login/login1";
     }
 
+    @GetMapping("loginm")
+    public String loginm(){
+        return "my_page/loginm";
+    }
+
     @PostMapping("login_proc")
     public String login_proc(MemberDto memberDto, Model model, HttpSession session, String userId) {
         ReservationDto rvo = (ReservationDto) session.getAttribute("rvo");

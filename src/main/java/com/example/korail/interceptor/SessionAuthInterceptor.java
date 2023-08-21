@@ -25,7 +25,7 @@ public class SessionAuthInterceptor extends HandlerInterceptorAdapter {
 					response.sendRedirect("/login2");
 					return false;
 				} else if (requestURI.equals("/mypage")) {
-					response.sendRedirect("/login");
+					response.sendRedirect("/loginm");
 					return false;
 				} else if (requestURI.equals("/admin")) {
 					response.sendRedirect("/login");
