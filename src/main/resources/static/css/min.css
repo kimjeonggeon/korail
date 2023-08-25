@@ -1023,7 +1023,7 @@ table #testTable tr:first-child td {
 
 #station03 a {
 	width: 30px;
-	left: 552px;
+	left: 537px;
 	top: 745px;
 }
 
@@ -1166,6 +1166,7 @@ table #testTable tr:first-child td {
 	justify-content: flex-start;
 	margin: 0 0 0 10px;
 }
+
 #notice_table2 {
 	display: flex;
 	font-size: 18px;
@@ -1182,6 +1183,7 @@ table #testTable tr:first-child td {
 	margin: 0;
 	padding: 10px 0;
 	border-bottom: 1px solid #999;
+	max-width: 2000px;
 }
 
 /*p#content_content {
