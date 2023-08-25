@@ -560,6 +560,7 @@ h4 + .desc, .h4_box + .desc {
     background-color: #b8becc;
     color: #fff;
     border:none;
+    cursor: pointer;
 }
 
 .mail-check-box p{

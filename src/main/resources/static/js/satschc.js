@@ -39,7 +39,7 @@ $(document).ready(function(){
 	          }
 	          
 	          if (!isOccupied) {
-	            seat += "<img src='http://localhost:9000/images/seat_p.gif' id='chairImg_"+seatNumber+"' style='opacity: 0.5;'>";
+	            seat += "<img src='http://localhost:9000/images/seat_p.gif' id='chairImg_"+seatNumber+"' style='opacity: 0.5; cursor: pointer;'>";
 	          }
 	          
 	          seat +=  count.toString().padStart(2, '0');

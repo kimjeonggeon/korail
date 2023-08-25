@@ -31,7 +31,7 @@
 		<h1 class="logo"
 			style="margin-bottom: 0px; height: 105px; margin-top: 16px; padding-top: 28px;">
 			<a href="http://localhost:9000">
-			<img class="gnb_logo" src="http://localhost:9000/images/free-icon-train.png">KTX 열차 예매</a>
+			<img class="gnb_logo" src="http://localhost:9000/images/free-icon-train.png">Let's KTX</a>
 		</h1>
 		<div id="menu">
 			<ul class="depth1" style="padding-left: 30px;">

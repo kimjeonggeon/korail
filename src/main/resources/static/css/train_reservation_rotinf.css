@@ -524,6 +524,7 @@ input[type=text]{
     float: left;
     width: 33.33%;
     border-bottom: 1px solid #e6e6e6;
+    cursor: pointer;
 }
 
 .pop_place .terminal_list li span {
