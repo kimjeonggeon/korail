@@ -23,6 +23,7 @@ public class OrderService {
         return orderMapper.payment(orderDto);
     }
     public ArrayList<SeatNumberDto> getSeatnum(ReservationDto rvo){
+        System.out.println("setTrnumber service -->"+rvo.getTrnumber());
         List<SeatNumberDto> list = orderMapper.seatnum(rvo);
 
         return (ArrayList<SeatNumberDto>)list;

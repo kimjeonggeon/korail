@@ -1,10 +1,10 @@
 $(document).ready(function(){
-	trInitAjax(1);
+	trInitAjax( 1);
 	
 	function trInitAjax(trnumber) {
 		//alert(trnumber);
 	  $.ajax({
-	    url: "train_reservation_satschc_json?trnumber="+trnumber,
+	    url: "train_reservation_satschc_json/"+trnumber,
 	    success: function (result) {
 	      //alert(result);
 	      let jdata = JSON.parse(result);
@@ -27,18 +27,18 @@ $(document).ready(function(){
 	          seat += "<span class='seatBox'>";
 	          
 	          let isOccupied = false;
-	          
+			  let seatNumber = count.toString().padStart(2, '0');
+
 	          for (let seatObj of seatList) {
 	          
-	            if (seatObj.seat == count) {
-	              seat += "<img src='http://localhost:9000/images/seat_c.gif' style='opacity: 0.5;'>";
-	              isOccupied = true;
-	              break;
+	            if (seatObj.seat == seatNumber) {
+				  seat += "<img src='http://localhost:9000/images/seat_c.gif' style='opacity: 0.5;'>";
+				  isOccupied = true;
+				  break;
 	            }
 	          }
 	          
 	          if (!isOccupied) {
-	          	let seatNumber = count.toString().padStart(2, '0');
 	            seat += "<img src='http://localhost:9000/images/seat_p.gif' id='chairImg_"+seatNumber+"' style='opacity: 0.5;'>";
 	          }
 	          

@@ -362,8 +362,8 @@ $(document).ready(function(){
 								
 								
 								<div class="box_searchId col2">
-									<a href=""><span class="ico_searchId">아이디찾기</span></a>
-									<a href=""><span class="ico_searchPW">비밀번호찾기</span></a>
+									<a href="http://localhost:9000/findAuth"><span class="ico_searchId">아이디찾기</span></a>
+									<a href="http://localhost:9000/find_pass"><span class="ico_searchPW">비밀번호찾기</span></a>
 								</div>
 							</div>
 						</div>
