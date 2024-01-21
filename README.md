@@ -4,18 +4,6 @@
 <h3>💡 **프로젝트 정보**</h3>
 
 
-## 👀 개발환경
-
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/e5cb7763-6418-4569-b9ee-22820c9941ba/c491d39b-5d2a-4c13-a77e-fe7979f13535/Untitled.png)
-
-## 👀 코딩 컨벤션
-
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/e5cb7763-6418-4569-b9ee-22820c9941ba/2322960b-2ba5-4c06-bd4a-a45b738f9be8/Untitled.png)
-
-## 👀 시큐어 코딩
-
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/e5cb7763-6418-4569-b9ee-22820c9941ba/b2303137-4dde-43db-943e-1168237d5909/Untitled.png)
-
 
 
 ### 기존 레츠코레일 프로젝트 고도화
